@@ -97,6 +97,21 @@ Por qué gana:
 
 Nota para el equipo: el problema tiene la misma forma que el del litio (un daño real y nadie que mida en público). Ver [[litio-triage]]. Puede ser una fortaleza para el pitch: un mismo método para varios ejes.
 
+## Novedades de la COP31 y caso Córdoba (agregado el 10/11/2026)
+
+Datos del informe del equipo "COP30 y COP31 por vertical". No los verifiqué aparte, salvo donde se indica.
+
+- **COP31 (Antalya, 9-20/11/2026):** Turquía puso el metano de los residuos como prioridad 1 de 14 en la agenda de acción. El 11/11 es el día "Cero Residuos".
+- **Plan NOW:** US$30 millones, de los cuales US$10 millones son para América Latina.
+- **Lo que falta en la agenda:** según la ISWA (asociación internacional de residuos), no hay ninguna decisión prevista sobre basurales ni quema a cielo abierto.
+- **Argentina:** no firmó la declaración de la COP29 sobre metano de residuos orgánicos. Los residuos son el 6 % del inventario nacional, y cerca del 90 % de los municipios usa basurales a cielo abierto (dato atribuido a la OIT).
+- **Córdoba, para el jurado local:**
+  - Piedra Blanca recibe unas 1.900 toneladas por día y no captura gas en sus celdas viejas.
+  - El ex enterramiento de Potrero del Estado sigue emitiendo.
+  - La provincia tiene 109 basurales registrados (datos de 2020 a 2023).
+
+**Qué cambia para el triage (inferencia mía):** el problema elegido sigue siendo el mismo. Lo que cambia es que la herramienta de Bariloche se puede mostrar también con Córdoba: el método (satélite, viento y semáforo) sirve para Piedra Blanca y para los 109 basurales. Eso acerca el caso al jurado de Córdoba sin cambiar de problema.
+
 ## Límites de esta investigación
 
 - No tuve acceso al cuaderno "Bariloche Waste Management". Todo lo verifiqué de nuevo con fuentes públicas.

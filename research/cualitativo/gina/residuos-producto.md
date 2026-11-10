@@ -166,6 +166,16 @@ Ideas ordenadas de mayor a menor potencial.
 
 **Recomendación (inferencia mía):** mostrar en la demo las ideas 1 y 4 juntas, porque responden a la pregunta del jurado ("¿quién controla?"), y sumar la idea 2 como una pestaña para la UE y la COP31. Las ideas 3 y 5 quedan como la siguiente etapa con la ARB.
 
+### Agregado del 10/11/2026: llevarlo a Córdoba
+
+Con los datos del informe del equipo "COP30 y COP31 por vertical" (no verificados aparte):
+
+- **Piedra Blanca:** unas 1.900 t/día y sin captura de gas en las celdas viejas. La calculadora de metano (idea 2) se puede correr con ese número y mostrar el orden de magnitud frente a Bariloche (150-200 t/día).
+- **109 basurales en la provincia (2020-2023):** la idea 1 se puede extender a un mapa provincial de focos de calor sobre basurales con FIRMS.
+- **Momento:** el 11/11 es el día "Cero Residuos" de la COP31, y Turquía puso el metano de los residuos como prioridad 1. El plan NOW tiene US$10 M para América Latina.
+
+**Sugerencia (inferencia mía):** en el pitch, Bariloche es el caso profundo y Córdoba la prueba de que el método escala.
+
 ## Límites de esta investigación
 
 - No verifiqué que NASA FIRMS haya detectado incendios en las coordenadas del vertedero. Es lo primero que tiene que revisar el equipo técnico.

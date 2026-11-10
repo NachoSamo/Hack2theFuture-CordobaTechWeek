@@ -93,6 +93,12 @@ Viene de [[residuos-triage]]. Sigue en [[residuos-producto]].
 | COP31 en Antalya (Turquía), del 9 al 20/11/2026. Su agenda de acción incluye "Cero Residuos y Reducción de Metano" y "Ciudades Resilientes". La UE coorganiza una reunión ministerial del Compromiso Global de Metano. | En curso (consultado el 10/11/2026) | Sitio de la COP31, ABC News | Programado, no resultados |
 | La red de monitoreo satelital del PNUMA (MARS) empieza a mandar alertas también para residuos | 2026 | PNUMA, Envirotec | Verificado. No encontré alertas para Bariloche. |
 | La AFD financia los estudios del sistema regional de Bariloche | 30/10/2026 | Gobierno de Río Negro | Verificado (comunicado oficial) |
+| COP31: Turquía puso el metano de los residuos como prioridad 1 de 14 en la agenda de acción. El 11/11 es el día "Cero Residuos". | Nov. 2026 | Informe del equipo "COP30 y COP31 por vertical" | Afirmación del informe; no lo verifiqué aparte |
+| Plan NOW: US$30 M en total, US$10 M para América Latina | 2026 | Informe del equipo | Afirmación del informe |
+| ISWA: no hay ninguna decisión sobre basurales ni quema a cielo abierto prevista para la COP31 | Nov. 2026 | Informe del equipo | Afirmación del informe |
+| Argentina no firmó la declaración de la COP29 sobre metano de residuos orgánicos | Nov. 2024 | Informe del equipo | Afirmación del informe |
+| Los residuos son el 6 % del inventario nacional de emisiones; cerca del 90 % de los municipios usa basurales a cielo abierto | — | Informe del equipo (cita a la OIT para el 90 %) | Afirmación del informe |
+| La NDC de Argentina se habría entregado formalmente antes del 9/11/2026 | Nov. 2026 | Informe del equipo | No verificado |
 
 ## El dato que falta
 
