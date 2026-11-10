@@ -1,5 +1,6 @@
-# Biodiversidad: triage de problemas (bosque seco y fuego)
+# Incendios y bosque nativo: triage de problemas (bosque seco y fuego)
 
+- **Eje:** biodiversidad
 - **Fecha de elaboración:** 2026-11-10
 - **Fuentes principales:** informe del equipo "COP30 y COP31 por vertical", Greenpeace (informe anual 2025 y monitoreo 2026), Mongabay Latam, FARN, Sistema de Alerta Temprana de Deforestación (Nación), Idecor y La Voz (incendios en Córdoba), Climate Home, Eco-Business.
 
@@ -7,7 +8,7 @@
 
 **El problema más fuerte es el fuego como forma de perder bosque nativo sin que nadie siga qué pasa después con esa tierra.** En 2025 el norte argentino perdió 210.702 hectáreas, y más de la mitad (116.498 ha) se perdió por incendios, no por desmonte. El sistema oficial de alertas detecta desmontes, pero el fuego queda en una zona gris. A la vez, el fondo de la Ley de Bosques ejecutó apenas el 7 % de lo asignado en 2026, y los fondos internacionales nuevos (TFFF) no cubren el bosque seco. En Córdoba queda menos del 3 % del bosque nativo y en 2024 se quemaron más de 100.000 hectáreas.
 
-Sigue en [[biodiversidad-problema]] y [[biodiversidad-producto]].
+Sigue en [[incendios-bosque-nativo-problema]].
 
 ## Contexto mínimo
 
@@ -60,7 +61,7 @@ Puntaje de 1 a 5. Los puntajes son mi juicio a partir de las fuentes **(inferenc
 - El dato existe por partes (satélites, mapas de zonificación), pero nadie lo junta.
 - Sirve en el norte y en Córdoba, donde los incendios de 2024 alcanzaron bosque serrano.
 
-Nota: tiene la misma forma que [[litio-triage]] y [[residuos-triage]] (un daño real y nadie que mida en público). Ver también [[agro-triage]], porque la EUDR los conecta.
+Nota: tiene la misma forma que [[litio-triage]] y [[vertedero-bariloche-triage]] (un daño real y nadie que mida en público). Ver también [[soja-triage]], porque la EUDR los conecta.
 
 ## Límites de esta investigación
 

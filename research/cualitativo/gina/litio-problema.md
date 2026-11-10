@@ -1,5 +1,6 @@
 # Litio: el agua de la cuenca que nadie mide entera
 
+- **Eje:** biodiversidad
 - **Fecha de elaboración:** 2026-11-09
 - **Fuentes principales:** Corte de Justicia de Catamarca (fallos de 2024 y 2026, vía Diario Judicial, El Ancasti e iProfesional), Corte Suprema de la Nación (causa Tres Pozos, 2023), Díaz Paz y otros en *Heliyon* (2025, CONICET), Chequeado (2023), Mongabay Latam (2025-2026), Comisión Europea.
 
@@ -7,7 +8,7 @@
 
 **En una misma cuenca de la Puna operan varios proyectos de litio, pero cada uno se evalúa por separado y no hay un monitoreo público e independiente del agua total que se extrae.** El caso más claro es el Salar del Hombre Muerto (Catamarca). Allí hay entre 7 y 8 proyectos y la justicia dio por probado en 2024 que se secó una vega. En marzo de 2026 la Corte provincial levantó la cautelar, pero dos jueces votaron en contra porque faltaba monitoreo integral. Ni siquiera hay acuerdo sobre cuánta agua usa una tonelada de litio: las estimaciones van de 51.000 a 2.000.000 de litros.
 
-Viene de [[litio-triage]]. Sigue en [[litio-producto]].
+Viene de [[litio-triage]].
 
 ## Contexto mínimo
 
@@ -106,7 +107,7 @@ Nota: algunas fuentes hablan de la vega del río Trapiche y otras de la del río
 - **Vecinos de Fiambalá:** una asamblea dice que bajó el caudal de las lagunas. Una agencia de turismo dice que hay hostales sin agua permanente (Mongabay, 31/03/2026).
 - **La otra parte:** Rio Tinto sostiene que parte del agua vuelve al sistema. Zijin-Liex negó, según medios locales, que su actividad baje el nivel del agua. La Cámara Argentina de Empresas Mineras dijo en 2024 que los proyectos autorizados cumplen la normativa. Un investigador de la UNSa dice que los ciclos naturales de los humedales también influyen y que hace falta mirar 20 años de imágenes.
 
-Todos coinciden en algo: **sin datos de base, nadie puede probar su posición.** Ese es el hueco del producto (ver [[litio-producto]]).
+Todos coinciden en algo: **sin datos de base, nadie puede probar su posición.** Ese es el hueco que hay que cubrir.
 
 ## Frase de problema final
 

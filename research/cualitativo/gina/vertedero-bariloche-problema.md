@@ -1,5 +1,6 @@
-# Residuos: el vertedero que nadie registra (Bariloche)
+# Vertedero de Bariloche: el vertedero que nadie registra (Bariloche)
 
+- **Eje:** residuos
 - **Fecha de elaboración:** 2026-11-10
 - **Fuentes principales:** Defensoría del Pueblo de Bariloche, Concejo Deliberante y Municipalidad (vía ANBariloche y Diario Río Negro), juzgado de Bariloche (amparo de 2020, vía Diario Judicial), Gobierno de Río Negro, PNUMA y CCAC, Carbon Mapper, Foro Económico Mundial (2023).
 
@@ -7,7 +8,7 @@
 
 **El vertedero de Bariloche se quema y emite metano desde hace años, la ordenanza de cierre venció en diciembre de 2023 y hay un amparo de 2020 que obliga a evitar las quemas, pero no existe un registro público para comprobar si algo de eso se cumple.** No se pesa la basura que entra, no hay un registro de incendios y nadie midió el metano. La propia Defensoría del Pueblo dice que falta información pública suficiente. Mientras tanto, unos 70 recicladores sostienen la recuperación de materiales sin recolección diferenciada desde hace dos años.
 
-Viene de [[residuos-triage]]. Sigue en [[residuos-producto]].
+Viene de [[vertedero-bariloche-triage]].
 
 ## Contexto mínimo
 

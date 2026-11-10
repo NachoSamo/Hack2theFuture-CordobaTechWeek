@@ -1,5 +1,6 @@
-# Movilidad: triage de problemas (transporte urbano en Córdoba)
+# Colectivos en Córdoba: triage de problemas (transporte urbano en Córdoba)
 
+- **Eje:** movilidad
 - **Fecha de elaboración:** 2026-11-10
 - **Fuentes principales:** informe del equipo "COP30 y COP31 por vertical", Cadena 3 y La Voz (conflicto FETAP, trolebuses, SiBus), TUMI (datos GTFS), Mobility Database, MobiliseYourCity (ficha Córdoba 2026), Euroclima+ y AFD (Plan de Movilidad Urbana Sostenible).
 
@@ -7,7 +8,7 @@
 
 **El problema más fuerte es que nadie sabe en público qué barrios de Córdoba quedaron peor conectados por colectivo, y cuántas emisiones de más genera eso.** El sistema está en crisis (conflicto de subsidios con FETAP en junio de 2026, aumento de boleto en julio, quejas por frecuencias), pero no hay datos abiertos de pasajeros desde 2025, ni un feed público de horarios en tiempo real, ni un inventario de emisiones del transporte para la ciudad. La ciudad tiene un Plan de Movilidad Urbana Sostenible apoyado por la UE, así que hay un interlocutor europeo concreto.
 
-Sigue en [[movilidad-problema]] y [[movilidad-producto]].
+Sigue en [[colectivos-cordoba-problema]].
 
 ## Contexto mínimo
 
@@ -58,7 +59,7 @@ Puntaje de 1 a 5. Los puntajes son mi juicio a partir de las fuentes **(inferenc
 - Se puede mostrar con datos disponibles y, a la vez, hacer un pedido concreto de datos abiertos.
 - Tiene un interlocutor: el PMUS y MobiliseYourCity.
 
-Mismo patrón que en [[residuos-triage]] y [[biodiversidad-triage]]: un problema real que nadie mide en público.
+Mismo patrón que en [[vertedero-bariloche-triage]] y [[incendios-bosque-nativo-triage]]: un problema real que nadie mide en público.
 
 ## Límites de esta investigación
 

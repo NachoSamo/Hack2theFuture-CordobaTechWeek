@@ -1,8 +1,8 @@
-# Biodiversidad: el problema (fuego y bosque protegido)
+# Incendios y bosque nativo: el problema (fuego y bosque protegido)
 
+- **Eje:** biodiversidad
 - **Fecha de elaboración:** 2026-11-10
-- **Viene de:** [[biodiversidad-triage]]
-- **Sigue en:** [[biodiversidad-producto]]
+- **Viene de:** [[incendios-bosque-nativo-triage]]
 
 ## Resumen
 

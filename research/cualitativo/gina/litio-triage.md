@@ -1,5 +1,6 @@
 # Litio en Argentina: triage de problemas
 
+- **Eje:** biodiversidad
 - **Fecha de elaboración:** 2026-11-09
 - **Fuentes principales:** Secretaría de Minería (vía prensa especializada), Corte de Justicia de Catamarca (vía Diario Judicial y El Ancasti), Comisión Europea (CRMA, Global Gateway), Chequeado, Mongabay Latam, estudio CONICET en *Heliyon* (2025).
 
@@ -7,7 +8,7 @@
 
 **Confirmo la hipótesis, con un ajuste: el problema más fuerte es el agua en los salares, pero mirada por cuenca y no por proyecto.** En una misma cuenca operan varios proyectos de litio. Cada uno se evalúa por separado y nadie mide públicamente el efecto sumado sobre el agua, las vegas y la gente que vive de ellas. Este problema junta tres ejes del equipo (biodiversidad, agro y derechos), tiene un caso judicial reciente y concreto (Salar del Hombre Muerto, Catamarca) y un vínculo directo con la UE: las imágenes satelitales Copernicus y las nuevas exigencias europeas sobre las baterías.
 
-Sigue en [[litio-problema]] y [[litio-producto]].
+Sigue en [[litio-problema]].
 
 ## Contexto mínimo del litio en Argentina
 
@@ -95,7 +96,7 @@ Por qué gana:
 - Usa datos de la UE (Copernicus) para resolver un problema que a la UE le importa (comprar litio sin riesgo de daño ambiental y de derechos).
 
 Conexión con el resto de la bóveda:
-- [[analisis-croma]]: Croma no cubre Argentina, pero sí Chile y Bolivia. Podría servir para escalar el producto a los otros dos países del triángulo.
+- [[analisis-croma]]: Croma no cubre Argentina, pero sí Chile y Bolivia. Sirve para ver el mismo problema en los otros dos países del triángulo.
 - [[publicaciones-periodistas-ambientales]]: hay una publicación sobre los Andes sin glaciares que conecta con la reforma de la Ley de Glaciares.
 
 ## Límites de esta investigación

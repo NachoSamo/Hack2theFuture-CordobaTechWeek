@@ -1,8 +1,8 @@
-# Agro: el problema (EUDR y productores chicos)
+# Soja: el problema (EUDR y productores chicos)
 
+- **Eje:** agro
 - **Fecha de elaboración:** 2026-11-10
-- **Viene de:** [[agro-triage]]
-- **Sigue en:** [[agro-producto]]
+- **Viene de:** [[soja-triage]]
 
 ## Resumen
 

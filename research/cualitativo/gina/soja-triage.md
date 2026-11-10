@@ -1,5 +1,6 @@
-# Agro: triage de problemas (EUDR, suelo y agua en Córdoba)
+# Soja: triage de problemas (EUDR, suelo y agua en Córdoba)
 
+- **Eje:** agro
 - **Fecha de elaboración:** 2026-11-10
 - **Fuentes principales:** informe del equipo "COP30 y COP31 por vertical", Comisión Europea (EUDR), Bichos de Campo (VISEC, BPA, EUDR), Bolsa de Comercio de Rosario, Banco Europeo de Inversiones, AL-INVEST Verde, Euroclima+, INTA, Ministerio de Bioagroindustria de Córdoba.
 
@@ -7,7 +8,7 @@
 
 **El problema más fuerte es que los productores chicos y medianos de Córdoba pueden quedar afuera del mercado europeo por no poder demostrar, a tiempo y barato, que sus lotes cumplen la EUDR.** La norma se aplica desde el 30/12/2026 para grandes operadores y desde el 30/06/2027 para micro y pequeños. Argentina tiene VISEC, una plataforma gratuita reconocida para soja y carne, pero el productor tiene que llegar con sus lotes georreferenciados y sin dudas sobre cambios de uso desde 2020. Quien no puede hacer ese trabajo previo queda en manos del acopiador o del exportador.
 
-Sigue en [[agro-problema]] y [[agro-producto]].
+Sigue en [[soja-problema]].
 
 ## Contexto mínimo
 
@@ -56,7 +57,7 @@ Puntaje de 1 a 5. Los puntajes son mi juicio a partir de las fuentes **(inferenc
 **Problema elegido:** los productores chicos y medianos de Córdoba no tienen una forma simple, gratuita y previa de revisar si sus lotes van a pasar el control de la EUDR.
 
 - Tiene fecha: 30/12/2026 y 30/06/2027.
-- Se conecta con [[biodiversidad-triage]]: el mismo cruce de satélite y zonificación sirve para los dos.
+- Se conecta con [[incendios-bosque-nativo-triage]]: el mismo cruce de satélite y zonificación sirve para los dos.
 - El canal ya existe: los 3.000 productores del programa BPA.
 
 ## Límites de esta investigación

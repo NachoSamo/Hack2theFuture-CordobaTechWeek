@@ -1,8 +1,8 @@
-# Movilidad: el problema (acceso al colectivo en Córdoba)
+# Colectivos en Córdoba: el problema (acceso al colectivo en Córdoba)
 
+- **Eje:** movilidad
 - **Fecha de elaboración:** 2026-11-10
-- **Viene de:** [[movilidad-triage]]
-- **Sigue en:** [[movilidad-producto]]
+- **Viene de:** [[colectivos-cordoba-triage]]
 
 ## Resumen
 

@@ -1,5 +1,6 @@
-# Residuos y basurales: triage de problemas (caso Bariloche)
+# Vertedero de Bariloche: triage de problemas (caso Bariloche)
 
+- **Eje:** residuos
 - **Fecha de elaboración:** 2026-11-10
 - **Fuentes principales:** Defensoría del Pueblo de Bariloche (informe preliminar, enero de 2026), ANBariloche, Diario Río Negro, Gobierno de Río Negro, PNUMA y CCAC (Informe Global sobre Metano, COP30), programa de la COP31, Carbon Mapper, FARN, Chequeado.
 
@@ -7,7 +8,7 @@
 
 **La hipótesis se confirma a medias: el daño es el humo y el metano, pero el problema que la tecnología puede resolver es que nadie registra en público lo que pasa en el vertedero.** No se sabe con precisión cuánta basura entra (las cifras van de 150 a 200 toneladas por día), no hay un registro de las quemas y nadie midió el metano. Por eso, ni los vecinos ni la Justicia pueden comprobar si se cumplen la ordenanza de cierre de 2022 y el amparo de 2020. Este problema une salud, derechos, trabajo de los recicladores y clima, y llega en un buen momento: la COP31 tiene en agenda el metano de los residuos.
 
-Sigue en [[residuos-problema]] y [[residuos-producto]].
+Sigue en [[vertedero-bariloche-problema]].
 
 ## Contexto mínimo
 
@@ -110,7 +111,7 @@ Datos del informe del equipo "COP30 y COP31 por vertical". No los verifiqué apa
   - El ex enterramiento de Potrero del Estado sigue emitiendo.
   - La provincia tiene 109 basurales registrados (datos de 2020 a 2023).
 
-**Qué cambia para el triage (inferencia mía):** el problema elegido sigue siendo el mismo. Lo que cambia es que la herramienta de Bariloche se puede mostrar también con Córdoba: el método (satélite, viento y semáforo) sirve para Piedra Blanca y para los 109 basurales. Eso acerca el caso al jurado de Córdoba sin cambiar de problema.
+**Qué cambia para el triage (inferencia mía):** el problema elegido sigue siendo el mismo. Lo que cambia es que el mismo problema existe en Córdoba: tampoco hay un registro público de lo que pasa en Piedra Blanca ni en los 109 basurales. Eso acerca el caso al jurado de Córdoba sin cambiar de problema.
 
 ## Límites de esta investigación
 
