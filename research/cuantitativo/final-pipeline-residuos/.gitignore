@@ -1,0 +1,5 @@
+# Archivos intermedios que el pipeline vuelve a generar
+pipeline/*.pkl
+pipeline/*.txt
+pipeline/__pycache__/
+resultados/*.zip
