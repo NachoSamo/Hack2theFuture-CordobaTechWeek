@@ -35,6 +35,11 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:70px;margin-top:20px}
 .three b{display:block;font:500 28px var(--mono);color:var(--lima);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
 .three p{font-size:56px;line-height:1.1;margin:0;font-weight:600}
+.ods-list{display:grid;grid-template-columns:1fr 1fr;gap:44px 80px}
+.ods-list div{display:flex;gap:30px;align-items:flex-start}
+.ods-list span{flex:none;width:96px;height:96px;border-radius:16px;background:var(--lima);color:var(--asfalto);font:800 52px Barlow;display:flex;align-items:center;justify-content:center}
+.ods-list p{margin:0;font-size:44px;font-weight:700;line-height:1.1}
+.ods-list small{display:block;font-size:30px;font-weight:400;color:var(--muted);margin-top:8px}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
 #hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
 </style>
@@ -47,39 +52,39 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 <section class="slide center">
   <svg class="logo" viewBox="0 0 96 96" data-logo></svg>
   <h1>Trama Urbana</h1>
-  <p class="sub lima" style="margin-top:24px">Un móvil para autosanar la ciudad.</p>
   <p class="team">Samo · Lauti · Diego · Juani · Gina · Oli</p>
 </section>
 
 <!-- 2 · El dato (por qué) -->
 <section class="slide">
   <div class="mega">2.000.000</div>
-  <p class="sub">litros por año, solo para patrullar Córdoba.</p>
-  <p class="src">Ministerio de Seguridad de Córdoba, 2023 · La Voz de San Justo</p>
+  <p class="sub">litros de combustible por año.</p>
+  <p class="sub muted" style="margin-top:14px">Nafta y gasoil para patrulleros que circulan todo el día.</p>
+  <p class="src">Ministerio de Seguridad de Córdoba, 2023 (mezclas E17 y B20: 83 % nafta, 80 % gasoil) · La Voz de San Justo</p>
 </section>
 
 <!-- 3 · Lo que es -->
 <section class="slide">
-  <h2>Ven toda la ciudad.</h2>
-  <h2 class="muted" style="margin-top:20px">No le avisan a nadie.</h2>
+  <h2>Hoy solo informan seguridad.</h2>
+  <h2 class="muted" style="margin-top:20px">Lo que ven podría ser<br>mucho más.</h2>
 </section>
 
 <!-- 4 · Lo que podría ser -->
 <section class="slide">
-  <h2>¿Y si cada kilómetro<br>también <span class="lima">arreglara</span> la ciudad?</h2>
+  <h2>¿Y si cada kilómetro aportara a una ciudad más <span class="lima">sostenible, limpia y eficiente</span>?</h2>
 </section>
 
 <!-- 5 · La idea en dos frases -->
 <section class="slide">
-  <h2 style="font-size:96px">Los vehículos con cámara que ya recorren Córdoba detectan lo que hay que arreglar.</h2>
-  <h2 class="lima" style="font-size:96px;margin-top:50px">Y le avisan directo al área que lo resuelve.</h2>
+  <h2 style="font-size:96px">Los vehículos que hoy recorren la ciudad y gastan combustible</h2>
+  <h2 class="lima" style="font-size:96px;margin-top:50px">pueden usarse para más de un fin.</h2>
 </section>
 
 <!-- 6 · Demo -->
 <section class="slide">
   <h2>Una pasada. Cuatro avisos.<span class="tag">simulado</span></h2>
   <div class="alerts">
-    <div class="alert" style="border-color:var(--terracota)"><strong>Cable caído</strong><span>→ Alumbrado</span></div>
+    <div class="alert" style="border-color:var(--terracota)"><strong>Quema de residuos</strong><span>→ Ambiente</span></div>
     <div class="alert" style="border-color:var(--ambar)"><strong>Microbasural</strong><span>→ Higiene urbana</span></div>
     <div class="alert" style="border-color:var(--oliva)"><strong>Bache</strong><span>→ Vía pública</span></div>
     <div class="alert" style="border-color:var(--verde)"><strong>Contenedor roto</strong><span>→ Higiene urbana</span></div>
@@ -101,7 +106,29 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   <h2>Un barrio. Cuatro semanas.<br><span class="lima">Los móviles que ya existen.</span></h2>
 </section>
 
-<!-- 9 · Cierre -->
+<!-- 9 · Costo marginal cero -->
+<section class="slide">
+  <h2>Costo marginal <span class="lima">cero</span>.</h2>
+  <div class="three" style="margin-top:90px">
+    <div><b>Flota</b><p>Implementamos sobre una flota que ya circula.</p></div>
+    <div><b>Infraestructura</b><p>Actuamos sobre una infraestructura que ya existe.</p></div>
+    <div><b>Capacidades</b><p>Aprovechamos las cámaras que ya tiene.</p></div>
+  </div>
+</section>
+
+<!-- 10 · ODS -->
+<section class="slide">
+  <p class="sub muted" style="margin:0 0 50px">Objetivos de Desarrollo Sostenible que cubrimos</p>
+  <div class="ods-list">
+    <div><span>11</span><p>Ciudades y comunidades sostenibles<small>Una ciudad más limpia y mantenida.</small></p></div>
+    <div><span>12</span><p>Producción y consumo responsables<small>Cada litro de combustible rinde más.</small></p></div>
+    <div><span>13</span><p>Acción por el clima<small>Más servicio, sin emisiones nuevas.</small></p></div>
+    <div><span>9</span><p>Industria, innovación e infraestructura<small>Visión por computadora sobre lo que ya existe.</small></p></div>
+    <div><span>17</span><p>Alianzas para lograr los objetivos<small>Municipio, Policía y Cordobeses en Alerta.</small></p></div>
+  </div>
+</section>
+
+<!-- 11 · Cierre -->
 <section class="slide center">
   <h1>Mismos kilómetros,<br><span class="lima">el doble de ciudad.</span></h1>
   <svg class="logo" viewBox="0 0 96 96" data-logo style="width:110px;height:110px;margin:70px 0 0"></svg>
