@@ -180,6 +180,26 @@
         }
       ],
       "photo": "/ticket-photos/photo-5.webp"
+    },
+    {
+      "id": "CBA-108",
+      "type": "Cable caído",
+      "address": "Av. General Paz y Santa Rosa",
+      "place": "Centro",
+      "position": [
+        -64.1869,
+        -31.4129
+      ],
+      "level": "Alta",
+      "area": "EPEC",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:41",
+          "source": "Móvil COYS",
+          "confidence": 93
+        }
+      ]
     }
   ],
   "replay": {
@@ -190,10 +210,6 @@
         "time": "14:43",
         "source": "Móvil policial",
         "confidence": 96
-      },
-      {
-        "kind": "notice",
-        "time": "14:44"
       },
       {
         "kind": "clear",

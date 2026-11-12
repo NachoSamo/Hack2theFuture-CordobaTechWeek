@@ -2,7 +2,7 @@ import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
+import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
 import { scenario } from './scenario'
 import type { StreetRoute } from './model'
 import './style.css'
@@ -12,16 +12,22 @@ const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const modes: { id: Layer; label: string }[] = [
   { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' },
 ]
-const replayDelays = [4000, 12000, 25000, 55000]
+const replayDelays = [4000, 12000, 55000]
 
 function activityLabel(entry: Activity, index: number, area: string) {
+  if (entry.kind === 'manual') {
+    if (entry.action === 'route') return 'Ruta de recolección sugerida'
+    if (entry.action === 'sweep') return 'Barrida diagramada'
+    return 'Aviso simulado a ' + area
+  }
   if (entry.kind === 'notice') return 'Aviso simulado a ' + area
   if (entry.kind === 'clear') return 'Pasada sin volver a detectar la incidencia'
   return index === 0 ? 'Primera detección' : 'Avistamiento incorporado al ticket'
 }
 
-function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onClose: () => void }) {
+function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onAction: (action: TicketAction) => void; onClose: () => void }) {
   const sightings = ticket.activity.filter(entry => entry.kind === 'sighting')
+  const sweepPlanned = ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'sweep')
   const current = status(ticket)
   const next = current === 'Detectada'
     ? 'Enviar aviso al área responsable.'
@@ -33,8 +39,29 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }:
     <div className="review-title"><span className="ticket-id">{ticket.id}</span><button onClick={onClose}>Cerrar</button></div>
     <h2>{ticket.type}</h2>
     <p>{locationLabel(ticket)} · {ticket.place}</p>
-    {suggestion && <div className="route-action"><button aria-pressed={routeOpen} onClick={onToggleRoute}>{routeOpen ? 'Volver al mapa' : 'Ver ruta de recolección'}</button>
-      {routeOpen && <p className="route-summary">Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados</p>}</div>}
+    {current !== 'Posiblemente resuelta' && <div className="ticket-actions" aria-label="Acciones del ticket">
+      <h3>Acciones simuladas</h3>
+      <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
+        onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
+      {suggestion && <button aria-pressed={routeOpen} onClick={onToggleRoute}>
+        {routeOpen ? 'Volver al mapa' : 'Sugerir ruta'}
+      </button>}
+      {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
+        <button disabled={sweepPlanned}
+          onClick={() => onAction('sweep')}>Diagramar barrida</button>}
+      {routeOpen && suggestion && <p className="route-summary">
+        Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados
+      </p>}
+    </div>}
+    {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
+      <h3>Plan de barrida simulado</h3>
+      <p>{locationLabel(ticket)} · {ticket.area}</p>
+      <ol>
+        <li>Revisar el punto reportado y las veredas del tramo.</li>
+        <li>Retirar {ticket.type === 'Rama caída' ? 'la rama y los restos vegetales' : 'los residuos acumulados'}.</li>
+        <li>Registrar el estado del tramo después de la intervención.</li>
+      </ol>
+    </section>}
     {ticket.photo && <figure className="ticket-photo">
       <img src={ticket.photo} alt={ticket.type + ' · imagen ilustrativa'} width="512" height="512" />
       <figcaption>Foto ilustrativa generada con IA</figcaption>
@@ -46,11 +73,14 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }:
       <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
     </dl>
     <h3>Actividad</h3>
-    <ol className="timeline">
-      {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind}>
+    <ol className="timeline" aria-live="polite">
+      {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
         <time>{entry.time}</time>
         <div><strong>{activityLabel(entry, index, ticket.area)}</strong>
-          {entry.kind !== 'notice' && <small>{entry.source}{entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}</small>}
+          <small>{entry.kind === 'manual' ? 'Manual' : 'Automática'}
+            {'source' in entry && ' · ' + entry.source}
+            {entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}
+          </small>
         </div>
       </li>)}
     </ol>
@@ -91,6 +121,7 @@ function App({ demo = false }: { demo?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo ? replay.ticketId : undefined)
   const [layer, setLayer] = useState<Layer>('tickets')
   const [routeTicketId, setRouteTicketId] = useState<string>()
+  const [manual, setManual] = useState<Record<string, ManualActivity[]>>({})
   const [step, setStep] = useState(demo ? 1 : 0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
@@ -102,7 +133,10 @@ function App({ demo = false }: { demo?: boolean }) {
 
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
-    .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket), [step])
+    .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket)
+    .map(automaticNotice)
+    .map(ticket => manual[ticket.id] ? { ...ticket, activity: [...ticket.activity, ...manual[ticket.id]] } : ticket),
+  [step, manual])
   const visible = useMemo(() => activeTickets.filter(ticket =>
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
@@ -125,6 +159,17 @@ function App({ demo = false }: { demo?: boolean }) {
   const mapLayer = layer === 'routes' && !displayedRoute ? 'tickets' : layer
 
   const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
+
+  function recordAction(ticketId: string, action: TicketAction) {
+    const time = new Date().toLocaleTimeString('es-AR', {
+      timeZone: 'America/Argentina/Cordoba', hour: '2-digit', minute: '2-digit',
+    })
+    setManual(current => {
+      const entries = current[ticketId] ?? []
+      if (entries.some(entry => entry.action === action)) return current
+      return { ...current, [ticketId]: [...entries, { kind: 'manual', action, time }] }
+    })
+  }
 
   return <main>
     <header className="top">
@@ -158,12 +203,12 @@ function App({ demo = false }: { demo?: boolean }) {
               <span><i className="swatch suggested-route" />Ruta sugerida</span>
             </>}
           </div>}
-        </div>
-      </div>
       <div className="panel-track" inert={!selected}>
         {panelTicket && <aside className="panel" aria-label="Ticket seleccionado">
         <TicketDetail key={panelTicket.id} ticket={panelTicket} suggestion={suggestion} routeOpen={routeOpen}
+          onAction={action => recordAction(panelTicket.id, action)}
           onToggleRoute={() => {
+            if (!routeOpen) recordAction(panelTicket.id, 'route')
             setRouteTicketId(routeOpen ? undefined : selected?.id)
             setLayer(routeOpen ? 'tickets' : 'routes')
           }}
@@ -173,6 +218,8 @@ function App({ demo = false }: { demo?: boolean }) {
             setId(undefined)
           }} />
         </aside>}
+      </div>
+        </div>
       </div>
     </section>
   </main>

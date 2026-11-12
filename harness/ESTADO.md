@@ -62,3 +62,5 @@ Formato: `hora · quién · qué cambió · a quién afecta`.
 ## Bloqueos
 
 -
+
+El prototipo de Ichnos muestra avisos automáticos simulados y permite registrar acciones manuales desde el ticket. El historial identifica su origen.

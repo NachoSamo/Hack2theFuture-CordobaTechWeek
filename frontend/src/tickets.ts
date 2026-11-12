@@ -2,9 +2,12 @@ import fixture from './tickets-mock.json'
 import type { FeatureCollection, Polygon } from 'geojson'
 
 export type Position = [number, number]
+export type TicketAction = 'notice' | 'route' | 'sweep'
+export type ManualActivity = { kind: 'manual'; action: TicketAction; time: string }
 export type Activity =
   | { kind: 'sighting'; time: string; source: string; confidence: number }
   | { kind: 'notice'; time: string }
+  | ManualActivity
   | { kind: 'clear'; time: string; source: string }
 export type Ticket = {
   id: string
@@ -19,7 +22,7 @@ export type Ticket = {
   activity: Activity[]
 }
 
-function activity(entries: typeof fixture.replay.activity): Activity[] {
+function activity(entries: { kind: string; time: string; source?: string; confidence?: number }[]): Activity[] {
   return entries.map(entry => {
     const { time, source, confidence } = entry
     if (entry.kind === 'sighting' && source && confidence !== undefined) return { kind: 'sighting', time, source, confidence }
@@ -43,7 +46,13 @@ export const replay = { ...fixture.replay, activity: activity(fixture.replay.act
 
 export function status(ticket: Ticket) {
   if (ticket.activity.some(entry => entry.kind === 'clear')) return 'Posiblemente resuelta'
-  return ticket.activity.some(entry => entry.kind === 'notice') ? 'Área avisada' : 'Detectada'
+  return ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Área avisada' : 'Detectada'
+}
+
+export function automaticNotice(ticket: Ticket): Ticket {
+  if (ticket.activity.some(entry => entry.kind === 'notice')) return ticket
+  const first = ticket.activity.find(entry => entry.kind === 'sighting')
+  return first ? { ...ticket, activity: [first, { kind: 'notice', time: first.time }, ...ticket.activity.filter(entry => entry !== first)] } : ticket
 }
 
 export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']

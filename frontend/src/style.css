@@ -287,3 +287,11 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   to { clip-path: inset(0); opacity: 1; }
 }
 @keyframes page-out { to { opacity: 0; } }
+
+.map-toolbar { position: relative; z-index: 4; }
+.map-canvas { overflow: clip; }
+.ticket-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.ticket-actions h3, .ticket-actions p { flex-basis: 100%; }
+.ticket-actions button[aria-pressed=true] { color: var(--lime); }
+.ticket-actions button:disabled { opacity: .55; cursor: default; }
+.timeline small { display: block; margin-top: 2px; }
