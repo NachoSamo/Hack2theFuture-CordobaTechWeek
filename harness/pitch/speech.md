@@ -32,32 +32,27 @@ Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
 `[pausa]`
 Son patrulleros y móviles que circulan todo el día, con cámaras, y solo miran la seguridad.
 
-### 3 · Problemas de la ciudad (0:25–0:45)
+### 3 · Problemas de la ciudad (0:25–0:50)
 
-Mientras tanto, en la ciudad, la basura se acumula: en el Mercado Norte después del Carnaval, en
+¿Cuántas cosas pasan en la ciudad y **no estamos registrando**?
+`[pausa]`
+Mientras tanto, la basura se acumula: en el Mercado Norte después del Carnaval, en
 Güemes después de cada fin de semana largo. En dos años hubo **66.000 reclamos** de alumbrado. Y en
 una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con cables colgando
 y riesgo eléctrico.
 
-### 3b · Lo que no registramos (0:45–1:00)
-
-Y hay cosas que ni siquiera llegan a ser un reclamo. En Alta Gracia, un nene de 9 años iba a caballo.
-El caballo pisó un cable pelado en la calle y murió electrocutado. El nene se salvó.
-`[pausa]`
-¿Cuántas cosas pasan en la ciudad y **no estamos registrando**?
-
-### 4 · A quién le pasa (1:00–1:15)
+### 4 · A quién le pasa (0:50–1:05)
 
 Le pasa al **municipio**, que paga ese combustible y, además, recibe los reclamos de todo lo que sus
 móviles vieron y nadie avisó.
 Y le pasa al **vecino**, que convive con la basura o con la luz apagada hasta que alguien la reporta.
 
-### 5 · La pregunta (1:15–1:22)
+### 5 · La pregunta (1:05–1:15)
 
 Entonces nos preguntamos: ¿cómo sacamos el máximo beneficio de esos recorridos para hacer una ciudad
 más sostenible, conectada y eficiente?
 
-### 6 · Solución y prototipo (1:22–1:55)
+### 6 · Solución y prototipo (1:15–1:55)
 
 Por eso presentamos **Trama Urbana**, una solución que funciona sobre los servicios que el municipio ya
 tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
@@ -110,7 +105,7 @@ Gracias.
 ## Para los ensayos
 
 - **Cronómetro:** el prototipo es lo que más tiempo se come, y la v5 suma unas 60 palabras en los bloques
-  4, 8 y 9, más unos 15 segundos del caso de la slide 3b. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
+  4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad mirando un solo problema.
   - *¿Por qué es movilidad?* Bloque 8: la flota es el recurso, y hay menos vehículos en la calle.
@@ -119,10 +114,8 @@ Gracias.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Trama Urbana. Si no puede, se reescribe la slide 6.
-- **Persona real (tip oficial):** la cubre el caso de la slide 3b. Fuente: Cadena 3, 5/11/2025. Pasó
-  en barrio Parque del Virrey, en Alta Gracia (provincia de Córdoba, no en la capital). El cable venía de
-  una conexión ilegal y la Fiscalía investiga por negligencia. No decimos el nombre del nene porque es
-  menor. La nota no dice si alguien había reportado el cable antes.
+- **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
+  porque no conecta con el público (12/11 17:50).
 - **Fuentes de la slide 3:**
   - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes).
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
