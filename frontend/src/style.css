@@ -226,10 +226,8 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 }
 .landing-cta:hover { background: #f0ffc1; }
 .landing-scene { position: relative; margin: 0; }
-.landing-scene img { display: block; width: 100%; height: auto; aspect-ratio: 1.26; object-fit: cover; border-radius: 12px; }
+.landing-scene video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0a1013; border-radius: 12px; }
 .landing-scene figcaption { margin-top: 8px; font: 12px var(--mono); color: var(--muted); }
-.landing-detection { position: absolute; top: 29%; left: 23%; width: 57%; height: 52%; border: 2px solid var(--lime); }
-.landing-detection span { position: absolute; left: -2px; bottom: 100%; padding: 4px 7px; background: var(--lime); color: #11191c; font: 11px var(--mono); }
 .landing-flow {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;

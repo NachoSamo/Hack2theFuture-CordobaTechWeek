@@ -55,3 +55,7 @@ Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El 
 [Referencias de diseño](marca/referencias/README.md) · [Prototipo](marca/prototipo-recoleccion-video.html)
 
 [Prototipo React y referencias de mapa](../frontend/README.md).
+
+## Nombre de trabajo para la landing
+
+**ViaVisio** combina las raíces latinas *via* (camino) y *visio* (visión). La landing, el mapa y el clip usan este nombre de trabajo. La documentación del pitch conserva el nombre con el que fue preparada.

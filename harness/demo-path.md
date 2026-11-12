@@ -55,9 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada propuesto
+## Video de entrada de ViaVisio
 
-- **0–4 s:** plano desde un vehículo que recorre una calle. Se ve el contenedor de Mercado Norte.
-- **4–8 s:** aparece un recuadro de detección con «Contenedor rebalsado». Si el recuadro se compone en edición, rotular «Detección simulada».
-- **8–12 s:** cortar al mapa de Córdoba en `/#mapa`, abrir el marcador de Mercado Norte y mostrar CBA-104 con su ubicación y la empresa recolectora.
-- **Continuación en vivo:** mostrar cómo el mismo ticket recibe otro avistamiento y el aviso simulado. Para unir el corte, usar el mismo fotograma como evidencia del ticket cuando esté listo el video.
+El clip de 12 segundos monta imágenes urbanas ilustrativas con movimiento de cámara, recuadros de detección y confianza simulada. Muestra un bache, una rama caída y un contenedor rebalsado. Al terminar, **Ver el ticket detectado** abre CBA-104 en `/#mapa/deteccion`, con la misma imagen y la empresa recolectora en el detalle. La simulación sigue agregando un avistamiento y el aviso.

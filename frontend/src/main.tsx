@@ -67,19 +67,20 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 function Landing() {
   return <main className="landing">
     <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong></a>
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>ViaVisio</strong></a>
       <a className="landing-link" href="#mapa">Abrir mapa</a>
     </header>
     <section className="landing-hero">
       <div className="landing-copy">
         <h1>Mismos kilómetros.<br />El doble de ciudad.</h1>
-        <p>Trama Urbana aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
+        <p>ViaVisio aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
         <a className="landing-cta" href="#mapa">Explorar el mapa de Córdoba <span aria-hidden="true">↗</span></a>
       </div>
       <figure className="landing-scene">
-        <img src="/ticket-photos/photo-0.webp" alt="Contenedor rebalsado junto a un mercado" width="512" height="512" />
-        <span className="landing-detection" aria-hidden="true"><span>Contenedor rebalsado</span></span>
-        <figcaption>Detección simulada · Imagen ilustrativa</figcaption>
+        <video controls playsInline preload="metadata" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
+          <source src="/demo-vision.mp4" type="video/mp4" />
+        </video>
+        <figcaption>Detección simulada sobre imágenes ilustrativas · <a className="landing-link" href="#mapa/deteccion">Ver el ticket detectado</a></figcaption>
       </figure>
     </section>
     <ol className="landing-flow" aria-label="Cómo funciona">
@@ -90,11 +91,11 @@ function Landing() {
   </main>
 }
 
-function App() {
-  const [id, setId] = useState<string>()
+function App({ demo = false }: { demo?: boolean }) {
+  const [id, setId] = useState<string | undefined>(demo ? replay.ticketId : undefined)
   const [layer, setLayer] = useState<Layer>('tickets')
   const [routeTicketId, setRouteTicketId] = useState<string>()
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(demo ? 1 : 0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
   const [state, setState] = useState('')
@@ -131,7 +132,7 @@ function App() {
 
   return <main>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong></a><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>ViaVisio</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
@@ -182,16 +183,17 @@ function App() {
 }
 
 function Site() {
-  const [showMap, setShowMap] = useState(() => location.hash === '#mapa')
+  const [page, setPage] = useState(() => location.hash)
   useEffect(() => {
     function navigate() {
-      setShowMap(location.hash === '#mapa')
+      setPage(location.hash)
       window.scrollTo(0, 0)
     }
     window.addEventListener('hashchange', navigate)
     return () => window.removeEventListener('hashchange', navigate)
   }, [])
-  return showMap ? <App /> : <Landing />
+  if (page === '#mapa/deteccion') return <App key="deteccion" demo />
+  return page === '#mapa' ? <App key="mapa" /> : <Landing />
 }
 
 createRoot(document.getElementById('root')!).render(<Site />)
