@@ -1,36 +1,34 @@
-# Trama Urbana
+# Ichnos
 
 **Documento de marca · Juani · Propuesta para revisión**
 
 ## Nombre
 
-**Trama Urbana**. La trama es la red de calles que conecta los puntos detectados con las rutas de recolección. El nombre puede acompañar el producto en distintas ciudades.
+**Ichnos** viene del griego *íkhnos* (ἴχνος), huella o rastro. Cada avistamiento aporta evidencia para ubicar una incidencia y seguir su evolución. [Diccionario griego](https://logeion.uchicago.edu/ἴχνος)
 
-**Descriptor:** Panel de demanda y rutas de recolección urbana.
+**Descriptor:** Visión por computadora para el mantenimiento urbano.
 
 ## Logo
 
-![Símbolo de Trama Urbana](marca/logo.svg)
+![Símbolo de Ichnos](marca/logo.svg)
 
 El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 
 ## MLP
 
-La vista de administrador empieza con la ruta fija y el punto de partida del vehículo. Los marcadores muestran el tipo de evento al pasar el cursor. Al seleccionar un evento, se abre el detalle y se dibuja un desvío sugerido con el mock.
-
-El prototipo usa recorridos por calles calculados con OSRM y conserva el orden de las paradas. [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
+El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, historial y responsable. Las zonas de calor muestran atención y cobertura. Los contenedores rebalsados pueden incluir una ruta de recolección simulada. [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
 
 ## Misión
 
-Ayudar a municipios y recolectoras a atender los puntos donde se acumula basura y usar mejor los recorridos y la flota que ya tienen.
+Ayudar a los municipios a detectar, ubicar y derivar incidencias urbanas con las cámaras y los recorridos que ya tienen.
 
 ## Visión
 
-Que distintas ciudades puedan planificar la recolección según la demanda observada, mejorar la cobertura y medir el uso de combustible por tonelada recolectada.
+Que las ciudades puedan observar su territorio de forma continua y responder antes a los problemas de mantenimiento.
 
 ## Slogan
 
-**Recolectá donde hace falta.**
+**De la huella a la acción.** La huella es la evidencia captada durante el recorrido. La acción empieza cuando el responsable recibe un ticket con ubicación y contexto.
 
 ## Paleta
 
@@ -46,7 +44,7 @@ Que distintas ciudades puedan planificar la recolección según la demanda obser
 | Verde | `#428571` | Demanda baja |
 | Gris cartográfico | `#A5B3A9` | Zona sin dato |
 
-El mapa acompaña el color con etiquetas y una leyenda. El feed muestra por escrito el nivel y el estado de revisión.
+El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
 
 ## Tipografía y tono
 
@@ -55,7 +53,3 @@ Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El 
 [Referencias de diseño](marca/referencias/README.md) · [Prototipo](marca/prototipo-recoleccion-video.html)
 
 [Prototipo React y referencias de mapa](../frontend/README.md).
-
-## Nombre de trabajo para la landing
-
-**Vestigio** es el nombre de trabajo para esta iteración. Evoca el rastro que deja una incidencia, desde su primera observación hasta su seguimiento en el mapa. Se aplica en la landing, el mapa y el clip.

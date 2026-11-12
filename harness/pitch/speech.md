@@ -5,7 +5,7 @@ dueñas: Oli y Gina
 estado: borrador para ensayar (v5, primera frase con el problema, movilidad y sustentabilidad explícitas)
 ---
 
-# Speech: Trama Urbana (3 minutos)
+# Speech: Ichnos (3 minutos)
 
 > Acompaña a [`deck.html`](deck.html), una slide por bloque. Son unas 400 palabras más el prototipo en vivo.
 >
@@ -24,7 +24,7 @@ estado: borrador para ensayar (v5, primera frase con el problema, movilidad y su
 
 ### 1 · Identidad (0:00–0:08)
 
-Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
+Somos Ichnos. Samo, Lauti, Diego, Juani, Gina y Oli.
 
 ### 2 · Gancho (0:08–0:25)
 
@@ -59,7 +59,7 @@ más sostenible, conectada y eficiente?
 
 ### 6 · Solución y prototipo (1:15–1:55)
 
-Por eso presentamos **Trama Urbana**, una solución que funciona sobre los servicios que el municipio ya
+Por eso presentamos **Ichnos**, una solución que funciona sobre los servicios que el municipio ya
 tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
 residuos, postes de luz caídos y riesgo de electrocución, y lo informa **en tiempo real**.
 
@@ -100,9 +100,7 @@ Nuestro primer paso es una reunión con el **municipio**.
 
 ### 11 · Cierre (2:50–3:00)
 
-Mismos kilómetros.
-`[pausa]`
-El doble de ciudad.
+De la huella a la acción.
 Gracias.
 
 ---
@@ -118,7 +116,7 @@ Gracias.
   - *¿A quién le resolvemos?* Bloque 4: al municipio, que paga y recibe reclamos, y al vecino, que espera.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
-  hace Trama Urbana. Si no puede, se reescribe la slide 6.
+  hace Ichnos. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
 - **Fotos de las slides 3a a 3c:** las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.

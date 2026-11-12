@@ -59,7 +59,7 @@ No distingue patrullaje de otros usos. Los ~5.500 litros por día y las ~4.600 t
 y ya hay móviles municipales con cámaras en el Parque Sarmiento
 ([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)).
 
-**Cierre:** "Mismos kilómetros, el doble de ciudad."
+**Cierre:** "De la huella a la acción."
 
 ## Guion
 
