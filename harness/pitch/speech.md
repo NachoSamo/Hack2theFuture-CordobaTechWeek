@@ -43,7 +43,7 @@ La basura se acumula en las esquinas hasta que un vecino reclama.
 En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con
 cables colgando.
 
-**3c · se suma el alumbrado**
+**3c · se suma el poste de luminaria caído**
 Y en dos años hubo **66.000 reclamos** de alumbrado.
 
 ### 4 · A quién le pasa (0:50–1:05)
