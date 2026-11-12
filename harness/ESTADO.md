@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 14:00 · Oli
+**Actualizado:** 12/11 14:30 · Oli
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (cruza residuos): rutas de recolección guiadas por cámaras de monitoreo urbano → [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -20,7 +20,7 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | Idea en limpio y épicas E0–E7 (borrador); sigue refinar E0 y E7 | Checkpoint de la tarde | Validar H1 (acceso a cámaras de móviles) |
+| Oli | Solución paso a paso (flujo del sistema, definición de movilidad) en `docs/producto/solucion-paso-a-paso.md`; sigue financiamiento y guion del pitch | Pitch flash 15:30 | Validar H1 (acceso a cámaras de móviles) |
 
 ## Decisiones abiertas
 
@@ -41,6 +41,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 14:30 · Oli · Nuevo `docs/producto/solucion-paso-a-paso.md`: flujo en 6 etapas alineado a los 5 nodos de `arquitectura/solucion.html`; deja abierto dónde se procesan las imágenes y cómo se cierra el ciclo · a Samo y dueños de nodo. Además se recuperaron con `git restore` las fichas de residuos y 2 archivos de Samo que se habían borrado solo en la copia local de Oli (14:02, sin commit)
 - 14:11 · Samo · `arquitectura/solucion.html` en borrador: 5 nodos (E6 dentro del optimizador), dos métricas principales · a todos: cada dueño de nodo completa lo marcado "por definir" en su entrevista
 - 14:00 · Oli · Nuevo `harness/docs/producto/idea-y-epicas.md` con la idea y las épicas E0–E7 · a todos: los nodos de `arquitectura/` y `contratos.md` salen de E1–E6
 

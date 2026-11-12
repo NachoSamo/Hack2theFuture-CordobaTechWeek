@@ -56,6 +56,9 @@ sin llenarse.
 
 ### 4. Solución, paso a paso
 
+> Flujo del sistema etapa por etapa, con qué recurso aprovecha cada una y cómo cubre el problema:
+> [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md).
+
 1. Los **móviles de monitoreo urbano** (patrulleros o vehículos con cámara) siguen con sus
    recorridos habituales. No cambia nada para ellos.
 2. Mientras recorren, un modelo de visión **detecta acumulaciones de basura** en la imagen y guarda
