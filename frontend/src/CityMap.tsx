@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import maplibre, { type GeoJSONSource, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { attentionZones, center, city, coverage, levels, locationLabel, status, type Layer, type Ticket } from './tickets'
+import { attentionZones, center, city, levels, locationLabel, status, type Layer, type Ticket } from './tickets'
 
 import type { LineString, FeatureCollection } from 'geojson'
 import type { StreetRoute } from './model'
@@ -55,17 +55,9 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
       map.addLayer({
         id: 'attention', type: 'fill', source: 'attention',
         paint: {
-          'fill-color': ['step', ['number', ['get', 'count'], 0], '#41676b', 1, '#a9784a', 2, '#ce775b'],
-          'fill-opacity': ['step', ['number', ['get', 'count'], 0], 0.12, 1, 0.26, 2, 0.38],
-        },
-      }, firstLabel)
-      map.addSource('coverage', { type: 'geojson', data: coverage })
-      map.addLayer({
-        id: 'coverage', type: 'fill', source: 'coverage',
-        layout: { visibility: 'none' },
-        paint: {
-          'fill-color': ['case', ['boolean', ['get', 'observed'], false], '#539b88', '#91989b'],
-          'fill-opacity': ['case', ['boolean', ['get', 'observed'], false], 0.26, 0.16],
+          'fill-color': ['case', ['boolean', ['get', 'observed'], false],
+            ['step', ['number', ['get', 'count'], 0], '#519985', 1, '#c65c56', 2, '#df6358'], '#939b9f'],
+          'fill-opacity': 0.32,
         },
       }, firstLabel)
       const vector = Object.entries(map.getStyle().sources).find(([, source]) => source.type === 'vector')?.[0]
@@ -82,11 +74,16 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
         }, firstLabel)
       }
       map.addSource('routes', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
-      map.addLayer({
-        id: 'route-lines', type: 'line', source: 'routes',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': ['get', 'color'], 'line-width': ['get', 'width'], 'line-opacity': 0.92 },
-      }, firstLabel)
+      for (const id of ['route-casing', 'route-lines']) {
+        map.addLayer({
+          id, type: 'line', source: 'routes',
+          layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
+          paint: {
+            'line-color': id === 'route-casing' ? '#172127' : ['get', 'color'],
+            'line-width': id === 'route-casing' ? ['+', ['get', 'width'], 3] : ['get', 'width'],
+          },
+        })
+      }
       setReady(true)
     })
 
@@ -128,8 +125,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
-    map.setLayoutProperty('attention', 'visibility', layer === 'attention' ? 'visible' : 'none')
-    map.setLayoutProperty('coverage', 'visibility', layer === 'coverage' ? 'visible' : 'none')
+    map.setLayoutProperty('attention', 'visibility', layer === 'zones' ? 'visible' : 'none')
     if (map.getLayer('city-buildings')) {
       map.setLayoutProperty('city-buildings', 'visibility', layer === 'routes' ? 'none' : 'visible')
     }
@@ -146,11 +142,11 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
     if (!ready || !map || !showRoutes) return
     const features: FeatureCollection<LineString>['features'] = [scenario.routes.fixed, ...(suggestion ? [suggestion] : [])].map((route, index) => ({
       type: 'Feature',
-      properties: { color: index === 0 ? '#94a9bf' : '#dff691', width: index === 0 ? (suggestion ? 5 : 3) : 2.5 },
+      properties: { color: index === 0 ? '#a4b8cf' : '#dff691', width: index === 0 ? 7 : 4 },
       geometry: { type: 'LineString', coordinates: route.coordinates },
     }))
     map.getSource<GeoJSONSource>('routes')?.setData({ type: 'FeatureCollection', features })
-    map.setLayoutProperty('route-lines', 'visibility', 'visible')
+    for (const id of ['route-casing', 'route-lines']) map.setLayoutProperty(id, 'visibility', 'visible')
 
     const start = document.createElement('span')
     start.className = 'departure'
@@ -159,7 +155,9 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
     const marker = new maplibre.Marker({ element: start, anchor: 'bottom' })
       .setLngLat(scenario.routes.fixed.coordinates[0]).addTo(map)
     return () => {
-      if (instance.current === map) map.setLayoutProperty('route-lines', 'visibility', 'none')
+      if (instance.current === map) {
+        for (const id of ['route-casing', 'route-lines']) map.setLayoutProperty(id, 'visibility', 'none')
+      }
       marker.remove()
     }
   }, [ready, showRoutes, suggestion])

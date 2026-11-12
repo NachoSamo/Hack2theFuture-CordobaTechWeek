@@ -16,7 +16,7 @@
       ],
       "level": "Alta",
       "type": "Contenedor rebalsado",
-      "area": "Higiene urbana",
+      "area": "Empresa recolectora",
       "activity": [
         {
           "kind": "sighting",
@@ -160,7 +160,7 @@
       ],
       "level": "Baja",
       "type": "Contenedor rebalsado",
-      "area": "Higiene urbana",
+      "area": "Empresa recolectora",
       "activity": [
         {
           "kind": "sighting",

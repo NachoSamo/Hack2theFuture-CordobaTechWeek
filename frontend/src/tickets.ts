@@ -47,7 +47,7 @@ export function status(ticket: Ticket) {
 
 export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']
 export const levels: Record<string, string> = { Alta: '#ed8a6e', Media: '#e2bc5e', Baja: '#86bea6' }
-export type Layer = 'tickets' | 'attention' | 'coverage' | 'routes'
+export type Layer = 'tickets' | 'zones' | 'routes'
 
 export function locationLabel(ticket: Ticket) {
   const reference = ticket.streetReference
@@ -59,10 +59,10 @@ export function attentionZones(tickets: Ticket[]): FeatureCollection<Polygon> {
   const active = tickets.filter(ticket => status(ticket) !== 'Posiblemente resuelta')
   return {
     type: 'FeatureCollection',
-    features: coverage.features.filter(zone => zone.properties?.observed).map(zone => {
+    features: coverage.features.map(zone => {
       const [[left, bottom], , [right, top]] = zone.geometry.coordinates[0]
       const count = active.filter(({ position: [x, y] }) => x >= left && x < right && y >= bottom && y < top).length
-      return { ...zone, properties: { count } }
+      return { ...zone, properties: { count, observed: zone.properties?.observed } }
     }),
   }
 }

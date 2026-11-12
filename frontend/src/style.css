@@ -86,8 +86,7 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .map-key span { display: flex; align-items: center; gap: 6px; }
 .dot, .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .swatch { border-radius: 2px; }
-.cool { background: #41676b; }
-.hot { background: #ce775b; }
+.hot { background: #c65c56; }
 .fixed-route, .suggested-route { width: 14px; height: 3px; background: #94a9bf; }
 .suggested-route { background: var(--lime); }
 .route-summary { color: var(--lime); }
@@ -99,8 +98,8 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
   font-size: 12px;
   padding: 3px 6px;
 }
-.observed { background: #539b88; }
-.unobserved { background: #91989b; }
+.observed { background: #519985; }
+.unobserved { background: #939b9f; }
 .map-warning { position: absolute; left: 16px; bottom: 25px; background: var(--surface); padding: 8px 10px; max-width: 75%; }
 .panel { background: var(--surface); padding: 16px; border-left: 1px solid var(--border); min-width: 0; overflow: auto; }
 .feed-title, .review-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -177,3 +176,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   .map-toolbar { padding-inline: 12px; }
   .map-warning { left: 10px; }
 }
+
+.route-action { margin-top: 8px; }
+.route-action button[aria-pressed=true] { color: var(--lime); }
