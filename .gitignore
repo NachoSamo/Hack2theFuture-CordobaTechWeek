@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.DS_Store
+.obsidian/workspace*
+.obsidian/cache

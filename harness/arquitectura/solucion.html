@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arquitectura de la solución</title>
+<style>
+/* Estilo compartido de los diagramas. Sin fuentes ni scripts externos: funciona sin wifi.
+   Cuando marca.md defina paleta y tipografía, se reemplazan los tokens de :root. */
+
+:root {
+  --fondo: #f4f5f2;
+  --superficie: #ffffff;
+  --superficie-2: #eceee8;
+  --texto: #1b1f1c;
+  --texto-suave: #4a524c;
+  --apagado: #6e766f;
+  --linea: #d9ddd5;
+  --acento: #2f6b4f;
+  --acento-fondo: #e2eee7;
+  --pendiente: #8a6414;
+  --pendiente-fondo: #f3ead6;
+  --ok: #2f7d4f;
+  --sombra: 0 1px 2px rgba(20, 30, 25, .06), 0 8px 24px -14px rgba(20, 30, 25, .18);
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fondo: #0e1210;
+    --superficie: #161c19;
+    --superficie-2: #1e2622;
+    --texto: #e6ebe7;
+    --texto-suave: #b3bdb6;
+    --apagado: #86918a;
+    --linea: #2b3530;
+    --acento: #6cc39a;
+    --acento-fondo: #17291f;
+    --pendiente: #d4ad5c;
+    --pendiente-fondo: #2b2414;
+    --ok: #6cc39a;
+    --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 30px -14px rgba(0, 0, 0, .6);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 16px/1.55 var(--sans);
+}
+
+main { max-width: 1080px; margin: 0 auto; padding: 40px 16px 64px; }
+
+.kicker { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acento); }
+h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; margin: 10px 0 12px; }
+h2 { font-size: 20px; margin: 48px 0 14px; }
+p { margin: 0 0 12px; color: var(--texto-suave); max-width: 72ch; }
+code { font-family: var(--mono); font-size: .9em; }
+
+.estado {
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  font: 600 12px/1.4 var(--mono); background: var(--pendiente-fondo); color: var(--pendiente);
+}
+.estado.ok { background: var(--acento-fondo); color: var(--ok); }
+
+.nota {
+  border-left: 3px solid var(--acento); background: var(--acento-fondo);
+  padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 20px 0; color: var(--texto);
+}
+
+/* Flujo de capas o pasos: fila en desktop, columna en mobile */
+.flujo { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+.flujo .caja {
+  flex: 1 1 180px; background: var(--superficie); border: 1px solid var(--linea);
+  border-radius: 14px; padding: 14px 16px; box-shadow: var(--sombra);
+}
+.flujo .flecha { align-self: center; color: var(--apagado); font: 600 20px var(--mono); }
+.caja .num { font: 600 12px var(--mono); color: var(--acento); }
+.caja .nombre { font-weight: 650; margin: 4px 0 2px; }
+.caja .sub { font-size: 13px; color: var(--apagado); }
+
+@media (max-width: 720px) {
+  .flujo { flex-direction: column; }
+  .flujo .flecha { transform: rotate(90deg); }
+}
+
+/* Fichas de detalle */
+.grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.ficha {
+  background: var(--superficie); border: 1px solid var(--linea); border-radius: 14px;
+  padding: 16px 18px; box-shadow: var(--sombra);
+}
+.ficha h3 { margin: 0 0 10px; font-size: 16px; }
+.ficha dl { margin: 0; display: grid; grid-template-columns: 112px 1fr; gap: 6px 12px; font-size: 14px; }
+.ficha dt { color: var(--apagado); }
+.ficha dd { margin: 0; }
+
+.vacio { color: var(--pendiente); font-style: italic; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--superficie); border-radius: 12px; overflow: hidden; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { background: var(--superficie-2); font-weight: 600; }
+.tabla-scroll { overflow-x: auto; }
+
+footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="kicker">Hack to the Future 2026 · Arquitectura de la solución</div>
+  <h1>Qué construimos y quién aporta cada pieza</h1>
+  <p>
+    Cada capa es un nodo con un dueño, una entrada y una salida. Los nodos se pasan datos por
+    contratos definidos en <code>contratos.md</code>, y cada uno se desarrolla contra su fixture
+    sin esperar al anterior.
+  </p>
+  <span class="estado" id="estado">Borrador · sin aprobar</span>
+
+  <div class="nota">
+    <strong>Plantilla.</strong> Se completa después de elegir el problema, entrevistando a cada dueño
+    de nodo con preguntas de opción múltiple. La cantidad de capas y sus nombres los decide el equipo:
+    estas cuatro son un lugar donde escribir, no una propuesta.
+  </div>
+
+  <h2>Flujo</h2>
+  <div class="flujo" aria-label="Flujo de capas de la solución">
+    <div class="caja"><div class="num">01</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="flecha" aria-hidden="true">→</div>
+    <div class="caja"><div class="num">02</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="flecha" aria-hidden="true">→</div>
+    <div class="caja"><div class="num">03</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="flecha" aria-hidden="true">→</div>
+    <div class="caja"><div class="num">04</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+  </div>
+
+  <h2>Capa por capa</h2>
+  <div class="grilla">
+    <section class="ficha">
+      <h3>01 · <span class="vacio">por definir</span></h3>
+      <dl>
+        <dt>Qué hace</dt><dd class="vacio">—</dd>
+        <dt>Dueño</dt><dd class="vacio">—</dd>
+        <dt>Entrada</dt><dd class="vacio">—</dd>
+        <dt>Salida</dt><dd class="vacio">—</dd>
+        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
+        <dt>Tecnología</dt><dd class="vacio">—</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
+        <dt>Si falla</dt><dd class="vacio">—</dd>
+      </dl>
+    </section>
+    <section class="ficha">
+      <h3>02 · <span class="vacio">por definir</span></h3>
+      <dl>
+        <dt>Qué hace</dt><dd class="vacio">—</dd>
+        <dt>Dueño</dt><dd class="vacio">—</dd>
+        <dt>Entrada</dt><dd class="vacio">—</dd>
+        <dt>Salida</dt><dd class="vacio">—</dd>
+        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
+        <dt>Tecnología</dt><dd class="vacio">—</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
+        <dt>Si falla</dt><dd class="vacio">—</dd>
+      </dl>
+    </section>
+    <section class="ficha">
+      <h3>03 · <span class="vacio">por definir</span></h3>
+      <dl>
+        <dt>Qué hace</dt><dd class="vacio">—</dd>
+        <dt>Dueño</dt><dd class="vacio">—</dd>
+        <dt>Entrada</dt><dd class="vacio">—</dd>
+        <dt>Salida</dt><dd class="vacio">—</dd>
+        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
+        <dt>Tecnología</dt><dd class="vacio">—</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
+        <dt>Si falla</dt><dd class="vacio">—</dd>
+      </dl>
+    </section>
+    <section class="ficha">
+      <h3>04 · <span class="vacio">por definir</span></h3>
+      <dl>
+        <dt>Qué hace</dt><dd class="vacio">—</dd>
+        <dt>Dueño</dt><dd class="vacio">—</dd>
+        <dt>Entrada</dt><dd class="vacio">—</dd>
+        <dt>Salida</dt><dd class="vacio">—</dd>
+        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
+        <dt>Tecnología</dt><dd class="vacio">—</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
+        <dt>Si falla</dt><dd class="vacio">—</dd>
+      </dl>
+    </section>
+  </div>
+
+  <h2>Límites y contrato de confianza</h2>
+  <p>Qué hace el sistema, qué no hace nunca y qué es simulado en la demo. Se completa con el equipo.</p>
+  <div class="grilla">
+    <section class="ficha"><h3>Siempre hace</h3><p class="vacio">—</p></section>
+    <section class="ficha"><h3>Nunca hace</h3><p class="vacio">—</p></section>
+    <section class="ficha"><h3>Simulado en la demo</h3><p class="vacio">—</p></section>
+  </div>
+
+  <h2>Decisiones abiertas</h2>
+  <p>Cada una se cierra con una entrevista de opción múltiple y pasa al decision log.</p>
+  <ul>
+    <li class="vacio">—</li>
+  </ul>
+
+  <h2>Aprobación</h2>
+  <p>
+    Regla de <code>AGENTS.md</code>: nadie codea la demo hasta que el dueño de cada nodo y Samo
+    aprueban este diagrama y el del recorrido del usuario. Si después cambia un nodo, su dueño vuelve a aprobar.
+  </p>
+  <div class="tabla-scroll">
+    <table>
+      <thead><tr><th>Nodo</th><th>Dueño</th><th>Aprobado</th><th>Fecha y hora</th></tr></thead>
+      <tbody>
+        <tr><td class="vacio">01</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td class="vacio">02</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td class="vacio">03</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td class="vacio">04</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>Nexo</td><td>Samo</td><td>☐</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    Relacionado: <a href="recorrido-usuario.html">recorrido del usuario</a> ·
+    <a href="../contratos.md">contratos.md</a> · <a href="../demo-path.md">demo-path.md</a>
+  </footer>
+
+</main>
+</body>
+</html>
