@@ -28,7 +28,9 @@ track: movilidad (cruza residuos)
 
 ### 1. Título
 
-Las cámaras que ya patrullan la ciudad le dicen al camión de basura adónde ir.
+**Recolectar más, recorrer menos.**
+
+Bajada: las cámaras que ya patrullan la ciudad le dicen al camión de basura adónde ir.
 
 ### 2. Problema
 
