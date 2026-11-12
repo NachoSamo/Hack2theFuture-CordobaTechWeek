@@ -1,0 +1,72 @@
+---
+tipo: producto
+fecha: 2026-11-12
+dueña: Oli
+estado: borrador, definido por Oli 12/11 14:53
+track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urbano
+---
+
+# Dominio del problema: el móvil que autosana la ciudad
+
+> **Pivot del 12/11 14:53.** Pasamos de "rutas de recolección guiadas por cámaras" a un concepto más
+> grande: no vamos solo a residuos. Los residuos ya tienen sus rutas y su recolección; no las tocamos.
+> [`idea-y-epicas.md`](idea-y-epicas.md) y [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md)
+> todavía cuentan la versión anterior y hay que reescribirlas sobre este dominio.
+
+## La idea en una línea
+
+**Un móvil para autosanar la ciudad:** el patrullaje urbano que ya recorre Córdoba y ya consume
+combustible solo para seguridad se aprovecha para detectar, con visión por computadora, todo lo que
+en la ciudad requiere atención y avisarle al área que lo resuelve.
+
+## El problema
+
+- **Movilidad y emisiones:** los móviles de patrulla urbana recorren la ciudad todos los días. Ese
+  consumo de combustible y esas emisiones hoy rinden un solo servicio: seguridad.
+- **Ciudad sin ojos para el mantenimiento:** lo que se rompe o se acumula (un microbasural, un poste
+  caído, un contenedor roto) se entera tarde, por reclamo del vecino, y otras áreas salen a recorrer
+  por su cuenta para encontrarlo.
+- **Equilibrio de emisiones:** justificamos el consumo que ya existe dándole más usos. Mismo km,
+  más servicio a la ciudad.
+
+## Actores
+
+| Actor | Rol | Estado |
+|---|---|---|
+| **COYS**, área municipal de control | Opera los móviles de monitoreo y los servicios especiales de detección | Dato aportado por Oli; nombre completo y alcance a validar (E0) |
+| Áreas que resuelven (residuos, alumbrado, vía pública) | Reciben el aviso y atienden | Supuesto |
+| Recolectora de residuos | Mantiene sus rutas; recibe solo lo que la ruta fija no cubre | Supuesto |
+| Vecinos | Viven el problema; hoy son el único sensor (reclamo) | Supuesto |
+
+## Qué detectamos (alcance)
+
+Elegido por Oli entre las opciones ofrecidas:
+
+1. **Microbasurales y residuos voluminosos** (escombros, ramas, colchones): lo que la ruta fija no levanta.
+2. **Problemas de vía pública:** postes caídos, baches, semáforos, señales, alumbrado.
+3. **Contenedores llenos o rotos.**
+
+Quedó afuera: tránsito y estacionamiento (congestión, doble fila).
+La meta es "detectar todo lo posible que requiera atención"; las tres categorías son el alcance inicial.
+
+## Qué queda fuera del dominio
+
+- Rediseñar las rutas de recolección de residuos (ya existen y funcionan).
+- Instalar hardware o sensores nuevos: se usa el recorrido y la cámara que ya están.
+
+## Abierto
+
+- **Qué ahorro medimos** (km de las áreas que hoy salen a buscar, recorridos evitados o tiempo de
+  respuesta): Oli no eligió, queda para cerrar con el equipo.
+- **Cómo contamos el doble impacto** (seguridad + mantenimiento urbano con el mismo km, ambiental +
+  económico, o movilidad + residuos): queda para cerrar con el equipo.
+- **Fuente de "los residuos ya tienen sus rutas":** sin registrar.
+
+## Supuestos a validar
+
+| Afirmación | ¿Dato o supuesto? | Cómo lo validamos |
+|---|---|---|
+| COYS opera móviles con cámara que recorren la ciudad | Dato según Oli, sin fuente escrita | Mentores y staff |
+| Ese recorrido hoy se usa solo para seguridad | Supuesto | Mentores y staff |
+| Visión por computadora detecta las tres categorías desde un vehículo en movimiento | Supuesto | Spike de detección con imágenes públicas |
+| Las áreas que resuelven hoy se enteran por reclamo o recorriendo | Supuesto | Entrevista con el municipio |

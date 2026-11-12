@@ -8,6 +8,8 @@ track: movilidad (cruza residuos)
 
 # Solución paso a paso: el flujo del sistema
 
+> **⚠ Desactualizado desde el pivot del 12/11 14:53:** el dominio ahora es más grande que residuos. Ver [`dominio-del-problema.md`](dominio-del-problema.md). Pendiente reescribir este documento.
+
 > Vista de producto del flujo. Baja a detalle la Parte A §4 de
 > [`idea-y-epicas.md`](idea-y-epicas.md) y sigue los cinco nodos del borrador de
 > [`arquitectura/solucion.html`](../../arquitectura/solucion.html) (Samo, 14:11).

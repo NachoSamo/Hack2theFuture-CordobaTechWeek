@@ -26,7 +26,8 @@ Todas las de la lluvia de ideas, incluidas las "locas". Una línea cada una.
 
 | # | Idea | Quién | Resultado |
 |---|---|---|---|
-| 1 | Usar las cámaras de los móviles de monitoreo urbano para detectar basura acumulada, armar mapas de calor de demanda y optimizar las rutas y la carga de los camiones recolectores (track movilidad, cruza residuos). Detalle: [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md) | Equipo (pasada en limpio por Oli) | Elegida |
+| 1 | Usar las cámaras de los móviles de monitoreo urbano para detectar basura acumulada, armar mapas de calor de demanda y optimizar las rutas y la carga de los camiones recolectores (track movilidad, cruza residuos). Detalle: [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md) | Equipo (pasada en limpio por Oli) | Reemplazada por la idea 2 (pivot 12/11 14:53): los residuos ya tienen rutas |
+| 2 | Un móvil para autosanar la ciudad: el patrullaje urbano de COYS detecta con visión por computadora todo lo que requiere atención (microbasurales, voluminosos, postes caídos, vía pública, contenedores) y le da más usos a un consumo que hoy solo sirve a seguridad. Detalle: [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md) | Oli | Elegida |
 
 ## Hipótesis
 
@@ -37,7 +38,9 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 | H1 | Hay móviles de monitoreo urbano con cámara que recorren Córdoba y se podría acceder a su video o a un dato procesado | Preguntar a mentores y al staff qué área los opera | Sin probar |
 | H2 | Las rutas de recolección actuales son fijas y no responden a picos de demanda | Entrevista con el municipio o la recolectora | Sin probar |
 | H3 | Un modelo de visión detecta acumulación de basura desde un vehículo en movimiento con precisión suficiente | Spike de la épica E2 con imágenes públicas | Sin probar |
-| H4 | Rutear por demanda ahorra km y combustible frente a la ruta fija | Simulación de las épicas E4 y E6 | Sin probar |
+| H4 | Rutear por demanda ahorra km y combustible frente a la ruta fija | Simulación de las épicas E4 y E6 | Descartada por el pivot del 12/11 14:53 (no se tocan las rutas) |
+| H5 | El recorrido de los móviles de COYS hoy se usa solo para seguridad | Mentores y staff | Sin probar |
+| H6 | Visión por computadora detecta microbasurales, postes caídos y contenedores rotos desde un vehículo en movimiento | Spike con imágenes públicas | Sin probar |
 
 ## Pruebas
 

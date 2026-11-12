@@ -8,6 +8,8 @@ track: movilidad (cruza residuos)
 
 # Idea y épicas: rutas de recolección guiadas por las cámaras del monitoreo urbano
 
+> **⚠ Desactualizado desde el pivot del 12/11 14:53:** el dominio ahora es más grande que residuos. Ver [`dominio-del-problema.md`](dominio-del-problema.md). Pendiente reescribir este documento.
+
 > Documento de producto. La **Parte A** pasa en limpio la idea; la **Parte B** la separa en épicas
 > para arrancar a implementar y refinar cada punto. Nombre del producto: a definir en
 > [`marca.md`](../../marca.md).
