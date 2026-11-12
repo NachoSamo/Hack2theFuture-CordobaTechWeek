@@ -39,18 +39,25 @@ Güemes después de cada fin de semana largo. En dos años hubo **66.000 reclamo
 una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con cables colgando
 y riesgo eléctrico.
 
-### 4 · A quién le pasa (0:45–1:00)
+### 3b · Lo que no registramos (0:45–1:00)
+
+Y hay cosas que ni siquiera llegan a ser un reclamo. En Alta Gracia, un nene de 9 años iba a caballo.
+El caballo pisó un cable pelado en la calle y murió electrocutado. El nene se salvó.
+`[pausa]`
+¿Cuántas cosas pasan en la ciudad y **no estamos registrando**?
+
+### 4 · A quién le pasa (1:00–1:15)
 
 Le pasa al **municipio**, que paga ese combustible y, además, recibe los reclamos de todo lo que sus
 móviles vieron y nadie avisó.
 Y le pasa al **vecino**, que convive con la basura o con la luz apagada hasta que alguien la reporta.
 
-### 5 · La pregunta (1:00–1:10)
+### 5 · La pregunta (1:15–1:22)
 
 Entonces nos preguntamos: ¿cómo sacamos el máximo beneficio de esos recorridos para hacer una ciudad
 más sostenible, conectada y eficiente?
 
-### 6 · Solución y prototipo (1:10–1:55)
+### 6 · Solución y prototipo (1:22–1:55)
 
 Por eso presentamos **Trama Urbana**, una solución que funciona sobre los servicios que el municipio ya
 tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
@@ -103,7 +110,7 @@ Gracias.
 ## Para los ensayos
 
 - **Cronómetro:** el prototipo es lo que más tiempo se come, y la v5 suma unas 60 palabras en los bloques
-  4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
+  4, 8 y 9, más unos 15 segundos del caso de la slide 3b. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad mirando un solo problema.
   - *¿Por qué es movilidad?* Bloque 8: la flota es el recurso, y hay menos vehículos en la calle.
@@ -112,9 +119,10 @@ Gracias.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Trama Urbana. Si no puede, se reescribe la slide 6.
-- **Tip oficial no cubierto:** la organización pide "una persona real, no 'la gente'". La slide 4
-  habla de "los municipios". Si aparece una persona concreta (alguien que trabaja en monitoreo o un caso
-  que contó un mentor), suma ahí.
+- **Persona real (tip oficial):** la cubre el caso de la slide 3b. Fuente: Cadena 3, 5/11/2025. Pasó
+  en barrio Parque del Virrey, en Alta Gracia (provincia de Córdoba, no en la capital). El cable venía de
+  una conexión ilegal y la Fiscalía investiga por negligencia. No decimos el nombre del nene porque es
+  menor. La nota no dice si alguien había reportado el cable antes.
 - **Fuentes de la slide 3:**
   - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes).
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
