@@ -41,6 +41,8 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 | H4 | Rutear por demanda ahorra km y combustible frente a la ruta fija | Simulación de las épicas E4 y E6 | Descartada por el pivot del 12/11 14:53 (no se tocan las rutas) |
 | H5 | El recorrido de los móviles de COYS hoy se usa solo para seguridad | Mentores y staff | Sin probar |
 | H6 | Visión por computadora detecta microbasurales, postes caídos y contenedores rotos desde un vehículo en movimiento | Spike con imágenes públicas | Sin probar |
+| H7 | Cordobeses en Alerta y la Policía de Córdoba (provincial) compartirían su video o un dato procesado con el municipio | Mentores y staff: quién opera cada fuente y quién lo autoriza | Sin probar |
+| H8 | Las áreas actúan sobre un aviso automático, sin validación humana, aunque haya falsos positivos | Test 3+3: mostrar el aviso a quien haría de área y preguntar qué haría | Sin probar |
 
 ## Pruebas
 

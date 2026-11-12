@@ -122,23 +122,24 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
   <span class="estado" id="estado">Borrador · sin aprobar</span>
 
   <div class="nota">
-    <strong>Rutas de recolección guiadas por las cámaras del monitoreo urbano.</strong> Cinco nodos que
-    salen de las épicas E1–E6 de <a href="../docs/producto/idea-y-epicas.md">idea-y-epicas.md</a>; la
-    épica E6 (impacto) vive dentro del nodo 04. E0 (validación) y E7 (negocio) corren en paralelo y
-    no son nodos. Lo marcado en amarillo lo decide el dueño de cada nodo en su entrevista.
+    <strong>Un móvil para autosanar la ciudad.</strong> Todo vehículo que ya circula con cámara
+    (móviles de COYS, Cordobeses en Alerta y móviles policiales) detecta lo que la ciudad necesita
+    atender y le avisa directo al área que lo resuelve, sin una persona en el medio. Dominio en
+    <a href="../docs/producto/dominio-del-problema.md">dominio-del-problema.md</a>; decisiones del
+    12/11 15:08 en el decision log. Lo marcado en amarillo lo decide el dueño de cada nodo en su entrevista.
   </div>
 
   <h2>Flujo</h2>
   <div class="flujo" aria-label="Flujo de capas de la solución">
     <div class="caja"><div class="num">01 · E1</div><div class="nombre">Captura</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">02 · E2</div><div class="nombre">Detección</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
+    <div class="caja"><div class="num">02 · E2</div><div class="nombre">Detección y clasificación</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">03 · E3</div><div class="nombre">Mapa de demanda</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
+    <div class="caja"><div class="num">03 · E3</div><div class="nombre">Consolidación de incidencias</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">04 · E4 + E6</div><div class="nombre">Optimizador e impacto</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
+    <div class="caja"><div class="num">04 · E4</div><div class="nombre">Derivación al área</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">05 · E5</div><div class="nombre">Panel</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
+    <div class="caja"><div class="num">05 · E5 + E6</div><div class="nombre">Panel e impacto</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
   </div>
 
   <h2>Capa por capa</h2>
@@ -146,10 +147,10 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
     <section class="ficha">
       <h3>01 · Captura</h3>
       <dl>
-        <dt>Qué hace</dt><dd>Entrega los cuadros del recorrido de un móvil de monitoreo urbano, con posición GPS y hora</dd>
+        <dt>Qué hace</dt><dd>Recibe los cuadros de cualquier vehículo con cámara que circula, con posición GPS, hora y fuente</dd>
         <dt>Dueño</dt><dd class="vacio">por definir</dd>
-        <dt>Entrada</dt><dd>Video o set de imágenes georreferenciadas de un barrio de Córdoba (simulado)</dd>
-        <dt>Salida</dt><dd>Un cuadro por paso, con lugar, hora y móvil</dd>
+        <dt>Entrada</dt><dd>Recorridos de las tres fuentes: móviles de COYS, Cordobeses en Alerta y móviles policiales (simulados en la demo)</dd>
+        <dt>Salida</dt><dd>Un cuadro por paso, con lugar, hora y fuente</dd>
         <dt>Fixture</dt><dd class="vacio">por definir</dd>
         <dt>Tecnología</dt><dd class="vacio">Video propio, imágenes públicas o Street View (pregunta de E1)</dd>
         <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
@@ -157,51 +158,51 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
       </dl>
     </section>
     <section class="ficha">
-      <h3>02 · Detección</h3>
+      <h3>02 · Detección y clasificación</h3>
       <dl>
-        <dt>Qué hace</dt><dd>Convierte cada cuadro en un evento de basura acumulada y descarta todo lo demás</dd>
+        <dt>Qué hace</dt><dd>Convierte cada cuadro en detecciones con categoría y descarta todo lo demás, incluidas personas y patentes</dd>
         <dt>Dueño</dt><dd class="vacio">por definir</dd>
         <dt>Entrada</dt><dd>Salida de 01</dd>
-        <dt>Salida</dt><dd>Evento con lugar, hora, nivel (bajo, medio, alto) y confianza</dd>
+        <dt>Salida</dt><dd>Detección con categoría (microbasural o voluminoso, vía pública, contenedor), lugar, hora, fuente y confianza</dd>
         <dt>Fixture</dt><dd class="vacio">por definir</dd>
         <dt>Tecnología</dt><dd class="vacio">Modelo preentrenado tipo YOLO, LLM multimodal o detecciones etiquetadas a mano (pregunta de E2)</dd>
         <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
-        <dt>Si falla</dt><dd>Salida determinística de respaldo con los mismos eventos (regla 4 de código)</dd>
+        <dt>Si falla</dt><dd>Salida determinística de respaldo con las mismas detecciones (regla 4 de código)</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>03 · Mapa de demanda</h3>
+      <h3>03 · Consolidación de incidencias</h3>
       <dl>
-        <dt>Qué hace</dt><dd>Agrega los eventos por zona y franja horaria y marca los puntos críticos</dd>
+        <dt>Qué hace</dt><dd>Junta en <strong>un ticket por incidencia</strong> los avistamientos de un mismo lugar y categoría, aunque vengan de fuentes distintas. Confirma con más de una pasada. <strong>Cierra el ciclo:</strong> si una pasada posterior ya no la ve, el ticket queda "posiblemente resuelto" y se mide el tiempo de resolución</dd>
         <dt>Dueño</dt><dd class="vacio">por definir</dd>
-        <dt>Entrada</dt><dd>Eventos de 02 (en la demo, varias semanas simuladas)</dd>
-        <dt>Salida</dt><dd>Demanda por zona y franja, puntos críticos y zonas sin dato</dd>
+        <dt>Entrada</dt><dd>Detecciones de 02 (en la demo, varias pasadas simuladas)</dd>
+        <dt>Salida</dt><dd>Ticket con categoría, lugar, estado (nuevo, confirmado, posiblemente resuelto), avistamientos y primera y última vez visto</dd>
         <dt>Fixture</dt><dd class="vacio">por definir</dd>
-        <dt>Tecnología</dt><dd class="vacio">Unidad espacial: cuadra, hexágono o radio de contenedor (pregunta de E3)</dd>
+        <dt>Tecnología</dt><dd class="vacio">Radio para considerar "mismo lugar" y pasadas sin verla para darla por resuelta</dd>
         <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
         <dt>Si falla</dt><dd class="vacio">por definir</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>04 · Optimizador e impacto</h3>
+      <h3>04 · Derivación al área</h3>
       <dl>
-        <dt>Qué hace</dt><dd>Propone las rutas del día priorizando puntos críticos con la capacidad de la flota, y compara contra la ruta fija</dd>
+        <dt>Qué hace</dt><dd>Avisa a cada área responsable de cada ticket confirmado, sin una persona en el medio</dd>
         <dt>Dueño</dt><dd class="vacio">por definir</dd>
-        <dt>Entrada</dt><dd>Salida de 03, flota (camiones, capacidad, base) y ruta fija de referencia</dd>
-        <dt>Salida</dt><dd>Ruta fija y ruta sugerida, cada una con km, carga y puntos críticos atendidos a tiempo; km por tonelada</dd>
+        <dt>Entrada</dt><dd>Tickets de 03 y la tabla de categoría → área</dd>
+        <dt>Salida</dt><dd>Aviso al área, con el ticket</dd>
         <dt>Fixture</dt><dd class="vacio">por definir</dd>
-        <dt>Tecnología</dt><dd class="vacio">por definir (E4 menciona OR-Tools sobre OpenStreetMap)</dd>
+        <dt>Tecnología</dt><dd class="vacio">Canal del aviso: panel, mail o mensajería. Tabla de categoría → área hardcodeada y anotada en el decision log</dd>
         <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
-        <dt>Si falla</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd>El ticket queda visible en el panel del área</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>05 · Panel</h3>
+      <h3>05 · Panel e impacto</h3>
       <dl>
-        <dt>Qué hace</dt><dd>Dos vistas sobre los mismos datos, con selector</dd>
+        <dt>Qué hace</dt><dd>Dos vistas sobre los mismos tickets, más el impacto de reutilizar el recorrido</dd>
         <dt>Dueño</dt><dd class="vacio">por definir</dd>
-        <dt>Entrada</dt><dd>Salidas de 03 y 04</dd>
-        <dt>Salida</dt><dd><strong>Municipio:</strong> puntos críticos, cobertura y % atendidos a tiempo. <strong>Recolectora:</strong> rutas, carga por camión, km por tonelada, litros y CO₂</dd>
+        <dt>Entrada</dt><dd>Tickets de 03 y avisos de 04</dd>
+        <dt>Salida</dt><dd><strong>COYS:</strong> vista general de todas las incidencias y la cobertura (no asigna). <strong>Cada área:</strong> sus tickets y su estado. <strong>Impacto:</strong> km reutilizados (con litros y CO₂ equivalentes) y tiempo de resolución</dd>
         <dt>Fixture</dt><dd>No aplica: consume los fixtures de 03 y 04</dd>
         <dt>Tecnología</dt><dd class="vacio">por definir (según <code>marca.md</code>)</dd>
         <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
@@ -210,19 +211,18 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
     </section>
   </div>
 
-  <h2>Métricas principales</h2>
+  <h2>Cifra principal</h2>
   <p>
-    Una por usuario: <strong>km por tonelada</strong> (recolectora) y <strong>puntos críticos
-    atendidos a tiempo</strong> (municipio). Definen si funcionó el piloto de 4 semanas
-    (2 con ruta fija y 2 con ruta sugerida). El umbral de éxito está sin definir.
+    <strong>Km de patrullaje reutilizados como detección</strong>, con litros y CO₂ equivalentes
+    (decisión de Oli, 12/11 15:10). El cierre del ciclo en el nodo 03 suma el tiempo de resolución
+    sin pedirle datos a las áreas.
   </p>
 
   <h2>Límites y contrato de confianza</h2>
-  <p>Sale de la tabla de riesgos de <a href="../docs/producto/idea-y-epicas.md">idea-y-epicas.md</a>.</p>
   <div class="grilla">
-    <section class="ficha"><h3>Siempre hace</h3><p>Guarda solo el dato: dónde, cuándo y cuánto. Marca las zonas sin dato. Un punto pasa a crítico solo si se detecta en más de una pasada.</p></section>
-    <section class="ficha"><h3>Nunca hace</h3><p>Guardar imágenes de personas ni patentes.</p></section>
-    <section class="ficha"><h3>Simulado en la demo</h3><p>El video y el GPS de los móviles, las semanas de eventos del mapa, la flota y la ruta fija de referencia. El ahorro sale de esa simulación: muestra el mecanismo; el piloto mide el ahorro real.</p></section>
+    <section class="ficha"><h3>Siempre hace</h3><p>Guarda solo la incidencia: categoría, lugar, hora y fuente. Emite un ticket por incidencia, no uno por avistamiento. Marca las zonas sin dato.</p></section>
+    <section class="ficha"><h3>Nunca hace</h3><p>Guardar imágenes de personas ni patentes. Tocar las rutas de recolección de residuos (fuera del dominio).</p></section>
+    <section class="ficha"><h3>Simulado en la demo</h3><p>El video y el GPS de las tres fuentes, las pasadas sucesivas y las áreas que reciben el aviso: no sale a ningún sistema real.</p></section>
   </div>
 
   <h2>Decisiones abiertas</h2>
@@ -230,9 +230,10 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
   <ul>
     <li>Dueño de cada nodo (Samo lo cierra con el equipo)</li>
     <li>Técnica de detección del nodo 02 (la decide su dueño)</li>
+    <li>Tabla de categoría → área y canal del aviso</li>
+    <li>Si lo urgente (cables sueltos, postes caídos) se deriva con una sola pasada, sin esperar la confirmación</li>
+    <li>Radio de "mismo lugar" y cuántas pasadas sin verla dan una incidencia por resuelta</li>
     <li>Forma de los JSON entre nodos y fixtures → <code>contratos.md</code></li>
-    <li>Umbral de éxito del piloto para cada métrica</li>
-    <li>Fuera de la demo, salvo que se decida lo contrario: predicción de demanda por patrones, reruteo durante el día y OpenStreetMap real</li>
   </ul>
 
   <h2>Aprobación</h2>
@@ -245,10 +246,10 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
       <thead><tr><th>Nodo</th><th>Dueño</th><th>Aprobado</th><th>Fecha y hora</th></tr></thead>
       <tbody>
         <tr><td>01 · Captura</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td>02 · Detección</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td>03 · Mapa de demanda</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td>04 · Optimizador e impacto</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td>05 · Panel</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>02 · Detección y clasificación</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>03 · Consolidación de incidencias</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>04 · Derivación al área</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>05 · Panel e impacto</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
         <tr><td>Nexo</td><td>Samo</td><td>☐</td><td>—</td></tr>
       </tbody>
     </table>

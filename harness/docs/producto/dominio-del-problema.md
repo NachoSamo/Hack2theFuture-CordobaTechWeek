@@ -8,6 +8,8 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Dominio del problema: el móvil que autosana la ciudad
 
+> **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de COYS, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
+
 > **Pivot del 12/11 14:53.** Pasamos de "rutas de recolección guiadas por cámaras" a un concepto más
 > grande: no vamos solo a residuos. Los residuos ya tienen sus rutas y su recolección; no las tocamos.
 > [`idea-y-epicas.md`](idea-y-epicas.md) y [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md)
@@ -56,8 +58,9 @@ La meta es "detectar todo lo posible que requiera atención"; las tres categorí
 
 ## Cerrado después del pivot
 
-- **Qué pasa tras detectar:** mapa priorizado para COYS; COYS decide y asigna al área responsable.
-- **Usuarios del panel:** COYS y las áreas que resuelven.
+- **Qué pasa tras detectar:** aviso directo al área responsable; COYS tiene una vista general (decision log 12/11 15:08; reemplaza "mapa priorizado para COYS, que asigna").
+- **Usuarios del panel:** COYS (vista general) y las áreas que resuelven.
+- **Fuentes:** móviles de COYS, Cordobeses en Alerta y móviles policiales (decision log 12/11 15:08).
 - **Cifra principal del pitch:** km de patrullaje reutilizados como detección (con litros y CO₂ equivalentes).
 - **Título:** "Un móvil para autosanar la ciudad."
 

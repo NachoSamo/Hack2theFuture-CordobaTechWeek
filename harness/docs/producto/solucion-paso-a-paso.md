@@ -8,6 +8,8 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Solución paso a paso: el flujo del sistema
 
+> **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de COYS, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
+
 > Vista de producto del flujo. Baja a detalle la Parte A §4 de [`idea-y-epicas.md`](idea-y-epicas.md)
 > sobre el dominio de [`dominio-del-problema.md`](dominio-del-problema.md). Acá no se definen contratos
 > ni tecnología: eso vive en [`contratos.md`](../../contratos.md) y en cada nodo de

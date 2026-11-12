@@ -74,21 +74,21 @@ La secuencia congelada vive en [`harness/demo-path.md`](harness/demo-path.md) y 
 ```mermaid
 flowchart LR
     subgraph Sensado[Sensado · simulado en la demo]
-        A[01 Captura<br/>cuadros + GPS de móviles]
-        B[02 Detección<br/>evento de basura acumulada]
+        A[01 Captura<br/>COYS · Cordobeses en Alerta · policía]
+        B[02 Detección y clasificación<br/>categoría y confianza]
     end
-    subgraph Decision[Decisión]
-        C[03 Mapa de demanda<br/>zona × franja, puntos críticos]
-        D[04 Optimizador e impacto<br/>ruta fija vs. sugerida]
+    subgraph Incidencias[Incidencias]
+        C[03 Consolidación<br/>un ticket por incidencia, cierra el ciclo]
+        D[04 Derivación<br/>aviso directo al área]
     end
     subgraph Uso[Uso]
-        E[05 Panel<br/>vista municipio · vista recolectora]
+        E[05 Panel e impacto<br/>vista COYS · vista por área · km reutilizados]
     end
     A --> B --> C --> D --> E
     C --> E
 ```
 
-Borrador del 12/11 14:11, sin dueños ni aprobación. **Desactualizado por el pivot de las 14:53:** el nodo 03 pasa a mapa de incidencias, el 04 a priorización e impacto y el 05 a vistas COYS y áreas ([`solucion-paso-a-paso.md`](harness/docs/producto/solucion-paso-a-paso.md)); lo actualiza Samo.
+Borrador del 12/11 15:08, posterior al pivot, sin dueños ni aprobación.
 
 El diagrama completo, con dueños, entradas, salidas y aprobación, vive en
 [`harness/arquitectura/solucion.html`](harness/arquitectura/solucion.html).

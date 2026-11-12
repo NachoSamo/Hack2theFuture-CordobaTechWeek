@@ -44,3 +44,16 @@ La guía oficial pide **registrar qué recomendación cambió una decisión**: p
 5. "Si ves esto en un pitch, ¿qué te haría desconfiar?"
 
 ## Conversaciones
+
+### Varios mentores · ronda del día 1 · antes de 12/11 15:08
+- Relación con el problema: _por completar_
+- Qué dijo (según Samo, no textual): no sesgarse con la optimización del recorrido de la recolección
+  tercerizada; pasar a recopilar datos en tiempo real con visión computacional desde todo vehículo
+  que circula con cámara, y ser la interfaz que alerta a cada servicio de la municipalidad. Ejemplos:
+  baches, postes caídos, cables sueltos.
+- Caso real que contó: _por completar_
+- Qué actores nombró: móviles de patrulla, Cordobeses en Alerta, móviles policiales, áreas de la municipalidad
+- Qué implicaría si lo accionamos: más fuentes y más categorías; aviso automático a cada área
+- Impacto: problema / producto / arquitectura
+- Recomendación a Samo: accionada por Samo
+- ¿Cambió una decisión?: sí → decision log 12/11 15:08 (fuentes, aviso directo y arquitectura)

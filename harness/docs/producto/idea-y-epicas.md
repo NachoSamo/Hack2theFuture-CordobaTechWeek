@@ -8,6 +8,8 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Idea y épicas: un móvil para autosanar la ciudad
 
+> **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de COYS, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
+
 > Documento de producto. La **Parte A** pasa en limpio la idea; la **Parte B** la separa en épicas
 > para implementar y refinar. El dominio está en [`dominio-del-problema.md`](dominio-del-problema.md).
 > Nombre del producto: a definir en [`marca.md`](../../marca.md).
