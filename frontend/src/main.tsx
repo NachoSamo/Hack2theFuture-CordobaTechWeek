@@ -1,3 +1,4 @@
+import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
@@ -65,6 +66,8 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 }
 
 function Landing() {
+  const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
+
   return <main className="landing">
     <header className="top landing-top">
       <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Vestigio</strong></a>
@@ -77,10 +80,9 @@ function Landing() {
         <a className="landing-cta" href="#mapa">Explorar el mapa de Córdoba <span aria-hidden="true">↗</span></a>
       </div>
       <figure className="landing-scene">
-        <video autoPlay muted loop controls playsInline preload="auto" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
+        <video autoPlay={autoPlay} muted loop controls playsInline preload="auto" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
           <source src="/demo-vision.mp4" type="video/mp4" />
         </video>
-        <figcaption>Detección simulada sobre imágenes ilustrativas · <a className="landing-link" href="#mapa/deteccion">Ver el ticket detectado</a></figcaption>
       </figure>
     </section>
     <ol className="landing-flow" aria-label="Cómo funciona">
@@ -186,8 +188,15 @@ function Site() {
   const [page, setPage] = useState(() => location.hash)
   useEffect(() => {
     function navigate() {
-      setPage(location.hash)
-      window.scrollTo(0, 0)
+      const update = () => {
+        flushSync(() => setPage(location.hash))
+        window.scrollTo(0, 0)
+      }
+      if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.startViewTransition(update)
+      } else {
+        update()
+      }
     }
     window.addEventListener('hashchange', navigate)
     return () => window.removeEventListener('hashchange', navigate)

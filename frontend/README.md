@@ -14,4 +14,4 @@ Los datos de recolección están en `src/mock.json` y `src/street-routes.json`. 
 
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)
 
-La landing reproduce un clip ilustrativo de detección simulada. El enlace `/#mapa/deteccion` abre el ticket CBA-104 del contenedor mostrado en el video.
+La landing reproduce un clip ilustrativo de detección simulada. El acceso directo `/#mapa/deteccion` abre el ticket CBA-104 del contenedor mostrado en el video.

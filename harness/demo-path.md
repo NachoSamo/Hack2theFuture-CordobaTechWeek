@@ -55,6 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada de Vestigio
+## Video de entrada del prototipo
 
-El clip de 12 segundos monta imágenes urbanas ilustrativas con movimiento de cámara, recuadros de detección, confianza, gravedad, hora, coordenadas y área responsable. Muestra un bache, una rama caída y un contenedor rebalsado. El clip se reproduce en bucle y sin audio. **Ver el ticket detectado** abre CBA-104 en `/#mapa/deteccion`, con la misma imagen y la empresa recolectora en el detalle. La simulación sigue agregando un avistamiento y el aviso.
+El montaje dura 10 segundos y alterna seis tomas ilustrativas con detección simulada. Muestra cinco tipos de incidencia con recuadros, confianza, gravedad, hora, coordenadas y área responsable. La landing reproduce el clip en bucle y sin audio. Para abrir CBA-104 durante el pitch, usá `/#mapa/deteccion`.
