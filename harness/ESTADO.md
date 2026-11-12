@@ -18,7 +18,7 @@
 | Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias); sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | | | |
+| Juani | Prototipo COYS con tickets, atención, cobertura y seguimiento simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
 | Gina | | | |
 | Oli | Ficha oficial 07 cargada en el formulario (sin enviar: faltan foto del lienzo y minuta de Granola); `Estructura de solución.md` completa (Parte A + anexo B) | Pitch flash 15:30 | Link de Drive de la foto del lienzo |
 

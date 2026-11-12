@@ -116,9 +116,11 @@ El descriptor **«Panel de demanda y rutas de recolección urbana»**, el slogan
 | Ruta fija y desvío precalculado por evento | No usarlos como prueba de un planificador municipal implementado |
 | Datos simulados identificados en pantalla | Mantener esa identificación en capturas y demostraciones |
 
-**Sin implementar en el prototipo revisado:** detección por IA integrada, tickets y derivación real, selector de área, seguimiento de resolución, mapa de calor y cuarto nivel de gravedad.
+**Pendientes en el prototipo de recolección que revisó esta guía:** detección por IA integrada, tickets y derivación real, selector de área, seguimiento de resolución, mapa de calor y cuarto nivel de gravedad.
 
 Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Juani](harness/marca/referencias/README.md).
+
+**Iteración posterior del prototipo:** la vista COYS ya muestra tickets, filtros por tipo, estado y área, detalle con historial y capas simuladas de atención y cobertura. El recorrido guiado ilustra consolidación, aviso y verificación posterior con un fixture local. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
 
 ## 8. Límites del mensaje y decisiones pendientes
 

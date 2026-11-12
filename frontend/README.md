@@ -2,10 +2,12 @@
 
 Ejecutá `npm ci` y `npm run dev` desde esta carpeta. Para compilar, usá `npm run build`.
 
-La vista de administrador arranca con la ruta fija y el punto de partida del vehículo. Pasá el cursor por un marcador o enfocalo con el teclado para ver el tipo. Al elegir un marcador o un evento del feed, se abre su detalle y se traza una ruta sugerida. Cerrar el detalle vuelve a mostrar la ruta fija.
+La vista general de COYS muestra tickets de mantenimiento urbano. El listado y los marcadores comparten filtros de tipo, estado y área. Pasá el cursor o enfocá un marcador para ver el resumen. Seleccioná el marcador o la fila para abrir el detalle, con avistamientos, gravedad, área responsable, historial y próximo paso.
 
-El mock está en `src/mock.json`. Las coordenadas usan el orden longitud, latitud. Ejecutá `python3 scripts/generar-rutas.py` al cambiar las paradas o los eventos. El script usa OSRM para elegir la inserción con menor desvío estimado según la matriz vial y generar las geometrías por calles. La app lee `src/street-routes.json` para que la interacción funcione sin pedir rutas al servidor público. Los recorridos usan perfil de auto y datos simulados.
+Alterná entre Atención, que muestra concentración de tickets activos, y Cobertura, que muestra una grilla de observaciones simuladas del 12/11/2026. El gris identifica celdas sin observación registrada. La cobertura se mantiene independiente de los filtros de tickets.
 
-El mapa usa MapLibre y cartografía de OpenFreeMap. El feed sigue disponible si la cartografía falla.
+Para probar el flujo, usá los botones de simulación del panel. Un avistamiento se suma al ticket del contenedor, después se simula el aviso al área y una pasada posterior lo marca como posiblemente resuelto. Reiniciar vuelve al primer avistamiento. Los datos están en `src/tickets-mock.json` y son propios del prototipo. La cartografía usa MapLibre y OpenFreeMap. El listado sigue disponible si falla el mapa.
+
+El escenario anterior de recolección se conserva en `src/mock.json` y `src/street-routes.json`. Su script `scripts/generar-rutas.py` genera geometrías con OSRM.
 
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)

@@ -1,0 +1,207 @@
+{
+  "city": "Córdoba",
+  "center": [
+    -64.1901,
+    -31.4184
+  ],
+  "date": "12/11/2026",
+  "tickets": [
+    {
+      "id": "CBA-104",
+      "address": "Oncativo y Rivadavia",
+      "place": "Mercado Norte",
+      "position": [
+        -64.1809,
+        -31.4088
+      ],
+      "level": "Alta",
+      "type": "Contenedor rebalsado",
+      "area": "Higiene urbana",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:32",
+          "source": "Móvil COYS",
+          "confidence": 94
+        }
+      ]
+    },
+    {
+      "id": "CBA-103",
+      "address": "Belgrano y Fructuoso Rivera",
+      "place": "Güemes",
+      "position": [
+        -64.1908,
+        -31.4262
+      ],
+      "level": "Alta",
+      "type": "Bache",
+      "area": "Vía pública",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:29",
+          "source": "Cordobeses en Alerta",
+          "confidence": 89
+        },
+        {
+          "kind": "notice",
+          "time": "14:29"
+        }
+      ]
+    },
+    {
+      "id": "CBA-102",
+      "address": "9 de Julio y General Paz",
+      "place": "Centro",
+      "position": [
+        -64.1866,
+        -31.4148
+      ],
+      "level": "Media",
+      "type": "Luminaria apagada",
+      "area": "Alumbrado",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:23",
+          "source": "Móvil policial",
+          "confidence": 82
+        },
+        {
+          "kind": "notice",
+          "time": "14:23"
+        }
+      ]
+    },
+    {
+      "id": "CBA-101",
+      "address": "Buenos Aires y San Lorenzo",
+      "place": "Nueva Córdoba",
+      "position": [
+        -64.1847,
+        -31.425
+      ],
+      "level": "Baja",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:18",
+          "source": "Móvil COYS",
+          "confidence": 76
+        },
+        {
+          "kind": "notice",
+          "time": "14:18"
+        }
+      ]
+    },
+    {
+      "id": "CBA-105",
+      "address": "Colón y Santa Fe",
+      "place": "Alberdi",
+      "position": [
+        -64.2014,
+        -31.4119
+      ],
+      "level": "Media",
+      "type": "Bache",
+      "area": "Vía pública",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:34",
+          "source": "Cordobeses en Alerta",
+          "confidence": 91
+        }
+      ]
+    },
+    {
+      "id": "CBA-106",
+      "address": "27 de Abril y Belgrano",
+      "place": "Centro",
+      "position": [
+        -64.1901,
+        -31.4169
+      ],
+      "level": "Alta",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:37",
+          "source": "Móvil policial",
+          "confidence": 87
+        },
+        {
+          "kind": "notice",
+          "time": "14:37"
+        }
+      ]
+    },
+    {
+      "id": "CBA-107",
+      "address": "Estrada y Buenos Aires",
+      "place": "Nueva Córdoba",
+      "position": [
+        -64.1851,
+        -31.4282
+      ],
+      "level": "Baja",
+      "type": "Contenedor rebalsado",
+      "area": "Higiene urbana",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:40",
+          "source": "Móvil COYS",
+          "confidence": 79
+        },
+        {
+          "kind": "notice",
+          "time": "14:40"
+        }
+      ]
+    }
+  ],
+  "replay": {
+    "ticketId": "CBA-104",
+    "activity": [
+      {
+        "kind": "sighting",
+        "time": "14:43",
+        "source": "Móvil policial",
+        "confidence": 96
+      },
+      {
+        "kind": "notice",
+        "time": "14:44"
+      },
+      {
+        "kind": "clear",
+        "time": "15:05",
+        "source": "Móvil COYS"
+      }
+    ]
+  },
+  "coverage": {
+    "origin": [
+      -64.211,
+      -31.437
+    ],
+    "cellSize": [
+      0.009,
+      0.007
+    ],
+    "rows": [
+      "10010",
+      "11110",
+      "11110",
+      "11100",
+      "01110"
+    ]
+  }
+}
