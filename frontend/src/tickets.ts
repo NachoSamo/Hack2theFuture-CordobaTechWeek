@@ -47,7 +47,7 @@ export function status(ticket: Ticket) {
 
 export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']
 export const levels: Record<string, string> = { Alta: '#ed8a6e', Media: '#e2bc5e', Baja: '#86bea6' }
-export type Layer = 'attention' | 'coverage'
+export type Layer = 'tickets' | 'attention' | 'coverage' | 'routes'
 
 export function locationLabel(ticket: Ticket) {
   const reference = ticket.streetReference

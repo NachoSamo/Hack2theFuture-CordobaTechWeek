@@ -11,12 +11,12 @@ type Props = {
   tickets: Ticket[]
   selected: Ticket | undefined
   layer: Layer
-  showRoutes: boolean
   suggestion?: StreetRoute
   onSelect: (id: string) => void
 }
 
-export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSelect }: Props) {
+export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Props) {
+  const showRoutes = layer === 'routes'
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -30,8 +30,8 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
         container: host.current,
         style: 'https://tiles.openfreemap.org/styles/dark',
         center,
-        zoom: 13.65,
-        pitch: 49,
+        zoom: 13.25,
+        pitch: 43,
         bearing: -22,
       })
     } catch {
@@ -55,8 +55,8 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
       map.addLayer({
         id: 'attention', type: 'fill', source: 'attention',
         paint: {
-          'fill-color': ['step', ['number', ['get', 'count'], 0], '#367572', 1, '#b57f3c', 2, '#be594c'],
-          'fill-opacity': 0.36,
+          'fill-color': ['step', ['number', ['get', 'count'], 0], '#41676b', 1, '#a9784a', 2, '#ce775b'],
+          'fill-opacity': ['step', ['number', ['get', 'count'], 0], 0.12, 1, 0.26, 2, 0.38],
         },
       }, firstLabel)
       map.addSource('coverage', { type: 'geojson', data: coverage })
@@ -64,9 +64,8 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
         id: 'coverage', type: 'fill', source: 'coverage',
         layout: { visibility: 'none' },
         paint: {
-          'fill-color': ['case', ['boolean', ['get', 'observed'], false], '#428571', '#a5b3a9'],
-          'fill-opacity': 0.42,
-          'fill-outline-color': '#778784',
+          'fill-color': ['case', ['boolean', ['get', 'observed'], false], '#539b88', '#91989b'],
+          'fill-opacity': ['case', ['boolean', ['get', 'observed'], false], 0.26, 0.16],
         },
       }, firstLabel)
       const vector = Object.entries(map.getStyle().sources).find(([, source]) => source.type === 'vector')?.[0]
@@ -86,7 +85,7 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
       map.addLayer({
         id: 'route-lines', type: 'line', source: 'routes',
         layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': ['get', 'color'], 'line-width': ['get', 'width'] },
+        paint: { 'line-color': ['get', 'color'], 'line-width': ['get', 'width'], 'line-opacity': 0.92 },
       }, firstLabel)
       setReady(true)
     })
@@ -131,6 +130,9 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
     if (!ready || !map) return
     map.setLayoutProperty('attention', 'visibility', layer === 'attention' ? 'visible' : 'none')
     map.setLayoutProperty('coverage', 'visibility', layer === 'coverage' ? 'visible' : 'none')
+    if (map.getLayer('city-buildings')) {
+      map.setLayoutProperty('city-buildings', 'visibility', layer === 'routes' ? 'none' : 'visible')
+    }
   }, [ready, layer])
 
   useEffect(() => {
@@ -144,7 +146,7 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
     if (!ready || !map || !showRoutes) return
     const features: FeatureCollection<LineString>['features'] = [scenario.routes.fixed, ...(suggestion ? [suggestion] : [])].map((route, index) => ({
       type: 'Feature',
-      properties: { color: index === 0 ? '#97aed8' : '#dff691', width: index === 0 ? 5 : 3 },
+      properties: { color: index === 0 ? '#94a9bf' : '#dff691', width: index === 0 ? (suggestion ? 5 : 3) : 2.5 },
       geometry: { type: 'LineString', coordinates: route.coordinates },
     }))
     map.getSource<GeoJSONSource>('routes')?.setData({ type: 'FeatureCollection', features })
@@ -166,13 +168,13 @@ export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSe
     const map = instance.current
     if (!ready || !map) return
     const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420
-    if (showRoutes && (!selected || suggestion)) {
+    if (showRoutes) {
       const path = suggestion ? [...scenario.routes.fixed.coordinates, ...suggestion.coordinates] : scenario.routes.fixed.coordinates
       const bounds = path.reduce((area, point) => area.extend(point), new maplibre.LngLatBounds())
-      map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: -22, pitch: 49, duration })
+      map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: 0, pitch: 16, duration })
       return
     }
-    map.easeTo({ center: selected?.position ?? center, duration })
+    map.easeTo({ center: selected?.position ?? center, zoom: 13.25, pitch: 43, bearing: -22, duration })
   }, [ready, selected?.position, showRoutes, suggestion])
 
   return <>
