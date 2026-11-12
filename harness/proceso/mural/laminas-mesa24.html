@@ -1,0 +1,888 @@
+<title>Mural Mesa 24</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..900&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap">
+<style>
+/* Layout: una pared de láminas; cada pestaña es una lámina numerada con post-its sobre un tablero */
+:root {
+  --board: #e9edf3;
+  --board-dot: #cdd5e2;
+  --sheet: #ffffff;
+  --ink: #14244a;
+  --ink-soft: #4a5878;
+  --line: #d3dae6;
+  --navy: #14244a;
+  --navy-ink: #ffffff;
+  --navy-soft: #2a3d6e;
+  --red: #d22b2b;
+  --red-ink: #ffffff;
+  --red-soft: #fbe3e1;
+  --focus: #2f6bff;
+  --pi-ink: #1d2233;
+  --pi-amarillo: #fde98c;
+  --pi-celeste: #c4dcfb;
+  --pi-rosa: #f9cfe2;
+  --pi-verde: #c5efd1;
+  --pi-blanco: #ffffff;
+  --pi-rojo: #fbd0cc;
+  --pi-lila: #ddd3f5;
+  --tag-res: #1f7a4d;
+  --tag-mov: #2357c6;
+  --tag-dat: #7a3fb5;
+  --ring1: #f3b9b4;
+  --ring2: #c4dcfb;
+  --ring3: #c5efd1;
+  --heat0: #e4e9f1;
+  --heat1: #fbd38d;
+  --heat2: #f59e5b;
+  --heat3: #d22b2b;
+  --shadow: 0 1px 0 rgba(20,36,74,.06), 0 6px 14px -8px rgba(20,36,74,.35);
+  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-hand: "Kalam", "Comic Sans MS", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --board: #0b1328; --board-dot: #1b2747; --sheet: #111c3a; --ink: #e7ecf7; --ink-soft: #a8b4cf;
+    --line: #26355e; --navy: #182a57; --navy-ink: #ffffff; --navy-soft: #2b3f75; --red: #ff5b52; --red-ink: #1a0606;
+    --red-soft: #3a1720; --focus: #8fb0ff; --pi-ink: #1a1f2e;
+    --pi-amarillo: #ecd677; --pi-celeste: #a9c6ee; --pi-rosa: #e9b6cd; --pi-verde: #a9dcb8; --pi-blanco: #e4e8f0; --pi-rojo: #eeb3ad; --pi-lila: #c6b8ea;
+    --tag-res: #5fd39a; --tag-mov: #7fa6ff; --tag-dat: #c39bf0;
+    --ring1: #6b2f3a; --ring2: #26467e; --ring3: #1f5a3b;
+    --heat0: #1d2a4c; --heat1: #8a6a2a; --heat2: #c06a33; --heat3: #ff5b52;
+    --shadow: 0 1px 0 rgba(0,0,0,.3), 0 8px 18px -10px rgba(0,0,0,.8);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --board: #0b1328; --board-dot: #1b2747; --sheet: #111c3a; --ink: #e7ecf7; --ink-soft: #a8b4cf;
+  --line: #26355e; --navy: #182a57; --navy-ink: #ffffff; --navy-soft: #2b3f75; --red: #ff5b52; --red-ink: #1a0606;
+  --red-soft: #3a1720; --focus: #8fb0ff; --pi-ink: #1a1f2e;
+  --pi-amarillo: #ecd677; --pi-celeste: #a9c6ee; --pi-rosa: #e9b6cd; --pi-verde: #a9dcb8; --pi-blanco: #e4e8f0; --pi-rojo: #eeb3ad; --pi-lila: #c6b8ea;
+  --tag-res: #5fd39a; --tag-mov: #7fa6ff; --tag-dat: #c39bf0;
+  --ring1: #6b2f3a; --ring2: #26467e; --ring3: #1f5a3b;
+  --heat0: #1d2a4c; --heat1: #8a6a2a; --heat2: #c06a33; --heat3: #ff5b52;
+  --shadow: 0 1px 0 rgba(0,0,0,.3), 0 8px 18px -10px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--board);
+  background-image: radial-gradient(var(--board-dot) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Cabecera */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--navy); color: var(--navy-ink); box-shadow: 0 4px 16px -10px rgba(0,0,0,.6); }
+.top .wrap { padding-block: 10px 0; }
+.brand { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.bloque { background: var(--red); color: #fff; font-family: var(--f-display); font-weight: 900; font-stretch: 80%; letter-spacing: .08em; font-size: 12px; padding: 4px 9px 3px; border-radius: 2px; transform: rotate(-2deg); }
+.brand-txt { font-size: 13px; opacity: .9; min-width: 0; }
+.brand-txt b { font-family: var(--f-display); font-weight: 800; font-size: 15px; letter-spacing: .01em; }
+.brand-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.estado { font-size: 12px; padding: 4px 9px; border-radius: 999px; background: var(--navy-soft); white-space: nowrap; }
+.estado[data-k="err"] { background: var(--red); color: #fff; }
+.btn-modo { background: #fff; color: #14244a; border: 0; border-radius: 6px; padding: 6px 12px; font-weight: 700; font-size: 13px; }
+.btn-modo[aria-pressed="true"] { background: var(--red); color: #fff; }
+.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-top: 10px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: 0 0 auto; display: flex; align-items: baseline; gap: 6px; background: transparent; border: 0; color: var(--navy-ink); opacity: .72; padding: 8px 12px 10px; border-radius: 8px 8px 0 0; font-weight: 600; font-size: 14px; }
+.tab .n { font-family: var(--f-display); font-weight: 900; font-size: 13px; color: #ff8f88; }
+.tab:hover { opacity: 1; }
+.tab[aria-selected="true"] { background: var(--board); color: var(--ink); opacity: 1; }
+.tab[aria-selected="true"] .n { color: var(--red); }
+.tab-sep { align-self: center; opacity: .35; font-size: 12px; padding: 0 1px; }
+
+/* Lámina */
+main { padding-block: 22px 60px; }
+.lamina { background: var(--sheet); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow); padding: clamp(16px, 3.5vw, 36px); position: relative; }
+.lamina::before, .lamina::after { content: ""; position: absolute; top: -9px; width: 70px; height: 20px; background: var(--red-soft); opacity: .9; }
+.lamina::before { left: 28px; transform: rotate(-4deg); }
+.lamina::after { right: 28px; transform: rotate(3deg); }
+.l-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; align-items: end; border-bottom: 3px solid var(--ink); padding-bottom: 16px; margin-bottom: 14px; }
+.l-num { font-family: var(--f-display); font-weight: 900; font-stretch: 75%; font-size: clamp(64px, 11vw, 112px); line-height: .8; color: transparent; -webkit-text-stroke: 2px var(--red); grid-row: span 2; }
+.l-titulo { font-family: var(--f-display); font-weight: 900; font-stretch: 85%; font-size: clamp(28px, 4.6vw, 46px); line-height: 1; margin: 0; text-wrap: balance; text-transform: uppercase; letter-spacing: -.005em; }
+.l-bajada { margin: 0; color: var(--ink-soft); font-size: 16px; max-width: 65ch; }
+.hilo { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-soft); margin-bottom: 22px; }
+.hilo-lbl { flex: 0 0 auto; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); border: 1.5px solid var(--red); border-radius: 3px; padding: 1px 6px; margin-top: 1px; }
+.hilo .ed { min-width: 0; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; }
+.sec { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.sec.full { grid-column: 1 / -1; }
+.sec-h { display: flex; align-items: center; gap: 8px; margin: 0; font-family: var(--f-display); font-weight: 800; font-stretch: 90%; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+.sec-h .ring-dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; border: 1.5px solid var(--ink); }
+.sec-h .ed { min-width: 0; }
+.vacio { border: 2px dashed var(--line); border-radius: 6px; padding: 14px; color: var(--ink-soft); font-size: 14px; font-style: italic; }
+
+/* Post-its */
+.notes { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.postit { position: relative; width: 190px; max-width: 100%; min-height: 120px; padding: 14px 14px 12px; background: var(--pi-amarillo); color: var(--pi-ink); box-shadow: var(--shadow); border-radius: 2px 2px 10px 2px; display: flex; flex-direction: column; gap: 6px; transform: rotate(var(--rot, 0deg)); transition: transform .15s ease; }
+.postit:hover { transform: rotate(0deg); }
+.full .postit { width: 200px; }
+.postit .txt { font-family: var(--f-hand); font-size: 17px; line-height: 1.3; white-space: pre-wrap; overflow-wrap: anywhere; }
+.postit .num { font-family: var(--f-display); font-weight: 900; font-size: 13px; opacity: .55; }
+.postit .nota { font-size: 12px; line-height: 1.35; opacity: .8; font-style: italic; white-space: pre-wrap; }
+.c-amarillo { background: var(--pi-amarillo); } .c-celeste { background: var(--pi-celeste); } .c-rosa { background: var(--pi-rosa); }
+.c-verde { background: var(--pi-verde); } .c-blanco { background: var(--pi-blanco); border: 1px solid var(--line); } .c-rojo { background: var(--pi-rojo); } .c-lila { background: var(--pi-lila); }
+.consigna { margin: -4px 0 0; font-size: 12.5px; color: var(--ink-soft); font-style: italic; max-width: 70ch; white-space: pre-wrap; }
+.ficha { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; font-size: 13px; color: var(--ink-soft); margin: -6px 0 14px; }
+.ficha .campo { display: inline-flex; gap: 6px; align-items: baseline; }
+.ficha .ed { color: var(--ink); font-weight: 700; border-bottom: 1.5px dashed var(--line); min-width: 3ch; padding: 0 2px; }
+.ficha .ctrl { background: var(--sheet); color: var(--ink); border-color: var(--line); }
+.consigna-l { flex-basis: 100%; font-style: italic; }
+.l-nota-pie { margin-top: 22px; padding: 10px 14px; border-left: 4px solid var(--navy); background: var(--board); font-size: 13.5px; color: var(--ink-soft); white-space: pre-wrap; }
+.creditos { text-align: center; font-size: 12px; color: var(--ink-soft); padding-block: 8px 0; }
+.postit.star { outline: 3px solid var(--red); outline-offset: 3px; width: 260px; }
+.cinta { position: absolute; top: -12px; right: -8px; background: var(--red); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; transform: rotate(4deg); }
+.warn { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; font-size: 11px; font-weight: 700; background: rgba(255,255,255,.65); color: #8a3b00; border: 1px solid #e0a35a; border-radius: 3px; padding: 0 5px; }
+.tag { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--ink-soft); border-radius: 3px; padding: 1px 7px; }
+.tag[data-t="residuos"] { background: var(--tag-res); } .tag[data-t="movilidad"] { background: var(--tag-mov); } .tag[data-t="datos"] { background: var(--tag-dat); }
+:root[data-theme="dark"] .tag, .tag { color: #fff; }
+
+/* Controles de edición */
+.ctrls { display: none; gap: 4px; margin-top: auto; padding-top: 4px; }
+.editing .ctrls { display: flex; }
+.ctrl { border: 1px solid rgba(0,0,0,.18); background: rgba(255,255,255,.6); color: #1d2233; border-radius: 4px; font-size: 12px; padding: 2px 7px; line-height: 1.4; }
+.ctrl[aria-pressed="true"] { background: #1d2233; color: #fff; }
+.ctrl.del { margin-left: auto; }
+.add { display: none; align-self: flex-start; border: 2px dashed var(--line); background: transparent; color: var(--ink-soft); border-radius: 6px; padding: 8px 14px; font-weight: 600; font-size: 13px; }
+.add:hover { border-color: var(--red); color: var(--red); }
+.editing .add { display: inline-block; }
+.notes .add { width: 190px; min-height: 120px; }
+.ed { outline: none; border-radius: 3px; }
+.editing .ed { cursor: text; box-shadow: inset 0 -1px 0 rgba(47,107,255,.35); }
+.editing .ed:hover { background: rgba(47,107,255,.07); }
+.editing .ed:focus { background: rgba(47,107,255,.12); box-shadow: inset 0 0 0 2px var(--focus); }
+.ed:empty::before { content: attr(data-ph); opacity: .5; font-style: italic; pointer-events: none; }
+.vista .ed.opt:empty { display: none; }
+
+/* Texto, chips, destacado, reglas, nota */
+.texto .ed { font-size: 18px; line-height: 1.5; max-width: 70ch; white-space: pre-wrap; display: block; }
+.texto.grande .ed { font-family: var(--f-display); font-weight: 700; font-stretch: 90%; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.25; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { display: flex; flex-direction: column; gap: 2px; background: var(--board); border: 1px solid var(--line); border-left: 5px solid var(--navy); border-radius: 4px; padding: 8px 14px; min-width: 150px; }
+.chip .k { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.chip .v { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.1; }
+.chip .ctrls { margin-top: 4px; }
+.chip .ctrl { background: var(--sheet); color: var(--ink); border-color: var(--line); }
+.destacado { background: var(--navy); color: #fff; border-radius: 4px; padding: 18px 20px; font-family: var(--f-display); font-weight: 700; font-stretch: 90%; font-size: 21px; line-height: 1.25; border-left: 8px solid var(--red); }
+.destacado .ed { white-space: pre-wrap; display: block; }
+.reglas { list-style: none; margin: 0; padding: 14px 16px; border: 2.5px solid var(--ink); border-radius: 4px; display: grid; gap: 8px; }
+.reglas li { display: flex; gap: 10px; align-items: baseline; font-weight: 600; }
+.reglas li::before { content: "✓"; color: var(--red); font-weight: 900; }
+.reglas li .ed { flex: 1; min-width: 0; }
+.nota-pie { font-size: 13px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 10px; display: flex; gap: 8px; }
+.nota-pie .ed { flex: 1; }
+.fila-ctrls .ctrl, .reglas .ctrl, .nota-pie .ctrl, .qa .ctrl, .pasos .ctrl, .votos .ctrl, .tabla .ctrl, .comp .ctrl { background: var(--sheet); color: var(--ink); border-color: var(--line); }
+.inline-ctrls { display: none; gap: 4px; flex: 0 0 auto; }
+.editing .inline-ctrls { display: inline-flex; }
+
+/* Votos */
+.votos { display: grid; gap: 10px; }
+.voto { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 14px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--sheet); }
+.voto .hmw-n { font-family: var(--f-display); font-weight: 900; font-size: 22px; color: var(--ink-soft); width: 1.4em; text-align: center; }
+.voto .ed { white-space: pre-wrap; }
+.voto.star { border: 2px solid var(--red); background: var(--red-soft); }
+.voto.star .hmw-n { color: var(--red); }
+.voto .eleg { grid-column: 2 / -1; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--red); }
+.voto.star .txtw { font-weight: 700; font-size: 17px; }
+.dots { display: flex; gap: 5px; align-items: center; }
+.dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--ink); background: transparent; padding: 0; }
+.dot.on { background: var(--red); border-color: var(--red); }
+.vista .dot { cursor: default; }
+.dots .cnt { font-size: 12px; color: var(--ink-soft); margin-left: 4px; font-variant-numeric: tabular-nums; min-width: 3.5em; }
+.voto .inline-ctrls { grid-column: 2 / -1; }
+
+/* Pasos */
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: paso; }
+.pasos li { counter-increment: paso; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; position: relative; padding-bottom: 16px; }
+.pasos li::before { content: counter(paso, decimal-leading-zero); width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--f-display); font-weight: 900; font-size: 15px; }
+.pasos li:not(:last-child)::after { content: ""; position: absolute; left: 19px; top: 42px; bottom: 2px; width: 2px; background: repeating-linear-gradient(var(--red) 0 5px, transparent 5px 9px); }
+.pasos .cuerpo { padding-top: 8px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pasos .ed { white-space: pre-wrap; font-size: 15.5px; }
+
+/* Tabla */
+.tabla-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14.5px; }
+th { text-align: left; background: var(--navy); color: #fff; font-family: var(--f-display); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: 12.5px; padding: 10px 12px; }
+td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+td:last-child { font-weight: 700; }
+td.c-ctrl { width: 1%; white-space: nowrap; }
+
+/* Preguntas */
+.qa { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.qa-item { border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; background: var(--sheet); min-width: 0; }
+.qa-item .q { font-weight: 700; font-size: 16px; }
+.qa-item .a { color: var(--ink-soft); white-space: pre-wrap; }
+
+/* Comparar */
+.comp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.comp-p { border: 2px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.comp-p.sol { border-color: var(--red); }
+.comp-p .k { font-family: var(--f-display); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: .04em; }
+.comp-p.sol .k { color: var(--red); }
+.comp-p svg { width: 100%; max-width: 100%; height: auto; display: block; }
+.comp-p .ed { white-space: pre-wrap; }
+.esq { font-size: 11px; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; }
+.m-cell { fill: var(--heat0); } .m-h1 { fill: var(--heat1); } .m-h2 { fill: var(--heat2); } .m-h3 { fill: var(--heat3); }
+.m-pt { fill: var(--ink-soft); } .m-route { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.m-route.sol { stroke: var(--navy); stroke-dasharray: none; }
+:root[data-theme="dark"] .m-route.sol { stroke: #fff; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .m-route.sol { stroke: #fff; } }
+.m-truck { fill: var(--red); }
+
+/* Anillos */
+.anillos { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 28px; align-items: center; margin-bottom: 26px; }
+.rings { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; }
+.ring { position: absolute; border-radius: 50%; border: 1.5px solid var(--ink); display: flex; justify-content: center; }
+.ring > span { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-top: 7px; color: var(--ink); text-align: center; padding: 0 10px; }
+.r3 { inset: 0; background: var(--ring3); }
+.r2 { inset: 13%; background: var(--ring2); }
+.r1 { inset: 26%; background: var(--ring1); }
+.r0 { inset: 39%; background: var(--red); border-color: var(--red); align-items: center; }
+.r0 > span { margin: 0; color: #fff; font-size: 11px; letter-spacing: .02em; text-transform: none; line-height: 1.2; font-weight: 700; }
+.leyenda { display: grid; gap: 10px; }
+.ley { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.ley i { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ink); flex: 0 0 auto; }
+.ley b { font-family: var(--f-display); font-size: 22px; font-weight: 900; min-width: 1.6em; font-variant-numeric: tabular-nums; }
+.centro-box { border: 3px solid var(--red); border-radius: 6px; padding: 14px 16px; }
+.centro-box .ed { font-family: var(--f-display); font-weight: 800; font-stretch: 90%; font-size: clamp(20px, 2.8vw, 28px); line-height: 1.2; display: block; white-space: pre-wrap; }
+
+/* Empatía */
+.lay-empatia .sec[data-s="dice"], .lay-empatia .sec[data-s="piensa"], .lay-empatia .sec[data-s="hace"], .lay-empatia .sec[data-s="siente"] { border: 2px dashed var(--line); border-radius: 8px; padding: 14px; }
+.lay-empatia .sec[data-s="persona"] .ed { font-family: var(--f-display); font-weight: 900; font-stretch: 85%; font-size: clamp(22px, 3vw, 30px); text-transform: uppercase; line-height: 1.05; color: var(--red); }
+
+/* Pie de lámina */
+.l-pie { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.nav-btn { background: transparent; border: 1.5px solid var(--ink); border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 13.5px; }
+.nav-btn.next { background: var(--ink); color: var(--sheet); margin-left: auto; }
+
+/* Herramientas de edición */
+.herr { display: none; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; padding: 10px 12px; border-radius: 6px; background: var(--sheet); border: 1px solid var(--line); font-size: 13px; }
+.editing .herr { display: flex; }
+.herr p { margin: 0; color: var(--ink-soft); flex: 1 1 240px; }
+.hbtn { border: 1px solid var(--line); background: var(--board); border-radius: 6px; padding: 6px 12px; font-weight: 600; font-size: 13px; }
+.hbtn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+.panel { margin-bottom: 16px; padding: 16px; border-radius: 6px; background: var(--sheet); border: 2px solid var(--ink); display: grid; gap: 10px; }
+.panel h3 { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 18px; }
+.panel p { margin: 0; color: var(--ink-soft); }
+.panel textarea { width: 100%; min-height: 160px; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; background: var(--board); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 8px; }
+.panel .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.panel .err { color: var(--red); font-weight: 600; }
+.aviso { background: var(--sheet); border: 2px dashed var(--line); border-radius: 6px; padding: 28px; text-align: center; color: var(--ink-soft); display: grid; gap: 12px; justify-items: center; }
+.aviso h2 { margin: 0; color: var(--ink); font-family: var(--f-display); font-weight: 800; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--sheet); padding: 10px 14px; border-radius: 8px; display: flex; gap: 12px; align-items: center; font-size: 14px; z-index: 20; box-shadow: var(--shadow); max-width: calc(100% - 32px); }
+.toast button { background: transparent; border: 1px solid currentColor; color: inherit; border-radius: 5px; padding: 3px 9px; font-weight: 700; font-size: 13px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .anillos { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .leyenda { justify-self: stretch; }
+  .comp { grid-template-columns: minmax(0, 1fr); }
+  .postit, .full .postit, .notes .add { width: calc(50% - 7px); }
+  .postit.star { width: 100%; }
+  .brand-txt span { display: none; }
+  .l-head { grid-template-columns: minmax(0, 1fr); }
+  .l-num { grid-row: auto; font-size: 64px; }
+}
+@media (max-width: 380px) { .postit, .full .postit, .notes .add { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .postit { transform: none !important; transition: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="bloque">BLOQUE ROJO</span>
+      <div class="brand-txt"><b>Mesa 24</b> <span>· Hack to the Future · Córdoba Tech Week</span></div>
+      <div class="brand-right">
+        <span class="estado" id="estado" role="status">Conectando…</span>
+        <button class="btn-modo" id="btnModo" aria-pressed="false" hidden>Editar</button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Láminas del mural"></nav>
+  </div>
+</header>
+
+<main class="wrap vista" id="main">
+  <div class="herr" id="herr">
+    <p>Modo edición: hacé clic en cualquier texto para cambiarlo. Los cambios se guardan solos para todo el equipo.</p>
+    <button class="hbtn" id="btnExport">Exportar JSON</button>
+    <button class="hbtn" id="btnImport">Importar JSON</button>
+  </div>
+  <div id="panel"></div>
+  <div id="lamina">
+    <div class="aviso"><h2>Cargando el mural…</h2><p>Estamos trayendo las láminas guardadas del equipo.</p></div>
+  </div>
+  <p class="creditos">Hack to the Future · Global Gateway · Financiado por la Unión Europea · Centro de Comercio Internacional · En colaboración con Córdoba Clúster</p>
+</main>
+<div id="toastHost"></div>
+
+<script>
+(function () {
+  "use strict";
+  const ORDEN = ["l01", "l02", "l03", "l04", "l05", "l06"];
+  const S = {
+    docs: {}, edit: false, canWrite: true, cur: "l01", loaded: false,
+    dirty: {}, timers: {}, chains: {}, pendingRemote: {}, db: null, col: null, saving: 0
+  };
+  const $ = (id) => document.getElementById(id);
+
+  function h(tag, props, ...kids) {
+    const el = document.createElement(tag);
+    if (props) for (const k in props) {
+      const v = props[k];
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k === "text") el.textContent = v;
+      else if (k === "style") el.setAttribute("style", v);
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else if (k === "dataset") Object.assign(el.dataset, v);
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    for (const c of kids.flat(Infinity)) if (c != null && c !== false) el.append(c.nodeType ? c : String(c));
+    return el;
+  }
+  const uid = () => "x" + Math.random().toString(36).slice(2, 9);
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+  function rot(id) { let n = 0; for (const ch of String(id)) n = (n * 31 + ch.charCodeAt(0)) | 0; return ((Math.abs(n) % 5) - 2) * 0.7; }
+
+  function setEstado(txt, k) { const e = $("estado"); e.textContent = txt; e.dataset.k = k || ""; }
+
+  /* ---------- normalizar ---------- */
+  function norm(d) {
+    d = d || {};
+    d.secciones = d.secciones && typeof d.secciones === "object" ? d.secciones : {};
+    if (!Array.isArray(d.orden)) d.orden = Object.keys(d.secciones);
+    for (const k of Object.keys(d.secciones)) if (!d.orden.includes(k)) d.orden.push(k);
+    for (const k of d.orden) {
+      const s = d.secciones[k]; if (!s) continue;
+      if (!Array.isArray(s.items)) s.items = [];
+      if ((s.tipo === "texto" || s.tipo === "destacado") && s.items.length === 0) s.items.push({ id: uid(), t: "" });
+      if (s.tipo === "comparar") while (s.items.length < 2) s.items.push({ id: uid(), tag: s.items.length ? "Con la solución" : "Hoy", t: "" });
+    }
+    return d;
+  }
+
+  /* ---------- editable ---------- */
+  function ed(tag, a, value, ph, cls) {
+    const el = h(tag, {
+      class: "ed " + (cls || ""),
+      "data-l": a.l, "data-s": a.s || "", "data-i": a.i || "", "data-f": a.f,
+      "data-ph": ph || "Escribí acá…",
+      contenteditable: S.edit ? "true" : null,
+      spellcheck: S.edit ? "true" : null,
+      role: S.edit ? "textbox" : null,
+      "aria-label": S.edit ? (ph || "Texto editable") : null
+    });
+    el.textContent = value || "";
+    return el;
+  }
+
+  function findItem(l, s, i) {
+    const sec = S.docs[l] && S.docs[l].secciones[s];
+    return sec ? sec.items.find((x) => x.id === i) : null;
+  }
+
+  function onInput(e) {
+    const el = e.target.closest && e.target.closest(".ed");
+    if (!el || !S.edit) return;
+    let txt = el.innerText.replace(/\n$/, "");
+    if (!txt.trim()) { txt = ""; if (el.innerHTML !== "") el.innerHTML = ""; }
+    const { l, s, i, f } = el.dataset;
+    const doc = S.docs[l]; if (!doc) return;
+    if (!s) { doc[f] = txt; markDirty(l, null, f); }
+    else if (!i) { doc.secciones[s][f] = txt; markDirty(l, s); }
+    else { const it = findItem(l, s, i); if (!it) return; it[f] = txt; markDirty(l, s); }
+    if (l === "l02" && s === "centro") { const c = document.querySelector(".r0 > span"); if (c) c.textContent = txt || "El problema"; }
+    scheduleSave(l, 900);
+  }
+
+  /* ---------- guardado ---------- */
+  function markDirty(l, s, top) {
+    const d = S.dirty[l] || (S.dirty[l] = { secs: new Set(), top: new Set() });
+    if (s) d.secs.add(s); if (top) d.top.add(top);
+  }
+  function scheduleSave(l, ms) {
+    setEstado("Guardando…", "busy");
+    clearTimeout(S.timers[l]);
+    S.timers[l] = setTimeout(() => flush(l), ms);
+  }
+  function flush(l) {
+    const d = S.dirty[l]; if (!d || (!d.secs.size && !d.top.size)) return Promise.resolve();
+    delete S.dirty[l];
+    const doc = S.docs[l];
+    const patch = {};
+    d.top.forEach((f) => { patch[f] = doc[f]; });
+    if (d.secs.size) { patch.secciones = {}; d.secs.forEach((s) => { if (doc.secciones[s]) patch.secciones[s] = clone(doc.secciones[s]); }); }
+    S.saving++;
+    const run = async () => {
+      const ref = S.col.doc(l);
+      try {
+        try { await ref.update(patch); }
+        catch (e) { if (e && e.code === "invalid_argument") await ref.set(clone(doc)); else throw e; }
+        setEstado("Guardado para el equipo", "ok");
+      } catch (e) {
+        if (e && e.code === "unavailable") {
+          await new Promise((r) => setTimeout(r, 600 + Math.random() * 900));
+          try { await ref.update(patch); setEstado("Guardado para el equipo", "ok"); return; } catch (e2) { e = e2; }
+        }
+        d.secs.forEach((s) => markDirty(l, s)); d.top.forEach((f) => markDirty(l, null, f));
+        setEstado(e && e.code === "quota_exceeded" ? "Sin espacio para guardar" : "No se pudo guardar", "err");
+        if (e && e.code === "invalid_argument") { S.canWrite = false; applyWriteAccess(); }
+      } finally {
+        S.saving--;
+        maybeApplyPending(l);
+      }
+    };
+    S.chains[l] = (S.chains[l] || Promise.resolve()).then(run, run);
+    return S.chains[l];
+  }
+  function flushAll() { return Promise.all(Object.keys(S.dirty).map(flush)); }
+
+  function editingInside(l) {
+    const a = document.activeElement;
+    return !!(a && a.classList && a.classList.contains("ed") && a.dataset.l === l);
+  }
+  function maybeApplyPending(l) {
+    if (!S.pendingRemote[l]) return;
+    if (editingInside(l) || S.dirty[l] || S.saving) return;
+    const r = S.pendingRemote[l]; delete S.pendingRemote[l];
+    S.docs[l] = norm(r);
+    if (l === S.cur) renderLamina();
+    renderTabs();
+  }
+  document.addEventListener("focusout", (e) => {
+    const el = e.target.closest && e.target.closest(".ed"); if (!el) return;
+    const l = el.dataset.l;
+    if (S.dirty[l]) { clearTimeout(S.timers[l]); flush(l); }
+    setTimeout(() => maybeApplyPending(l), 300);
+  });
+  document.addEventListener("input", onInput);
+  document.addEventListener("paste", (e) => {
+    const el = e.target.closest && e.target.closest(".ed"); if (!el || !S.edit) return;
+    e.preventDefault();
+    const t = (e.clipboardData || window.clipboardData).getData("text/plain");
+    if (!document.execCommand("insertText", false, t)) { el.textContent += t; onInput({ target: el }); }
+  });
+
+  /* cambio estructural: guarda rápido y redibuja */
+  function cambio(l, s, fn) {
+    fn(S.docs[l].secciones[s]);
+    markDirty(l, s);
+    renderLamina();
+    scheduleSave(l, 250);
+  }
+
+  /* ---------- deshacer borrado ---------- */
+  let undoT = null;
+  function borrar(l, s, i) {
+    const sec = S.docs[l].secciones[s];
+    const idx = sec.items.findIndex((x) => x.id === i); if (idx < 0) return;
+    const [it] = sec.items.splice(idx, 1);
+    markDirty(l, s); renderLamina(); scheduleSave(l, 250);
+    toast("Borrado.", "Deshacer", () => { sec.items.splice(idx, 0, it); markDirty(l, s); renderLamina(); scheduleSave(l, 250); });
+  }
+  function toast(msg, act, fn) {
+    clearTimeout(undoT);
+    const host = $("toastHost"); host.textContent = "";
+    const t = h("div", { class: "toast", role: "status" }, h("span", { text: msg }),
+      act ? h("button", { text: act, onclick: () => { host.textContent = ""; fn(); } }) : null);
+    host.append(t);
+    undoT = setTimeout(() => { host.textContent = ""; }, 6000);
+  }
+
+  /* ---------- controles ---------- */
+  function ctrls(l, s, it, opts) {
+    opts = opts || {};
+    const box = h("div", { class: opts.inline ? "inline-ctrls" : "ctrls" });
+    box.append(h("button", { class: "ctrl", "aria-pressed": it.w ? "true" : "false", title: "Marcar como dudoso o ilegible",
+      onclick: () => cambio(l, s, () => { it.w = !it.w; }) }, "⚠️ dudoso"));
+    if (opts.star) box.append(h("button", { class: "ctrl", "aria-pressed": it.star ? "true" : "false", title: "Destacar",
+      onclick: () => cambio(l, s, () => { it.star = !it.star; }) }, "★"));
+    if (opts.del !== false) box.append(h("button", { class: "ctrl del", "aria-label": "Borrar", title: "Borrar",
+      onclick: () => borrar(l, s, it.id) }, "✕"));
+    return box;
+  }
+  const warnBadge = (it) => it.w ? h("span", { class: "warn" }, "⚠️ dudoso") : null;
+  const tagEl = (l, s, it, ph) => {
+    if (!S.edit && !it.tag) return null;
+    const e = ed("span", { l, s, i: it.id, f: "tag" }, it.tag, ph || "Etiqueta", "tag");
+    e.dataset.t = (it.tag || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    return e;
+  };
+  const notaEl = (l, s, it) => (S.edit || it.nota) ? ed("div", { l, s, i: it.id, f: "nota" }, it.nota, "Nota (opcional)", "nota opt") : null;
+  function addBtn(l, s, label, make) {
+    return h("button", { class: "add", onclick: () => {
+      const it = Object.assign({ id: uid(), t: "" }, make ? make() : {});
+      cambio(l, s, (sec) => sec.items.push(it));
+      const el = document.querySelector('.ed[data-i="' + it.id + '"][data-f="t"]'); if (el) el.focus();
+    } }, label);
+  }
+
+  /* ---------- tipos de sección ---------- */
+  const R = {
+    postits(l, s, sec) {
+      const box = h("div", { class: "notes" });
+      sec.items.forEach((it, n) => {
+        const p = h("div", { class: "postit c-" + (it.c || sec.color || "amarillo") + (it.star ? " star" : ""), style: "--rot:" + rot(it.id) + "deg" },
+          it.star ? h("span", { class: "cinta" }, "Elegida") : null,
+          sec.numerar ? h("span", { class: "num" }, String(n + 1).padStart(2, "0")) : null,
+          tagEl(l, s, it), warnBadge(it),
+          ed("div", { l, s, i: it.id, f: "t" }, it.t, "Escribí la idea…", "txt"),
+          notaEl(l, s, it),
+          ctrls(l, s, it, { star: true }));
+        box.append(p);
+      });
+      box.append(addBtn(l, s, "+ Agregar post-it"));
+      return box;
+    },
+    texto(l, s, sec) {
+      const it = sec.items[0];
+      return h("div", { class: "texto" + (s === "desafio" ? " grande" : "") },
+        warnBadge(it), ed("div", { l, s, i: it.id, f: "t" }, it.t, sec.ayuda), notaEl(l, s, it),
+        ctrls(l, s, it, { inline: true, del: false }));
+    },
+    destacado(l, s, sec) {
+      const it = sec.items[0];
+      return h("div", { class: "destacado" }, ed("div", { l, s, i: it.id, f: "t" }, it.t, sec.ayuda));
+    },
+    chips(l, s, sec) {
+      const box = h("div", { class: "chips" });
+      sec.items.forEach((it) => box.append(h("div", { class: "chip" },
+        ed("span", { l, s, i: it.id, f: "tag" }, it.tag, "Dato", "k"),
+        ed("span", { l, s, i: it.id, f: "t" }, it.t, "Valor", "v"),
+        warnBadge(it), notaEl(l, s, it), ctrls(l, s, it))));
+      box.append(addBtn(l, s, "+ Agregar dato", () => ({ tag: "" })));
+      return box;
+    },
+    reglas(l, s, sec) {
+      const ul = h("ul", { class: "reglas" });
+      sec.items.forEach((it) => ul.append(h("li", null, ed("span", { l, s, i: it.id, f: "t" }, it.t, "Regla"), warnBadge(it), ctrls(l, s, it, { inline: true }))));
+      return h("div", null, ul, addBtn(l, s, "+ Agregar regla"));
+    },
+    nota(l, s, sec) {
+      const box = h("div", null);
+      sec.items.forEach((it) => box.append(h("div", { class: "nota-pie" }, "ⓘ", ed("span", { l, s, i: it.id, f: "t" }, it.t, "Nota al pie"), ctrls(l, s, it, { inline: true }))));
+      box.append(addBtn(l, s, "+ Agregar nota"));
+      return box;
+    },
+    votos(l, s, sec) {
+      const box = h("div", { class: "votos" });
+      sec.items.forEach((it, n) => {
+        const v = Math.max(0, Math.min(5, Number(it.votos) || 0));
+        const dots = h("div", { class: "dots", role: "group", "aria-label": "Votos" });
+        for (let k = 1; k <= 5; k++) dots.append(h("button", {
+          class: "dot" + (k <= v ? " on" : ""), "aria-label": k + (k === 1 ? " voto" : " votos"),
+          "aria-pressed": k <= v ? "true" : "false", disabled: !S.edit,
+          onclick: () => cambio(l, s, () => { it.votos = (v === k ? k - 1 : k); })
+        }));
+        dots.append(h("span", { class: "cnt" }, v + (v === 1 ? " voto" : " votos")));
+        box.append(h("div", { class: "voto" + (it.star ? " star" : "") },
+          h("span", { class: "hmw-n" }, String(n + 1)),
+          h("div", { class: "txtw" }, warnBadge(it), ed("div", { l, s, i: it.id, f: "t" }, it.t, "¿Cómo podríamos…?"), notaEl(l, s, it)),
+          dots,
+          it.star ? h("span", { class: "eleg" }, "★ Pregunta elegida") : null,
+          ctrls(l, s, it, { inline: true, star: true })));
+      });
+      box.append(addBtn(l, s, "+ Agregar pregunta", () => ({ votos: 0 })));
+      return box;
+    },
+    pasos(l, s, sec) {
+      const ol = h("ol", { class: "pasos" });
+      sec.items.forEach((it) => ol.append(h("li", null, h("div", { class: "cuerpo" },
+        warnBadge(it), ed("div", { l, s, i: it.id, f: "t" }, it.t, "Describí el paso"), ctrls(l, s, it, { inline: true })))));
+      return h("div", null, ol, addBtn(l, s, "+ Agregar paso"));
+    },
+    tabla(l, s, sec) {
+      const tb = h("tbody");
+      sec.items.forEach((it) => tb.append(h("tr", null,
+        h("td", null, warnBadge(it), ed("div", { l, s, i: it.id, f: "t" }, it.t, "Problema")),
+        h("td", null, ed("div", { l, s, i: it.id, f: "m" }, it.m, "Mejora")),
+        h("td", null, ed("div", { l, s, i: it.id, f: "k" }, it.k, "Métrica")),
+        S.edit ? h("td", { class: "c-ctrl" }, ctrls(l, s, it, { inline: true })) : null)));
+      const t = h("table", null, h("thead", null, h("tr", null, h("th", null, "Problema"), h("th", null, "Mejora"), h("th", null, "Cómo lo medimos"), S.edit ? h("th", null, "") : null)), tb);
+      return h("div", null, h("div", { class: "tabla-wrap" }, t), addBtn(l, s, "+ Agregar fila"));
+    },
+    qa(l, s, sec) {
+      const box = h("div", { class: "qa" });
+      sec.items.forEach((it) => box.append(h("div", { class: "qa-item" }, warnBadge(it),
+        ed("div", { l, s, i: it.id, f: "t" }, it.t, "La pregunta", "q"),
+        ed("div", { l, s, i: it.id, f: "m" }, it.m, "Nuestra respuesta", "a"),
+        ctrls(l, s, it, { inline: true }))));
+      return h("div", null, box, addBtn(l, s, "+ Agregar pregunta"));
+    },
+    comparar(l, s, sec) {
+      const box = h("div", { class: "comp" });
+      sec.items.slice(0, 2).forEach((it, n) => box.append(h("div", { class: "comp-p" + (n ? " sol" : "") },
+        ed("div", { l, s, i: it.id, f: "tag" }, it.tag, n ? "Con la solución" : "Hoy", "k"),
+        mapa(n === 1),
+        h("span", { class: "esq" }, "Esquema ilustrativo, no son datos reales"),
+        warnBadge(it),
+        ed("div", { l, s, i: it.id, f: "t" }, it.t, "Describí cómo es"),
+        ctrls(l, s, it, { inline: true, del: false }))));
+      return box;
+    }
+  };
+
+  /* mapa esquemático: grilla de 6x4 puntos */
+  const HEAT = [0,1,0,0,2,0, 0,0,3,0,0,1, 1,0,0,0,3,0, 0,2,0,1,0,0];
+  function mapa(sol) {
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 240 160"); svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", sol ? "Esquema: la ruta visita solo los puntos con más basura" : "Esquema: la ruta pasa por todos los puntos");
+    const mk = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); svg.append(e); return e; };
+    const cx = (c) => 20 + c * 40, cy = (r) => 20 + r * 40;
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) {
+      const v = HEAT[r * 6 + c];
+      mk("rect", { x: c * 40 + 2, y: r * 40 + 2, width: 36, height: 36, rx: 5, class: sol && v ? "m-h" + v : "m-cell" });
+    }
+    let pts = [];
+    if (!sol) { for (let r = 0; r < 4; r++) { const cols = [0,1,2,3,4,5]; if (r % 2) cols.reverse(); cols.forEach((c) => pts.push([cx(c), cy(r)])); } }
+    else pts = [[cx(0), cy(2)], [cx(1), cy(3)], [cx(2), cy(1)], [cx(4), cy(2)], [cx(4), cy(0)], [cx(5), cy(1)]].filter(Boolean);
+    mk("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: "m-route" + (sol ? " sol" : "") });
+    if (!sol) for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) mk("circle", { cx: cx(c), cy: cy(r), r: 3, class: "m-pt" });
+    mk("rect", { x: pts[0][0] - 8, y: pts[0][1] - 6, width: 16, height: 12, rx: 2, class: "m-truck" });
+    return svg;
+  }
+
+  /* ---------- anillos ---------- */
+  const RING = { afectados: "var(--ring1)", influyen: "var(--ring2)", experiencias: "var(--ring3)", oportunidades: "var(--ring3)" };
+  function anillos(doc) {
+    const sc = doc.secciones;
+    const cnt = (k) => (sc[k] ? sc[k].items.length : 0);
+    const centro = sc.centro ? sc.centro.items[0] : null;
+    const rings = h("div", { class: "rings", "aria-hidden": "true" },
+      h("div", { class: "ring r3" }, h("span", null, "Experiencias y oportunidades")),
+      h("div", { class: "ring r2" }, h("span", null, "Influyen o deciden")),
+      h("div", { class: "ring r1" }, h("span", null, "Afectados")),
+      h("div", { class: "ring r0" }, h("span", null, (centro && centro.t) || "El problema")));
+    const ley = h("div", { class: "leyenda" },
+      centro ? h("div", { class: "centro-box" }, h("div", { class: "sec-h" }, "El problema · centro"), warnBadge(centro),
+        ed("div", { l: "l02", s: "centro", i: centro.id, f: "t" }, centro.t, "El problema en una frase"),
+        ctrls("l02", "centro", centro, { inline: true, del: false })) : null,
+      h("div", { class: "ley" }, h("i", { style: "background:var(--ring1)" }), h("b", null, cnt("afectados")), "afectados directos"),
+      h("div", { class: "ley" }, h("i", { style: "background:var(--ring2)" }), h("b", null, cnt("influyen")), "actores que influyen o deciden"),
+      h("div", { class: "ley" }, h("i", { style: "background:var(--ring3)" }), h("b", null, cnt("experiencias") + cnt("oportunidades")), "experiencias y oportunidades"));
+    return h("div", { class: "anillos" }, rings, ley);
+  }
+
+  /* ---------- render ---------- */
+  function renderTabs() {
+    const nav = $("tabs"); nav.textContent = "";
+    ORDEN.forEach((l, n) => {
+      const d = S.docs[l];
+      if (n) nav.append(h("span", { class: "tab-sep", "aria-hidden": "true" }, "›"));
+      nav.append(h("button", { class: "tab", role: "tab", "aria-selected": l === S.cur ? "true" : "false",
+        onclick: () => irA(l) }, h("span", { class: "n" }, d && d.num || "0" + (n + 1)), (d && (d.corto || d.titulo)) || "Lámina"));
+    });
+  }
+  function irA(l) {
+    if (l === S.cur) return;
+    flushAll();
+    S.cur = l;
+    try { history.replaceState(null, "", "#" + l); } catch (e) { location.hash = l; }
+    renderTabs(); renderLamina();
+    window.scrollTo(0, 0);
+  }
+  function renderLamina() {
+    const host = $("lamina");
+    const l = S.cur, doc = S.docs[l];
+    host.textContent = "";
+    if (!doc) {
+      host.append(h("div", { class: "aviso" }, h("h2", null, "Esta lámina todavía está vacía"),
+        h("p", null, "No hay contenido guardado para esta lámina. Podés importar un respaldo JSON."),
+        S.canWrite && S.db ? h("button", { class: "hbtn primary", onclick: abrirImport }, "Importar JSON") : null));
+      return;
+    }
+    const a = { l };
+    const sheet = h("article", { class: "lamina lay-" + (doc.layout || "base"), "aria-labelledby": "lt" },
+      h("header", { class: "l-head" },
+        h("div", { class: "l-num", "aria-hidden": "true" }, doc.num || ""),
+        ed("h1", Object.assign({ f: "titulo" }, a), doc.titulo, "Título de la lámina", "l-titulo"),
+        ed("p", Object.assign({ f: "bajada" }, a), doc.bajada, "Bajada: qué muestra esta lámina en una frase", "l-bajada")),
+      (S.edit || doc.puente) ? h("div", { class: "hilo" }, h("span", { class: "hilo-lbl" }, "El hilo"),
+        ed("div", Object.assign({ f: "puente" }, a), doc.puente, "Cómo se conecta con la lámina anterior")) : null,
+      h("div", { class: "ficha" },
+        h("span", { class: "campo" }, "Mesa Nº", ed("span", Object.assign({ f: "mesa" }, a), doc.mesa, "—")),
+        h("span", { class: "campo" }, "Nombre", ed("span", Object.assign({ f: "nombre" }, a), doc.nombre, "—"),
+          doc.nombreW ? h("span", { class: "warn" }, "⚠️ dudoso") : null,
+          S.edit ? h("button", { class: "ctrl", "aria-pressed": doc.nombreW ? "true" : "false", title: "Marcar el nombre como dudoso",
+            onclick: () => { doc.nombreW = !doc.nombreW; markDirty(l, null, "nombreW"); renderLamina(); scheduleSave(l, 250); } }, "⚠️") : null),
+        (S.edit || doc.consigna) ? h("span", { class: "consigna-l" }, "Consigna: ", ed("span", Object.assign({ f: "consigna" }, a), doc.consigna, "La consigna impresa en la lámina")) : null));
+    sheet.querySelector("h1").id = "lt";
+    if (doc.layout === "anillos") sheet.append(anillos(doc));
+    const grid = h("div", { class: "grid" });
+    doc.orden.forEach((s) => {
+      const sec = doc.secciones[s]; if (!sec) return;
+      if (doc.layout === "anillos" && s === "centro") return;
+      const fn = R[sec.tipo] || R.postits;
+      const ring = doc.layout === "anillos" && RING[s];
+      const body = fn(l, s, sec);
+      const empty = sec.items.length === 0;
+      grid.append(h("section", { class: "sec " + (sec.ancho === "full" ? "full" : ""), "data-s": s },
+        h("h2", { class: "sec-h" }, ring ? h("span", { class: "ring-dot", style: "background:" + ring }) : null,
+          ed("span", { l, s, f: "titulo" }, sec.titulo, "Título de la sección")),
+        (S.edit || sec.consigna) ? ed("p", { l, s, f: "consigna" }, sec.consigna, "Consigna impresa del recuadro (opcional)", "consigna opt") : null,
+        empty ? h("div", { class: "vacio" }, sec.ayuda || "Sin contenido todavía.", S.edit ? "" : (S.canWrite ? " Tocá Editar para sumar." : "")) : null,
+        body));
+    });
+    sheet.append(grid);
+    if (S.edit || doc.pie) sheet.append(h("div", { class: "l-nota-pie" }, ed("div", Object.assign({ f: "pie" }, a), doc.pie, "Texto al pie de la lámina (opcional)")));
+    const idx = ORDEN.indexOf(l);
+    const prev = ORDEN[idx - 1], next = ORDEN[idx + 1];
+    const nm = (k) => { const d = S.docs[k]; return d ? (d.num + " " + d.titulo) : k; };
+    sheet.append(h("footer", { class: "l-pie" },
+      prev ? h("button", { class: "nav-btn", onclick: () => irA(prev) }, "← " + nm(prev)) : null,
+      next ? h("button", { class: "nav-btn next", onclick: () => irA(next) }, "Sigue: " + nm(next) + " →") : null));
+    host.append(sheet);
+  }
+  function render() { renderTabs(); renderLamina(); }
+
+  /* ---------- modo ---------- */
+  function setEdit(on) {
+    flushAll();
+    S.edit = !!on;
+    const b = $("btnModo");
+    b.textContent = S.edit ? "Ver" : "Editar";
+    b.setAttribute("aria-pressed", S.edit ? "true" : "false");
+    b.title = S.edit ? "Volver a la vista limpia para el pitch" : "Editar el mural";
+    $("main").classList.toggle("editing", S.edit);
+    $("main").classList.toggle("vista", !S.edit);
+    if (!S.edit) $("panel").textContent = "";
+    try { sessionStorage.setItem("mural-edit", S.edit ? "1" : ""); } catch (e) {}
+    renderLamina();
+  }
+  $("btnModo").addEventListener("click", () => setEdit(!S.edit));
+  function applyWriteAccess() {
+    $("btnModo").hidden = !(S.canWrite && S.db);
+    if (!S.canWrite) { if (S.edit) setEdit(false); setEstado("Solo lectura", ""); }
+  }
+
+  /* ---------- exportar / importar ---------- */
+  function exportData() {
+    const laminas = {};
+    ORDEN.forEach((l) => { if (S.docs[l]) laminas[l] = S.docs[l]; });
+    Object.keys(S.docs).forEach((l) => { if (!laminas[l]) laminas[l] = S.docs[l]; });
+    return JSON.stringify({ app: "mural-mesa24", version: 1, exportado: new Date().toISOString(), laminas }, null, 2);
+  }
+  async function exportar() {
+    await flushAll();
+    const json = exportData();
+    const fecha = new Date().toISOString().slice(0, 10);
+    let dl = null;
+    try { dl = await claude.use("downloads"); } catch (e) {}
+    if (dl) {
+      try { await dl.save({ filename: "mural-mesa24-" + fecha + ".json", data: json }); toast("Respaldo listo."); return; }
+      catch (e) { if (e && e.code === "declined") return; }
+    }
+    mostrarJson(json);
+  }
+  function mostrarJson(json) {
+    const ta = h("textarea", { id: "jsonOut", readonly: true, "aria-label": "Respaldo en JSON" }); ta.value = json;
+    const msg = h("span");
+    const p = $("panel"); p.textContent = "";
+    p.append(h("div", { class: "panel" }, h("h3", null, "Respaldo del mural"),
+      h("p", null, "Copiá este texto y guardalo en un archivo .json o en un documento."), ta,
+      h("div", { class: "row" },
+        h("button", { class: "hbtn primary", onclick: () => {
+          navigator.clipboard.writeText(json).then(() => { msg.textContent = "Copiado."; }, () => { ta.select(); msg.textContent = "Seleccionado: usá Ctrl+C para copiar."; });
+        } }, "Copiar"),
+        h("button", { class: "hbtn", onclick: () => { p.textContent = ""; } }, "Cerrar"), msg)));
+  }
+  function abrirImport() {
+    if (!S.edit && S.canWrite && S.loaded) setEdit(true);
+    const p = $("panel"); p.textContent = "";
+    const ta = h("textarea", { id: "jsonIn", "aria-label": "Pegá acá el respaldo JSON", placeholder: "Pegá acá el contenido del respaldo .json" });
+    const file = h("input", { type: "file", id: "jsonFile", accept: ".json,application/json" });
+    const err = h("p", { class: "err" });
+    const confirmBox = h("div", { class: "row" });
+    file.addEventListener("change", () => {
+      const f = file.files && file.files[0]; if (!f) return;
+      const rd = new FileReader(); rd.onload = () => { ta.value = String(rd.result || ""); }; rd.readAsText(f);
+    });
+    const revisar = () => {
+      err.textContent = ""; confirmBox.textContent = "";
+      let obj; try { obj = JSON.parse(ta.value); } catch (e) { err.textContent = "El texto no es un JSON válido. Revisá que esté completo."; return; }
+      const lam = obj && obj.laminas;
+      const ok = lam && typeof lam === "object" && Object.keys(lam).length && Object.values(lam).every((d) => d && typeof d === "object" && d.secciones && typeof d.secciones === "object");
+      if (!ok) { err.textContent = "Este JSON no tiene el formato del mural (falta \"laminas\" con sus secciones)."; return; }
+      const ids = Object.keys(lam).filter((k) => /^[A-Za-z0-9_-]{1,40}$/.test(k));
+      confirmBox.append(h("strong", null, "Esto reemplaza " + ids.length + " láminas para todo el equipo."),
+        h("button", { class: "hbtn primary", onclick: async (ev) => {
+          ev.target.disabled = true; setEstado("Importando…", "busy");
+          try {
+            for (const k of ids) { await S.col.doc(k).set(norm(clone(lam[k]))); }
+            setEstado("Guardado para el equipo", "ok"); p.textContent = ""; toast("Mural importado.");
+          } catch (e) { err.textContent = "No se pudo importar (" + ((e && e.code) || "error") + "). Probá de nuevo."; setEstado("No se pudo guardar", "err"); ev.target.disabled = false; }
+        } }, "Reemplazar todo"),
+        h("button", { class: "hbtn", onclick: () => { confirmBox.textContent = ""; } }, "Cancelar"));
+    };
+    p.append(h("div", { class: "panel" }, h("h3", null, "Importar respaldo"),
+      h("p", null, "Elegí un archivo .json exportado desde este mural, o pegá su contenido."),
+      h("label", { for: "jsonFile" }, "Archivo: "), file, ta,
+      h("div", { class: "row" }, h("button", { class: "hbtn", onclick: revisar }, "Revisar"), h("button", { class: "hbtn", onclick: () => { p.textContent = ""; } }, "Cerrar")),
+      err, confirmBox));
+  }
+  $("btnExport").addEventListener("click", exportar);
+  $("btnImport").addEventListener("click", abrirImport);
+
+  /* ---------- arranque ---------- */
+  const fromHash = () => { const k = (location.hash || "").slice(1); return /^l\d\d$/.test(k) ? k : null; };
+  S.cur = fromHash() || "l01";
+  window.addEventListener("hashchange", () => { const k = fromHash(); if (k && k !== S.cur) { S.cur = k; render(); } });
+  renderTabs();
+
+  async function start() {
+    let db = null;
+    try { db = window.claude && await claude.use("db"); } catch (e) { db = null; }
+    if (!db) {
+      setEstado("Sin guardado compartido", "err");
+      $("lamina").textContent = "";
+      $("lamina").append(h("div", { class: "aviso" }, h("h2", null, "No pudimos abrir el mural del equipo"),
+        h("p", null, "Abrí esta página con tu cuenta de claude.ai iniciada para ver y editar las láminas guardadas.")));
+      return;
+    }
+    S.db = db; S.col = db.collection("laminas");
+    try {
+      const u = await claude.use("user");
+      const c = u ? await u.can("data.write") : null;
+      S.canWrite = c !== false;
+    } catch (e) {}
+    applyWriteAccess();
+    try { if (S.canWrite && sessionStorage.getItem("mural-edit") === "1") setEdit(true); } catch (e) {}
+
+    const timer = setTimeout(() => { if (!S.loaded) setEstado("Sin conexión al guardado", "err"); }, 10000);
+    S.col.onSnapshot((snap) => {
+      snap.docs.forEach((d) => {
+        if (!d.exists) return;
+        const data = clone(d.data());
+        if (editingInside(d.id) || S.dirty[d.id] || S.saving) S.pendingRemote[d.id] = data;
+        else S.docs[d.id] = norm(data);
+      });
+      snap.docChanges().forEach((ch) => { if (ch.type === "removed") delete S.docs[ch.doc.id]; });
+      if (!snap.metadata.fromCache) {
+        clearTimeout(timer); S.loaded = true;
+        if (!S.saving && !Object.keys(S.dirty).length) setEstado(S.canWrite ? "Guardado para el equipo" : "Solo lectura", "ok");
+      }
+      if (snap.empty && !snap.metadata.fromCache) { render(); return; }
+      if (!editingInside(S.cur)) render(); else renderTabs();
+    }, (e) => {
+      clearTimeout(timer);
+      setEstado(e && e.code === "revoked" ? "Sin acceso al guardado" : "Sin conexión al guardado", "err");
+    });
+  }
+  start();
+})();
+</script>

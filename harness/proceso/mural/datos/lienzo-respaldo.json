@@ -1,0 +1,250 @@
+{
+ "app": "mural-formato-mesa24",
+ "version": 1,
+ "marcos": {
+  "m1": {
+   "num": "1", "titulo": "Propósito Transformador Masivo (PTM)", "corto": "PTM",
+   "tiempo": "Tiempo en equipo 15 a 20 minutos.",
+   "indicaciones": "Cada integrante escribe uno o varios PTM en post-its, sin poner su nombre. Leemos todos y unificamos los que digan lo mismo. Votamos en 5 minutos: 3 votos por persona, y se pueden poner los 3 en el mismo post-it. El más votado es el definitivo; si hay empate, elegimos en equipo.",
+   "orden": ["previo", "chequear", "candidatos", "ganador", "porque"],
+   "secciones": {
+    "previo": {"titulo": "Previo a la actividad", "consigna": "Cada integrante del equipo contesta estas preguntas.", "tipo": "pares", "cols": ["Pregunta", "Respuesta (del artifact)"], "colorA": "amarillo", "colorB": "verde", "ancho": "full", "ayuda": "El artifact no lo dice. Completalo con el equipo.", "items": [
+     {"id": "p1", "t": "¿Qué es lo que realmente nos importa?", "m": "Que la ciudad deje de decidir la recolección a ciegas: saber dónde está la basura y llegar a tiempo."},
+     {"id": "p2", "t": "¿Por qué?", "m": "Porque hoy las rutas fijas recorren de más, los camiones salen a media carga y los puntos críticos se desbordan. Resultado: más costo, peor servicio y una ciudad más sucia."},
+     {"id": "p3", "t": "¿Cuál es el propósito de nuestra empresa en este mundo?", "m": "Que los kilómetros que ya recorre la ciudad también sirvan para mantenerla limpia."},
+     {"id": "p4", "t": "¿Qué haríamos si nunca pudiéramos fallar?", "m": ""},
+     {"id": "p5", "t": "¿Por qué?", "m": ""},
+     {"id": "p6", "t": "¿Qué haríamos si recibiésemos diez millones de dólares?", "m": ""}
+    ]},
+    "chequear": {"titulo": "Cosas a chequear para escribir los post-its", "tipo": "reglas", "ancho": "mitad", "ayuda": "Criterios del PTM", "items": [
+     {"id": "k1", "t": "Describe un estado deseable del mundo, la industria o la comunidad."},
+     {"id": "k2", "t": "¿Es altamente aspiracional?"},
+     {"id": "k3", "t": "¿Es único?"},
+     {"id": "k4", "t": "¿Es masivo?"},
+     {"id": "k5", "t": "¿Es transformador?"},
+     {"id": "k6", "t": "¿Está claro el propósito?"},
+     {"id": "k7", "t": "¿Es apasionante?"}
+    ]},
+    "candidatos": {"titulo": "PTM candidatos", "consigna": "3 votos por persona.", "tipo": "votos", "max": 10, "ancho": "mitad", "ayuda": "Un post-it por candidato", "items": [
+     {"id": "c1", "t": "Que los kilómetros que ya recorre la ciudad también la mantengan limpia.", "votos": 0, "w": true, "nota": "Sale de la frase resumen del artifact. Faltan los candidatos del resto del equipo y la votación."}
+    ]},
+    "ganador": {"titulo": "PTM ganador", "tipo": "destacado", "ancho": "mitad", "ayuda": "Todavía no se votó. Acá va el PTM más votado.", "items": [{"id": "g1", "t": ""}]},
+    "porque": {"titulo": "Por qué lo elegimos", "tipo": "texto", "ancho": "mitad", "ayuda": "Explicá en dos líneas por qué ganó.", "items": [{"id": "w1", "t": ""}]}
+   }
+  },
+  "m2": {
+   "num": "2", "titulo": "Team Canvas", "corto": "Team Canvas", "layout": "team",
+   "tiempo": "Tiempo aprox. 60 minutos.",
+   "indicaciones": "1. Objetivos: qué queremos lograr como grupo (factible, medible y con fecha) y nuestras metas personales. 2. Funciones y habilidades: nombre y rol de cada uno; si alguien tiene varios roles, un post-it por rol. 3. Valores: los principios que compartimos. 4. Propósito: por qué hacemos lo que hacemos; si ya tenemos PTM, va acá. 5. Reglas y actividades: cómo nos comunicamos, cómo decidimos y cómo evaluamos lo que hacemos.",
+   "orden": ["equipo", "objetivos", "funciones", "proposito", "valores", "reglas"],
+   "secciones": {
+    "equipo": {"titulo": "Datos del equipo", "tipo": "chips", "ancho": "full", "ayuda": "Nombre, mesa y fecha", "items": [
+     {"id": "e1", "tag": "Nombre del equipo", "t": "Hackaronda", "w": true, "nota": "Así figura en las láminas en papel; la letra es dudosa"},
+     {"id": "e2", "tag": "Mesa", "t": "24"},
+     {"id": "e3", "tag": "Fecha", "t": "12 y 13 de noviembre de 2026"}
+    ]},
+    "objetivos": {"titulo": "Objetivos", "consigna": "¿Qué queremos lograr como grupo? ¿Cuáles son nuestras metas personales?", "tipo": "postits", "color": "naranja", "ancho": "mitad", "ayuda": "El artifact no define objetivos del equipo. Sumalos acá.", "items": []},
+    "funciones": {"titulo": "Funciones y habilidades", "consigna": "¿Cómo nos llamamos? ¿Qué rol tiene cada uno?", "tipo": "postits", "color": "celeste", "ancho": "mitad", "ayuda": "Un post-it por persona y rol", "items": [
+     {"id": "f1", "t": "Gina: producto y problema"}
+    ]},
+    "proposito": {"titulo": "Propósito", "consigna": "¿Por qué hacemos lo que hacemos? Si ya hay PTM, va acá.", "tipo": "postits", "color": "rosa", "ancho": "mitad", "ayuda": "Pegá acá el PTM ganador cuando lo voten.", "items": []},
+    "valores": {"titulo": "Valores", "consigna": "¿Qué representamos? ¿Cuáles son nuestros principios?", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Por ejemplo: confianza, creatividad, transparencia.", "items": []},
+    "reglas": {"titulo": "Reglas y actividades", "consigna": "¿Cómo nos comunicamos? ¿Cómo decidimos? ¿Cómo evaluamos?", "tipo": "postits", "color": "verde", "ancho": "mitad", "ayuda": "Las reglas que vamos a seguir como equipo.", "items": []}
+   }
+  },
+  "m3": {
+   "num": "3", "titulo": "Definir tipo de mercado", "corto": "Mercado",
+   "tiempo": "Tiempo en equipo 15 a 20 minutos.",
+   "indicaciones": "Definir el tipo de mercado del emprendimiento según esta segmentación: existente, resegmentado, nuevo o clonado. Después, justificar la elección.",
+   "orden": ["referencia", "pistas", "tipo", "justificacion"],
+   "secciones": {
+    "referencia": {"titulo": "Segmentación de mercados", "tipo": "tabla", "cols": ["Mercado", "Existente", "Resegmentado", "Nuevo", "Clonado"], "ancho": "full", "ayuda": "Tabla de referencia", "items": [
+     {"id": "r1", "c": ["Clientes", "Conocidos", "Posiblemente conocidos (hipótesis)", "Desconocidos", "Posiblemente conocidos (hipótesis)"]},
+     {"id": "r2", "c": ["Necesidades", "Rendimiento, mejora", "Mejor posicionamiento", "Mejoramiento transformacional", "Versión local"]},
+     {"id": "r3", "c": ["Competidores", "Muchos", "Muchos o pocos", "Ninguno", "Ninguno"]},
+     {"id": "r4", "c": ["Riesgos", "Cuota de mercado, venta y distribución", "Lograr la definición de producto y mercado", "Desconocimiento del mercado", "Juzgar mal las necesidades locales"]}
+    ]},
+    "pistas": {"titulo": "Nuestro caso, según el artifact", "tipo": "pares", "cols": ["Característica", "Lo que dice el artifact"], "colorA": "blanco", "colorB": "verde", "ancho": "full", "ayuda": "El artifact no lo dice. Completalo con el equipo.", "items": [
+     {"id": "s1", "t": "Clientes", "m": "El área de recolección de la Municipalidad o la empresa concesionaria."},
+     {"id": "s2", "t": "Necesidades", "m": "Saber dónde se acumula la basura para dejar las rutas fijas: menos kilómetros, camiones más llenos y puntos críticos atendidos antes."},
+     {"id": "s3", "t": "Competidores", "m": ""},
+     {"id": "s4", "t": "Riesgos", "m": "Privacidad: las imágenes son de seguridad, así que solo se procesa la detección de residuos, sin guardar caras ni patentes. Zonas por donde no pasan patrulleros."}
+    ]},
+    "tipo": {"titulo": "Tipo de mercado", "tipo": "destacado", "ancho": "mitad", "ayuda": "El artifact no define el tipo de mercado. Elegilo con el equipo.", "items": [{"id": "t1", "t": ""}]},
+    "justificacion": {"titulo": "Justificación", "tipo": "texto", "ancho": "mitad", "ayuda": "Por qué elegimos ese tipo de mercado.", "items": [{"id": "j1", "t": ""}]}
+   }
+  },
+  "m4": {
+   "num": "4", "titulo": "Identificar abundancia para apalancarse", "corto": "Abundancia",
+   "tiempo": "Tiempo en equipo 40 a 60 minutos.",
+   "indicaciones": "Dónde hay abundancia y cómo nos vamos a apalancar de esa abundancia. A la izquierda, lo que sobra o ya existe; a la derecha, la oportunidad que nos abre.",
+   "orden": ["abundancias"],
+   "secciones": {
+    "abundancias": {"titulo": "Abundancias y oportunidades", "tipo": "pares", "cols": ["Abundancias (ej.: tecnologías exponenciales)", "Oportunidad que genera"], "colorA": "lila", "colorB": "lila", "ancho": "full", "ayuda": "Escribí la oportunidad que genera.", "items": [
+     {"id": "a1", "t": "Patrulleros que ya recorren toda la ciudad, todos los días.", "m": "Relevar la basura acumulada sin sumar un solo kilómetro."},
+     {"id": "a2", "t": "Cámaras de los patrulleros, que hoy solo se usan para seguridad.", "m": "Darle un segundo uso al video: detectar basura acumulada."},
+     {"id": "a3", "t": "GPS en los recorridos.", "m": "Ubicar cada acumulación de basura en el mapa."},
+     {"id": "a4", "t": "Modelos de visión que reconocen objetos en imágenes.", "m": "Detectar la basura acumulada de forma automática y armar un mapa de calor por zona y horario."},
+     {"id": "a5", "t": "Optimizadores de rutas.", "m": "Rutas que priorizan los puntos críticos y llenan cada camión."}
+    ]}
+   }
+  },
+  "m5a": {
+   "num": "5A", "titulo": "Diseñar Business Model Canvas", "corto": "Business Model", "layout": "bmc",
+   "tiempo": "",
+   "indicaciones": "Completar el lienzo de modelo de negocios: a quién le servimos, qué le ofrecemos, cómo llegamos, qué necesitamos y cómo se sostiene.",
+   "orden": ["socios", "actividades", "recursos", "propuesta", "relacion", "canales", "segmentos", "costos", "ingresos"],
+   "secciones": {
+    "socios": {"titulo": "Socios clave", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Quiénes nos ayudan", "items": [
+     {"id": "so1", "t": "La fuerza de seguridad que opera los patrulleros (recorridos y cámaras)."}
+    ]},
+    "actividades": {"titulo": "Actividades clave", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Qué tenemos que hacer bien", "items": [
+     {"id": "ac1", "t": "Detectar basura acumulada con un modelo de visión."},
+     {"id": "ac2", "t": "Armar el mapa de calor por zona y horario."},
+     {"id": "ac3", "t": "Generar rutas optimizadas para cada turno."}
+    ]},
+    "recursos": {"titulo": "Recursos clave", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Qué necesitamos tener", "items": [
+     {"id": "re1", "t": "Cámaras y GPS de los patrulleros."},
+     {"id": "re2", "t": "Modelo de visión."},
+     {"id": "re3", "t": "Optimizador de rutas."}
+    ]},
+    "propuesta": {"titulo": "Propuesta de valor", "tipo": "postits", "color": "naranja", "ancho": "mitad", "ayuda": "Qué problema resolvemos", "items": [
+     {"id": "pv1", "t": "Rutas de recolección según dónde está la basura de verdad."},
+     {"id": "pv2", "t": "Menos kilómetros y camiones más llenos."},
+     {"id": "pv3", "t": "Puntos críticos atendidos antes de que desborden."}
+    ]},
+    "relacion": {"titulo": "Relación con clientes", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Cómo nos vinculamos", "items": [
+     {"id": "rc1", "t": "El área de recolección usa el mapa para planificar cada turno."}
+    ]},
+    "canales": {"titulo": "Canales", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "El artifact no lo dice. ¿Cómo llegamos al cliente?", "items": []},
+    "segmentos": {"titulo": "Segmentos de clientes", "tipo": "postits", "color": "verde", "ancho": "mitad", "ayuda": "Para quién creamos valor", "items": [
+     {"id": "sc1", "t": "Área de recolección de la Municipalidad."},
+     {"id": "sc2", "t": "Empresa concesionaria de recolección."}
+    ]},
+    "costos": {"titulo": "Estructura de costos", "tipo": "postits", "color": "rosa", "ancho": "mitad", "ayuda": "El artifact no tiene costos. Sumalos con el equipo.", "items": []},
+    "ingresos": {"titulo": "Fuentes de ingreso", "tipo": "postits", "color": "celeste", "ancho": "mitad", "ayuda": "El artifact no define cómo se cobra.", "items": []}
+   }
+  },
+  "m5b": {
+   "num": "5B", "titulo": "Diseñar Value Proposition Canvas", "corto": "Propuesta de valor", "layout": "vpc",
+   "tiempo": "Tiempo en equipo 40 minutos.",
+   "indicaciones": "A la derecha, el cliente: qué trabajos tiene que hacer, qué le frustra y qué le alegraría. A la izquierda, nuestra propuesta: qué ofrecemos, qué frustraciones alivia y qué alegrías crea.",
+   "orden": ["productos", "creadores", "aliviadores", "trabajos", "alegrias", "frustraciones", "cadena"],
+   "secciones": {
+    "productos": {"titulo": "Productos y servicios", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Qué ofrecemos", "items": [
+     {"id": "pr1", "t": "Mapa de calor de la demanda por zona y horario."},
+     {"id": "pr2", "t": "Rutas optimizadas para cada turno."},
+     {"id": "pr3", "t": "Detección de basura con las cámaras de los patrulleros."}
+    ]},
+    "creadores": {"titulo": "Creadores de alegrías", "tipo": "postits", "color": "verde", "ancho": "mitad", "ayuda": "Qué alegrías creamos", "items": [
+     {"id": "cr1", "t": "Litros de combustible y CO₂ evitados."},
+     {"id": "cr2", "t": "Segundo uso del patrullaje, sin kilómetros extra."}
+    ]},
+    "aliviadores": {"titulo": "Aliviadores de frustraciones", "tipo": "postits", "color": "rosa", "ancho": "mitad", "ayuda": "Qué frustraciones aliviamos", "items": [
+     {"id": "al1", "t": "Rutas dinámicas según la demanda, en lugar de rutas fijas."},
+     {"id": "al2", "t": "Más carga por viaje."},
+     {"id": "al3", "t": "Menos vueltas innecesarias."},
+     {"id": "al4", "t": "Atención más temprana de los puntos críticos."}
+    ]},
+    "trabajos": {"titulo": "Trabajos del cliente", "tipo": "postits", "color": "amarillo", "ancho": "mitad", "ayuda": "Qué tiene que hacer el cliente", "items": [
+     {"id": "tr1", "t": "Recolectar la basura de toda la ciudad."},
+     {"id": "tr2", "t": "Planificar las rutas y los turnos."}
+    ]},
+    "alegrias": {"titulo": "Alegrías", "tipo": "postits", "color": "verde", "ancho": "mitad", "ayuda": "Qué le alegraría", "items": [
+     {"id": "ag1", "t": "Usar menos camiones.", "nota": "Del mapa de empatía"},
+     {"id": "ag2", "t": "Emitir menos dióxido de carbono.", "nota": "Del mapa de empatía"},
+     {"id": "ag3", "t": "Gastar menos en combustible.", "nota": "Del mapa de empatía"}
+    ]},
+    "frustraciones": {"titulo": "Frustraciones", "tipo": "postits", "color": "rosa", "ancho": "mitad", "ayuda": "Qué le frustra", "items": [
+     {"id": "fr1", "tag": "Residuos", "t": "Rutas fijas por calendario, no por la cantidad real de basura."},
+     {"id": "fr2", "tag": "Residuos", "t": "Camiones que vuelven a media carga."},
+     {"id": "fr3", "tag": "Residuos", "t": "Desbordes y basurales en los puntos críticos."},
+     {"id": "fr4", "tag": "Movilidad", "t": "Kilómetros, combustible, horas de chofer y emisiones de más."},
+     {"id": "fr5", "tag": "Movilidad", "t": "Patrulleros que recorren la ciudad con cámaras que solo miran el delito."},
+     {"id": "fr6", "tag": "Datos", "t": "Nadie sabe dónde está la basura: se decide a ciegas."}
+    ]},
+    "cadena": {"titulo": "Cómo se encadena el problema", "tipo": "pasos", "ancho": "full", "ayuda": "Cada eslabón lleva al siguiente", "items": [
+     {"id": "ch1", "t": "No hay datos sobre dónde se acumula la basura."},
+     {"id": "ch2", "t": "Las rutas se fijan por costumbre o calendario."},
+     {"id": "ch3", "t": "Los camiones recorren de más y salen con poca carga."},
+     {"id": "ch4", "t": "Mientras tanto, los puntos críticos se desbordan. Resultado: más combustible, más costos, peor servicio y una ciudad más sucia."}
+    ]}
+   }
+  },
+  "m6": {
+   "num": "6", "titulo": "Definir el cronograma para aplicar el proceso ágil Exo Launchpad", "corto": "Cronograma",
+   "tiempo": "Tiempo en equipo 30 minutos.",
+   "indicaciones": "Definir cuándo hacemos cada ceremonia del proceso ágil durante el desarrollo de la startup.",
+   "orden": ["crono", "que"],
+   "secciones": {
+    "crono": {"titulo": "Cronograma", "tipo": "pares", "cols": ["Actividad", "Cronograma"], "colorA": "amarillo", "colorB": "verde", "ancho": "full", "ayuda": "El artifact no tiene cronograma. Definí días y horarios.", "items": [
+     {"id": "cg1", "t": "Sprint Planning", "m": ""},
+     {"id": "cg2", "t": "Daily meetings (días y horarios)", "m": ""},
+     {"id": "cg3", "t": "Sprint Review", "m": ""},
+     {"id": "cg4", "t": "Retrospective", "m": ""}
+    ]},
+    "que": {"titulo": "Qué es cada una", "tipo": "qa", "ancho": "full", "ayuda": "Definiciones", "items": [
+     {"id": "q1", "t": "Sprint Planning", "m": "Se arma el sprint backlog en Trello con tres estados: TO DO (pendientes), WIP (en curso) y DONE (terminadas). Lo mantiene el equipo."},
+     {"id": "q2", "t": "Daily meetings", "m": "Todos los días, 15 minutos como máximo. Cada uno responde: qué hice desde la última reunión, qué voy a hacer y qué impedimentos tengo."},
+     {"id": "q3", "t": "Sprint Review", "m": "El último día del sprint se muestran las tareas terminadas al coach, que propone ajustes al product backlog."},
+     {"id": "q4", "t": "Retrospective", "m": "El equipo analiza cómo trabajó y qué obstáculos le impiden avanzar, para irlos eliminando."}
+    ]}
+   }
+  },
+  "m7": {
+   "num": "7", "titulo": "Realizar un bosquejo o demo del producto", "corto": "Demo",
+   "tiempo": "Tiempo en equipo máximo 8 horas.",
+   "indicaciones": "Usar una demo para que el cliente visualice la solución y validar que resuelve su problema. En software sirven las maquetas, los videos, un mockup en Figma o una landing page.",
+   "orden": ["comparar", "pasos", "pantallas", "pautas", "preguntas", "aclaracion"],
+   "secciones": {
+    "comparar": {"titulo": "Hoy vs. con la solución", "tipo": "comparar", "ancho": "full", "ayuda": "Cómo funciona hoy y cómo funcionaría", "items": [
+     {"id": "cp1", "tag": "Hoy", "t": "La ruta pasa por todos los puntos, llenos o vacíos, y los puntos críticos esperan igual que los demás."},
+     {"id": "cp2", "tag": "Con la solución", "t": "Un mapa de calor marca la demanda y la ruta va directo a los puntos que importan: menos recorrido y camiones más llenos."}
+    ]},
+    "pasos": {"titulo": "Qué muestra la demo, paso a paso", "tipo": "pasos", "ancho": "mitad", "ayuda": "Los pasos de la solución", "items": [
+     {"id": "ps1", "t": "Los patrulleros hacen su recorrido de siempre, con sus cámaras."},
+     {"id": "ps2", "t": "Un modelo de visión detecta basura acumulada y la ubica por GPS."},
+     {"id": "ps3", "t": "Se arma un mapa de calor de la demanda por zona y horario."},
+     {"id": "ps4", "t": "Un optimizador genera rutas que priorizan esos puntos y llenan cada camión."}
+    ]},
+    "pantallas": {"titulo": "Pantallas de la demo", "tipo": "postits", "color": "blanco", "ancho": "mitad", "numerar": true, "ayuda": "Una pantalla por post-it", "items": [
+     {"id": "pa1", "tag": "Propuesta", "t": "Mapa de calor de la demanda por zona y horario.", "nota": "Armada a partir de los pasos del artifact"},
+     {"id": "pa2", "tag": "Propuesta", "t": "Ruta sugerida para el turno, priorizando los puntos críticos.", "nota": "Armada a partir de los pasos del artifact"},
+     {"id": "pa3", "tag": "Propuesta", "t": "Resultado del turno: km por ruta, % de capacidad usada, litros y CO₂ evitados.", "nota": "Armada con las métricas del artifact"}
+    ]},
+    "pautas": {"titulo": "Pautas de la demo", "tipo": "reglas", "ancho": "mitad", "ayuda": "Pautas", "items": [
+     {"id": "pt1", "t": "Tiene que ser realizable."},
+     {"id": "pt2", "t": "Tiene que parecer real."},
+     {"id": "pt3", "t": "Tiene que minimizar el desperdicio."},
+     {"id": "pt4", "t": "Tiene que usar datos de aspecto real."}
+    ]},
+    "preguntas": {"titulo": "Preguntas que nos van a hacer", "tipo": "circulos", "ancho": "mitad", "ayuda": "Pregunta y respuesta corta", "items": [
+     {"id": "fq1", "t": "¿Y la privacidad?", "m": "Solo se procesa la detección de residuos, sin guardar caras ni patentes."},
+     {"id": "fq2", "t": "¿Zonas sin patrullero?", "m": "Los camiones recolectores pueden llevar cámaras y relevar su ruta."},
+     {"id": "fq3", "t": "¿Quién lo usa?", "m": "El área de recolección municipal o la concesionaria, para planificar cada turno."}
+    ]},
+    "aclaracion": {"titulo": "Aclaración", "tipo": "nota", "ancho": "full", "ayuda": "Notas al pie", "items": [
+     {"id": "ac1", "t": "Los mapas son esquemáticos, no datos reales."}
+    ]}
+   }
+  },
+  "m8": {
+   "num": "8", "titulo": "Métricas de problema", "corto": "Métricas",
+   "tiempo": "Tiempo en equipo 20 minutos.",
+   "indicaciones": "Definir qué métricas de problema vamos a usar y qué valores tienen que alcanzar para dar por validada la etapa problema/solución.",
+   "orden": ["ejemplo", "metricas"],
+   "secciones": {
+    "ejemplo": {"titulo": "Ejemplo", "tipo": "nota", "ancho": "full", "ayuda": "Ejemplo", "items": [
+     {"id": "ej1", "t": "Cantidad de entrevistas de problema a realizar (mínimo 10) y resultado esperado de éxito (el 80 % comparte el problema)."}
+    ]},
+    "metricas": {"titulo": "Métricas", "consigna": "El artifact define qué medir, pero no las metas. Completá la columna Meta con el equipo.", "tipo": "tabla", "cols": ["Problema", "Mejora", "Métrica", "Meta"], "ancho": "full", "ayuda": "Una fila por métrica", "items": [
+     {"id": "mt1", "c": ["Rutas fijas", "Rutas dinámicas según demanda", "Km por ruta", ""]},
+     {"id": "mt2", "c": ["Camiones a media carga", "Más carga por viaje", "% de capacidad usada", ""]},
+     {"id": "mt3", "c": ["Combustible de más", "Menos vueltas innecesarias", "Litros y CO₂ evitados", ""]},
+     {"id": "mt4", "c": ["Desbordes y basurales", "Atención más temprana", "Puntos críticos detectados y resueltos", ""]},
+     {"id": "mt5", "c": ["Patrullaje desaprovechado", "Segundo uso sin km extra", "Km de patrullaje que generan datos", ""]}
+    ]}
+   }
+  }
+ }
+}
