@@ -67,17 +67,17 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 function Landing() {
   return <main className="landing">
     <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>ViaVisio</strong></a>
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Vestigio</strong></a>
       <a className="landing-link" href="#mapa">Abrir mapa</a>
     </header>
     <section className="landing-hero">
       <div className="landing-copy">
         <h1>Mismos kilómetros.<br />El doble de ciudad.</h1>
-        <p>ViaVisio aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
+        <p>Vestigio aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
         <a className="landing-cta" href="#mapa">Explorar el mapa de Córdoba <span aria-hidden="true">↗</span></a>
       </div>
       <figure className="landing-scene">
-        <video controls playsInline preload="metadata" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
+        <video autoPlay muted loop controls playsInline preload="auto" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
           <source src="/demo-vision.mp4" type="video/mp4" />
         </video>
         <figcaption>Detección simulada sobre imágenes ilustrativas · <a className="landing-link" href="#mapa/deteccion">Ver el ticket detectado</a></figcaption>
@@ -132,7 +132,7 @@ function App({ demo = false }: { demo?: boolean }) {
 
   return <main>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>ViaVisio</strong></a><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Vestigio</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">

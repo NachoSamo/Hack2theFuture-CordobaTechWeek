@@ -55,6 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada de ViaVisio
+## Video de entrada de Vestigio
 
-El clip de 12 segundos monta imágenes urbanas ilustrativas con movimiento de cámara, recuadros de detección y confianza simulada. Muestra un bache, una rama caída y un contenedor rebalsado. Al terminar, **Ver el ticket detectado** abre CBA-104 en `/#mapa/deteccion`, con la misma imagen y la empresa recolectora en el detalle. La simulación sigue agregando un avistamiento y el aviso.
+El clip de 12 segundos monta imágenes urbanas ilustrativas con movimiento de cámara, recuadros de detección, confianza, gravedad, hora, coordenadas y área responsable. Muestra un bache, una rama caída y un contenedor rebalsado. El clip se reproduce en bucle y sin audio. **Ver el ticket detectado** abre CBA-104 en `/#mapa/deteccion`, con la misma imagen y la empresa recolectora en el detalle. La simulación sigue agregando un avistamiento y el aviso.

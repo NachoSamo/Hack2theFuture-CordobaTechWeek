@@ -58,4 +58,4 @@ Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El 
 
 ## Nombre de trabajo para la landing
 
-**ViaVisio** combina las raíces latinas *via* (camino) y *visio* (visión). La landing, el mapa y el clip usan este nombre de trabajo. La documentación del pitch conserva el nombre con el que fue preparada.
+**Vestigio** es el nombre de trabajo para esta iteración. Evoca el rastro que deja una incidencia, desde su primera observación hasta su seguimiento en el mapa. Se aplica en la landing, el mapa y el clip.
