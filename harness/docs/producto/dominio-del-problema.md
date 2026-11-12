@@ -11,7 +11,7 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 > **Pivot del 12/11 14:53.** Pasamos de "rutas de recolección guiadas por cámaras" a un concepto más
 > grande: no vamos solo a residuos. Los residuos ya tienen sus rutas y su recolección; no las tocamos.
 > [`idea-y-epicas.md`](idea-y-epicas.md) y [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md)
-> todavía cuentan la versión anterior y hay que reescribirlas sobre este dominio.
+> ya están reescritos sobre este dominio. La arquitectura y los contratos todavía no.
 
 ## La idea en una línea
 
@@ -54,10 +54,15 @@ La meta es "detectar todo lo posible que requiera atención"; las tres categorí
 - Rediseñar las rutas de recolección de residuos (ya existen y funcionan).
 - Instalar hardware o sensores nuevos: se usa el recorrido y la cámara que ya están.
 
+## Cerrado después del pivot
+
+- **Qué pasa tras detectar:** mapa priorizado para COYS; COYS decide y asigna al área responsable.
+- **Usuarios del panel:** COYS y las áreas que resuelven.
+- **Cifra principal del pitch:** km de patrullaje reutilizados como detección (con litros y CO₂ equivalentes).
+- **Título:** "Un móvil para autosanar la ciudad."
+
 ## Abierto
 
-- **Qué ahorro medimos** (km de las áreas que hoy salen a buscar, recorridos evitados o tiempo de
-  respuesta): Oli no eligió, queda para cerrar con el equipo.
 - **Cómo contamos el doble impacto** (seguridad + mantenimiento urbano con el mismo km, ambiental +
   económico, o movilidad + residuos): queda para cerrar con el equipo.
 - **Fuente de "los residuos ya tienen sus rutas":** sin registrar.

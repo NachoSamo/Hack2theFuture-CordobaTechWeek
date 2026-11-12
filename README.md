@@ -88,7 +88,7 @@ flowchart LR
     C --> E
 ```
 
-Borrador del 12/11 14:11, sin dueños ni aprobación.
+Borrador del 12/11 14:11, sin dueños ni aprobación. **Desactualizado por el pivot de las 14:53:** el nodo 03 pasa a mapa de incidencias, el 04 a priorización e impacto y el 05 a vistas COYS y áreas ([`solucion-paso-a-paso.md`](harness/docs/producto/solucion-paso-a-paso.md)); lo actualiza Samo.
 
 El diagrama completo, con dueños, entradas, salidas y aprobación, vive en
 [`harness/arquitectura/solucion.html`](harness/arquitectura/solucion.html).

@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 14:53 · Oli
+**Actualizado:** 12/11 15:10 · Oli
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -20,14 +20,14 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | Pivot: dominio del problema en `docs/producto/dominio-del-problema.md`; sigue reescribir idea-y-epicas y paso a paso, cerrar ahorro y doble impacto | Pitch flash 15:30 | Validar H1/H5 (acceso a cámaras de COYS) |
+| Oli | Pivot cerrado: dominio, idea y épicas E0–E7 y paso a paso reescritos (detección urbana desde el patrullaje de COYS); sigue el doble impacto y el pitch | Pitch flash 15:30 | Validar H1/H5 (acceso a cámaras de COYS) |
 
 ## Decisiones abiertas
 
 Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al decision log.
 
 - [x] Vertical y problema: movilidad cruzando residuos (ver decision log 12/11 14:00)
-- [ ] Qué ahorro medimos y cómo contamos el doble impacto (abierto en el pivot 12/11 14:53)
+- [ ] Cómo contamos el doble impacto (la cifra principal quedó en km reutilizados, decision log 15:10)
 - [ ] Tipo de prototipo: software, hardware + software, o datos + visualización
 - [ ] Stack y nodos de la arquitectura → [`contratos.md`](contratos.md)
 - [ ] Diagramas de [`arquitectura/`](arquitectura/) aprobados por cada dueño de nodo y por Samo (sin esto no se codea)
@@ -42,6 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 15:10 · Oli · `idea-y-epicas.md` y `solucion-paso-a-paso.md` reescritos: E3 mapa de incidencias, E4 priorización y asignación (reemplaza el optimizador de rutas), E5 panel COYS + áreas, E6 km reutilizados. El nodo 04 de `arquitectura/solucion.html` y el diagrama del README siguen en la versión anterior · a Samo y dueños de nodo
 - 14:53 · Oli · **Pivot de dominio**: ya no son rutas de recolección sino detección urbana amplia desde el patrullaje (`docs/producto/dominio-del-problema.md`). `idea-y-epicas.md`, `solucion-paso-a-paso.md`, `arquitectura/solucion.html` (nodos 03 y 04) y `contratos.md` quedan desactualizados · a Samo y dueños de nodo
 - 14:30 · Oli · Nuevo `docs/producto/solucion-paso-a-paso.md`: flujo en 6 etapas alineado a los 5 nodos de `arquitectura/solucion.html`; deja abierto dónde se procesan las imágenes y cómo se cierra el ciclo · a Samo y dueños de nodo. Además se recuperaron con `git restore` las fichas de residuos y 2 archivos de Samo que se habían borrado solo en la copia local de Oli (14:02, sin commit)
 - 14:11 · Samo · `arquitectura/solucion.html` en borrador: 5 nodos (E6 dentro del optimizador), dos métricas principales · a todos: cada dueño de nodo completa lo marcado "por definir" en su entrevista
