@@ -54,9 +54,9 @@ Eso es Trama Urbana. Les mostramos cómo funciona.
 
 *(Cambio al prototipo en vivo.)*
 
-Este es el panel de COYS. Un móvil pasa y la cámara detecta un contenedor desbordado. Se arma un
-ticket, y el aviso le llega directo a Higiene Urbana, sin que nadie lo reenvíe. Cuando el móvil vuelve a
-pasar y el problema ya no está, el ticket queda como posiblemente resuelto.
+Este es el panel de COYS. Un móvil pasa y la cámara detecta un problema: se arma un ticket. Otra
+pasada lo vuelve a ver y suma un avistamiento. El aviso le llega directo al área, sin que nadie lo
+reenvíe. Cuando el móvil vuelve a pasar y el problema ya no está, queda verificado.
 
 *(Vuelta al deck. Si el prototipo falla, ir a la slide 12, el plan B.)*
 
@@ -103,5 +103,7 @@ Gracias.
     patrullaje de otros usos.
   - Son mezclas E17 (83 % nafta) y B20 (80 % gasoil).
   - Los tickets del prototipo son simulados.
-- **Prototipo:** se levanta con `npm run dev` en `frontend/`; tenerlo abierto antes de subir. El paso a
-  paso del contenedor sale de los botones de simulación del panel (ver `frontend/README.md`).
+- **Prototipo:** se levanta con `npm run dev` en `frontend/`. Al abrir la página, la secuencia corre
+  sola (ticket, avistamiento, aviso y pasada de verificación), y recargar la reinicia. Por eso conviene
+  **recargar justo al cambiar al prototipo**, para que el jurado la vea desde el principio (ver
+  `frontend/README.md`, que Juani cambió a las 16:50).
