@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v4, municipios como usuario y problemas de la ciudad)
+estado: borrador para ensayar (v5, primera frase con el problema, movilidad y sustentabilidad explícitas)
 ---
 
 # Speech: Trama Urbana (3 minutos)
@@ -28,9 +28,9 @@ Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
 
 ### 2 · Gancho (0:08–0:25)
 
-¿Sabían que en Córdoba se gastan **dos millones de litros** de combustible por año solo en patrullar?
+**Dos millones de litros** de combustible por año recorren Córdoba mirando **un solo problema**.
 `[pausa]`
-Nafta y gasoil, en patrulleros que circulan todo el día.
+Son patrulleros y móviles que circulan todo el día, con cámaras, y solo miran la seguridad.
 
 ### 3 · Problemas de la ciudad (0:25–0:45)
 
@@ -41,8 +41,9 @@ y riesgo eléctrico.
 
 ### 4 · A quién le pasa (0:45–1:00)
 
-Los municipios monitorean constantemente. Circulan y gastan combustible todo el día. Pero esos
-recorridos se usan para **un solo fin**: seguridad.
+Le pasa al **municipio**, que paga ese combustible y, además, recibe los reclamos de todo lo que sus
+móviles vieron y nadie avisó.
+Y le pasa al **vecino**, que convive con la basura o con la luz apagada hasta que alguien la reporta.
 
 ### 5 · La pregunta (1:00–1:10)
 
@@ -70,14 +71,21 @@ de un camión, sino de **alertar a cada área** de la ciudad.
 
 ### 8 · Qué la hace distinta (2:05–2:20)
 
-Y lo hacemos con costo marginal **cero**: implementamos sobre una flota que ya circula, actuamos sobre
-una infraestructura que ya existe y aprovechamos las cámaras que ya tiene.
+Por eso es un problema de **movilidad**: lo que optimizamos es la flota. Cada kilómetro que ya se
+recorre pasa a trabajar para más de un fin, y ningún área tiene que sacar **otro vehículo** a la calle
+para buscar el problema.
+Y lo hacemos con costo marginal **cero**: sobre una flota que ya circula, una infraestructura que ya
+existe y las cámaras que ya tiene.
 
 ### 9 · Impacto sostenible (2:20–2:40)
 
-Así maximizamos la eficiencia del monitoreo y del recorrido, y el balance de emisiones de carbono se
-compensa. En el ambiente, **cero** kilómetros nuevos. En la comunidad, ninguna área sale a buscar el problema.
-En las personas, la calle se arregla antes del reclamo. Cubrimos los ODS 11, 12, 13, 9 y 17.
+Y es sustentable en dos sentidos.
+En lo **ambiental**: no suma ni un litro ni un kilómetro. Le saca más ciudad al combustible que ya se
+quema.
+En lo **económico**: como no depende de comprar flota ni sensores, se sostiene sola después del piloto.
+`[pausa]`
+El municipio gasta mejor, y el vecino ve su calle arreglada antes de tener que reclamar. Cubrimos los
+ODS 11, 12, 13, 9 y 17.
 
 ### 10 · Primer paso (2:40–2:50)
 
@@ -94,8 +102,13 @@ Gracias.
 
 ## Para los ensayos
 
-- **Cronómetro:** el prototipo es lo que más tiempo se come. Si un ensayo pasa los 3 minutos, se
-  recorta primero la slide 5 y después la frase de los ODS.
+- **Cronómetro:** el prototipo es lo que más tiempo se come, y la v5 suma unas 60 palabras en los bloques
+  4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
+- **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
+  - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad mirando un solo problema.
+  - *¿Por qué es movilidad?* Bloque 8: la flota es el recurso, y hay menos vehículos en la calle.
+  - *¿Por qué es sustentable?* Bloque 9: lo ambiental (ni un litro más) y lo económico (se sostiene sola).
+  - *¿A quién le resolvemos?* Bloque 4: al municipio, que paga y recibe reclamos, y al vecino, que espera.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Trama Urbana. Si no puede, se reescribe la slide 6.
