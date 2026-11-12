@@ -74,7 +74,7 @@ La secuencia congelada vive en [`harness/demo-path.md`](harness/demo-path.md) y 
 ```mermaid
 flowchart LR
     subgraph Sensado[Sensado · simulado en la demo]
-        A[01 Captura<br/>COYS · Cordobeses en Alerta · policía]
+        A[01 Captura<br/>monitoreo municipal · Cordobeses en Alerta · policía]
         B[02 Detección y clasificación<br/>categoría y confianza]
     end
     subgraph Incidencias[Incidencias]
@@ -82,7 +82,7 @@ flowchart LR
         D[04 Derivación<br/>aviso directo al área]
     end
     subgraph Uso[Uso]
-        E[05 Panel e impacto<br/>vista COYS · vista por área · km reutilizados]
+        E[05 Panel e impacto<br/>vista municipio · vista por área · km reutilizados]
     end
     A --> B --> C --> D --> E
     C --> E

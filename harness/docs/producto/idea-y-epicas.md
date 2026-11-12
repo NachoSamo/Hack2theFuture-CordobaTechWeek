@@ -24,7 +24,7 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 ### La frase (borrador)
 
 > Ayudamos a **las áreas de la Municipalidad de Córdoba** a **enterarse a tiempo de todo lo que la
-> ciudad necesita arreglar** mediante **los vehículos con cámara que ya la recorren (COYS, Cordobeses en
+> ciudad necesita arreglar** mediante **los vehículos con cámara que ya la recorren (monitoreo municipal, Cordobeses en
 > Alerta y móviles policiales)**, para que **cada kilómetro que hoy se gasta solo en seguridad también
 > sirva para mantener la ciudad**.
 
@@ -49,16 +49,16 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 - **Áreas que resuelven** (higiene urbana, alumbrado, vía pública): reciben el aviso directo de lo que
   les toca y lo atienden. Son el usuario principal.
-- **Fuentes:** COYS (área municipal de control), Cordobeses en Alerta y la Policía de Córdoba. Siguen su
+- **Fuentes:** los móviles de monitoreo del municipio, Cordobeses en Alerta y la Policía de Córdoba. Siguen su
   recorrido; sus cámaras aportan las imágenes.
-- **COYS:** además de fuente, tiene una vista general de todas las incidencias y la cobertura. No asigna.
+- **El municipio que monitorea** (usuario principal del pitch, 12/11 17:10): además de fuente, tiene una vista general de todas las incidencias y la cobertura. No asigna.
 - **Afectados indirectos:** vecinos y comerciantes que conviven con el problema hasta que alguien lo ve.
 
 ### 4. Solución, paso a paso
 
 Detalle en [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md).
 
-1. Los **vehículos con cámara** (COYS, Cordobeses en Alerta, móviles policiales) siguen con su recorrido
+1. Los **vehículos con cámara** (monitoreo municipal, Cordobeses en Alerta, móviles policiales) siguen con su recorrido
    de siempre. No cambia nada para ellos.
 2. Mientras recorren, un modelo de visión **detecta lo que requiere atención**: microbasurales y
    voluminosos, problemas de vía pública (postes caídos, baches, semáforos, alumbrado) y contenedores
@@ -69,7 +69,7 @@ Detalle en [`solucion-paso-a-paso.md`](solucion-paso-a-paso.md).
    Cada categoría hace el recorrido completo; no hay una categoría protagonista.
 5. Cuando una pasada posterior ya no ve la incidencia, queda **"posiblemente resuelta"**: así se cierra
    el ciclo y se mide el tiempo de resolución sin pedirle datos al área.
-6. El panel muestra la vista general (COYS), la vista de cada área y el impacto: **kilómetros
+6. El panel muestra la vista general (municipio), la vista de cada área y el impacto: **kilómetros
    reutilizados** como detección, incidencias detectadas y resueltas.
 
 ### 5. Qué la hace distinta
@@ -96,7 +96,7 @@ más usos por kilómetro, justifica pasar a eléctricos. **Foco de hoy:** sacar 
 
 Un barrio con problemas documentados (Güemes o Mercado Norte), con los vehículos con cámara que ya lo
 recorren, durante 4 semanas: medir km reutilizados, incidencias detectadas y tiempo de resolución frente
-a las que llegan por reclamo. Hace falta: acuerdo con al menos una fuente (COYS primero) para acceder al
+a las que llegan por reclamo. Hace falta: acuerdo con al menos una fuente (el monitoreo municipal primero) para acceder al
 video o al dato procesado, y con al menos un área que reciba los avisos (por ejemplo, higiene urbana).
 
 ### Riesgos y cómo los respondemos
@@ -108,14 +108,14 @@ video o al dato procesado, y con al menos un área que reciba los avisos (por ej
 | Cobertura parcial (el patrullaje no pasa por todos lados) | El mapa marca las zonas sin dato; no reemplaza el reclamo, lo adelanta |
 | Muchas categorías, poca precisión | Empezar con tres categorías; umbral de confianza y confirmación en más de una pasada |
 | Aviso automático con falsos positivos | Solo se avisa lo confirmado en más de una pasada o con confianza alta; probar con el test 3+3 si el área actuaría (H8) |
-| Las áreas no atienden el aviso | COYS ve el estado de cada incidencia y la próxima pasada muestra si sigue ahí |
+| Las áreas no atienden el aviso | El municipio ve el estado de cada incidencia y la próxima pasada muestra si sigue ahí |
 
 ### Qué sabemos y qué suponemos
 
 | Afirmación | ¿Dato o supuesto? | Fuente / cómo lo validamos |
 |---|---|---|
 | Hay acumulación recurrente de basura en zonas de Córdoba | Dato (evidencia media) | Ficha 03, filas 170, 284 y 306 |
-| COYS es el área municipal que opera los móviles con cámara | Dato según Oli, sin fuente escrita | Mentores y staff (H1) |
+| El municipio tiene un área que opera móviles con cámara | Dato para Córdoba (Parque Sarmiento); falta saber qué área y cuántos móviles | Mentores y staff (H1) |
 | Ya hay móviles municipales con cámaras | Dato | Una decena en el Parque Sarmiento ([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)) |
 | Cordobeses en Alerta y la Policía compartirían su video o dato | Supuesto | Mentores y staff (H7) |
 | Las áreas actúan sobre un aviso automático | Supuesto | Test 3+3 (H8) |
@@ -139,15 +139,15 @@ E0 y E7 corren en paralelo y alimentan el pitch.
 
 > **Cambios del 12/11:** tras el pivot (14:53), E3–E6 dejan las rutas de recolección. Tras las
 > decisiones de Samo (15:08), E1 suma fuentes, E3 pasa a consolidar tickets y cerrar el ciclo, E4 pasa de
-> "COYS prioriza y asigna" a "aviso directo al área" y E5 deja a COYS con una vista general.
+> "COYS prioriza y asigna" a "aviso directo al área" y E5 deja a COYS con una vista general. Desde las 17:10 el pitch habla de "municipios" en lugar de COYS.
 
 ### E0 · Encuadre y validación
 
-- **Objetivo:** confirmar que COYS, su patrullaje y el acceso a las imágenes son reales.
+- **Objetivo:** confirmar que el monitoreo municipal, su patrullaje y el acceso a las imágenes son reales.
 - **Demo:** respuestas de mentores y del test 3+3 en [`proceso.md`](../../proceso.md) y [`mentores.md`](../../mentores.md).
-- **Después:** entrevistas con COYS y con las áreas que resuelven.
+- **Después:** entrevistas con el área de monitoreo del municipio y con las áreas que resuelven.
 - **Preguntas para refinar:**
-  - ¿Cómo se llama COYS completo, cuántos móviles tiene y qué recorren?
+  - ¿Qué área del municipio opera los móviles con cámara, cuántos tiene y qué recorren?
   - ¿Quién opera Cordobeses en Alerta y quién autoriza compartir su video o el de la Policía?
   - ¿Cómo se enteran hoy las áreas de un poste caído o un microbasural?
   - ¿Qué barrio usamos como caso del piloto?
@@ -156,7 +156,7 @@ E0 y E7 corren en paralelo y alimentan el pitch.
 
 ### E1 · Captura desde los móviles
 
-- **Objetivo:** recibir cuadros de video con posición GPS, hora y fuente (COYS, Cordobeses en Alerta, móvil policial).
+- **Objetivo:** recibir cuadros de video con posición GPS, hora y fuente (monitoreo municipal, Cordobeses en Alerta, móvil policial).
 - **Demo:** modo simulado con video o imágenes georreferenciadas de un recorrido por un barrio de
   Córdoba (regla 5 de código).
 - **Después:** integración con las cámaras reales; procesamiento en el vehículo o en el borde.
@@ -211,11 +211,11 @@ E0 y E7 corren en paralelo y alimentan el pitch.
 - **Criterio del jurado:** factibilidad (20 %), escalabilidad (15 %) y ecosistema (10 %).
 - **Paso de la demo:** el aviso que llega al área sin que nadie lo reenvíe.
 
-### E5 · Panel para COYS y las áreas
+### E5 · Panel para el municipio y las áreas
 
 - **Objetivo:** dos vistas sobre los mismos tickets.
   - **Área que resuelve:** sus tickets con ubicación, avistamientos y estado.
-  - **COYS:** vista general de todas las incidencias, todas las categorías y la cobertura. No asigna.
+  - **Municipio (área de monitoreo):** vista general de todas las incidencias, todas las categorías y la cobertura. No asigna.
 - **Demo:** una sola pantalla con selector de vista, siguiendo [`marca.md`](../../marca.md).
 - **Después:** usuarios y permisos, alertas, vista pública para vecinos.
 - **Preguntas para refinar:**
@@ -247,7 +247,7 @@ E0 y E7 corren en paralelo y alimentan el pitch.
   ([UE, BID y CFI](../../../research/cualitativo/oli/Financiamiento%20-%20UE,%20BID%20y%20CFI%20para%20Argentina.md)).
 - **Preguntas para refinar:**
   - ¿Quién paga: el municipio por servicio, cada área por uso o un fondo para el piloto?
-  - ¿Qué gana cada fuente (COYS, Cordobeses en Alerta, Policía) por compartir su video?
+  - ¿Qué gana cada fuente (monitoreo municipal, Cordobeses en Alerta, Policía) por compartir su video?
   - ¿Qué dice la normativa de datos personales sobre reutilizar cámaras de seguridad?
   - ¿Qué soluciones parecidas existen y por qué no alcanzan?
   - ¿Cómo se lleva a otra ciudad o a Europa?

@@ -40,7 +40,7 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 | H2 | Las rutas de recolección actuales son fijas y no responden a picos de demanda | Entrevista con el municipio o la recolectora | Sin probar |
 | H3 | Un modelo de visión detecta acumulación de basura desde un vehículo en movimiento con precisión suficiente | Spike de la épica E2 con imágenes públicas | Sin probar |
 | H4 | Rutear por demanda ahorra km y combustible frente a la ruta fija | Simulación de las épicas E4 y E6 | Descartada por el pivot del 12/11 14:53 (no se tocan las rutas) |
-| H5 | El recorrido de los móviles de COYS hoy se usa solo para seguridad | Mentores y staff | Sin probar |
+| H5 | El recorrido de los móviles de monitoreo del municipio hoy se usa solo para seguridad | Mentores y staff | Sin probar |
 | H6 | Visión por computadora detecta microbasurales, postes caídos y contenedores rotos desde un vehículo en movimiento | Spike con imágenes públicas | Sin probar |
 | H7 | Cordobeses en Alerta y la Policía de Córdoba (provincial) compartirían su video o un dato procesado con el municipio | Mentores y staff: quién opera cada fuente y quién lo autoriza | Sin probar |
 | H8 | Las áreas actúan sobre un aviso automático, sin validación humana, aunque haya falsos positivos | Test 3+3: mostrar el aviso a quien haría de área y preguntar qué haría | Sin probar |

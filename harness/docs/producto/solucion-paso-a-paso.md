@@ -24,7 +24,7 @@ No agregamos vehículos, sensores ni recorridos: hacemos que los kilómetros que
 
 | Recurso que se aprovecha | Qué cambia | Indicador | Etapa |
 |---|---|---|---|
-| **Kilómetros de los vehículos con cámara** (COYS, Cordobeses en Alerta, Policía) | Además de seguridad, detectan problemas de la ciudad | **Km reutilizados como detección** (cifra principal) | 1, 2 y 6 |
+| **Kilómetros de los vehículos con cámara** (monitoreo municipal, Cordobeses en Alerta, Policía) | Además de seguridad, detectan problemas de la ciudad | **Km reutilizados como detección** (cifra principal) | 1, 2 y 6 |
 | **Cámaras que ya están en los móviles** | Pasan a ser sensores de la ciudad | Incidencias detectadas por km | 2 |
 | **Recorridos de inspección de las áreas** | Ya no salen a buscar: reciben el aviso | Recorridos evitados (candidato) | 4, 5 y 6 |
 | **Tiempo de las áreas que resuelven** | Se enteran antes y con ubicación exacta | Tiempo de resolución, medido por la próxima pasada (candidato) | 3 y 6 |
@@ -44,7 +44,7 @@ Cada etapa sigue un nodo de la arquitectura de Samo (15:08): 01 Captura, 02 Dete
 
 ## Etapa 1 · Captura: los vehículos recorren como siempre
 
-- **Qué pasa:** los vehículos con cámara (móviles de COYS, Cordobeses en Alerta y móviles policiales)
+- **Qué pasa:** los vehículos con cámara (móviles de monitoreo del municipio, Cordobeses en Alerta y móviles policiales)
   hacen su recorrido habitual. No cambia su ruta ni su trabajo.
 - **Entra:** el video de cada vehículo, con posición GPS y hora.
 - **Sale:** cuadros sueltos con lugar, hora y fuente.
@@ -92,7 +92,7 @@ Cada etapa sigue un nodo de la arquitectura de Samo (15:08): 01 Captura, 02 Dete
 Dos vistas sobre los mismos tickets (E5):
 
 - **Área que resuelve:** sus tickets con ubicación, avistamientos y estado.
-- **COYS:** vista general de todas las incidencias, todas las categorías y la cobertura. No asigna.
+- **Municipio (área de monitoreo):** vista general de todas las incidencias, todas las categorías y la cobertura. No asigna.
 
 Fuera de la demo: vista pública para vecinos.
 

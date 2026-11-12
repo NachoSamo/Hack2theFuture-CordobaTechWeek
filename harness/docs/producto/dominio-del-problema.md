@@ -8,7 +8,7 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Dominio del problema: el móvil que autosana la ciudad
 
-> **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de COYS, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
+> **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de monitoreo del municipio, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
 
 > **Pivot del 12/11 14:53.** Pasamos de "rutas de recolección guiadas por cámaras" a un concepto más
 > grande: no vamos solo a residuos. Los residuos ya tienen sus rutas y su recolección; no las tocamos.
@@ -35,7 +35,7 @@ en la ciudad requiere atención y avisarle al área que lo resuelve.
 
 | Actor | Rol | Estado |
 |---|---|---|
-| **COYS**, área municipal de control | Opera los móviles de monitoreo y los servicios especiales de detección | Dato aportado por Oli; nombre completo y alcance a validar (E0) |
+| **Municipios que monitorean constantemente** | Sus móviles de monitoreo circulan y gastan combustible todo el día, y esos recorridos solo se usan para seguridad | Usuario principal desde el 12/11 17:10 (antes: COYS, el área de control de Córdoba) |
 | Áreas que resuelven (residuos, alumbrado, vía pública) | Reciben el aviso y atienden | Supuesto |
 | Recolectora de residuos | Mantiene sus rutas; recibe solo lo que la ruta fija no cubre | Supuesto |
 | Vecinos | Viven el problema; hoy son el único sensor (reclamo) | Supuesto |
@@ -58,9 +58,9 @@ La meta es "detectar todo lo posible que requiera atención"; las tres categorí
 
 ## Cerrado después del pivot
 
-- **Qué pasa tras detectar:** aviso directo al área responsable; COYS tiene una vista general (decision log 12/11 15:08; reemplaza "mapa priorizado para COYS, que asigna").
-- **Usuarios del panel:** COYS (vista general) y las áreas que resuelven.
-- **Fuentes:** móviles de COYS, Cordobeses en Alerta y móviles policiales (decision log 12/11 15:08).
+- **Qué pasa tras detectar:** aviso directo al área responsable; el municipio tiene una vista general (decision log 12/11 15:08; reemplaza "mapa priorizado para COYS, que asigna").
+- **Usuarios del panel:** el municipio (vista general, área de monitoreo) y las áreas que resuelven.
+- **Fuentes:** móviles de monitoreo del municipio, Cordobeses en Alerta y móviles policiales (decision log 12/11 15:08).
 - **Cifra principal del pitch:** km de patrullaje reutilizados como detección (con litros y CO₂ equivalentes).
 - **Título:** "Un móvil para autosanar la ciudad."
 
@@ -74,7 +74,7 @@ La meta es "detectar todo lo posible que requiera atención"; las tres categorí
 
 | Afirmación | ¿Dato o supuesto? | Cómo lo validamos |
 |---|---|---|
-| COYS opera móviles con cámara que recorren la ciudad | Dato según Oli, sin fuente escrita | Mentores y staff |
+| Los municipios tienen móviles con cámara que recorren la ciudad | Dato para Córdoba: móviles municipales con cámaras en el Parque Sarmiento (La Voz) | Mentores y staff |
 | Ese recorrido hoy se usa solo para seguridad | Supuesto | Mentores y staff |
 | Visión por computadora detecta las tres categorías desde un vehículo en movimiento | Supuesto | Spike de detección con imágenes públicas |
 | Las áreas que resuelven hoy se enteran por reclamo o recorriendo | Supuesto | Entrevista con el municipio |

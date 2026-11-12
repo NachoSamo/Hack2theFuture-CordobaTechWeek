@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 17:10 · Oli
+**Actualizado:** 12/11 17:25 · Oli
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -42,7 +42,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
-- 17:10 · Oli · Pitch: el usuario pasa a ser "los municipios" (ya no COYS) y se suma una slide con problemas de la ciudad con fuente (basura, alumbrado, postes caídos). Los docs de producto (`dominio-del-problema.md`, `idea-y-epicas.md`) todavía nombran a COYS · a Samo, Gina y Juani (el prototipo dice "vista general de COYS")
+- 17:25 · Oli · COYS → "municipio" / "monitoreo municipal" en docs de producto, `proceso.md` (H5) y, **en archivos de Samo**, `contratos.md`, `arquitectura/solucion.html` y el diagrama del README: solo cambia el nombre, no la forma de ningún contrato. Quedan las menciones históricas · a Samo
+- 17:10 · Oli · Pitch: el usuario pasa a ser "los municipios" (ya no COYS) y se suma una slide con problemas de la ciudad con fuente (basura, alumbrado, postes caídos). Docs de producto actualizados a las 17:25 · a Samo, Gina y Juani (el prototipo todavía dice "vista general de COYS")
 - 16:50 · Oli · Reglas oficiales del pitch en `guia-oficial.md` (3 min, prototipo obligatorio, 7 bloques, criterios del 13/11). Deck v3 con el prototipo de `frontend/` en vivo en la slide 6 · a Juani (que el panel esté listo para mostrarse) y a Gina
 - 16:30 · Oli · Deck v2 (11 slides: costo marginal cero y ODS 11, 12, 13, 9 y 17) y speech actualizado. La demo del deck usa "quema de residuos", que no está en las categorías de E2 · a Gina (ODS y speech) y a quien tenga el nodo 02
 - 12/11/2026 (sesión Diego y Lauti) · Nuevo `guia-interfaz-identidad.md`, enfocado en contenido de landing, vistas del MVP e identidad existente, según la aclaración de Diego y Lauti. Se restaura el contenido previo del README raíz, con una entrada al nuevo archivo en el mapa, por corrección de Diego y Lauti: el pedido era un documento separado. Documenta el aviso directo decidido por Samo y distingue implementación de objetivos. Domos y escala bajo/medio/alto/extremo quedan como requisitos planteados en la sesión, pendientes de alinear; no se cambian contratos ni diagramas. El prototipo sigue centrado en recolección y tiene tres niveles. Descriptor y slogan de marca requieren revisión con Juani. Archivos compartidos actualizados: mapa del README y registro de proceso · a Juani, Samo y Oli
