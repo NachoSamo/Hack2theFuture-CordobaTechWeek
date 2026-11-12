@@ -161,6 +161,7 @@ _Smoke check del demo path: se completa cuando exista._
 │   ├── decision-log.md        Decisiones con opciones y motivo
 │   ├── demo-path.md           Recorrido simulado y demo, paso a paso
 │   ├── arquitectura/          Diagramas HTML: solución y recorrido del usuario
+│   ├── docs/producto/         Idea en limpio y épicas para implementar
 │   ├── contratos.md           Interfaces entre nodos
 │   ├── marca.md               Identidad visual y tono
 │   ├── pitch.md               Estructura y preguntas del jurado

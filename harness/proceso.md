@@ -26,7 +26,7 @@ Todas las de la lluvia de ideas, incluidas las "locas". Una línea cada una.
 
 | # | Idea | Quién | Resultado |
 |---|---|---|---|
-| | | | Elegida / descartada: motivo |
+| 1 | Usar las cámaras de los móviles de monitoreo urbano para detectar basura acumulada, armar mapas de calor de demanda y optimizar las rutas y la carga de los camiones recolectores (track movilidad, cruza residuos). Detalle: [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md) | Equipo (pasada en limpio por Oli) | Elegida |
 
 ## Hipótesis
 
@@ -34,7 +34,10 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 
 | # | Hipótesis | Cómo la probamos | Estado |
 |---|---|---|---|
-| H1 | | | Sin probar / confirmada / refutada |
+| H1 | Hay móviles de monitoreo urbano con cámara que recorren Córdoba y se podría acceder a su video o a un dato procesado | Preguntar a mentores y al staff qué área los opera | Sin probar |
+| H2 | Las rutas de recolección actuales son fijas y no responden a picos de demanda | Entrevista con el municipio o la recolectora | Sin probar |
+| H3 | Un modelo de visión detecta acumulación de basura desde un vehículo en movimiento con precisión suficiente | Spike de la épica E2 con imágenes públicas | Sin probar |
+| H4 | Rutear por demanda ahorra km y combustible frente a la ruta fija | Simulación de las épicas E4 y E6 | Sin probar |
 
 ## Pruebas
 

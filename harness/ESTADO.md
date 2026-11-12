@@ -3,9 +3,9 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 · Samo
+**Actualizado:** 12/11 14:00 · Oli
 **Fase:** 0 · Explorar
-**Vertical / problema:** abierto
+**Vertical / problema:** movilidad (cruza residuos): rutas de recolección guiadas por cámaras de monitoreo urbano → [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
 
 > Fases: 0 Explorar · Bloque rojo (oficial: sin computadoras ni IA) · 1 Registrar la selección · 1b Prototipar y
@@ -20,13 +20,13 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | | | |
+| Oli | Idea en limpio y épicas E0–E7 (borrador); sigue refinar E0 y E7 | Checkpoint de la tarde | Validar H1 (acceso a cámaras de móviles) |
 
 ## Decisiones abiertas
 
 Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al decision log.
 
-- [ ] Vertical y problema (o cruce de dos verticales, si la organización lo permite)
+- [x] Vertical y problema: movilidad cruzando residuos (ver decision log 12/11 14:00)
 - [ ] Tipo de prototipo: software, hardware + software, o datos + visualización
 - [ ] Stack y nodos de la arquitectura → [`contratos.md`](contratos.md)
 - [ ] Diagramas de [`arquitectura/`](arquitectura/) aprobados por cada dueño de nodo y por Samo (sin esto no se codea)
@@ -41,7 +41,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
--
+- 14:00 · Oli · Nuevo `harness/docs/producto/idea-y-epicas.md` con la idea y las épicas E0–E7 · a todos: los nodos de `arquitectura/` y `contratos.md` salen de E1–E6
 
 ## Bloqueos
 

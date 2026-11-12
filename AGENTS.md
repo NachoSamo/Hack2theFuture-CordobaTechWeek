@@ -23,7 +23,7 @@ Hackathon de innovación sostenible de la Córdoba Tech Week (Córdoba Cluster, 
 - **Noche del 12/11:** construcción de la demo en casa de alguien del equipo (método propio, a confirmar con el staff).
 - **Día 2 (Demo Day):** viernes 13/11/2026, 9 a 15 h. Pitch por vertical desde las 10:45 y ronda final de 8 finalistas desde las 13:15.
 
-Vertical y problema: **abiertos** hasta el kickoff. Estado vivo en [`harness/ESTADO.md`](harness/ESTADO.md).
+Vertical y problema: **movilidad cruzando residuos** (decision log, 12/11 14:00; idea en [`harness/docs/producto/idea-y-epicas.md`](harness/docs/producto/idea-y-epicas.md)). Estado vivo en [`harness/ESTADO.md`](harness/ESTADO.md).
 
 ## Mapa
 
