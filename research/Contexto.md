@@ -28,6 +28,7 @@ Foto del 12/11/2026. Todas las cifras salen de los archivos enlazados; nada de e
 | Triage de bosque seco | Biodiversidad | Cualitativo, agenda COP30/31 | [`cualitativo/gina/bosque-seco-triage.md`](cualitativo/gina/bosque-seco-triage.md) | 10/11 | Puntajes por juicio de Gina |
 | Triage de litio | Biodiversidad (cruza agro y derechos) | Cualitativo | [`cualitativo/gina/litio-triage.md`](cualitativo/gina/litio-triage.md) | 9/11 | Puntajes por juicio de Gina |
 | Triage de transporte público | Movilidad | Cualitativo, agenda COP30/31 | [`cualitativo/gina/transporte-publico-triage.md`](cualitativo/gina/transporte-publico-triage.md) | 10/11 | Puntajes por juicio de Gina |
+| Fichas de problemas, compostaje e IA de Juani | Residuos y otros candidatos | Propuesta para taller | [Fichas](cualitativo/juani/mapa-de-problemas.md) · [IA y ML](cualitativo/juani/ia-y-ml-en-compostaje.md) · [PDF](cualitativo/juani/Hack2theFuture-compostaje-y-mapa-de-problemas.pdf) | 12/11 | Hipótesis pendientes de validación |
 | Mentoría con Mariana (tía de Oli) | Residuos, con aportes de agro | Cualitativo, entrevista a experta | [`cualitativo/oli/mentoria-residuos.md`](cualitativo/oli/mentoria-residuos.md) | 6/11 | Una sola fuente; sin contrastar con fuentes escritas |
 | Análisis de Croma | Transversal | Herramienta de datos públicos | [`cualitativo/samo/analisis-croma.md`](cualitativo/samo/analisis-croma.md) | 4/11 | No cubre Argentina |
 | Publicaciones de Periodistas Ambientales | Transversal | Relevamiento de fuente | [`cualitativo/samo/publicaciones-periodistas-ambientales.md`](cualitativo/samo/publicaciones-periodistas-ambientales.md) | 4/11 | 1 de 16 publicaciones trata residuos |
@@ -69,6 +70,8 @@ La mentoría con Mariana pone el foco en otro punto de la cadena: **el usuario e
 botella**, porque casi nadie separa en su casa y los hogares no tienen incentivos (las empresas sí).
 Recomienda enfocar en residuos sólidos urbanos y cubrir los tres ejes de la sostenibilidad. El
 pipeline lista la baja separación en origen entre los huecos que quedaron afuera de las fichas (2,50).
+
+Juani propone explorar dónde se traba la separación y entrega de orgánicos de comercios y comedores de Bariloche. El caso de Belém aporta un antecedente de compostaje cooperativo. La revisión de impropios con IA es una hipótesis de prototipo pendiente de validar con los recuperadores. [Investigación](cualitativo/juani/compostaje-cooperativo-belem-bariloche.md)
 
 ### Agro
 

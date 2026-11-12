@@ -170,6 +170,7 @@ _Smoke check del demo path: se completa cuando exista._
     ├── Contexto.md            Resumen de la investigación previa
     ├── cuantitativo/          Pipeline de noticias de residuos: reporte y 15 fichas
     └── cualitativo/           Triage por vertical (Gina), mentoría (Oli), Croma y fuentes (Samo)
+        └── juani/             Compostaje, fichas de problemas, propuesta de IA y PDF
 ```
 
 ---
