@@ -113,7 +113,30 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
       tooltip.className = 'pin-label'
       const title = document.createElement('strong')
       title.textContent = ticket.type
-      tooltip.append(title, detail)
+      const copy = document.createElement('span')
+      const address = document.createElement('span')
+      address.textContent = locationLabel(ticket)
+      const ticketStatus = document.createElement('span')
+      ticketStatus.className = 'pin-status'
+      ticketStatus.textContent = status(ticket)
+      copy.append(title, address, ticketStatus)
+      if (ticket.photo) {
+        const image = document.createElement('img')
+        image.src = ticket.photo
+        image.alt = ''
+        image.decoding = 'async'
+        tooltip.append(image)
+      }
+      tooltip.append(copy)
+      const placePreview = () => {
+        const pin = marker.getBoundingClientRect()
+        const bounds = map.getContainer().getBoundingClientRect()
+        const x = pin.left + pin.width / 2 - bounds.left
+        marker.style.setProperty('--preview-shift', Math.max(0, 116 - x) - Math.max(0, x + 116 - bounds.width) + 'px')
+        marker.classList.toggle('pin-preview-below', pin.top - bounds.top < 116)
+      }
+      marker.addEventListener('pointerenter', placePreview)
+      marker.addEventListener('focus', placePreview)
       tooltip.setAttribute('aria-hidden', 'true')
       marker.append(tooltip)
       marker.onclick = () => onSelect(ticket.id)

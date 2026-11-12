@@ -64,6 +64,32 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
   </select>
 }
 
+function Landing() {
+  return <main className="landing">
+    <header className="top landing-top">
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong></a>
+      <a className="landing-link" href="#mapa">Abrir mapa</a>
+    </header>
+    <section className="landing-hero">
+      <div className="landing-copy">
+        <h1>Mismos kilómetros.<br />El doble de ciudad.</h1>
+        <p>Trama Urbana aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
+        <a className="landing-cta" href="#mapa">Explorar el mapa de Córdoba <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure className="landing-scene">
+        <img src="/ticket-photos/photo-0.webp" alt="Contenedor rebalsado junto a un mercado" width="512" height="512" />
+        <span className="landing-detection" aria-hidden="true"><span>Contenedor rebalsado</span></span>
+        <figcaption>Detección simulada · Imagen ilustrativa</figcaption>
+      </figure>
+    </section>
+    <ol className="landing-flow" aria-label="Cómo funciona">
+      <li><strong>Detectar</strong><p>Una cámara registra un bache, una rama caída o un contenedor rebalsado.</p></li>
+      <li><strong>Consolidar</strong><p>Varios avistamientos del mismo problema actualizan un solo ticket.</p></li>
+      <li><strong>Derivar</strong><p>El aviso llega al responsable con la ubicación y el historial.</p></li>
+    </ol>
+  </main>
+}
+
 function App() {
   const [id, setId] = useState<string>()
   const [layer, setLayer] = useState<Layer>('tickets')
@@ -105,7 +131,7 @@ function App() {
 
   return <main>
     <header className="top">
-      <div className="brand"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
@@ -155,4 +181,17 @@ function App() {
   </main>
 }
 
-createRoot(document.getElementById('root')!).render(<App />)
+function Site() {
+  const [showMap, setShowMap] = useState(() => location.hash === '#mapa')
+  useEffect(() => {
+    function navigate() {
+      setShowMap(location.hash === '#mapa')
+      window.scrollTo(0, 0)
+    }
+    window.addEventListener('hashchange', navigate)
+    return () => window.removeEventListener('hashchange', navigate)
+  }, [])
+  return showMap ? <App /> : <Landing />
+}
+
+createRoot(document.getElementById('root')!).render(<Site />)

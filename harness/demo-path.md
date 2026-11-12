@@ -54,3 +54,10 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 ## Orden de recorte
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
+
+## Video de entrada propuesto
+
+- **0–4 s:** plano desde un vehículo que recorre una calle. Se ve el contenedor de Mercado Norte.
+- **4–8 s:** aparece un recuadro de detección con «Contenedor rebalsado». Si el recuadro se compone en edición, rotular «Detección simulada».
+- **8–12 s:** cortar al mapa de Córdoba en `/#mapa`, abrir el marcador de Mercado Norte y mostrar CBA-104 con su ubicación y la empresa recolectora.
+- **Continuación en vivo:** mostrar cómo el mismo ticket recibe otro avistamiento y el aviso simulado. Para unir el corte, usar el mismo fotograma como evidencia del ticket cuando esté listo el video.
