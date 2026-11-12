@@ -180,7 +180,7 @@ Vite indica la URL local. [Detalles del prototipo](frontend/README.md)
 │   ├── decision-log.md        Decisiones con opciones y motivo
 │   ├── demo-path.md           Recorrido simulado y demo, paso a paso
 │   ├── arquitectura/          Diagramas HTML: solución y recorrido del usuario
-│   ├── docs/producto/         Dominio del problema, idea, épicas y solución paso a paso
+│   ├── docs/producto/         Dominio del problema, idea, épicas, solución paso a paso y encaje con la movilidad urbana de la UE
 │   ├── contratos.md           Interfaces entre nodos
 │   ├── marca.md               Identidad visual y tono
 │   ├── pitch.md               Estructura y preguntas del jurado

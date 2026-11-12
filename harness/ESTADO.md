@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 19:40 · Oli
+**Actualizado:** 12/11 20:30 · Samo
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -42,6 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 20:30 · Samo · Nuevo `docs/producto/encaje-movilidad-urbana-ue.md`: por qué el producto es movilidad sostenible según la UE (4 de los 8 pilares del Urban Mobility Framework, con límites), apalancamiento (credibilidad, mercado en Europa, fondos, diferenciación), una frase propuesta para el speech y respuestas para el jurado. No cambia contratos ni la demo · a Oli y Gina (pitch)
 - 19:40 · Oli · Speech v5 y deck: primera frase con el problema, "por qué es movilidad" (bloque 8), sustentabilidad ambiental + económica (bloque 9) y usuario municipio + vecino (slide 4). Suma unas 60 palabras: cronometrar · a Gina y a quien presente
 - 17:25 · Oli · COYS → "municipio" / "monitoreo municipal" en docs de producto, `proceso.md` (H5) y, **en archivos de Samo**, `contratos.md`, `arquitectura/solucion.html` y el diagrama del README: solo cambia el nombre, no la forma de ningún contrato. Quedan las menciones históricas · a Samo
 - 17:10 · Oli · Pitch: el usuario pasa a ser "los municipios" (ya no COYS) y se suma una slide con problemas de la ciudad con fuente (basura, alumbrado, postes caídos). Docs de producto actualizados a las 17:25 · a Samo, Gina y Juani (el prototipo todavía dice "vista general de COYS")
