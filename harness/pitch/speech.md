@@ -36,8 +36,7 @@ Son patrulleros y móviles que circulan todo el día, con cámaras, y solo miran
 
 ¿Cuántas cosas pasan en la ciudad y **no estamos registrando**?
 `[pausa]`
-Mientras tanto, la basura se acumula: en el Mercado Norte después del Carnaval, en
-Güemes después de cada fin de semana largo. En dos años hubo **66.000 reclamos** de alumbrado. Y en
+Mientras tanto, la basura se acumula en las esquinas hasta que un vecino reclama. En dos años hubo **66.000 reclamos** de alumbrado. Y en
 una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con cables colgando
 y riesgo eléctrico.
 
@@ -117,7 +116,7 @@ Gracias.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
 - **Fuentes de la slide 3:**
-  - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes).
+  - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes). No se nombran en el pitch (Oli, 12/11): solo si el jurado pide un caso.
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
   - Postes: Perfil, 7/8/2026. Defensa Civil recibió 1.400 llamados por una tormenta de viento: 198 por
     columnas o postes caídos o en riesgo, y 23 por cables colgando. Verificado leyendo la nota. La nota
