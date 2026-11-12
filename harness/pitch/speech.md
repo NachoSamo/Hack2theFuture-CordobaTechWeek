@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v3, formato oficial híbrido)
+estado: borrador para ensayar (v4, municipios como usuario y problemas de la ciudad)
 ---
 
 # Speech: Trama Urbana (3 minutos)
@@ -32,31 +32,34 @@ Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
 `[pausa]`
 Nafta y gasoil, en patrulleros que circulan todo el día.
 
-### 3 · Problema (0:25–0:40)
+### 3 · Problemas de la ciudad (0:25–0:45)
 
-Esos vehículos llevan cámaras y ven toda la ciudad, pero hoy solo informan **seguridad**.
-`[pausa]`
-Lo que ven podría ser mucho más.
+Mientras tanto, en la ciudad, la basura se acumula: en el Mercado Norte después del Carnaval, en
+Güemes después de cada fin de semana largo. En dos años hubo **66.000 reclamos** de alumbrado. Y en
+una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con cables colgando
+y riesgo eléctrico.
 
-### 4 · A quién le pasa (0:40–0:55)
+### 4 · A quién le pasa (0:45–1:00)
 
-Le pasa a COYS, el área de control de la Municipalidad. Tiene móviles y cámaras en toda la ciudad, y
-los usa para **un solo fin**. Mientras tanto, un microbasural o un bache esperan a que un vecino reclame.
+Los municipios monitorean constantemente. Circulan y gastan combustible todo el día. Pero esos
+recorridos se usan para **un solo fin**: seguridad.
 
-### 5 · Lo que podría ser (0:55–1:05)
+### 5 · La pregunta (1:00–1:10)
 
-¿Y si cada kilómetro que ya se recorre aportara a una ciudad más sostenible, más limpia y más eficiente?
+Entonces nos preguntamos: ¿cómo sacamos el máximo beneficio de esos recorridos para hacer una ciudad
+más sostenible, conectada y eficiente?
 
-### 6 · Solución y prototipo (1:05–1:50)
+### 6 · Solución y prototipo (1:10–1:55)
 
-Los vehículos que hoy recorren la ciudad y gastan combustible pueden usarse para **más de un fin**.
-Eso es Trama Urbana. Les mostramos cómo funciona.
+Por eso presentamos **Trama Urbana**, una solución que funciona sobre los servicios que el municipio ya
+tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
+residuos, postes de luz caídos y riesgo de electrocución, y lo informa **en tiempo real**.
 
 *(Cambio al prototipo en vivo.)*
 
-Este es el panel de COYS. Un móvil pasa y la cámara detecta un problema: se arma un ticket. Otra
-pasada lo vuelve a ver y suma un avistamiento. El aviso le llega directo al área, sin que nadie lo
-reenvíe. Cuando el móvil vuelve a pasar y el problema ya no está, queda verificado.
+Un móvil pasa y la cámara detecta un contenedor rebalsado: se arma un ticket. Otra pasada lo vuelve a
+ver. El aviso llega directo al área, sin que nadie lo reenvíe. Cuando el móvil vuelve a pasar y el
+problema ya no está, queda verificado.
 
 *(Vuelta al deck. Si el prototipo falla, ir a la slide 12, el plan B.)*
 
@@ -72,12 +75,13 @@ una infraestructura que ya existe y aprovechamos las cámaras que ya tiene.
 
 ### 9 · Impacto sostenible (2:20–2:40)
 
-En el ambiente, **cero** kilómetros nuevos. En la comunidad, ninguna área sale a buscar el problema.
+Así maximizamos la eficiencia del monitoreo y del recorrido, y el balance de emisiones de carbono se
+compensa. En el ambiente, **cero** kilómetros nuevos. En la comunidad, ninguna área sale a buscar el problema.
 En las personas, la calle se arregla antes del reclamo. Cubrimos los ODS 11, 12, 13, 9 y 17.
 
 ### 10 · Primer paso (2:40–2:50)
 
-Nuestro primer paso es una reunión con **COYS** y el municipio.
+Nuestro primer paso es una reunión con el **municipio**.
 
 ### 11 · Cierre (2:50–3:00)
 
@@ -95,9 +99,15 @@ Gracias.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Trama Urbana. Si no puede, se reescribe la slide 6.
-- **Tip oficial no cubierto:** la organización pide "una persona real, no 'la gente'". Elegimos contar a
-  COYS como institución. Si aparece una persona concreta (alguien que trabaja ahí o un caso que contó un
-  mentor), suma en la slide 4.
+- **Tip oficial no cubierto:** la organización pide "una persona real, no 'la gente'". La slide 4
+  habla de "los municipios". Si aparece una persona concreta (alguien que trabaja en monitoreo o un caso
+  que contó un mentor), suma ahí.
+- **Fuentes de la slide 3:**
+  - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes).
+  - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
+  - Postes: Perfil, 7/8/2026. Defensa Civil recibió 1.400 llamados por una tormenta de viento: 198 por
+    columnas o postes caídos o en riesgo, y 23 por cables colgando. Verificado leyendo la nota. La nota
+    no habla de electrocución: "riesgo eléctrico" es inferencia nuestra (EPEC pide no tocar cables caídos).
 - **Si preguntan por el dato:**
   - Los 2 millones de litros son del Ministerio de Seguridad provincial (2023) y no separan el
     patrullaje de otros usos.
