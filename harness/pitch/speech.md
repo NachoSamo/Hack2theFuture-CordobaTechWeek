@@ -32,13 +32,19 @@ Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
 `[pausa]`
 Son patrulleros y móviles que circulan todo el día, con cámaras, y solo miran la seguridad.
 
-### 3 · Problemas de la ciudad (0:25–0:50)
+### 3 · Problemas de la ciudad (0:25–0:50) · tres slides que se acumulan
 
+**3a · foto de la basura**
 ¿Cuántas cosas pasan en la ciudad y **no estamos registrando**?
 `[pausa]`
-Mientras tanto, la basura se acumula en las esquinas hasta que un vecino reclama. En dos años hubo **66.000 reclamos** de alumbrado. Y en
-una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con cables colgando
-y riesgo eléctrico.
+La basura se acumula en las esquinas hasta que un vecino reclama.
+
+**3b · se suma el árbol caído**
+En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer, con
+cables colgando.
+
+**3c · se suma el alumbrado**
+Y en dos años hubo **66.000 reclamos** de alumbrado.
 
 ### 4 · A quién le pasa (0:50–1:05)
 
@@ -115,6 +121,7 @@ Gracias.
   hace Trama Urbana. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
+- **Fotos de las slides 3a a 3c:** las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
 - **Fuentes de la slide 3:**
   - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes). No se nombran en el pitch (Oli, 12/11): solo si el jurado pide un caso.
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
