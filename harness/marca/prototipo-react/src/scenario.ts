@@ -17,6 +17,5 @@ export const scenario: Scenario = {
   ...fixture,
   center: position(fixture.center),
   events: fixture.events.map(detection),
-  incoming: fixture.incoming.map(detection),
-  routes: { ...fixture.routes, fixed: fixture.routes.fixed.map(position), suggested: fixture.routes.suggested.map(position) },
+  routes: { fixed: fixture.routes.fixed.map(position) },
 }

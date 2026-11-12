@@ -1,8 +1,8 @@
 export type Position = [number, number]
 export type Level = 'Baja' | 'Media' | 'Alta'
-export type Decision = Level | 'Descartada'
 export type Detection = {
   id: string
+  type: string
   place: string
   address: string
   position: Position
@@ -15,13 +15,5 @@ export type Scenario = {
   city: string
   center: Position
   events: Detection[]
-  incoming: Detection[]
-  routes: {
-    fixed: Position[]
-    suggested: Position[]
-    fixedKm: number
-    suggestedKm: number
-    fixedLoad: number
-    suggestedLoad: number
-  }
+  routes: { fixed: Position[] }
 }

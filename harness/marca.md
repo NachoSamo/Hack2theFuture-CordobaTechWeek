@@ -16,13 +16,9 @@ El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren 
 
 ## MLP
 
-La experiencia mínima que vale la pena mostrar permite **ver dónde se acumula basura, revisar la detección y entender qué cambia en la ruta sugerida**.
+La vista de administrador empieza con la ruta fija y el punto de partida del vehículo. Los marcadores muestran el tipo de evento al pasar el cursor. Al seleccionar un evento, se abre el detalle y se dibuja un desvío sugerido con el mock.
 
-1. **Ver la demanda.** Una ciudad en perspectiva muestra puntos críticos y zonas sin dato. El feed incorpora detecciones con hora, nivel y confianza.
-2. **Revisar una detección.** La persona operadora selecciona un evento y confirma, corrige o descarta la clasificación.
-3. **Entender la ruta.** La vista Recolectora compara la ruta fija y la sugerida del día, con kilómetros, carga esperada e impacto estimado. La vista Municipio prioriza los puntos críticos.
-
-El prototipo usa datos simulados y la revisión manual es una interacción a validar con el equipo. El flujo de producto parte de los móviles de monitoreo y termina en el panel de operación. [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
+El prototipo estima la distancia entre coordenadas y conserva el orden de las paradas. [Prototipo React](marca/prototipo-react/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
 
 ## Misión
 
