@@ -16,8 +16,8 @@
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
 | Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias); sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
-| Lauti | README de producto para iterar landing y proponer MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Diego | README de producto para iterar landing y proponer MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
+| Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
+| Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Juani | | | |
 | Gina | | | |
 | Oli | Ficha oficial 07 cargada en el formulario (sin enviar: faltan foto del lienzo y minuta de Granola); `Estructura de solución.md` completa (Parte A + anexo B) | Pitch flash 15:30 | Link de Drive de la foto del lienzo |
@@ -42,7 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
-- 12/11/2026 (sesión Diego y Lauti) · README raíz actualizado como guía de producto, flujo y propuesta de MVP para la landing. Documenta el aviso directo decidido por Samo y distingue implementación de objetivos. Domos y escala bajo/medio/alto/extremo quedan como requisitos planteados en la sesión, pendientes de alinear; no se cambian contratos ni diagramas. El prototipo sigue centrado en recolección y tiene tres niveles. Descriptor y slogan de marca requieren revisión con Juani. Archivos de otros responsables actualizados: README y registro compartido de proceso · a Juani, Samo y Oli
+- 12/11/2026 (sesión Diego y Lauti) · Nuevo `guia-interfaz-identidad.md`, enfocado en contenido de landing, vistas del MVP e identidad existente, según la aclaración de Diego y Lauti. Se restaura el contenido previo del README raíz, con una entrada al nuevo archivo en el mapa, por corrección de Diego y Lauti: el pedido era un documento separado. Documenta el aviso directo decidido por Samo y distingue implementación de objetivos. Domos y escala bajo/medio/alto/extremo quedan como requisitos planteados en la sesión, pendientes de alinear; no se cambian contratos ni diagramas. El prototipo sigue centrado en recolección y tiene tres niveles. Descriptor y slogan de marca requieren revisión con Juani. Archivos compartidos actualizados: mapa del README y registro de proceso · a Juani, Samo y Oli
 - 16:10 · Oli · Deck rehecho estilo TED (9 slides, mínimo texto, primera con nombre, logo y equipo) y nuevo `pitch/speech.md` con el guion de 3 minutos; cierra pidiendo un piloto de un barrio por 4 semanas · a Gina (co-dueña del pitch) y Juani (marca)
 - 15:55 · Oli · `idea-y-epicas.md` y `solucion-paso-a-paso.md` alineados a las decisiones de Samo (15:08): E1 con tres fuentes, E3 consolidación de incidencias, E4 derivación directa al área, E5 con vista general de COYS; épicas mapeadas 1 a 1 con los nodos 01–05. Resuelve el aviso de Samo de las 15:08 · a Samo y dueños de nodo
 - 15:40 · Oli · Nuevo `pitch/deck.html` (9 slides, marca Trama Urbana, contenido del pivot + fuentes y aviso directo de Samo). No usa el slogan ni el descriptor de `marca.md`, que siguen hablando de recolección · a Juani y Gina
