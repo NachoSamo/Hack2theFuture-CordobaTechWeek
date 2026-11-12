@@ -71,25 +71,19 @@ function Landing() {
   return <main className="landing">
     <header className="top landing-top">
       <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ichnos</strong></a>
-      <a className="landing-link" href="#mapa">Abrir mapa</a>
     </header>
-    <section className="landing-hero">
+    <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-copy">
-        <h1>De la huella<br />a la acción.</h1>
-        <p>Ichnos aprovecha las cámaras de los recorridos urbanos para detectar incidencias, ubicarlas en el mapa y avisar a quien puede atenderlas.</p>
-        <a className="landing-cta" href="#mapa">Explorar el mapa de Córdoba <span aria-hidden="true">↗</span></a>
+        <h1 id="landing-title">De la huella<br />a la acción<span>.</span></h1>
+        <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
+        <a className="landing-cta" href="#mapa">Explorar el mapa <span aria-hidden="true">→</span></a>
       </div>
       <figure className="landing-scene">
-        <video autoPlay={autoPlay} muted loop controls playsInline preload="auto" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
+        <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
           <source src="/demo-vision.mp4" type="video/mp4" />
         </video>
       </figure>
     </section>
-    <ol className="landing-flow" aria-label="Cómo funciona">
-      <li><strong>Detectar</strong><p>Una cámara registra un bache, una rama caída o un contenedor rebalsado.</p></li>
-      <li><strong>Consolidar</strong><p>Varios avistamientos del mismo problema actualizan un solo ticket.</p></li>
-      <li><strong>Derivar</strong><p>El aviso llega al responsable con la ubicación y el historial.</p></li>
-    </ol>
   </main>
 }
 

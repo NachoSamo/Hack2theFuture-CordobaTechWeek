@@ -47,7 +47,7 @@ Piezas para explorar visualmente. Su orden, composición y acciones quedan por r
 | Valor | Reutilización de cámaras y recorridos; detección y seguimiento | Beneficio propuesto, sin cifras de ahorro inventadas |
 | Propuesta de MVP | Recorrido visual de la sección siguiente | Qué se puede demostrar y qué sigue pendiente |
 
-**Texto y acción del botón principal:** pendientes de definir con producto. No hay una solicitud de piloto, registro o contacto acordada específicamente para esta landing.
+**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. Las referencias de composición fueron [Linear](https://linear.app/) y [Mapbox](https://www.mapbox.com/).
 
 ## 4. Vistas propuestas para mostrar el MVP
 
