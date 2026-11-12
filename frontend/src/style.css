@@ -69,7 +69,20 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .legend span { display: flex; align-items: center; gap: 7px; }
 .dot, .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .swatch { border-radius: 2px; }
-.heat { background: #d79939; }
+.cool { background: #367572; }
+.heat { background: #b57f3c; }
+.hot { background: #be594c; }
+.fixed-route, .suggested-route { width: 14px; height: 3px; background: #97aed8; }
+.suggested-route { background: var(--lime); }
+.route-summary { color: var(--lime); }
+.departure {
+  background: #26353a;
+  color: #eaf0f0;
+  border: 1px solid #97aed8;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 3px 6px;
+}
 .observed { background: #428571; }
 .unobserved { background: #a5b3a9; }
 .map-warning { position: absolute; left: 16px; bottom: 25px; background: var(--surface); padding: 8px 10px; max-width: 75%; }
@@ -116,10 +129,9 @@ button.pin {
   border: 2px solid #eaf0f0;
   border-radius: 50%;
   min-height: 0;
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   padding: 0;
-  box-shadow: 0 2px 6px #10181b80;
 }
 button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 2px; }
 .pin-label {

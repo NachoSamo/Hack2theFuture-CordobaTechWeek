@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import maplibre, { type GeoJSONSource, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { center, city, coverage, levels, mapData, status, type Layer, type Ticket } from './tickets'
+import { attentionZones, center, city, coverage, levels, locationLabel, status, type Layer, type Ticket } from './tickets'
+
+import type { LineString, FeatureCollection } from 'geojson'
+import type { StreetRoute } from './model'
+import { scenario } from './scenario'
 
 type Props = {
   tickets: Ticket[]
   selected: Ticket | undefined
   layer: Layer
+  showRoutes: boolean
+  suggestion?: StreetRoute
   onSelect: (id: string) => void
 }
 
-export function CityMap({ tickets, selected, layer, onSelect }: Props) {
+export function CityMap({ tickets, selected, layer, showRoutes, suggestion, onSelect }: Props) {
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -24,7 +30,9 @@ export function CityMap({ tickets, selected, layer, onSelect }: Props) {
         container: host.current,
         style: 'https://tiles.openfreemap.org/styles/dark',
         center,
-        zoom: 12.9,
+        zoom: 13.65,
+        pitch: 49,
+        bearing: -22,
       })
     } catch {
       setFallback(true)
@@ -43,13 +51,12 @@ export function CityMap({ tickets, selected, layer, onSelect }: Props) {
       readyStyle = true
       window.clearTimeout(timeout)
       const firstLabel = map.getStyle().layers.find(item => item.type === 'symbol')?.id
-      map.addSource('attention', { type: 'geojson', data: mapData([]) })
+      map.addSource('attention', { type: 'geojson', data: attentionZones([]) })
       map.addLayer({
-        id: 'attention', type: 'heatmap', source: 'attention',
+        id: 'attention', type: 'fill', source: 'attention',
         paint: {
-          'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 10, 20, 15, 60],
-          'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'], 0, 'rgba(226,188,94,0)', 0.3, '#92632d', 0.65, '#d79939', 1, '#f5aa82'],
-          'heatmap-opacity': 0.8,
+          'fill-color': ['step', ['number', ['get', 'count'], 0], '#367572', 1, '#b57f3c', 2, '#be594c'],
+          'fill-opacity': 0.36,
         },
       }, firstLabel)
       map.addSource('coverage', { type: 'geojson', data: coverage })
@@ -61,6 +68,25 @@ export function CityMap({ tickets, selected, layer, onSelect }: Props) {
           'fill-opacity': 0.42,
           'fill-outline-color': '#778784',
         },
+      }, firstLabel)
+      const vector = Object.entries(map.getStyle().sources).find(([, source]) => source.type === 'vector')?.[0]
+      if (vector) {
+        map.addLayer({
+          id: 'city-buildings', type: 'fill-extrusion', source: vector, 'source-layer': 'building',
+          minzoom: 13,
+          paint: {
+            'fill-extrusion-color': '#5f706c',
+            'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 7],
+            'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
+            'fill-extrusion-opacity': 0.72,
+          },
+        }, firstLabel)
+      }
+      map.addSource('routes', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
+      map.addLayer({
+        id: 'route-lines', type: 'line', source: 'routes',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': ['get', 'color'], 'line-width': ['get', 'width'] },
       }, firstLabel)
       setReady(true)
     })
@@ -78,14 +104,14 @@ export function CityMap({ tickets, selected, layer, onSelect }: Props) {
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
-    map.getSource<GeoJSONSource>('attention')?.setData(mapData(tickets))
+    map.getSource<GeoJSONSource>('attention')?.setData(attentionZones(tickets))
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
       marker.className = 'pin'
       marker.dataset.ticketId = ticket.id
       marker.style.setProperty('--pin', levels[ticket.level])
-      const detail = ticket.address + ' · ' + status(ticket) + ' · ' + ticket.area
+      const detail = locationLabel(ticket) + ' · ' + status(ticket) + ' · ' + ticket.area
       marker.setAttribute('aria-label', ticket.type + ', ' + detail)
       const tooltip = document.createElement('span')
       tooltip.className = 'pin-label'
@@ -114,9 +140,40 @@ export function CityMap({ tickets, selected, layer, onSelect }: Props) {
   }, [ready, selected, tickets])
 
   useEffect(() => {
-    if (!ready) return
-    instance.current?.easeTo({ center: selected?.position ?? center, duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420 })
-  }, [ready, selected?.id, selected?.position])
+    const map = instance.current
+    if (!ready || !map || !showRoutes) return
+    const features: FeatureCollection<LineString>['features'] = [scenario.routes.fixed, ...(suggestion ? [suggestion] : [])].map((route, index) => ({
+      type: 'Feature',
+      properties: { color: index === 0 ? '#97aed8' : '#dff691', width: index === 0 ? 5 : 3 },
+      geometry: { type: 'LineString', coordinates: route.coordinates },
+    }))
+    map.getSource<GeoJSONSource>('routes')?.setData({ type: 'FeatureCollection', features })
+    map.setLayoutProperty('route-lines', 'visibility', 'visible')
+
+    const start = document.createElement('span')
+    start.className = 'departure'
+    start.textContent = 'Salida'
+    start.setAttribute('aria-label', 'Salida del vehículo de recolección')
+    const marker = new maplibre.Marker({ element: start, anchor: 'bottom' })
+      .setLngLat(scenario.routes.fixed.coordinates[0]).addTo(map)
+    return () => {
+      if (instance.current === map) map.setLayoutProperty('route-lines', 'visibility', 'none')
+      marker.remove()
+    }
+  }, [ready, showRoutes, suggestion])
+
+  useEffect(() => {
+    const map = instance.current
+    if (!ready || !map) return
+    const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420
+    if (showRoutes && (!selected || suggestion)) {
+      const path = suggestion ? [...scenario.routes.fixed.coordinates, ...suggestion.coordinates] : scenario.routes.fixed.coordinates
+      const bounds = path.reduce((area, point) => area.extend(point), new maplibre.LngLatBounds())
+      map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: -22, pitch: 49, duration })
+      return
+    }
+    map.easeTo({ center: selected?.position ?? center, duration })
+  }, [ready, selected?.position, showRoutes, suggestion])
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />

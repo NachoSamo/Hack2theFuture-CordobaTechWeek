@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { city, date, levels, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
+import { city, date, levels, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
+import { scenario } from './scenario'
+import type { StreetRoute } from './model'
 import './style.css'
 
 const types = [...new Set(tickets.map(ticket => ticket.type))]
@@ -14,7 +16,7 @@ function activityLabel(entry: Activity, index: number, area: string) {
   return index === 0 ? 'Primera detección' : 'Avistamiento incorporado al ticket'
 }
 
-function TicketDetail({ ticket, onClose }: { ticket: Ticket; onClose: () => void }) {
+function TicketDetail({ ticket, suggestion, onClose }: { ticket: Ticket; suggestion?: StreetRoute; onClose: () => void }) {
   const sightings = ticket.activity.filter(entry => entry.kind === 'sighting')
   const current = status(ticket)
   const next = current === 'Detectada'
@@ -26,7 +28,8 @@ function TicketDetail({ ticket, onClose }: { ticket: Ticket; onClose: () => void
   return <section className="review" aria-label="Detalle del ticket">
     <div className="review-title"><span className="ticket-id">{ticket.id}</span><button onClick={onClose}>Cerrar</button></div>
     <h2>{ticket.type}</h2>
-    <p>{ticket.address} · {ticket.place}</p>
+    <p>{locationLabel(ticket)} · {ticket.place}</p>
+    {suggestion && <p className="route-summary">Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados</p>}
     <dl className="facts">
       <div><dt>Estado</dt><dd>{current}</dd></div>
       <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
@@ -56,6 +59,7 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 function App() {
   const [id, setId] = useState<string>()
   const [layer, setLayer] = useState<Layer>('attention')
+  const [showRoutes, setShowRoutes] = useState(true)
   const [step, setStep] = useState(0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
@@ -65,6 +69,10 @@ function App() {
     .filter(ticket => (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state))
     .sort((a, b) => b.activity[b.activity.length - 1].time.localeCompare(a.activity[a.activity.length - 1].time)), [step, type, area, state])
   const selected = visible.find(ticket => ticket.id === id)
+
+  const suggestion = selected?.area === 'Higiene urbana' && status(selected) !== 'Posiblemente resuelta'
+    ? scenario.routes.suggestions[selected.id]
+    : undefined
 
   function runSimulation() {
     setType('')
@@ -81,18 +89,20 @@ function App() {
     </header>
     <section className="workspace" aria-label="Monitoreo urbano">
       <div className="map-stage">
-        <CityMap tickets={visible} selected={selected} layer={layer} onSelect={setId} />
+        <CityMap tickets={visible} selected={selected} layer={layer} showRoutes={showRoutes} suggestion={suggestion} onSelect={setId} />
         <div className="map-note">
           <h1>Incidencias urbanas</h1>
           <div className="layer-switch" aria-label="Capa del mapa">
             <button aria-pressed={layer === 'attention'} onClick={() => setLayer('attention')}>Atención</button>
             <button aria-pressed={layer === 'coverage'} onClick={() => setLayer('coverage')}>Cobertura</button>
+            <button aria-pressed={showRoutes} onClick={() => setShowRoutes(value => !value)}>Rutas</button>
           </div>
           <div className="legend">
-            {layer === 'attention' ? <span><i className="swatch heat" />Concentración de tickets activos</span> : <>
+            {layer === 'attention' ? <span><i className="swatch cool" /><i className="swatch heat" /><i className="swatch hot" />Menos a más tickets activos</span> : <>
               <span><i className="swatch observed" />Observada el {date}</span>
               <span><i className="swatch unobserved" />Sin observación registrada</span>
             </>}
+            {showRoutes && <span><i className="swatch fixed-route" />Ruta fija{suggestion && <><i className="swatch suggested-route" />Ruta sugerida</>}</span>}
           </div>
         </div>
       </div>
@@ -115,7 +125,7 @@ function App() {
           <button onClick={runSimulation}>{nextLabels[step] ?? 'Reiniciar simulación'}</button>
           <span className="sr-only" role="status">{step > 0 && selected?.id === replay.ticketId ? activityLabel(replay.activity[step - 1], step, selected.area) : ''}</span>
         </div>
-        {selected && <TicketDetail ticket={selected} onClose={() => setId(undefined)} />}
+        {selected && <TicketDetail ticket={selected} suggestion={showRoutes ? suggestion : undefined} onClose={() => setId(undefined)} />}
       </aside>
     </section>
   </main>

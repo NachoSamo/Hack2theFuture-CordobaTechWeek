@@ -1,5 +1,5 @@
 import fixture from './tickets-mock.json'
-import type { FeatureCollection, Point, Polygon } from 'geojson'
+import type { FeatureCollection, Polygon } from 'geojson'
 
 export type Position = [number, number]
 export type Activity =
@@ -9,7 +9,8 @@ export type Activity =
 export type Ticket = {
   id: string
   type: string
-  address: string
+  address?: string
+  streetReference?: { street: string; number: number; between: string[] }
   place: string
   area: string
   level: string
@@ -48,14 +49,21 @@ export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']
 export const levels: Record<string, string> = { Alta: '#ed8a6e', Media: '#e2bc5e', Baja: '#86bea6' }
 export type Layer = 'attention' | 'coverage'
 
-export function mapData(tickets: Ticket[]): FeatureCollection<Point> {
+export function locationLabel(ticket: Ticket) {
+  const reference = ticket.streetReference
+  if (reference) return `${reference.street} al ${reference.number} aprox., entre ${reference.between.join(' y ')}`
+  return ticket.address ?? ticket.position.slice().reverse().map(value => value.toFixed(5)).join(', ')
+}
+
+export function attentionZones(tickets: Ticket[]): FeatureCollection<Polygon> {
+  const active = tickets.filter(ticket => status(ticket) !== 'Posiblemente resuelta')
   return {
     type: 'FeatureCollection',
-    features: tickets.filter(ticket => status(ticket) !== 'Posiblemente resuelta').map(ticket => ({
-      type: 'Feature',
-      properties: {},
-      geometry: { type: 'Point', coordinates: ticket.position },
-    })),
+    features: coverage.features.filter(zone => zone.properties?.observed).map(zone => {
+      const [[left, bottom], , [right, top]] = zone.geometry.coordinates[0]
+      const count = active.filter(({ position: [x, y] }) => x >= left && x < right && y >= bottom && y < top).length
+      return { ...zone, properties: { count } }
+    }),
   }
 }
 

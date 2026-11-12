@@ -120,7 +120,7 @@ El descriptor **«Panel de demanda y rutas de recolección urbana»**, el slogan
 
 Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Juani](harness/marca/referencias/README.md).
 
-**Iteración posterior del prototipo:** la vista COYS ya muestra tickets, filtros por tipo, estado y área, detalle con historial y capas simuladas de atención y cobertura. El recorrido guiado ilustra consolidación, aviso y verificación posterior con un fixture local. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
+**Iteración posterior del prototipo:** la vista COYS ya muestra tickets, filtros por tipo, estado y área, detalle con historial y mapa 3D con capas simuladas de atención, cobertura y rutas de recolección. La altura y las entrecalles de ejemplo se cargan desde el mock. El recorrido guiado ilustra consolidación, aviso y verificación posterior con un fixture local. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
 
 ## 8. Límites del mensaje y decisiones pendientes
 

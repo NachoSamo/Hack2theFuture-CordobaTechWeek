@@ -24,7 +24,15 @@
           "source": "Móvil COYS",
           "confidence": 94
         }
-      ]
+      ],
+      "streetReference": {
+        "street": "Oncativo",
+        "number": 100,
+        "between": [
+          "Rivadavia",
+          "San Martín"
+        ]
+      }
     },
     {
       "id": "CBA-103",
