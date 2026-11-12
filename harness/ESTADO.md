@@ -20,7 +20,7 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | Deck estilo TED (`pitch/deck.html`) y speech de 3 minutos (`pitch/speech.md`); sigue ensayar | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
+| Oli | Ficha oficial 07 cargada en el formulario (sin enviar: faltan foto del lienzo y minuta de Granola); `Estructura de solución.md` completa (Parte A + anexo B) | Pitch flash 15:30 | Link de Drive de la foto del lienzo |
 
 ## Decisiones abiertas
 
