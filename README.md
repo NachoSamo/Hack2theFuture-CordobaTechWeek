@@ -170,6 +170,7 @@ _Smoke check del demo path: se completa cuando exista._
 │   ├── contratos.md           Interfaces entre nodos
 │   ├── marca.md               Identidad visual y tono
 │   ├── pitch.md               Estructura y preguntas del jurado
+│   ├── pitch/deck.html     Deck del pitch en HTML (marca Trama Urbana)
 │   └── mentores.md            Notas de mentores, datos y no veredictos
 │
 └── research/

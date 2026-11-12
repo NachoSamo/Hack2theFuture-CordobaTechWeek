@@ -20,7 +20,7 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | Pivot cerrado: dominio, idea y épicas E0–E7 y paso a paso reescritos (detección urbana desde el patrullaje de COYS); sigue el doble impacto y el pitch | Pitch flash 15:30 | Validar H1/H5 (acceso a cámaras de COYS) |
+| Oli | Deck del pitch en HTML (`pitch/deck.html`) con el problema nuevo y la marca de Juani; sigue reescribir E4, E5 y etapa 4 según el aviso de Samo (15:08) | Pitch flash 15:30 | Validar H1/H5 (acceso a cámaras de COYS) |
 
 ## Decisiones abiertas
 
@@ -42,6 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 15:40 · Oli · Nuevo `pitch/deck.html` (9 slides, marca Trama Urbana, contenido del pivot + fuentes y aviso directo de Samo). No usa el slogan ni el descriptor de `marca.md`, que siguen hablando de recolección · a Juani y Gina
 - 15:08 · Samo · Por recomendación de varios mentores: fuentes = COYS + Cordobeses en Alerta + móviles policiales; aviso directo a cada área (COYS solo tiene vista general); cierre del ciclo con la próxima pasada. `arquitectura/solucion.html`, `contratos.md` y el README están actualizados. En los docs de producto de Oli hay un aviso arriba, pero E4/E5 y la etapa 4 todavía dicen "COYS asigna" · a Oli (reescribir E4, E5 y la etapa 4) y a los dueños de nodo
 - 15:10 · Oli · `idea-y-epicas.md` y `solucion-paso-a-paso.md` reescritos: E3 mapa de incidencias, E4 priorización y asignación (reemplaza el optimizador de rutas), E5 panel COYS + áreas, E6 km reutilizados. El nodo 04 de `arquitectura/solucion.html` y el diagrama del README siguen en la versión anterior · a Samo y dueños de nodo
 - 14:53 · Oli · **Pivot de dominio**: ya no son rutas de recolección sino detección urbana amplia desde el patrullaje (`docs/producto/dominio-del-problema.md`). `idea-y-epicas.md`, `solucion-paso-a-paso.md`, `arquitectura/solucion.html` (nodos 03 y 04) y `contratos.md` quedan desactualizados · a Samo y dueños de nodo

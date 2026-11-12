@@ -39,11 +39,25 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 
 ## Lo que se puede preparar antes del evento
 
-- [ ] Plantilla de slides con la marca de [`marca.md`](marca.md)
+- [x] Plantilla de slides con la marca de [`marca.md`](marca.md): primer deck en HTML, [`pitch/deck.html`](pitch/deck.html) (Oli, 12/11). 9 slides con la estructura de abajo; flechas para navegar, `f` para pantalla completa
 - [ ] Slide de equipo
 - [ ] Panorama de financiamiento: fondos verdes de la UE, Global Gateway, CFI y BID (con fuentes verificadas)
 - [ ] Mapa de actores por vertical: municipio, cooperativas, recuperadores, productores, exportadores
 - [ ] Lista de los 17 ODS a mano para mapear la solución
+
+## Gancho
+
+> "¿Sabían que Córdoba gasta 2 millones de litros por año solo en patrullar?"
+
+Fuente: el Ministerio de Seguridad provincial usó más de 2 millones de litros de biocombustible en
+2023 ([La Voz de San Justo](https://www.lavozdesanjusto.com.ar/transicion-energetica-en-marcha-los-vehiculos-del-ministerio-de-seguridad-usaran-biocombustibles)).
+No distingue patrullaje de otros usos. Los ~5.500 litros por día y las ~4.600 t de CO₂ por año
+(2,3 kg por litro) son **cálculo nuestro**. Contexto: la Guardia Urbana arrancó con 70 móviles
+([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/ciudad-de-cordoba-con-70-moviles-y-400-efectivos-larga-este-lunes-la-guardia-urbana-municipal))
+y ya hay móviles municipales con cámaras en el Parque Sarmiento
+([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)).
+
+**Cierre:** "Mismos kilómetros, el doble de ciudad."
 
 ## Guion
 
