@@ -55,6 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada de Ichnos
+## Video de entrada de Ikhnos
 
 El montaje dura 10 segundos y alterna seis tomas ilustrativas con detección simulada. Muestra cinco tipos de incidencia con recuadros, confianza, gravedad, hora, coordenadas y área responsable. La landing reproduce el clip en bucle y sin audio. Para abrir CBA-104 durante el pitch, usá `/#mapa/deteccion`.

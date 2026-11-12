@@ -95,24 +95,45 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
   </select>
 }
 
+const previewTicket = tickets.find(ticket => ticket.id === replay.ticketId)
+
 function Landing() {
   const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [showMap, setShowMap] = useState(false)
+  const [previewId, setPreviewId] = useState(previewTicket?.id)
+  const activePreview = tickets.find(ticket => ticket.id === previewId)
 
   return <main className="landing">
     <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ichnos</strong></a>
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ikhnos</strong></a>
+      <a className="landing-nav" href="#mapa">Abrir mapa <span aria-hidden="true">↗</span></a>
     </header>
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-copy">
         <h1 id="landing-title">De la huella<br />a la acción<span>.</span></h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
-        <a className="landing-cta" href="#mapa">Explorar el mapa <span aria-hidden="true">→</span></a>
+        <div className="preview-switch" role="group" aria-label="Vista previa">
+          <button aria-pressed={!showMap} onClick={() => setShowMap(false)}>Detección</button>
+          <button aria-pressed={showMap} onClick={() => setShowMap(true)}>Tickets en el mapa</button>
+        </div>
       </div>
-      <figure className="landing-scene">
-        <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
-          <source src="/demo-vision.mp4" type="video/mp4" />
-        </video>
-      </figure>
+      <div className="landing-stage">
+        <div className="landing-scene" key={String(showMap)}>
+          {showMap ? <>
+            <div className="landing-map">
+              <CityMap tickets={tickets} selected={activePreview} layer="tickets" onSelect={setPreviewId} />
+            </div>
+            {activePreview && <div className="landing-ticket" aria-live="polite">
+              {activePreview.photo && <img src={activePreview.photo} alt="" width="54" height="48" />}
+              <div><small>{activePreview.id} · {activePreview.place}</small>
+                <strong>{activePreview.type}</strong><span>{activePreview.area}</span></div>
+            </div>}
+          </> : <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
+            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de visión por computadora">
+            <source src="/demo-vision.mp4?v=ikhnos" type="video/mp4" />
+          </video>}
+        </div>
+      </div>
     </section>
   </main>
 }
@@ -173,7 +194,7 @@ function App({ demo = false }: { demo?: boolean }) {
 
   return <main>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ichnos</strong></a><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ikhnos</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">

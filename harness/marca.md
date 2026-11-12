@@ -1,16 +1,16 @@
-# Ichnos
+# Ikhnos
 
 **Documento de marca · Juani · Propuesta para revisión**
 
 ## Nombre
 
-**Ichnos** viene del griego *íkhnos* (ἴχνος), huella o rastro. Cada avistamiento aporta evidencia para ubicar una incidencia y seguir su evolución. [Diccionario griego](https://logeion.uchicago.edu/ἴχνος)
+**Ikhnos** viene del griego *íkhnos* (ἴχνος), huella o rastro. Cada avistamiento aporta evidencia para ubicar una incidencia y seguir su evolución. [Diccionario griego](https://logeion.uchicago.edu/ἴχνος)
 
 **Descriptor:** Visión por computadora para el mantenimiento urbano.
 
 ## Logo
 
-![Símbolo de Ichnos](marca/logo.svg)
+![Símbolo de Ikhnos](marca/logo.svg)
 
 El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 

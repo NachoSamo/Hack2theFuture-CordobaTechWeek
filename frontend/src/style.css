@@ -199,77 +199,80 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 
 .brand { color: inherit; text-decoration: none; }
 .landing {
-  --landing-ink: #17251e;
   min-height: 100svh;
-  color: var(--landing-ink);
-  background: #f4f4ec;
-  color-scheme: light;
+  color: #f0f3ed;
+  background: radial-gradient(ellipse at 80% 80%, #202d27 0%, #111815 53%, #0e1311 83%);
 }
 .landing-top {
-  width: min(1320px, calc(100% - 64px));
+  width: min(1280px, calc(100% - 64px));
   margin: auto;
   padding: 16px 0;
-  border-color: #cdd4c8;
+  border-color: #36443c;
 }
 .landing-top .brand { gap: 11px; }
 .landing-top .brand strong { font-size: 24px; letter-spacing: -.025em; }
+.landing-nav { color: #dff691; font-weight: 600; text-decoration: none; }
+.landing-nav:hover { text-decoration: underline; }
 .landing-hero {
-  width: min(1320px, calc(100% - 64px));
+  width: min(1280px, calc(100% - 64px));
   min-height: calc(100svh - 66px);
   margin: auto;
-  padding: 54px 0 70px;
+  padding: 62px 0 78px;
   display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
   align-items: center;
-  gap: clamp(28px, 4vw, 62px);
+  gap: clamp(26px, 4vw, 62px);
 }
 .landing h1 {
-  font-size: clamp(3.25rem, 6.25vw, 6rem);
+  font-size: clamp(3.15rem, 6.2vw, 6rem);
   font-weight: 600;
   line-height: .94;
   letter-spacing: -.04em;
 }
-.landing h1 span { color: #527750; }
-.landing-copy p {
-  max-width: 33ch;
-  color: #45564d;
-  font-size: 1.17rem;
-  line-height: 1.5;
-  margin: 23px 0 27px;
-}
-.landing-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px;
-  padding: 12px 17px;
-  border-radius: 7px;
-  background: var(--landing-ink);
-  color: #f4f4ec;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 180ms ease;
-}
-.landing-cta:hover { background: #355345; }
-.landing a:focus-visible { outline-color: #527750; }
-.landing-cta span { transition: transform 180ms ease; }
-.landing-cta:hover span { transform: translateX(3px); }
+.landing h1 span { color: #dff691; }
+.landing-copy p { max-width: 33ch; color: #b9c7bd; font-size: 1.17rem; line-height: 1.5; margin: 22px 0 27px; }
+.preview-switch { display: inline-flex; gap: 3px; padding: 3px; border: 1px solid #41534a; border-radius: 9px; }
+.preview-switch button { border: 0; border-radius: 6px; background: transparent; color: #cfdbd1; font-size: 14px; padding: 7px 10px; }
+.preview-switch button:hover { background: #26382e; }
+.preview-switch button[aria-pressed=true] { color: #17251e; background: #dff691; }
+.landing-stage { perspective: 1150px; min-width: 0; }
 .landing-scene {
+  position: relative;
   margin: 0;
-  padding: 7px;
+  padding: 6px;
+  border: 1px solid #46584c;
   border-radius: 14px;
-  background: #17251e;
+  background: #10191d;
 }
-.landing-scene video {
+.landing-scene video, .landing-map {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   background: #10191d;
   border-radius: 8px;
 }
+.landing-map { position: relative; overflow: clip; }
+.landing-ticket {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  max-width: calc(100% - 28px);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #19252b;
+  box-shadow: 0 5px 14px #080e0c99;
+  pointer-events: none;
+}
+.landing-ticket img { border-radius: 4px; object-fit: cover; }
+.landing-ticket strong, .landing-ticket span, .landing-ticket small { display: block; }
+.landing-ticket small, .landing-ticket span { color: #b9c7bd; font-size: 12px; }
 @media (max-width: 840px) {
   .landing-top, .landing-hero { width: calc(100% - 40px); }
-  .landing-hero { grid-template-columns: 1fr; min-height: auto; padding: 40px 0; gap: 32px; }
+  .landing-hero { grid-template-columns: 1fr; min-height: auto; padding: 36px 0 46px; gap: 27px; }
   .landing h1 { font-size: clamp(3rem, 10vw, 5rem); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -278,7 +281,7 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 
 
 @media (prefers-reduced-motion: no-preference) {
-  .landing-scene { animation: camera-reveal 480ms cubic-bezier(.16, 1, .3, 1) both; }
+  .landing-scene { animation: preview-turn 440ms cubic-bezier(.16, 1, .3, 1) both; }
   ::view-transition-old(root) { animation: 150ms ease-out both page-out; }
   ::view-transition-new(root) { animation: 320ms cubic-bezier(.16, 1, .3, 1) both camera-reveal; }
 }
@@ -295,3 +298,8 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 .ticket-actions button[aria-pressed=true] { color: var(--lime); }
 .ticket-actions button:disabled { opacity: .55; cursor: default; }
 .timeline small { display: block; margin-top: 2px; }
+
+@keyframes preview-turn {
+  from { transform: rotateX(11deg) rotateY(-15deg) translateY(10px); opacity: .65; }
+  to { transform: none; opacity: 1; }
+}
