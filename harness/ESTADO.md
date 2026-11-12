@@ -15,7 +15,7 @@
 
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
-| Samo | Harness | Antes del kickoff | — |
+| Samo | Arquitectura de la solución: borrador con 5 nodos y revisión lean; sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | | | |
 | Diego | | | |
 | Juani | | | |
@@ -41,6 +41,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 14:11 · Samo · `arquitectura/solucion.html` en borrador: 5 nodos (E6 dentro del optimizador), dos métricas principales · a todos: cada dueño de nodo completa lo marcado "por definir" en su entrevista
 - 14:00 · Oli · Nuevo `harness/docs/producto/idea-y-epicas.md` con la idea y las épicas E0–E7 · a todos: los nodos de `arquitectura/` y `contratos.md` salen de E1–E6
 
 ## Bloqueos

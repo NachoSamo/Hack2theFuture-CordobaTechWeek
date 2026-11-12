@@ -22,7 +22,14 @@ Se decide en el kickoff según el tipo de prototipo. Registrar en el decision lo
 
 | Nodo | Qué hace | Carpeta | Dueño | Entrada | Salida | Fixture |
 |---|---|---|---|---|---|---|
-| | | | | | | `fixtures/` |
+| 01 Captura | Cuadros del recorrido de un móvil (simulado) | | por definir | Video o imágenes georreferenciadas | Cuadro con lugar, hora y móvil | |
+| 02 Detección | Cuadro → evento de basura acumulada | | por definir | Salida de 01 | Evento con lugar, hora, nivel y confianza | |
+| 03 Mapa de demanda | Agrega eventos por zona y franja | | por definir | Salida de 02 | Demanda por zona, puntos críticos y zonas sin dato | |
+| 04 Optimizador e impacto | Ruta sugerida vs. ruta fija | | por definir | Salida de 03 + flota + ruta fija | Rutas con km, carga y puntos atendidos a tiempo | |
+| 05 Panel | Vista municipio y vista recolectora | | por definir | Salidas de 03 y 04 | Pantalla | No aplica |
+
+Nodos del borrador de [`arquitectura/solucion.html`](arquitectura/solucion.html). Carpeta, campos
+JSON y fixture los define cada dueño.
 
 ## Contratos
 

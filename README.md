@@ -73,17 +73,22 @@ La secuencia congelada vive en [`harness/demo-path.md`](harness/demo-path.md) y 
 
 ```mermaid
 flowchart LR
-    subgraph Capa1[1 · Por definir]
-        A[Nodo]
+    subgraph Sensado[Sensado · simulado en la demo]
+        A[01 Captura<br/>cuadros + GPS de móviles]
+        B[02 Detección<br/>evento de basura acumulada]
     end
-    subgraph Capa2[2 · Por definir]
-        B[Nodo]
+    subgraph Decision[Decisión]
+        C[03 Mapa de demanda<br/>zona × franja, puntos críticos]
+        D[04 Optimizador e impacto<br/>ruta fija vs. sugerida]
     end
-    subgraph Capa3[3 · Por definir]
-        C[Nodo]
+    subgraph Uso[Uso]
+        E[05 Panel<br/>vista municipio · vista recolectora]
     end
-    A --> B --> C
+    A --> B --> C --> D --> E
+    C --> E
 ```
+
+Borrador del 12/11 14:11, sin dueños ni aprobación.
 
 El diagrama completo, con dueños, entradas, salidas y aprobación, vive en
 [`harness/arquitectura/solucion.html`](harness/arquitectura/solucion.html).
@@ -113,7 +118,7 @@ _Qué hace siempre, qué no hace nunca y qué es simulado en la demo._
 | Harness del equipo (reglas, proceso, decisiones) | **Listo** |
 | Investigación previa | **Lista** para residuos (cuantitativo y cualitativo); cualitativa para agro, biodiversidad y movilidad |
 | Problema y solución | **Pendiente:** se eligen el 12/11 |
-| Diagramas de arquitectura | **Plantillas** a completar después del kickoff |
+| Diagramas de arquitectura | **Borrador:** solución con 5 nodos, sin dueños ni aprobación; recorrido del usuario, plantilla |
 | Producto | **No empezado** |
 
 ---

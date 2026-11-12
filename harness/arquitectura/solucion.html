@@ -75,7 +75,7 @@ code { font-family: var(--mono); font-size: .9em; }
 /* Flujo de capas o pasos: fila en desktop, columna en mobile */
 .flujo { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
 .flujo .caja {
-  flex: 1 1 180px; background: var(--superficie); border: 1px solid var(--linea);
+  flex: 1 1 140px; background: var(--superficie); border: 1px solid var(--linea);
   border-radius: 14px; padding: 14px 16px; box-shadow: var(--sombra);
 }
 .flujo .flecha { align-self: center; color: var(--apagado); font: 600 20px var(--mono); }
@@ -122,90 +122,117 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
   <span class="estado" id="estado">Borrador · sin aprobar</span>
 
   <div class="nota">
-    <strong>Plantilla.</strong> Se completa después de elegir el problema, entrevistando a cada dueño
-    de nodo con preguntas de opción múltiple. La cantidad de capas y sus nombres los decide el equipo:
-    estas cuatro son un lugar donde escribir, no una propuesta.
+    <strong>Rutas de recolección guiadas por las cámaras del monitoreo urbano.</strong> Cinco nodos que
+    salen de las épicas E1–E6 de <a href="../docs/producto/idea-y-epicas.md">idea-y-epicas.md</a>; la
+    épica E6 (impacto) vive dentro del nodo 04. E0 (validación) y E7 (negocio) corren en paralelo y
+    no son nodos. Lo marcado en amarillo lo decide el dueño de cada nodo en su entrevista.
   </div>
 
   <h2>Flujo</h2>
   <div class="flujo" aria-label="Flujo de capas de la solución">
-    <div class="caja"><div class="num">01</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="caja"><div class="num">01 · E1</div><div class="nombre">Captura</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">02</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="caja"><div class="num">02 · E2</div><div class="nombre">Detección</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">03</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="caja"><div class="num">03 · E3</div><div class="nombre">Mapa de demanda</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
     <div class="flecha" aria-hidden="true">→</div>
-    <div class="caja"><div class="num">04</div><div class="nombre vacio">Capa por definir</div><div class="sub">Dueño: —</div></div>
+    <div class="caja"><div class="num">04 · E4 + E6</div><div class="nombre">Optimizador e impacto</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
+    <div class="flecha" aria-hidden="true">→</div>
+    <div class="caja"><div class="num">05 · E5</div><div class="nombre">Panel</div><div class="sub">Dueño: <span class="vacio">por definir</span></div></div>
   </div>
 
   <h2>Capa por capa</h2>
   <div class="grilla">
     <section class="ficha">
-      <h3>01 · <span class="vacio">por definir</span></h3>
+      <h3>01 · Captura</h3>
       <dl>
-        <dt>Qué hace</dt><dd class="vacio">—</dd>
-        <dt>Dueño</dt><dd class="vacio">—</dd>
-        <dt>Entrada</dt><dd class="vacio">—</dd>
-        <dt>Salida</dt><dd class="vacio">—</dd>
-        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
-        <dt>Tecnología</dt><dd class="vacio">—</dd>
-        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
-        <dt>Si falla</dt><dd class="vacio">—</dd>
+        <dt>Qué hace</dt><dd>Entrega los cuadros del recorrido de un móvil de monitoreo urbano, con posición GPS y hora</dd>
+        <dt>Dueño</dt><dd class="vacio">por definir</dd>
+        <dt>Entrada</dt><dd>Video o set de imágenes georreferenciadas de un barrio de Córdoba (simulado)</dd>
+        <dt>Salida</dt><dd>Un cuadro por paso, con lugar, hora y móvil</dd>
+        <dt>Fixture</dt><dd class="vacio">por definir</dd>
+        <dt>Tecnología</dt><dd class="vacio">Video propio, imágenes públicas o Street View (pregunta de E1)</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd>Lee el set grabado de antemano (regla 5 de código)</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>02 · <span class="vacio">por definir</span></h3>
+      <h3>02 · Detección</h3>
       <dl>
-        <dt>Qué hace</dt><dd class="vacio">—</dd>
-        <dt>Dueño</dt><dd class="vacio">—</dd>
-        <dt>Entrada</dt><dd class="vacio">—</dd>
-        <dt>Salida</dt><dd class="vacio">—</dd>
-        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
-        <dt>Tecnología</dt><dd class="vacio">—</dd>
-        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
-        <dt>Si falla</dt><dd class="vacio">—</dd>
+        <dt>Qué hace</dt><dd>Convierte cada cuadro en un evento de basura acumulada y descarta todo lo demás</dd>
+        <dt>Dueño</dt><dd class="vacio">por definir</dd>
+        <dt>Entrada</dt><dd>Salida de 01</dd>
+        <dt>Salida</dt><dd>Evento con lugar, hora, nivel (bajo, medio, alto) y confianza</dd>
+        <dt>Fixture</dt><dd class="vacio">por definir</dd>
+        <dt>Tecnología</dt><dd class="vacio">Modelo preentrenado tipo YOLO, LLM multimodal o detecciones etiquetadas a mano (pregunta de E2)</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd>Salida determinística de respaldo con los mismos eventos (regla 4 de código)</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>03 · <span class="vacio">por definir</span></h3>
+      <h3>03 · Mapa de demanda</h3>
       <dl>
-        <dt>Qué hace</dt><dd class="vacio">—</dd>
-        <dt>Dueño</dt><dd class="vacio">—</dd>
-        <dt>Entrada</dt><dd class="vacio">—</dd>
-        <dt>Salida</dt><dd class="vacio">—</dd>
-        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
-        <dt>Tecnología</dt><dd class="vacio">—</dd>
-        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
-        <dt>Si falla</dt><dd class="vacio">—</dd>
+        <dt>Qué hace</dt><dd>Agrega los eventos por zona y franja horaria y marca los puntos críticos</dd>
+        <dt>Dueño</dt><dd class="vacio">por definir</dd>
+        <dt>Entrada</dt><dd>Eventos de 02 (en la demo, varias semanas simuladas)</dd>
+        <dt>Salida</dt><dd>Demanda por zona y franja, puntos críticos y zonas sin dato</dd>
+        <dt>Fixture</dt><dd class="vacio">por definir</dd>
+        <dt>Tecnología</dt><dd class="vacio">Unidad espacial: cuadra, hexágono o radio de contenedor (pregunta de E3)</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd class="vacio">por definir</dd>
       </dl>
     </section>
     <section class="ficha">
-      <h3>04 · <span class="vacio">por definir</span></h3>
+      <h3>04 · Optimizador e impacto</h3>
       <dl>
-        <dt>Qué hace</dt><dd class="vacio">—</dd>
-        <dt>Dueño</dt><dd class="vacio">—</dd>
-        <dt>Entrada</dt><dd class="vacio">—</dd>
-        <dt>Salida</dt><dd class="vacio">—</dd>
-        <dt>Fixture</dt><dd><code>fixtures/—.json</code></dd>
-        <dt>Tecnología</dt><dd class="vacio">—</dd>
-        <dt>Cómo se verifica</dt><dd class="vacio">—</dd>
-        <dt>Si falla</dt><dd class="vacio">—</dd>
+        <dt>Qué hace</dt><dd>Propone las rutas del día priorizando puntos críticos con la capacidad de la flota, y compara contra la ruta fija</dd>
+        <dt>Dueño</dt><dd class="vacio">por definir</dd>
+        <dt>Entrada</dt><dd>Salida de 03, flota (camiones, capacidad, base) y ruta fija de referencia</dd>
+        <dt>Salida</dt><dd>Ruta fija y ruta sugerida, cada una con km, carga y puntos críticos atendidos a tiempo; km por tonelada</dd>
+        <dt>Fixture</dt><dd class="vacio">por definir</dd>
+        <dt>Tecnología</dt><dd class="vacio">por definir (E4 menciona OR-Tools sobre OpenStreetMap)</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd class="vacio">por definir</dd>
+      </dl>
+    </section>
+    <section class="ficha">
+      <h3>05 · Panel</h3>
+      <dl>
+        <dt>Qué hace</dt><dd>Dos vistas sobre los mismos datos, con selector</dd>
+        <dt>Dueño</dt><dd class="vacio">por definir</dd>
+        <dt>Entrada</dt><dd>Salidas de 03 y 04</dd>
+        <dt>Salida</dt><dd><strong>Municipio:</strong> puntos críticos, cobertura y % atendidos a tiempo. <strong>Recolectora:</strong> rutas, carga por camión, km por tonelada, litros y CO₂</dd>
+        <dt>Fixture</dt><dd>No aplica: consume los fixtures de 03 y 04</dd>
+        <dt>Tecnología</dt><dd class="vacio">por definir (según <code>marca.md</code>)</dd>
+        <dt>Cómo se verifica</dt><dd class="vacio">por definir</dd>
+        <dt>Si falla</dt><dd>Nunca pantalla en blanco: muestra el fixture (regla 4 de código)</dd>
       </dl>
     </section>
   </div>
 
+  <h2>Métricas principales</h2>
+  <p>
+    Una por usuario: <strong>km por tonelada</strong> (recolectora) y <strong>puntos críticos
+    atendidos a tiempo</strong> (municipio). Definen si funcionó el piloto de 4 semanas
+    (2 con ruta fija y 2 con ruta sugerida). El umbral de éxito está sin definir.
+  </p>
+
   <h2>Límites y contrato de confianza</h2>
-  <p>Qué hace el sistema, qué no hace nunca y qué es simulado en la demo. Se completa con el equipo.</p>
+  <p>Sale de la tabla de riesgos de <a href="../docs/producto/idea-y-epicas.md">idea-y-epicas.md</a>.</p>
   <div class="grilla">
-    <section class="ficha"><h3>Siempre hace</h3><p class="vacio">—</p></section>
-    <section class="ficha"><h3>Nunca hace</h3><p class="vacio">—</p></section>
-    <section class="ficha"><h3>Simulado en la demo</h3><p class="vacio">—</p></section>
+    <section class="ficha"><h3>Siempre hace</h3><p>Guarda solo el dato: dónde, cuándo y cuánto. Marca las zonas sin dato. Un punto pasa a crítico solo si se detecta en más de una pasada.</p></section>
+    <section class="ficha"><h3>Nunca hace</h3><p>Guardar imágenes de personas ni patentes.</p></section>
+    <section class="ficha"><h3>Simulado en la demo</h3><p>El video y el GPS de los móviles, las semanas de eventos del mapa, la flota y la ruta fija de referencia. El ahorro sale de esa simulación: muestra el mecanismo; el piloto mide el ahorro real.</p></section>
   </div>
 
   <h2>Decisiones abiertas</h2>
   <p>Cada una se cierra con una entrevista de opción múltiple y pasa al decision log.</p>
   <ul>
-    <li class="vacio">—</li>
+    <li>Dueño de cada nodo (Samo lo cierra con el equipo)</li>
+    <li>Técnica de detección del nodo 02 (la decide su dueño)</li>
+    <li>Forma de los JSON entre nodos y fixtures → <code>contratos.md</code></li>
+    <li>Umbral de éxito del piloto para cada métrica</li>
+    <li>Fuera de la demo, salvo que se decida lo contrario: predicción de demanda por patrones, reruteo durante el día y OpenStreetMap real</li>
   </ul>
 
   <h2>Aprobación</h2>
@@ -217,10 +244,11 @@ footer { margin-top: 56px; font-size: 13px; color: var(--apagado); }
     <table>
       <thead><tr><th>Nodo</th><th>Dueño</th><th>Aprobado</th><th>Fecha y hora</th></tr></thead>
       <tbody>
-        <tr><td class="vacio">01</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td class="vacio">02</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td class="vacio">03</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
-        <tr><td class="vacio">04</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>01 · Captura</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>02 · Detección</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>03 · Mapa de demanda</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>04 · Optimizador e impacto</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
+        <tr><td>05 · Panel</td><td class="vacio">—</td><td>☐</td><td>—</td></tr>
         <tr><td>Nexo</td><td>Samo</td><td>☐</td><td>—</td></tr>
       </tbody>
     </table>
