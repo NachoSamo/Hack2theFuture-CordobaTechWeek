@@ -5,8 +5,6 @@ import type { Detection, Position, Scenario } from './model'
 
 const styleUrl = 'https://tiles.openfreemap.org/styles/dark'
 const colors = { Alta: '#e77859', Media: '#e2bc5e', Baja: '#75b69b' }
-import { suggestRoute } from './route'
-
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 
 type Props = {
@@ -105,7 +103,7 @@ export function CityMap({ scenario, selected, onSelect }: Props) {
       marker.onclick = () => onSelect(event.id)
       return new maplibre.Marker({ element: marker }).setLngLat(event.position).addTo(map)
     })
-    const start = scenario.routes.fixed[0]
+    const start = scenario.routes.fixed.coordinates[0]
     if (start) {
       const departure = document.createElement('span')
       departure.className = 'departure'
@@ -122,8 +120,8 @@ export function CityMap({ scenario, selected, onSelect }: Props) {
     for (const marker of host.current?.querySelectorAll<HTMLButtonElement>('.pin') ?? []) {
       marker.setAttribute('aria-pressed', String(marker.dataset.eventId === selected?.id))
     }
-    const route = scenario.routes.fixed
-    const coordinates = selected ? [...route, selected.position] : route
+    const route = scenario.routes.fixed.coordinates
+    const coordinates = selected ? [...route, ...(scenario.routes.suggestions[selected.id]?.coordinates ?? []), selected.position] : route
     if (coordinates.length > 1) {
       const bounds = coordinates.reduce((result, point) => result.extend(point), new maplibre.LngLatBounds())
       map.fitBounds(bounds, { padding: 74, maxZoom: 15, pitch: flat ? 0 : 45, bearing: flat ? 0 : -24, duration: reduced() ? 0 : 650 })
@@ -133,14 +131,14 @@ export function CityMap({ scenario, selected, onSelect }: Props) {
   useEffect(() => {
     const source = instance.current?.getSource<GeoJSONSource>('routes')
     if (!ready || !source) return
-    const fixed = scenario.routes.fixed
-    const suggested = selected ? suggestRoute(fixed, selected.position) : null
+    const fixed = scenario.routes.fixed.coordinates
+    const suggested = selected ? scenario.routes.suggestions[selected.id] : null
     function paint(path?: Position[]) {
       source?.setData({
         type: 'FeatureCollection',
         features: [
-          ...(fixed.length > 1 ? [{ type: 'Feature' as const, properties: { color: '#8f9bbd', width: 4 }, geometry: { type: 'LineString' as const, coordinates: fixed } }] : []),
-          ...(path ? [{ type: 'Feature' as const, properties: { color: '#dff691', width: 5 }, geometry: { type: 'LineString' as const, coordinates: path } }] : []),
+          ...(fixed.length > 1 ? [{ type: 'Feature' as const, properties: { color: '#8f9bbd', width: 7 }, geometry: { type: 'LineString' as const, coordinates: fixed } }] : []),
+          ...(path ? [{ type: 'Feature' as const, properties: { color: '#dff691', width: 4 }, geometry: { type: 'LineString' as const, coordinates: path } }] : []),
         ],
       })
     }

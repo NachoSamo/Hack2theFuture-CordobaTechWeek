@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
 import { scenario } from './scenario'
-import { suggestRoute } from './route'
 import './style.css'
 
 const number = (value: number) => value.toLocaleString('es-AR', { maximumFractionDigits: 2 })
@@ -11,7 +10,7 @@ const severity = { Alta: 'alta', Media: 'media', Baja: 'baja' }
 function App() {
   const [id, setId] = useState<string>()
   const selected = scenario.events.find(event => event.id === id)
-  const suggestion = selected ? suggestRoute(scenario.routes.fixed, selected.position) : null
+  const suggestion = selected ? scenario.routes.suggestions[selected.id] : null
 
   return <main>
     <header className="top">
@@ -39,8 +38,8 @@ function App() {
           <div className="review-title"><h2>{selected.type}</h2><button onClick={() => setId(undefined)}>Cerrar</button></div>
           <p>{selected.address} · {selected.place}</p>
           <p>Nivel {selected.level.toLowerCase()} · {selected.confidence}% de confianza</p>
-          {suggestion ? <p className="impact"><strong>Ruta sugerida</strong><br/>{number(suggestion.extraKm)} km de desvío estimado</p> : <p>La ruta fija necesita al menos dos puntos.</p>}
-          {suggestion && <small>Estimación en línea recta con datos simulados.</small>}
+          {suggestion ? <p className="impact"><strong>Ruta sugerida</strong><br/>{number(suggestion.meters / 1000)} km · Fija: {number(scenario.routes.fixed.meters / 1000)} km</p> : <p>No hay un recorrido por calles para este evento.</p>}
+          {suggestion && <small>Distancias estimadas sobre calles · datos simulados.</small>}
         </section>}
       </aside>
     </section>

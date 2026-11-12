@@ -18,7 +18,7 @@ El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren 
 
 La vista de administrador empieza con la ruta fija y el punto de partida del vehículo. Los marcadores muestran el tipo de evento al pasar el cursor. Al seleccionar un evento, se abre el detalle y se dibuja un desvío sugerido con el mock.
 
-El prototipo estima la distancia entre coordenadas y conserva el orden de las paradas. [Prototipo React](marca/prototipo-react/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
+El prototipo usa recorridos por calles calculados con OSRM y conserva el orden de las paradas. [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
 
 ## Misión
 
@@ -54,4 +54,4 @@ Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El 
 
 [Referencias de diseño](marca/referencias/README.md) · [Prototipo](marca/prototipo-recoleccion-video.html)
 
-[Prototipo React y referencias de mapa](marca/prototipo-react/README.md).
+[Prototipo React y referencias de mapa](../frontend/README.md).

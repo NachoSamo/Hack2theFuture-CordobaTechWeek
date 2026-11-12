@@ -149,6 +149,18 @@ _Smoke check del demo path: se completa cuando exista._
 
 ---
 
+## Levantar el frontend
+
+Desde la raíz del repo:
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+Vite indica la URL local. [Detalles del prototipo](frontend/README.md)
+
 ## Mapa del repositorio
 
 ```text
@@ -156,6 +168,7 @@ _Smoke check del demo path: se completa cuando exista._
 ├── AGENTS.md                  Reglas para personas y agentes (fuente única)
 ├── CLAUDE.md                  Importa AGENTS.md para Claude Code
 │
+├── frontend/                 Prototipo React, mapa y datos simulados
 ├── harness/
 │   ├── guia-oficial.md        Reglas de la organización y cómo las cumplimos
 │   ├── ESTADO.md              Tablero vivo: fase, tareas y bloqueos
