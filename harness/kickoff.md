@@ -1,9 +1,10 @@
 # Kickoff: cómo elegimos el problema
 
-Se hace **dentro del bloque rojo oficial** (12/11, 10:05–12:30): **sin computadoras ni IA**, en papel,
+Se hace **dentro del bloque rojo oficial** (12/11, 10:05–12:30), que la organización pide hacer sin computadoras ni IA, en papel,
 guiado por los facilitadores y el anfitrión de mesa. Esto es lo que llevamos preparado para que la
 dinámica oficial nos rinda; si choca con lo que piden los facilitadores, manda lo de ellos
-([`guia-oficial.md`](guia-oficial.md)).
+([`guia-oficial.md`](guia-oficial.md)). Los agentes se pueden usar igual: son una herramienta continua
+(excepción en [`../AGENTS.md`](../AGENTS.md)).
 
 ## Premisa
 
@@ -25,8 +26,8 @@ Problema: <qué pasa, en una frase y sin solución adentro>
 
 "No hay contenedores" ya trae una solución adentro. "¿Por qué hay basura acumulada en esta esquina?" abre el problema.
 
-Antes de llegar, cada uno lee [`../research/README.md`](../research/README.md): resume todo lo que
-investigamos, por vertical, con sus límites. **Hay que imprimir o anotar lo necesario:** en el bloque rojo no hay pantallas.
+Antes de llegar, cada uno lee [`../research/Contexto.md`](../research/Contexto.md): resume todo lo que
+investigamos, por vertical, con sus límites. **Conviene imprimir o anotar lo necesario** por si la mesa trabaja sin pantallas.
 
 ## Matriz de selección (en papel)
 

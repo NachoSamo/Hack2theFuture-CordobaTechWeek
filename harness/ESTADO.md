@@ -8,8 +8,8 @@
 **Vertical / problema:** abierto
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
 
-> Fases: 0 Explorar · Bloque rojo (sin computadoras ni IA) · 1 Registrar la selección · 1b Prototipar y
-> testear · 1c Diagramar · 2 Construir · 3 Pitch. Qué hace un agente en cada una: [`../AGENTS.md`](../AGENTS.md).
+> Fases: 0 Explorar · Bloque rojo (oficial: sin computadoras ni IA) · 1 Registrar la selección · 1b Prototipar y
+> testear · 1c Diagramar · 2 Construir · 3 Pitch. Qué suele hacer falta en cada una (orientativo; los agentes trabajan en todas): [`../AGENTS.md`](../AGENTS.md).
 
 ## Quién hace qué
 

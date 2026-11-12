@@ -4,8 +4,8 @@
 > llegan a la UE y al ITC aunque solo una pase de ronda. Acá van las ideas (elegidas y descartadas),
 > las hipótesis y las pruebas con su resultado. Las **decisiones** van en el [decision log](decision-log.md).
 
-Durante el bloque rojo (12/11, 10:05–12:30) no hay computadoras: se anota en papel y quien tenga
-la letra más clara lo pasa acá apenas termina, con una foto de los papeles en [`proceso/`](proceso/).
+Lo que se trabaje en papel (por ejemplo, en el bloque rojo del 12/11, 10:05–12:30) lo pasa acá quien
+tenga la letra más clara apenas termina, con una foto de los papeles en [`proceso/`](proceso/).
 
 ## Problemas considerados
 

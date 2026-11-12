@@ -8,14 +8,18 @@ harness lo contradice, gana este y se corrige el otro en el mismo commit.
 Si una regla oficial choca con este método, manda la oficial. Si es ambigua, se consulta al staff y la
 interpretación se anota en el decision log. Ningún agente propone saltarse una regla oficial.
 
+**Excepción decidida por el equipo (12/11): los agentes son una herramienta continua.** No se apagan
+por bloques horarios. Si alguien lo usa durante el bloque rojo oficial (12/11, 10:05–12:30), el agente
+lo menciona en una línea y sigue trabajando; no bloquea nada.
+
 El repo también es una bóveda de Obsidian: abrí la carpeta raíz como vault. Los links son relativos
 (`[texto](harness/archivo.md)`) para que funcionen igual en GitHub y en Obsidian.
 
 ## Qué es esto
 
 Hackathon de innovación sostenible de la Córdoba Tech Week (Córdoba Cluster, Global Gateway UE, ITC).
-- **Día 1:** jueves 12/11/2026, 9 a 16 h. Design Thinking por mesas. **De 10:05 a 12:30, bloque
-  rojo sin computadoras ni IA.** De 13:15 a 15:10, prototipado y test 3+3. A las 15:30, pitch flash.
+- **Día 1:** jueves 12/11/2026, 9 a 16 h. Design Thinking por mesas. De 10:05 a 12:30, bloque
+  rojo oficial sin computadoras ni IA (cómo lo tomamos: ver la excepción de arriba). De 13:15 a 15:10, prototipado y test 3+3. A las 15:30, pitch flash.
 - **Noche del 12/11:** construcción de la demo en casa de alguien del equipo (método propio, a confirmar con el staff).
 - **Día 2 (Demo Day):** viernes 13/11/2026, 9 a 15 h. Pitch por vertical desde las 10:45 y ronda final de 8 finalistas desde las 13:15.
 
@@ -38,7 +42,7 @@ Vertical y problema: **abiertos** hasta el kickoff. Estado vivo en [`harness/EST
 | [`harness/marca.md`](harness/marca.md) | ¿Cómo se ve, cómo suena y cómo se llama el producto? | Juani |
 | [`harness/pitch.md`](harness/pitch.md) | ¿Qué decimos en 3 minutos y qué criterio sube cada parte? | Oli + Gina |
 | [`harness/mentores.md`](harness/mentores.md) | ¿Qué nos dijeron mentores, facilitadores y jurado? | Gina |
-| [`research/README.md`](research/README.md) | ¿Qué investigamos antes y hasta dónde confiar? **Leer antes de elegir problema o solución** | Quien agrega research |
+| [`research/Contexto.md`](research/Contexto.md) | ¿Qué investigamos antes y hasta dónde confiar? **Leer antes de elegir problema o solución** | Quien agrega research |
 
 ## Regla central: entrevistar, no asumir
 
@@ -53,8 +57,10 @@ colores, orden de pasos.
    - Codex u otro agente sin herramienta de preguntas: opciones numeradas (`1)`, `2)`, `3)`, más
      "otra: …"), una pregunta por línea, y esperá la respuesta antes de seguir.
 3. **Cada opción dice qué implica**, no solo cómo se llama. Que la persona elija sabiendo el costo.
-4. **No empujes una opción.** Podés señalar riesgos o huecos de evidencia, pero no ordenes las
-   opciones para inducir una respuesta ni decidas "por defecto".
+4. **Podés traer ideas propias, siempre como opciones.** En cualquier momento podés sumar ideas,
+   soluciones o encuadres tuyos, pero presentados como opciones para marcar con lo que implica cada
+   una, nunca como la respuesta. No ordenes las opciones para inducir una respuesta ni decidas "por
+   defecto". Podés señalar riesgos o huecos de evidencia.
 5. **Repreguntá el porqué** cuando una respuesta abre algo nuevo: el razonamiento de la persona vale
    tanto como su elección y suele ser material para el pitch.
 6. **Lo que se decide, se escribe:** decisiones en el decision log, con las opciones que se ofrecieron.
@@ -64,8 +70,8 @@ colores, orden de pasos.
 **Al arrancar:**
 1. `git pull`.
 2. Preguntá con quién trabajás si no lo sabés ("¿quién sos?") y leé su tarjeta en [`harness/equipo.md`](harness/equipo.md).
-3. Leé [`harness/ESTADO.md`](harness/ESTADO.md): la fase define cómo te comportás (tabla de abajo).
-4. Si la fase es 0 o 1, leé [`research/README.md`](research/README.md) antes de hablar de problemas o soluciones.
+3. Leé [`harness/ESTADO.md`](harness/ESTADO.md): la fase te da contexto de qué suele hacer falta (tabla de abajo, orientativa).
+4. Antes de hablar de problemas o soluciones, leé [`research/Contexto.md`](research/Contexto.md).
 5. Si vas a tocar código, leé [`harness/contratos.md`](harness/contratos.md) y los diagramas de
    [`harness/arquitectura/`](harness/arquitectura/README.md). Si vas a tocar UI, leé [`harness/marca.md`](harness/marca.md).
 
@@ -75,24 +81,27 @@ colores, orden de pasos.
 3. Actualizá tu fila de [`harness/ESTADO.md`](harness/ESTADO.md).
 4. Commit chico y push. Si tocaste un archivo de otro dueño, decilo en el commit y en `ESTADO.md › Avisos`.
 
-## Cómo se comporta el agente según la fase
+## Qué suele hacer falta en cada momento
 
-| Fase (en `ESTADO.md`) | Qué hace | Qué no hace |
-|---|---|---|
-| **0 · Explorar** (antes del evento) | Trae datos con fuente, resume `research/`, hace preguntas que abren el problema | Proponer soluciones o encuadres propios: sesgan al equipo |
-| **Bloque rojo** (12/11, 10:05–12:30) | **Nada: no se usan computadoras ni IA.** Regla oficial | Cualquier intervención |
-| **1 · Registrar la selección** (desde 12:30) | Pasa a `proceso.md` lo que salió en papel: problemas, POV, ideas y la elegida | Reinterpretar o mejorar lo que el equipo eligió |
-| **1b · Prototipar y testear** (13:35–15:10) | Ayuda a armar el recorrido simulado y a registrar el test 3+3 | Construir la demo real antes de los diagramas |
-| **1c · Diagramar** | Entrevista a cada dueño de nodo y completa los diagramas de [`arquitectura/`](harness/arquitectura/README.md) | Escribir código del producto antes de la aprobación |
-| **2 · Construir** (noche del 12/11) | Trabaja en el área de su persona, contra contratos y demo path | Features que no estén en el demo path |
-| **3 · Pitch** (13/11) | Ensaya, recorta, prepara respuestas al jurado | Código nuevo, salvo arreglar algo que rompe la demo |
+**Orientación, no regla.** El agente es una herramienta continua: ayuda en lo que pida la persona,
+en cualquier horario y fase. La tabla sirve para anticipar qué va a necesitar el equipo.
+
+| Momento (fase en `ESTADO.md`) | Qué suele hacer falta |
+|---|---|
+| **0 · Explorar** (antes del evento) | Datos con fuente, resúmenes de `research/`, preguntas que abren el problema, ideas como opciones |
+| **Bloque rojo** (12/11, 10:05–12:30) | Lo que pida la persona. Regla oficial: sin computadoras ni IA; el agente lo menciona en una línea y sigue |
+| **1 · Registrar la selección** (desde 12:30) | Pasar a `proceso.md` lo que salió: problemas, POV, ideas y la elegida, sin reinterpretarlo |
+| **1b · Prototipar y testear** (13:35–15:10) | Recorrido simulado, registro del test 3+3, prototipos y spikes |
+| **1c · Diagramar** | Entrevistar a cada dueño de nodo y completar los diagramas de [`arquitectura/`](harness/arquitectura/README.md) |
+| **2 · Construir** (noche del 12/11) | Código del área de su persona, contra contratos y demo path |
+| **3 · Pitch** (13/11) | Ensayar, recortar, preparar respuestas al jurado, arreglar lo que rompa la demo |
 
 ## Reglas para escribir código
 
-0. **Nadie codea la demo antes de que los diagramas estén aprobados.** La arquitectura de la solución
-   y el recorrido del usuario en [`harness/arquitectura/`](harness/arquitectura/README.md) los aprueba
-   el dueño de cada nodo y Samo. Sin esa aprobación, un agente no escribe código del producto. El
-   recorrido simulado del día 1 queda exento: es un prototipo de testeo y se tira.
+0. **Pruebas sí, demo no.** Prototipos, spikes y el recorrido simulado del día 1 se pueden codear en
+   cualquier momento, separados del código de la demo (en una rama o carpeta aparte). Lo que entra a la
+   demo espera a que estén aprobados los diagramas de [`harness/arquitectura/`](harness/arquitectura/README.md):
+   la arquitectura de la solución y el recorrido del usuario, que aprueban el dueño de cada nodo y Samo.
 1. **Lo único que importa es que el demo path corra en vivo.** Ver [`harness/demo-path.md`](harness/demo-path.md).
 2. **Sin tests unitarios ni CI.** Sí un smoke check que recorra el demo path de punta a punta y diga PASS o FAIL.
 3. **Si se puede hardcodear y se ve igual en la demo, se hardcodea**, y se anota en el decision log.
@@ -111,7 +120,7 @@ incompleto. Vale igual para código, datos, research, marca, pitch o decisiones.
 
 | Si cambia… | Actualizar |
 |---|---|
-| Se agrega, mueve o corrige research | [`research/README.md`](research/README.md): tabla "Qué hay", el panorama de su vertical y los límites. Si cambia lo que se sabe de un problema, también `kickoff.md` |
+| Se agrega, mueve o corrige research | [`research/Contexto.md`](research/Contexto.md): tabla "Qué hay", el panorama de su vertical y los límites. Si cambia lo que se sabe de un problema, también `kickoff.md` |
 | Un informe de research nuevo | Seguir el patrón de los de `research/cualitativo/gina/`: eje, fecha, fuentes, resumen, frase del problema, límites, dudas y fuentes |
 | Una decisión de problema, alcance, arquitectura o stack | `decision-log.md` (nivel `core`, con opciones) |
 | Una idea, hipótesis, prueba o resultado | `proceso.md` |

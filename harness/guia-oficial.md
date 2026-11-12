@@ -137,10 +137,10 @@ ecosistema 10 %, pitch y equipo 10 %. Impacto, innovación y factibilidad suman 
 
 | Regla o pedido oficial | Cómo lo cumplimos | Archivo |
 |---|---|---|
-| Bloque rojo sin computadoras ni IA (12/11, 10:05–12:30) | Ningún agente se usa en ese horario. El kickoff se hace en papel; lo que salga se pasa al repo desde las 12:30 | [`kickoff.md`](kickoff.md), [`../AGENTS.md`](../AGENTS.md) |
+| Bloque rojo sin computadoras ni IA (12/11, 10:05–12:30) | **Excepción decidida por el equipo:** los agentes son una herramienta continua y se pueden usar; en ese horario el agente lo avisa en una línea y sigue. Lo que quede en papel se pasa al repo desde las 12:30 | [`kickoff.md`](kickoff.md), [`../AGENTS.md`](../AGENTS.md) |
 | Problema antes que solución; cuatro preguntas; POV + "¿Cómo podríamos…?" | La ficha de cada problema candidato usa las cuatro preguntas y el kickoff termina en un POV y un "¿Cómo podríamos…?" | [`kickoff.md`](kickoff.md) |
 | Una idea por mesa, con selección con mentores (12:05) | El equipo llega a la selección con su ranking; la elección final se hace con los mentores y se registra con las descartadas | [`kickoff.md`](kickoff.md), [`proceso.md`](proceso.md) |
-| Prototipar y testear 3+3 el día 1 | En el bloque azul se arma un **recorrido simulado** liviano para testear y para el pitch flash. La demo real se construye a la noche, después de aprobar los diagramas | [`demo-path.md`](demo-path.md), [`arquitectura/`](arquitectura/README.md) |
+| Prototipar y testear 3+3 el día 1 | En el bloque azul se arma un **recorrido simulado** liviano para testear y para el pitch flash. Prototipos y spikes se pueden codear en cualquier momento; el código de la demo espera a que se aprueben los diagramas | [`demo-path.md`](demo-path.md), [`arquitectura/`](arquitectura/README.md) |
 | No se exige MVP completo | La demo sigue siendo nuestro diferencial, pero cada paso tiene que probar un supuesto; un paso que no prueba nada se recorta | [`demo-path.md`](demo-path.md) |
 | Registrar ideas, hipótesis, pruebas y resultados | Ideas elegidas y descartadas, hipótesis y pruebas en `proceso.md`; decisiones en el decision log | [`proceso.md`](proceso.md), [`decision-log.md`](decision-log.md) |
 | Registrar qué recomendación de mentor cambió una decisión | Cada nota de mentor dice si cambió algo y enlaza la decisión | [`mentores.md`](mentores.md) |
@@ -150,8 +150,9 @@ ecosistema 10 %, pitch y equipo 10 %. Impacto, innovación y factibilidad suman 
 
 ### Lo que no dice la guía y decidimos nosotros
 
-Esto es método propio. No contradice ninguna regla; si la organización dice otra cosa, cambia.
+Esto es método propio. Salvo el uso de agentes en el bloque rojo, que el equipo decidió a conciencia, no
+contradice ninguna regla; si la organización dice otra cosa, cambia.
 
 - Construir la demo de software la noche del 12/11 fuera del predio (la guía no lo prohíbe ni lo menciona: **preguntar al staff**).
-- Usar agentes de código fuera del bloque rojo.
-- Contratos, fixtures y diagramas de arquitectura antes de codear.
+- Usar agentes como herramienta continua, también en el bloque rojo (anotado en el decision log).
+- Contratos, fixtures y diagramas de arquitectura antes de codear la demo (prototipos y spikes, en cualquier momento).

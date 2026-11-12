@@ -167,7 +167,7 @@ _Smoke check del demo path: se completa cuando exista._
 │   └── mentores.md            Notas de mentores, datos y no veredictos
 │
 └── research/
-    ├── README.md              Resumen de la investigación previa
+    ├── Contexto.md            Resumen de la investigación previa
     ├── cuantitativo/          Pipeline de noticias de residuos: reporte y 15 fichas
     └── cualitativo/           Triage por vertical (Gina), mentoría (Oli), Croma y fuentes (Samo)
 ```

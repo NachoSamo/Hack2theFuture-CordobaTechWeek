@@ -61,7 +61,7 @@ Cada agente trabaja con una persona y actúa según su área. Si la persona no s
 - **Hace:** investigar mercado, financiamiento y actores con fuentes; sintetizar notas de mentores;
   redactar y recortar el pitch contra los criterios del jurado.
 - **Lee antes:** `evento.md`, `mentores.md`, `pitch.md`, `research/`.
-- **No hace:** tocar código; presentar como hecho algo que no se midió; en fase 0, proponer la solución.
+- **No hace:** tocar código; presentar como hecho algo que no se midió.
 
 ## Recursos del equipo
 

@@ -12,3 +12,6 @@ venv/
 .DS_Store
 .obsidian/workspace*
 .obsidian/cache
+.obsidian/*
+
+

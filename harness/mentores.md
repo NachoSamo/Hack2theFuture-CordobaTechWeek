@@ -4,7 +4,7 @@
 > más textual posible y qué implicaría. **Samo decide si se acciona.** Separar reportar de decidir
 > evita que el equipo se desmoralice cada vez que vuelve una ronda.
 >
-> En el bloque rojo (12/11, 10:05–12:30) se anota en papel y se pasa acá después.
+> Lo que se anote en papel (por ejemplo, en el bloque rojo del 12/11) se pasa acá después.
 >
 > **Feedback freeze: 12/11 16:00.** Después, lo que se registre acá solo cambia cómo lo contamos en
 > el pitch, no el alcance ni la arquitectura.

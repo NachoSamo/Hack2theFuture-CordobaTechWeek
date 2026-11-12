@@ -8,8 +8,8 @@ Hay dos piezas distintas:
 
 1. **Recorrido simulado (día 1):** prototipo liviano para el test 3+3 (14:35–15:10) y el pitch flash
    (15:30). Se arma en el bloque azul y no necesita diagramas aprobados: se tira.
-2. **Demo (noche del 12/11):** lo que se muestra el día 2. Se construye después de aprobar los
-   diagramas de [`arquitectura/`](arquitectura/README.md).
+2. **Demo (noche del 12/11):** lo que se muestra el día 2. Su código entra después de aprobar los
+   diagramas de [`arquitectura/`](arquitectura/README.md); antes se pueden hacer prototipos y spikes aparte.
 
 ## Cómo se usa
 

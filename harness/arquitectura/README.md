@@ -29,5 +29,6 @@ Después de elegir el problema y antes de la noche del 12/11 (ver [`../evento.md
 
 - **Aprueban:** el dueño de cada nodo y Samo. Se marca en la tabla del final de cada HTML, con fecha y hora.
 - Al aprobarse los dos, el estado del encabezado pasa a "Aprobado" (`class="estado ok"`) y se anota en el decision log.
-- **Sin aprobación no se escribe código de la demo.** El recorrido simulado del día 1 queda exento.
+- **Sin aprobación no entra código a la demo.** Prototipos, spikes y el recorrido simulado del día 1 se
+  pueden codear antes, separados de la demo.
 - Si después cambia un nodo o un paso, se actualiza el diagrama y su dueño vuelve a aprobar.
