@@ -39,13 +39,30 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 
 ## Lo que se puede preparar antes del evento
 
-- [ ] Plantilla de slides con la marca de [`marca.md`](marca.md)
+- [x] Plantilla de slides con la marca de [`marca.md`](marca.md): deck en HTML, [`pitch/deck.html`](pitch/deck.html), estilo charla TED: una idea por slide y el mínimo texto (Oli, 12/11). 9 slides: nombre con logo y equipo, dato, lo que es, lo que podría ser, la idea en dos frases, demo, impacto, pedido y cierre. Flechas para navegar, `f` para pantalla completa. Speech de 3 minutos en [`pitch/speech.md`](pitch/speech.md)
 - [ ] Slide de equipo
 - [ ] Panorama de financiamiento: fondos verdes de la UE, Global Gateway, CFI y BID (con fuentes verificadas)
 - [ ] Mapa de actores por vertical: municipio, cooperativas, recuperadores, productores, exportadores
 - [ ] Lista de los 17 ODS a mano para mapear la solución
 
+## Gancho
+
+> "¿Sabían que Córdoba gasta 2 millones de litros por año solo en patrullar?"
+
+Fuente: el Ministerio de Seguridad provincial usó más de 2 millones de litros de biocombustible en
+2023 ([La Voz de San Justo](https://www.lavozdesanjusto.com.ar/transicion-energetica-en-marcha-los-vehiculos-del-ministerio-de-seguridad-usaran-biocombustibles)).
+No distingue patrullaje de otros usos. Los ~5.500 litros por día y las ~4.600 t de CO₂ por año
+(2,3 kg por litro) son **cálculo nuestro**. Contexto: la Guardia Urbana arrancó con 70 móviles
+([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/ciudad-de-cordoba-con-70-moviles-y-400-efectivos-larga-este-lunes-la-guardia-urbana-municipal))
+y ya hay móviles municipales con cámaras en el Parque Sarmiento
+([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)).
+
+**Cierre:** "Mismos kilómetros, el doble de ciudad."
+
 ## Guion
+
+Borrador del speech para el deck actual: [`pitch/speech.md`](pitch/speech.md). Sigue a Sinek (empezar por el porqué), Duarte (lo que es / lo que podría ser), Seibel (la idea en dos frases) y cierra con un pedido concreto: un barrio, cuatro semanas, los móviles que ya existen.
+
 
 El del pitch flash se arma de 15:10 a 15:30 del día 1, en la cápsula oficial. El del día 2 se
 escribe la noche del 12/11, no el 13/11 a la mañana.

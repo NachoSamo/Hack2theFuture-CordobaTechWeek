@@ -11,9 +11,10 @@ export type Detection = {
   time: string
   passes: number
 }
+export type StreetRoute = { coordinates: Position[]; meters: number }
 export type Scenario = {
   city: string
   center: Position
   events: Detection[]
-  routes: { fixed: Position[] }
+  routes: { fixed: StreetRoute; suggestions: Record<string, StreetRoute> }
 }

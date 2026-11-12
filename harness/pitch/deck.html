@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trama Urbana · Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asfalto:#11191C; --pizarra:#19252B; --niebla:#EAF0F0; --lima:#DFF691;
+  --terracota:#BD472D; --ambar:#D79939; --oliva:#B2A638; --verde:#428571; --gris:#A5B3A9;
+  --muted:#8FA09C; --line:#2A3940; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--asfalto);color:var(--niebla);font-family:Barlow,system-ui,sans-serif;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px}
+.slide{position:absolute;inset:0;padding:140px 180px;display:none;flex-direction:column;justify-content:center;background:var(--asfalto)}
+.slide.on{display:flex;animation:in .5s ease}
+@keyframes in{from{opacity:0}to{opacity:1}}
+h1{font-size:140px;line-height:.95;letter-spacing:-.045em;margin:0;font-weight:800}
+h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
+.lima{color:var(--lima)} .muted{color:var(--muted)}
+.mega{font-size:330px;font-weight:800;letter-spacing:-.06em;line-height:.85;color:var(--lima)}
+.sub{font-size:64px;font-weight:500;margin-top:30px}
+.src{position:absolute;left:180px;bottom:70px;font:400 22px var(--mono);color:var(--muted)}
+.team{font:400 32px var(--mono);color:var(--muted);margin-top:60px;letter-spacing:.02em}
+.logo{width:180px;height:180px;margin-bottom:56px}
+.center{align-items:center;text-align:center}
+.alerts{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px}
+.alert{border-top:12px solid;padding-top:28px}
+.alert strong{display:block;font-size:48px;line-height:1.05}
+.alert span{display:block;font:400 28px var(--mono);color:var(--muted);margin-top:14px}
+.tag{display:inline-block;font:500 24px var(--mono);padding:6px 14px;border:1px solid var(--gris);color:var(--gris);border-radius:6px;vertical-align:middle;margin-left:20px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:70px;margin-top:20px}
+.three b{display:block;font:500 28px var(--mono);color:var(--lima);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.three p{font-size:56px;line-height:1.1;margin:0;font-weight:600}
+#bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
+#hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage">
+
+<!-- 1 · Nombre, logo, equipo -->
+<section class="slide center">
+  <svg class="logo" viewBox="0 0 96 96" data-logo></svg>
+  <h1>Trama Urbana</h1>
+  <p class="sub lima" style="margin-top:24px">Un móvil para autosanar la ciudad.</p>
+  <p class="team">Samo · Lauti · Diego · Juani · Gina · Oli</p>
+</section>
+
+<!-- 2 · El dato (por qué) -->
+<section class="slide">
+  <div class="mega">2.000.000</div>
+  <p class="sub">litros por año, solo para patrullar Córdoba.</p>
+  <p class="src">Ministerio de Seguridad de Córdoba, 2023 · La Voz de San Justo</p>
+</section>
+
+<!-- 3 · Lo que es -->
+<section class="slide">
+  <h2>Ven toda la ciudad.</h2>
+  <h2 class="muted" style="margin-top:20px">No le avisan a nadie.</h2>
+</section>
+
+<!-- 4 · Lo que podría ser -->
+<section class="slide">
+  <h2>¿Y si cada kilómetro<br>también <span class="lima">arreglara</span> la ciudad?</h2>
+</section>
+
+<!-- 5 · La idea en dos frases -->
+<section class="slide">
+  <h2 style="font-size:96px">Los vehículos con cámara que ya recorren Córdoba detectan lo que hay que arreglar.</h2>
+  <h2 class="lima" style="font-size:96px;margin-top:50px">Y le avisan directo al área que lo resuelve.</h2>
+</section>
+
+<!-- 6 · Demo -->
+<section class="slide">
+  <h2>Una pasada. Cuatro avisos.<span class="tag">simulado</span></h2>
+  <div class="alerts">
+    <div class="alert" style="border-color:var(--terracota)"><strong>Cable caído</strong><span>→ Alumbrado</span></div>
+    <div class="alert" style="border-color:var(--ambar)"><strong>Microbasural</strong><span>→ Higiene urbana</span></div>
+    <div class="alert" style="border-color:var(--oliva)"><strong>Bache</strong><span>→ Vía pública</span></div>
+    <div class="alert" style="border-color:var(--verde)"><strong>Contenedor roto</strong><span>→ Higiene urbana</span></div>
+  </div>
+</section>
+
+<!-- 7 · Impacto -->
+<section class="slide">
+  <div class="three">
+    <div><b>Ambiental</b><p>Cero kilómetros nuevos.</p></div>
+    <div><b>Económico</b><p>Nadie sale a buscar el problema.</p></div>
+    <div><b>Social</b><p>Se arregla antes del reclamo.</p></div>
+  </div>
+</section>
+
+<!-- 8 · El pedido -->
+<section class="slide">
+  <p class="sub muted" style="margin:0 0 30px">Lo que pedimos</p>
+  <h2>Un barrio. Cuatro semanas.<br><span class="lima">Los móviles que ya existen.</span></h2>
+</section>
+
+<!-- 9 · Cierre -->
+<section class="slide center">
+  <h1>Mismos kilómetros,<br><span class="lima">el doble de ciudad.</span></h1>
+  <svg class="logo" viewBox="0 0 96 96" data-logo style="width:110px;height:110px;margin:70px 0 0"></svg>
+</section>
+
+</div>
+<div id="hint">← → · f pantalla completa</div>
+<script>
+const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#11191C" stroke-width="2" stroke-linejoin="round"><path d="M10 41 46 24v36L10 51Z" fill="#53666B"/><path d="M54 27 86 42v11L54 61Z" fill="#34464A"/><path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/><path d="M49 14 72 29v26L49 63Z" fill="#839493"/></g><path fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="4" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="2" d="M17 77c8 5 15 7 23 8m-28-3 8 4"/><circle cx="85" cy="54" r="3" fill="#DFF691"/>`;
+document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
+const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage');
+let cur=0;const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)cur=h-1;
+function show(i){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  document.getElementById('bar').style.width=((cur+1)/slides.length*100)+'%';try{history.replaceState(null,'','#'+(cur+1))}catch(e){}}
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+addEventListener('resize',fit);fit();
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(cur+1)}
+  if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(cur-1)}
+  if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);
+  if(e.key==='f')document.documentElement.requestFullscreen?.();
+});
+stage.addEventListener('click',e=>show(e.clientX>innerWidth/2?cur+1:cur-1));
+show(cur);
+</script>
+</body>
+</html>

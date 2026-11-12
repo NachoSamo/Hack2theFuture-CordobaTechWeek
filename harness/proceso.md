@@ -28,6 +28,7 @@ Todas las de la lluvia de ideas, incluidas las "locas". Una línea cada una.
 |---|---|---|---|
 | 1 | Usar las cámaras de los móviles de monitoreo urbano para detectar basura acumulada, armar mapas de calor de demanda y optimizar las rutas y la carga de los camiones recolectores (track movilidad, cruza residuos). Detalle: [`docs/producto/idea-y-epicas.md`](docs/producto/idea-y-epicas.md) | Equipo (pasada en limpio por Oli) | Reemplazada por la idea 2 (pivot 12/11 14:53): los residuos ya tienen rutas |
 | 2 | Un móvil para autosanar la ciudad: el patrullaje urbano de COYS detecta con visión por computadora todo lo que requiere atención (microbasurales, voluminosos, postes caídos, vía pública, contenedores) y le da más usos a un consumo que hoy solo sirve a seguridad. Detalle: [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md) | Oli | Elegida |
+| 3 | Ampliar las fuentes a domos, clasificar problemas municipales con escala bajo/medio/alto/extremo y ofrecer tickets por entidad y mapa de demanda que pueda alimentar su planificación. Síntesis para interfaz y propuesta de MVP en el [guía de interfaz e identidad](../guia-interfaz-identidad.md) | Diego y Lauti, sesión 12/11/2026 | Propuesta para alinear con Samo y Juani; reglas de gravedad, domos y uso posterior para rutas pendientes. No reemplaza decisiones registradas ni aprueba arquitectura |
 
 ## Hipótesis
 
@@ -43,6 +44,8 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 | H6 | Visión por computadora detecta microbasurales, postes caídos y contenedores rotos desde un vehículo en movimiento | Spike con imágenes públicas | Sin probar |
 | H7 | Cordobeses en Alerta y la Policía de Córdoba (provincial) compartirían su video o un dato procesado con el municipio | Mentores y staff: quién opera cada fuente y quién lo autoriza | Sin probar |
 | H8 | Las áreas actúan sobre un aviso automático, sin validación humana, aunque haya falsos positivos | Test 3+3: mostrar el aviso a quien haría de área y preguntar qué haría | Sin probar |
+| H9 | Reutilizar cámaras y recorridos permite agregar detección urbana con costo marginal cero | Medir procesamiento, transmisión, integración y revisión adicionales frente al servicio existente | Sin probar; la guía de interfaz e identidad lo presenta como hipótesis, no como ahorro demostrado |
+| H10 | Es posible asignar cuatro niveles de gravedad de forma útil a las distintas categorías usando la evidencia disponible | Acordar criterios por categoría con el área responsable y contrastar clasificaciones sobre imágenes y contexto horario | Sin probar; el prototipo actual solo usa baja, media y alta |
 
 ## Pruebas
 
