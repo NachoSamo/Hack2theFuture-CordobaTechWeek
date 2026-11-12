@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { city, levels, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
+import { city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
 import { scenario } from './scenario'
 import type { StreetRoute } from './model'
 import './style.css'
@@ -34,6 +34,10 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }:
     <p>{locationLabel(ticket)} · {ticket.place}</p>
     {suggestion && <div className="route-action"><button aria-pressed={routeOpen} onClick={onToggleRoute}>{routeOpen ? 'Volver al mapa' : 'Ver ruta de recolección'}</button>
       {routeOpen && <p className="route-summary">Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados</p>}</div>}
+    {ticket.photo && <figure className="ticket-photo">
+      <img src={ticket.photo} alt={ticket.type + ' · imagen ilustrativa'} width="512" height="512" />
+      <figcaption>Foto ilustrativa generada con IA</figcaption>
+    </figure>}
     <dl className="facts">
       <div><dt>Estado</dt><dd>{current}</dd></div>
       <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
@@ -75,9 +79,9 @@ function App() {
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
     .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket), [step])
-  const visible = useMemo(() => activeTickets
-    .filter(ticket => (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state))
-    .sort((a, b) => b.activity[b.activity.length - 1].time.localeCompare(a.activity[a.activity.length - 1].time)), [activeTickets, type, area, state])
+  const visible = useMemo(() => activeTickets.filter(ticket =>
+    (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
+  [activeTickets, type, area, state])
   const selected = visible.find(ticket => ticket.id === id)
 
   const suggestion = selected?.type === 'Contenedor rebalsado' && status(selected) !== 'Posiblemente resuelta'
@@ -97,7 +101,7 @@ function App() {
       <div className="brand"><img className="mark" src="/logo.svg" alt="" /><strong>Trama Urbana</strong><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
-    <section className="workspace" aria-label="Monitoreo urbano">
+    <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
       <div className="map-stage">
         <div className="map-toolbar">
           <h1>Mapa urbano</h1>
@@ -105,8 +109,14 @@ function App() {
             {modes.map(mode => <button key={mode.id} aria-pressed={mapLayer === mode.id}
               onClick={() => setLayer(mode.id)}>{mode.label}</button>)}
           </div>
+        <div className="filters">
+          <Filter label="Tipo" options={types} value={type} onChange={setType} />
+          <Filter label="Estado" options={statuses} value={state} onChange={setState} />
+          <Filter label="Área" options={areas} value={area} onChange={setArea} />
+        </div>
         </div>
         <div className="map-canvas">
+          {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
           <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={suggestion} onSelect={selectTicket} />
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
@@ -120,25 +130,16 @@ function App() {
           </div>}
         </div>
       </div>
-      <aside className="panel" aria-label="Tickets de incidencias">
-        <div className="feed-title"><h2>Tickets</h2><span aria-live="polite">{visible.length} de {activeTickets.length}</span></div>
-        <div className="filters">
-          <Filter label="Tipo" options={types} value={type} onChange={setType} />
-          <Filter label="Estado" options={statuses} value={state} onChange={setState} />
-          <Filter label="Área" options={areas} value={area} onChange={setArea} />
-        </div>
-        <ol className="feed">
-          {visible.map(ticket => <li key={ticket.id}><button className="event" aria-pressed={selected?.id === ticket.id} onClick={() => selectTicket(ticket.id)}>
-            <i className="dot" style={{ background: levels[ticket.level] }} aria-hidden="true" />
-            <span><strong>{ticket.type}</strong><small>{ticket.place} · {status(ticket)}</small></span>
-            <time>{ticket.activity[ticket.activity.length - 1].time}</time>
-          </button></li>)}
-          {!visible.length && <li className="empty">No hay tickets con estos filtros.</li>}
-        </ol>
-        {selected && <TicketDetail ticket={selected} suggestion={suggestion} routeOpen={routeOpen}
+      {selected && <aside className="panel" aria-label="Ticket seleccionado">
+        <TicketDetail key={selected.id} ticket={selected} suggestion={suggestion} routeOpen={routeOpen}
           onToggleRoute={() => setLayer(routeOpen ? 'tickets' : 'routes')}
-          onClose={() => { setId(undefined); if (routeOpen) setLayer('tickets') }} />}
-      </aside>
+          onClose={() => {
+            const marker = document.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
+            marker?.focus({ preventScroll: true })
+            setId(undefined)
+            if (routeOpen) setLayer('tickets')
+          }} />
+      </aside>}
     </section>
   </main>
 }

@@ -177,6 +177,6 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />
-    {fallback && <p className="map-warning" role="status">Cartografía base no disponible. Podés consultar los tickets en el listado.</p>}
+    {fallback && <p className="map-warning" role="status">Cartografía base no disponible.</p>}
   </>
 }
