@@ -1,0 +1,106 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recolección urbana · Prototipo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--paper:#f4f4ed;--ink:#1b2924;--muted:#50625a;--line:#d5dcd0;--green:#14664e;--lime:#dff691;--red:#a83425;--mono:"IBM Plex Mono",monospace}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px Barlow,system-ui,sans-serif}button,select{font:inherit;color:inherit}button,select{border:1px solid var(--line);background:white;border-radius:6px;padding:9px 12px;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:2px}button[aria-pressed=true]{background:var(--ink);color:white;border-color:var(--ink)}header{background:var(--ink);color:white;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,60px);gap:12px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:10px;font-weight:700}.brand canvas{width:36px;height:32px}.tag,.eyebrow{font:12px var(--mono);letter-spacing:.04em}.tag{color:var(--lime)}main{max-width:1480px;margin:auto;padding:30px clamp(16px,4vw,60px)}.intro,.toolbar,.maphead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font-size:clamp(36px,5vw,62px);letter-spacing:-.045em;line-height:1;margin:5px 0 14px}h2{font-size:23px;margin:0}p{margin:5px 0;color:var(--muted)}.eyebrow{color:var(--green)}.toolbar{padding:10px 0 16px}.cluster{display:flex;gap:6px;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(280px,1fr);gap:14px}.box{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.maphead{padding:14px}.map{height:460px;position:relative;background:#e9eee5}.map canvas{width:100%;height:100%;display:block}.legend{display:flex;flex-wrap:wrap;gap:12px;padding:12px 14px;color:var(--muted);font-size:13px}.key{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.side{padding:16px}.metric{background:var(--lime);padding:15px;margin:12px 0;border-radius:6px}.metric strong{display:block;font-size:38px;line-height:1}.events{display:grid;gap:6px;margin:10px 0;max-height:243px;overflow:auto}.event{text-align:left;display:flex;justify-content:space-between;gap:10px;align-items:center}.event small{display:block;color:inherit;opacity:.8}.detail{border-top:1px solid var(--line);padding-top:10px}.detail strong{display:block}.routes{padding:16px;margin-top:14px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.cards article{padding:14px;background:var(--paper);border-radius:6px}.cards strong{display:block;font-size:26px}.cards article:last-child{background:#edf5d8}.hide{display:none!important}.status{font:12px var(--mono);color:var(--muted)}.split{display:grid;grid-template-columns:1fr 1fr;gap:8px}.split .map{height:360px}.map label{position:absolute;left:10px;top:10px;background:white;padding:5px 8px;border-radius:4px;font-size:13px}.notes{margin-top:10px}footer{font-size:13px;margin-top:14px;color:var(--muted)}@media(max-width:810px){.layout{grid-template-columns:1fr}.map{height:350px}.split .map{height:285px}}@media(max-width:490px){.split{grid-template-columns:1fr}.split .map{height:230px}.map{height:320px}}
+</style>
+<header><div class="brand"><canvas id="logo" width="90" height="80" aria-hidden="true"></canvas>Recolección urbana</div><div class="tag">PROTOTIPO · DATOS SIMULADOS</div></header>
+<main><div class="intro"><div><div class="eyebrow">OPERACIÓN DE RECOLECCIÓN</div><h1>Demanda en calle</h1></div><label>Ciudad <select id="city"><option value="cordoba">Córdoba</option><option value="rosario">Rosario</option></select></label></div>
+<div class="toolbar"><div class="cluster" aria-label="Vista"><button id="mun" aria-pressed="true">Municipio</button><button id="rec" aria-pressed="false">Recolectora</button></div><div class="cluster"><button id="play" aria-pressed="false">▶ Simular detecciones</button><button id="reset">Reiniciar</button></div></div>
+<div class="layout"><section class="box"><div class="maphead"><h2 id="maptitle">Mapa de demanda</h2><div class="cluster"><button id="demand" aria-pressed="true">Demanda</button><button id="compare" aria-pressed="false">Comparar rutas</button></div></div>
+<div id="single" class="map"><canvas id="map" aria-label="Mapa esquemático. Los puntos también están disponibles en la lista de detecciones."></canvas></div>
+<div class="split hide" id="split"><div class="map"><label>Ruta fija</label><canvas id="fixed" aria-label="Ruta fija simulada"></canvas></div><div class="map"><label>Ruta sugerida</label><canvas id="suggested" aria-label="Ruta sugerida simulada"></canvas></div></div>
+<div class="legend"><span><i class="key" style="background:#bd472d"></i>Crítico · detección repetida</span><span><i class="key" style="background:#d79939"></i>Alta</span><span><i class="key" style="background:#b2a638"></i>Media</span><span><i class="key" style="background:#428571"></i>Baja</span><span><i class="key" style="background:#a5b3a9"></i>Sin dato</span></div></section>
+<aside class="box side"><h2 id="role"></h2><div class="metric" id="metric"></div><h2>Últimas detecciones</h2><p class="status" id="status" role="status">Simulación en pausa</p><div class="events" id="events"></div><div class="detail" id="detail" aria-live="polite"></div></aside></div>
+<section class="box routes" id="impact"><h2>Impacto del escenario</h2><div class="cards" id="cards"></div><p id="saving"></p><details class="notes"><summary>Ver fórmulas y supuestos</summary><p id="formula"></p></details></section>
+<footer>Cartografía esquemática y cifras de ejemplo. Las detecciones se actualizan en la simulación. Las rutas corresponden al escenario del día.</footer>
+</main>
+<script>
+const fixtures={
+ cordoba:{zones:['Güemes','Mercado Norte','Centro','Nueva Córdoba','Alberdi','General Paz'],km:[29.4,23.1],loads:[4.2,4.4],timely:[3,5],critical:6,shift:0},
+ rosario:{zones:['Pichincha','Centro','Echesortu','Abasto','Lourdes','Refinería'],km:[31.2,25.4],loads:[4.1,4.5],timely:[2,4],critical:5,shift:1}
+};
+const anchors=[[.30,.64],[.53,.29],[.51,.47],[.72,.70],[.21,.39],[.76,.33]];
+const levels={critico:['Crítico','#bd472d'],alto:['Alta','#d79939'],medio:['Media','#b2a638'],bajo:['Baja','#428571']};
+const $=id=>document.getElementById(id);
+const decimal=(n,d=1)=>n.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+let city,role='municipio',layer='demand',events=[],active=0,timer=null,tick=0;
+function reset(){
+ stop();city=fixtures[$('city').value];tick=0;active=0;
+ events=[{zone:0,level:'alto',passes:2,confidence:94,minute:26},{zone:1,level:'alto',passes:1,confidence:88,minute:23},{zone:2,level:'medio',passes:1,confidence:81,minute:19},{zone:3,level:'bajo',passes:1,confidence:77,minute:12}];
+ render();
+}
+function type(e){return e.passes>1?'critico':e.level}
+function time(e){return '14:'+String(e.minute%60).padStart(2,'0')}
+function stop(){clearInterval(timer);timer=null}
+function advance(){
+ const zone=[1,4,0,3,2,1][tick%6], previous=events.find(e=>e.zone===zone);
+ const event={zone,level:['alto','medio','bajo'][tick%3],passes:(previous?.passes??0)+1,confidence:79+tick%18,minute:27+tick};
+ tick++;events=[event,...events.filter(e=>e.zone!==zone)];active=zone;render();
+}
+function setView(next){role=next;layer=role==='municipio'?'demand':'compare';render()}
+function fit(id){
+ const c=$(id),w=c.clientWidth,h=c.clientHeight,d=devicePixelRatio||1;
+ if(!w||!h)return null;
+ c.width=w*d;c.height=h*d;const x=c.getContext('2d');x.scale(d,d);return [x,w,h];
+}
+function map(id,route){
+ const frame=fit(id);if(!frame)return;
+ const [x,w,h]=frame;
+ const point=i=>[anchors[i][0]*w,anchors[i][1]*h];
+ x.fillStyle='#e8eee5';x.fillRect(0,0,w,h);
+ x.fillStyle='#d4e2d1';x.beginPath();x.moveTo(0,h*.75);x.lineTo(w*.25,h*.83);x.lineTo(w*.4,h);x.lineTo(0,h);x.fill();
+ x.strokeStyle='#fff';x.lineWidth=5;
+ for(let i=-5;i<21;i++){x.beginPath();x.moveTo(i*w/15,0);x.lineTo(i*w/15+w*(city.shift?-.21:.22),h);x.stroke()}
+ for(let i=-2;i<15;i++){x.beginPath();x.moveTo(0,i*h/12);x.lineTo(w,i*h/12+h*(city.shift?.14:-.15));x.stroke()}
+ x.strokeStyle='#c0d7cf';x.lineWidth=17;x.beginPath();x.moveTo(0,h*.18);x.bezierCurveTo(w*.36,h*.42,w*.44,h*.02,w,h*.23);x.stroke();
+ x.save();x.strokeStyle='#9aa99f';x.setLineDash([3,4]);x.strokeRect(w*.64,h*.46,w*.25,h*.15);x.restore();
+ x.fillStyle='#50625a';x.font='12px monospace';x.fillText('SIN DATO',w*.65,h*.55);
+ if(route){
+   const stops=route==='fixed'?[4,1,5,3,0,2]:[4,0,2,1,5];
+   x.beginPath();
+   stops.forEach((i,k)=>{const [px,py]=point(i);if(k===0)x.moveTo(px,py);else{const [oldX]=point(stops[k-1]);x.lineTo(oldX,py);x.lineTo(px,py)}});
+   x.strokeStyle=route==='fixed'?'#596671':'#126349';x.lineWidth=4;x.lineJoin='round';x.stroke();
+ }
+ for(const e of events){
+   const [px,py]=point(e.zone), color=levels[type(e)][1];
+   x.fillStyle=color+'24';x.beginPath();x.arc(px,py,e.zone===active?24:15,0,Math.PI*2);x.fill();
+   x.fillStyle=color;x.beginPath();x.arc(px,py,e.zone===active?8:6,0,Math.PI*2);x.fill();x.strokeStyle='white';x.lineWidth=2;x.stroke();
+   if(e.zone===active){const label=city.zones[e.zone];x.font='600 12px Barlow, sans-serif';const width=x.measureText(label).width+14;const left=Math.min(px+11,w-width-4);x.fillStyle='#1b2924';x.fillRect(left,py-24,width,19);x.fillStyle='white';x.fillText(label,left+7,py-11)}
+ }
+}
+function drawMaps(){map('map');map('fixed','fixed');map('suggested','suggested')}
+function render(){
+ $('mun').setAttribute('aria-pressed',role==='municipio');$('rec').setAttribute('aria-pressed',role==='recolectora');
+ $('demand').setAttribute('aria-pressed',layer==='demand');$('compare').setAttribute('aria-pressed',layer==='compare');
+ $('single').classList.toggle('hide',layer!=='demand');$('split').classList.toggle('hide',layer!=='compare');
+ $('maptitle').textContent=layer==='demand'?'Mapa de demanda':'Rutas del día';
+ $('role').textContent=role==='municipio'?'Municipio':'Recolectora';
+ $('play').textContent=timer?'Ⅱ Pausar detecciones':'▶ Simular detecciones';
+ $('play').setAttribute('aria-pressed',!!timer);
+ $('status').textContent=timer?'Simulación activa · '+time(events[0]):'Simulación en pausa';
+ const [base,proposed]=city.km,[loadBase,loadProposed]=city.loads;
+ const efficiency=proposed/loadProposed, km=base-proposed, liters=km*.35, emissions=liters*2.68;
+ $('metric').innerHTML=role==='municipio'?'<strong>'+city.timely[1]+'/'+city.critical+'</strong>Puntos críticos atendidos a tiempo · ruta sugerida':'<strong>'+decimal(efficiency)+' km/t</strong>Ruta sugerida · '+decimal(loadProposed)+' t de carga esperada';
+ $('events').replaceChildren(...events.map(e=>{
+   const b=document.createElement('button');b.className='event';b.setAttribute('aria-pressed',e.zone===active);
+   b.innerHTML='<span>'+city.zones[e.zone]+'<small>'+time(e)+' · '+levels[type(e)][0]+'</small></span><span>›</span>';
+   b.onclick=()=>{active=e.zone;render();$('events').children[events.indexOf(e)].focus()};return b;
+ }));
+ const selected=events.find(e=>e.zone===active);
+ $('detail').innerHTML='<strong>'+city.zones[active]+'</strong>Nivel '+levels[selected.level][0].toLowerCase()+' · '+selected.passes+' pasada(s) · confianza '+selected.confidence+'%';
+ $('cards').innerHTML=[['Ruta fija',base,loadBase,city.timely[0]],['Ruta sugerida',proposed,loadProposed,city.timely[1]]].map(([name,distance,load,onTime])=>'<article>'+name+'<strong>'+decimal(distance)+' km</strong>'+decimal(load)+' t esperadas · '+onTime+'/'+city.critical+' críticos a tiempo</article>').join('');
+ $('saving').textContent=decimal(km)+' km menos · '+decimal(liters,2)+' L estimados · '+decimal(emissions,2)+' kg de CO₂ estimados';
+ $('formula').textContent='Ahorro de km = ruta fija − sugerida. Combustible = km evitados × 0,35 L/km. CO₂ = litros evitados × 2,68 kg/L. Factores ilustrativos pendientes de validar. Flota de ejemplo: un camión de 5 t.';
+ drawMaps();
+}
+$('city').onchange=reset;$('reset').onclick=()=>{role='municipio';layer='demand';$('city').value='cordoba';reset()};
+$('play').onclick=()=>{if(timer){stop();render()}else{timer=setInterval(advance,3500);advance()}};
+$('mun').onclick=()=>setView('municipio');$('rec').onclick=()=>setView('recolectora');
+$('demand').onclick=()=>{layer='demand';render()};$('compare').onclick=()=>{layer='compare';render()};
+$('map').onclick=e=>{const r=e.target.getBoundingClientRect(),closest=events.find(a=>Math.hypot((e.clientX-r.left)-anchors[a.zone][0]*r.width,(e.clientY-r.top)-anchors[a.zone][1]*r.height)<26);if(closest){active=closest.zone;render()}};
+new ResizeObserver(drawMaps).observe($('single').parentElement);
+const logo=$('logo').getContext('2d');let frame=0;
+function mark(){logo.clearRect(0,0,90,80);logo.strokeStyle='#dff691';logo.lineWidth=3;const v=45+5*Math.sin(frame/25);for(const p of [12,28,62,78]){logo.beginPath();logo.moveTo(p,68);logo.lineTo(v,26);logo.stroke()}for(const y of [42,51,65]){const d=(y-24)*.72;logo.beginPath();logo.moveTo(v-d,y);logo.lineTo(v+d,y);logo.stroke()}if(!matchMedia('(prefers-reduced-motion: reduce)').matches){frame++;requestAnimationFrame(mark)}}mark();
+reset();
+</script></html>

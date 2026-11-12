@@ -1,0 +1,20 @@
+{
+  "city": "Córdoba",
+  "center": [-64.1901, -31.4184],
+  "events": [
+    {"id":"CBA-104","place":"Mercado Norte","address":"Oncativo y Rivadavia","position":[-64.1809,-31.4088],"level":"Alta","confidence":94,"time":"14:32","passes":2},
+    {"id":"CBA-103","place":"Güemes","address":"Belgrano y Fructuoso Rivera","position":[-64.1908,-31.4262],"level":"Alta","confidence":89,"time":"14:29","passes":2},
+    {"id":"CBA-102","place":"Centro","address":"9 de Julio y General Paz","position":[-64.1866,-31.4148],"level":"Media","confidence":82,"time":"14:23","passes":1},
+    {"id":"CBA-101","place":"Nueva Córdoba","address":"Buenos Aires y San Lorenzo","position":[-64.1847,-31.425],"level":"Baja","confidence":76,"time":"14:18","passes":1}
+  ],
+  "incoming": [
+    {"id":"CBA-105","place":"Alberdi","address":"Colón y Santa Fe","position":[-64.2014,-31.4119],"level":"Media","confidence":91,"time":"14:34","passes":1},
+    {"id":"CBA-106","place":"Centro","address":"27 de Abril y Belgrano","position":[-64.1901,-31.4169],"level":"Alta","confidence":87,"time":"14:37","passes":1},
+    {"id":"CBA-107","place":"Nueva Córdoba","address":"Estrada y Buenos Aires","position":[-64.1851,-31.4282],"level":"Baja","confidence":79,"time":"14:40","passes":1}
+  ],
+  "routes": {
+    "fixed":[[-64.204,-31.414],[-64.196,-31.415],[-64.194,-31.425],[-64.185,-31.426],[-64.181,-31.409],[-64.187,-31.408]],
+    "suggested":[[-64.204,-31.414],[-64.194,-31.416],[-64.191,-31.426],[-64.184,-31.423],[-64.181,-31.409]],
+    "fixedKm":29.4,"suggestedKm":23.1,"fixedLoad":4.2,"suggestedLoad":4.4
+  }
+}
