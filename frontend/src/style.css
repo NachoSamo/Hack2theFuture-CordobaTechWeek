@@ -46,11 +46,16 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .session-label { color: var(--muted); font-size: 13px; }
 .workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  --panel-width: 355px;
+  --panel-motion: 260ms cubic-bezier(.22, 1, .36, 1);
+  grid-template-columns: minmax(0, 1fr) 0px;
+  transition: grid-template-columns var(--panel-motion);
+  position: relative;
+  overflow: clip;
   height: calc(100svh - 62px);
   min-height: 500px;
 }
-.workspace.has-detail { grid-template-columns: minmax(0, 1fr) minmax(300px, 355px); }
+.workspace.has-detail { grid-template-columns: minmax(0, 1fr) var(--panel-width); }
 .map-stage { display: flex; flex-direction: column; min-height: 0; background: #202b2d; }
 .map-canvas { position: relative; flex: 1; min-height: 0; }
 .map-host { position: absolute; inset: 0; }
@@ -102,7 +107,8 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .observed { background: #519985; }
 .unobserved { background: #939b9f; }
 .map-warning { position: absolute; left: 16px; bottom: 25px; background: var(--surface); padding: 8px 10px; max-width: 75%; }
-.panel { background: var(--surface); padding: 16px; border-left: 1px solid var(--border); min-width: 0; overflow: auto; }
+.panel-track { min-width: 0; min-height: 0; overflow: hidden; }
+.panel { width: var(--panel-width); height: 100%; background: var(--surface); padding: 16px; border-left: 1px solid var(--border); min-width: 0; overflow: auto; }
 .review-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; }
@@ -166,11 +172,24 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 @media (max-width: 760px) {
   .workspace, .workspace.has-detail { grid-template-columns: 1fr; height: auto; min-height: 0; }
   .map-canvas { min-height: max(335px, calc(100svh - 165px)); }
-  .has-detail .map-canvas { min-height: 320px; }
-  .panel { border-left: 0; border-top: 1px solid var(--border); }
+  .workspace { --panel-width: min(100%, 355px); }
+  .panel-track {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: 3;
+    width: var(--panel-width);
+    transform: translateX(100%);
+    transition: transform var(--panel-motion);
+  }
+  .has-detail .panel-track { transform: translateX(0); }
+  .panel { width: 100%; }
   .map-toolbar { padding-inline: 12px; }
   .map-warning { left: 10px; }
 }
 
 .route-action { margin-top: 8px; }
 .route-action button[aria-pressed=true] { color: var(--lime); }
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace { --panel-motion: 0ms; }
+}

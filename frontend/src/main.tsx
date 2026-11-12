@@ -83,6 +83,11 @@ function App() {
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
   const selected = visible.find(ticket => ticket.id === id)
+  const [lastSelected, setLastSelected] = useState<Ticket>()
+  useEffect(() => {
+    if (selected) setLastSelected(selected)
+  }, [selected])
+  const panelTicket = selected ?? lastSelected
 
   const suggestion = selected?.type === 'Contenedor rebalsado' && status(selected) !== 'Posiblemente resuelta'
     ? scenario.routes.suggestions[selected.id]
@@ -130,16 +135,18 @@ function App() {
           </div>}
         </div>
       </div>
-      {selected && <aside className="panel" aria-label="Ticket seleccionado">
-        <TicketDetail key={selected.id} ticket={selected} suggestion={suggestion} routeOpen={routeOpen}
+      <div className="panel-track" inert={!selected}>
+        {panelTicket && <aside className="panel" aria-label="Ticket seleccionado">
+        <TicketDetail key={panelTicket.id} ticket={panelTicket} suggestion={suggestion} routeOpen={routeOpen}
           onToggleRoute={() => setLayer(routeOpen ? 'tickets' : 'routes')}
           onClose={() => {
-            const marker = document.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
+            const marker = document.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(panelTicket.id)}"]`)
             marker?.focus({ preventScroll: true })
             setId(undefined)
             if (routeOpen) setLayer('tickets')
           }} />
-      </aside>}
+        </aside>}
+      </div>
     </section>
   </main>
 }
