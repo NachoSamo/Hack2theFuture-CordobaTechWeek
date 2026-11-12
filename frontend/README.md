@@ -17,3 +17,5 @@ Los datos de recolección están en `src/mock.json` y `src/street-routes.json`. 
 La landing reproduce un clip ilustrativo de detección simulada. El acceso directo `/#mapa/deteccion` abre el ticket CBA-104 del contenedor mostrado en el video.
 
 Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales, sugerir rutas para contenedores rebalsados y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
+
+El video de la landing muestra el recorrido completo de CBA-104, desde la detección simulada hasta la ruta sugerida en el mapa.

@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Video de entrada de Ikhnos
 
-El montaje dura 10 segundos y alterna seis tomas ilustrativas con detección simulada. Muestra cinco tipos de incidencia con recuadros, confianza, gravedad, hora, coordenadas y área responsable. La landing reproduce el clip en bucle y sin audio. Para abrir CBA-104 durante el pitch, usá `/#mapa/deteccion`.
+El clip de la landing enlaza una detección simulada de contenedor rebalsado con capturas del prototipo. Muestra CBA-104 en el mapa, abre el ticket y ejecuta «Sugerir ruta» para mostrar el recorrido. Se reproduce sin audio y en bucle. El montaje usa capturas del sistema con rótulos y un cursor animado. Para repetir la acción en vivo, abrí `/#mapa/deteccion`.

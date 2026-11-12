@@ -113,7 +113,7 @@ function Landing() {
         <h1 id="landing-title">De la huella<br />a la acción<span>.</span></h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
         <div className="preview-switch" role="group" aria-label="Vista previa">
-          <button aria-pressed={!showMap} onClick={() => setShowMap(false)}>Detección</button>
+          <button aria-pressed={!showMap} onClick={() => setShowMap(false)}>Ver demo</button>
           <button aria-pressed={showMap} onClick={() => setShowMap(true)}>Tickets en el mapa</button>
         </div>
       </div>
@@ -129,8 +129,8 @@ function Landing() {
                 <strong>{activePreview.type}</strong><span>{activePreview.area}</span></div>
             </div>}
           </> : <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
-            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de visión por computadora">
-            <source src="/demo-vision.mp4?v=ikhnos" type="video/mp4" />
+            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de Ikhnos, de la detección a la ruta sugerida">
+            <source src="/demo-flujo.mp4" type="video/mp4" />
           </video>}
         </div>
       </div>
