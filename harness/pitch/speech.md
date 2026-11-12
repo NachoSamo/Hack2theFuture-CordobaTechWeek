@@ -2,80 +2,84 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v2, 11 slides)
+estado: borrador para ensayar (v3, formato oficial híbrido)
 ---
 
 # Speech: Trama Urbana (3 minutos)
 
-> Acompaña a [`deck.html`](deck.html), una slide por bloque. Son unas 420 palabras: con las pausas,
-> dan unos 3 minutos.
+> Acompaña a [`deck.html`](deck.html), una slide por bloque. Son unas 400 palabras más el prototipo en vivo.
 >
-> **Cómo está armado:**
-> - **Empieza por el porqué**, no por la tecnología (Simon Sinek).
-> - **Alterna lo que es con lo que podría ser** (Nancy Duarte).
-> - **La idea entra en una frase** que alguien del público pueda repetir (Michael Seibel, YC).
-> - **Termina con un pedido concreto.**
+> **Cómo está armado:** sigue el orden oficial del lienzo 07 (gancho, problema, a quién le pasa,
+> solución y prototipo, qué la hace distinta, impacto sostenible, primer paso). Suma lo que la
+> organización marca como infaltable: identidad del equipo y evidencia de qué aprendimos. Mantiene el
+> contraste TED de "lo que es / lo que podría ser" (Duarte) y empieza por el problema (Sinek).
 >
-> `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que se apoya con la voz.
+> **Quién presenta:** se decide en el ensayo, por desempeño con cronómetro. Una persona maneja el
+> prototipo en vivo.
+>
+> **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
+> se apoya con la voz.
 
 ---
 
-### Slide 1 · Trama Urbana (0:00–0:08)
+### 1 · Identidad (0:00–0:08)
 
-Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y yo.
+Somos Trama Urbana. Samo, Lauti, Diego, Juani, Gina y Oli.
 
-### Slide 2 · 2.000.000 (0:08–0:30)
+### 2 · Gancho (0:08–0:25)
 
 ¿Sabían que en Córdoba se gastan **dos millones de litros** de combustible por año solo en patrullar?
 `[pausa]`
-Nafta y gasoil. Patrulleros que circulan todo el día, todos los días, por cada barrio de la ciudad.
+Nafta y gasoil, en patrulleros que circulan todo el día.
 
-### Slide 3 · Lo que es (0:30–0:50)
+### 3 · Problema (0:25–0:40)
 
-Esos vehículos llevan cámaras y ven toda la ciudad. Pero hoy solo informan **seguridad**.
+Esos vehículos llevan cámaras y ven toda la ciudad, pero hoy solo informan **seguridad**.
 `[pausa]`
 Lo que ven podría ser mucho más.
 
-### Slide 4 · Lo que podría ser (0:50–1:05)
+### 4 · A quién le pasa (0:40–0:55)
 
-Entonces nos preguntamos: ¿y si cada kilómetro que ya se recorre aportara a una ciudad más
-**sostenible**, más **limpia** y más **eficiente**?
+Le pasa a COYS, el área de control de la Municipalidad. Tiene móviles y cámaras en toda la ciudad, y
+los usa para **un solo fin**. Mientras tanto, un microbasural o un bache esperan a que un vecino reclame.
 
-### Slide 5 · La idea (1:05–1:20)
+### 5 · Lo que podría ser (0:55–1:05)
+
+¿Y si cada kilómetro que ya se recorre aportara a una ciudad más sostenible, más limpia y más eficiente?
+
+### 6 · Solución y prototipo (1:05–1:50)
 
 Los vehículos que hoy recorren la ciudad y gastan combustible pueden usarse para **más de un fin**.
-Eso es Trama Urbana.
+Eso es Trama Urbana. Les mostramos cómo funciona.
 
-### Slide 6 · Demo (1:20–1:55)
+*(Cambio al prototipo en vivo.)*
 
-Miren esta pasada. *(Si hay demo en vivo, va acá.)*
-Un móvil recorre Güemes como todos los días. La cámara detecta una quema de residuos, y el aviso le
-llega a Ambiente. Un microbasural va a Higiene Urbana. Un bache, a Vía Pública.
-Nadie tuvo que reenviar nada.
-Cuando el móvil vuelve a pasar y el problema ya no está, el sistema lo da por resuelto.
+Este es el panel de COYS. Un móvil pasa y la cámara detecta un contenedor desbordado. Se arma un
+ticket, y el aviso le llega directo a Higiene Urbana, sin que nadie lo reenvíe. Cuando el móvil vuelve a
+pasar y el problema ya no está, el ticket queda como posiblemente resuelto.
 
-### Slide 7 · Impacto (1:55–2:15)
+*(Vuelta al deck. Si el prototipo falla, ir a la slide 12, el plan B.)*
 
-En lo ambiental, **cero** kilómetros nuevos.
-En lo económico, ninguna área sale a buscar el problema.
-En lo social, la calle se arregla **antes** de que el vecino tenga que reclamar.
+### 7 · Qué aprendimos (1:50–2:05)
 
-### Slide 8 · El pedido (2:15–2:30)
+Empezamos optimizando las rutas de la basura. Los mentores nos mostraron algo más grande: no se trata
+de un camión, sino de **alertar a cada área** de la ciudad.
 
-No venimos a pedir camiones ni cámaras.
-Pedimos **un barrio**, **cuatro semanas** y los móviles que **ya existen**.
+### 8 · Qué la hace distinta (2:05–2:20)
 
-### Slide 9 · Costo marginal cero (2:30–2:42)
+Y lo hacemos con costo marginal **cero**: implementamos sobre una flota que ya circula, actuamos sobre
+una infraestructura que ya existe y aprovechamos las cámaras que ya tiene.
 
-Porque el costo marginal es **cero**: implementamos sobre una flota que ya circula, actuamos sobre una
-infraestructura que ya existe y aprovechamos las cámaras que ya tiene.
+### 9 · Impacto sostenible (2:20–2:40)
 
-### Slide 10 · ODS (2:42–2:52)
+En el ambiente, **cero** kilómetros nuevos. En la comunidad, ninguna área sale a buscar el problema.
+En las personas, la calle se arregla antes del reclamo. Cubrimos los ODS 11, 12, 13, 9 y 17.
 
-Con eso cubrimos cinco Objetivos de Desarrollo Sostenible: ciudades sostenibles, consumo responsable,
-acción por el clima, innovación en infraestructura y alianzas.
+### 10 · Primer paso (2:40–2:50)
 
-### Slide 11 · Cierre (2:52–3:00)
+Nuestro primer paso es una reunión con **COYS** y el municipio.
+
+### 11 · Cierre (2:50–3:00)
 
 Mismos kilómetros.
 `[pausa]`
@@ -86,16 +90,18 @@ Gracias.
 
 ## Para los ensayos
 
-- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 4 y 11, que son las que tienen que
-  quedar resonando. No llenar los silencios.
-- **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita
-  qué hace Trama Urbana. Si no puede, se reescribe la slide 5.
-- **Plan B de la demo:** si falla, la slide 6 ya cuenta la pasada sola.
+- **Cronómetro:** el prototipo es lo que más tiempo se come. Si un ensayo pasa los 3 minutos, se
+  recorta primero la slide 5 y después la frase de los ODS.
+- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
+- **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
+  hace Trama Urbana. Si no puede, se reescribe la slide 6.
+- **Tip oficial no cubierto:** la organización pide "una persona real, no 'la gente'". Elegimos contar a
+  COYS como institución. Si aparece una persona concreta (alguien que trabaja ahí o un caso que contó un
+  mentor), suma en la slide 4.
 - **Si preguntan por el dato:**
   - Los 2 millones de litros son del Ministerio de Seguridad provincial (2023) y no separan el
     patrullaje de otros usos.
-  - Son mezclas E17 (83 % nafta, 17 % bioetanol) y B20 (80 % gasoil, 20 % biodiésel).
-  - Lo de la demo está simulado.
-- **Quema de residuos:** no es una de las cuatro categorías de la épica E2. Se eligió para la demo por
-  sustentabilidad y tiene evidencia en el research (ficha 05, incendios y quema). Si queda, hay que
-  sumarla a E2.
+  - Son mezclas E17 (83 % nafta) y B20 (80 % gasoil).
+  - Los tickets del prototipo son simulados.
+- **Prototipo:** se levanta con `npm run dev` en `frontend/`; tenerlo abierto antes de subir. El paso a
+  paso del contenedor sale de los botones de simulación del panel (ver `frontend/README.md`).

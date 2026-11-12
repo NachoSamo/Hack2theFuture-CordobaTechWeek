@@ -121,6 +121,28 @@ ecosistema 10 %, pitch y equipo 10 %. Impacto, innovación y factibilidad suman 
 - Elegir una prueba útil: un esquema, una simulación o un recorrido interactivo pueden validar una hipótesis. Confirmar qué formato de prototipo y entrega se acepta.
 - Relato coherente: problema, evidencia, solución, prueba realizada, impacto y viabilidad. Mostrar qué aprendió el equipo y qué falta validar.
 
+### Pitch (presentado en el evento el 12/11)
+
+Fotos de las slides de la organización, pasadas el 12/11 16:45.
+
+- **Formato:** 3 minutos con cronómetro. La mesa elige quién o quiénes presentan. **Se muestra el
+  prototipo.** Sale del lienzo 07 (ficha de solución).
+- **Estructura:** 01 gancho, 02 problema, 03 a quién le pasa, 04 solución y prototipo, 05 qué la hace
+  distinta, 06 impacto sostenible, 07 primer paso.
+- **Qué no puede faltar:** identidad (equipo y solución); problema y a quién afecta; solución y qué la
+  hace distinta; impacto en personas, comunidad y ambiente; evidencia (qué prototipamos, qué
+  aprendimos y qué mejoramos).
+- **Sí:** arrancar por el problema, no por la idea; un dato o un caso concreto; una persona real, no
+  "la gente"; mostrar el prototipo; ensayar con cronómetro.
+- **No:** tecnicismos ni adjetivos vacíos; leer o pasarse del tiempo.
+- **Claves:** claridad (lenguaje simple), síntesis, convicción, identidad (que se vea el equipo),
+  preparación.
+- **Recorrido:** día 1, pitch flash para practicar. Día 2, Club del Pitch por vertical: salen 2
+  finalistas por club, 8 en total, que presentan ante el jurado final.
+- **Criterios de evaluación del viernes 13/11 (slide del evento):** claridad del problema; impacto en
+  la vertical y beneficio de sostenibilidad; originalidad; viabilidad; calidad del pitch y del
+  prototipo. Se presentaron sin pesos; los porcentajes de arriba vienen de la guía escrita.
+
 ### Pendientes que la guía marca para confirmar con la organización
 
 | Tema | Qué hay que saber |
@@ -128,7 +150,7 @@ ecosistema 10 %, pitch y equipo 10 %. Impacto, innovación y factibilidad suman 
 | Acreditación y sede | Dirección y punto exacto de ingreso |
 | Mentores y mesas | Cómo se asignan los mentores y cómo contactar a expertos |
 | Registro y entregables | Formulario o repositorio, formato, plazos, campos obligatorios y alcance del prototipo |
-| Pitch y testeo | Duración de cada presentación, reglas de la ronda final y qué significa "3+3" |
+| Pitch y testeo | Qué significa "3+3" (la duración ya está confirmada: 3 minutos) |
 | Herramientas para notas | Dónde y cuándo se permiten. Se mencionó Granola, sin asumir gratuidad ni autorización |
 
 ---

@@ -7,11 +7,13 @@
 
 | Cuándo | Presentación | Duración | Qué tiene que mostrar |
 |---|---|---|---|
-| 12/11 15:30 | Pitch flash por vertical | A confirmar con el staff | Problema, idea y lo que aprendimos del test 3+3 |
-| 13/11 10:45–13:15 | Pitch por vertical | A confirmar | Todo: problema, evidencia, solución, prueba, impacto, viabilidad. Se eligen 8 finalistas |
-| 13/11 13:15 | Ronda final (si pasamos) | A confirmar | Lo mismo, frente a todos los finalistas |
+| 12/11 15:30 | Pitch flash por vertical | 3 min (práctica) | Problema, idea y lo que aprendimos del test 3+3 |
+| 13/11 10:45–13:15 | Club del Pitch por vertical | 3 min, con cronómetro y prototipo | Todo: problema, evidencia, solución, prueba, impacto, viabilidad. Salen 2 por club, 8 finalistas |
+| 13/11 13:15 | Ronda final (si pasamos) | 3 min | Lo mismo, frente a todos los finalistas |
 
 ## Estructura
+
+> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 12 slides con el plan B) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
 
 Cubre los **seis componentes indispensables** de la guía oficial y el relato que pide: problema,
 evidencia, solución, prueba realizada, impacto y viabilidad, **qué aprendimos y qué falta validar**.

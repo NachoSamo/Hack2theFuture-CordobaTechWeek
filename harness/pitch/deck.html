@@ -40,6 +40,9 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .ods-list span{flex:none;width:96px;height:96px;border-radius:16px;background:var(--lima);color:var(--asfalto);font:800 52px Barlow;display:flex;align-items:center;justify-content:center}
 .ods-list p{margin:0;font-size:44px;font-weight:700;line-height:1.1}
 .ods-list small{display:block;font-size:30px;font-weight:400;color:var(--muted);margin-top:8px}
+.ods-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:90px}
+.ods-row b{font-weight:800;margin-right:6px}
+.ods-row span{font:600 30px Barlow;padding:14px 26px;border-radius:12px;background:var(--lima);color:var(--asfalto)}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
 #hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
 </style>
@@ -48,14 +51,14 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 <div id="bar"></div>
 <div id="stage">
 
-<!-- 1 · Nombre, logo, equipo -->
+<!-- 1 · Identidad: equipo y solución -->
 <section class="slide center">
   <svg class="logo" viewBox="0 0 96 96" data-logo></svg>
   <h1>Trama Urbana</h1>
   <p class="team">Samo · Lauti · Diego · Juani · Gina · Oli</p>
 </section>
 
-<!-- 2 · El dato (por qué) -->
+<!-- 2 · Gancho -->
 <section class="slide">
   <div class="mega">2.000.000</div>
   <p class="sub">litros de combustible por año.</p>
@@ -63,50 +66,38 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   <p class="src">Ministerio de Seguridad de Córdoba, 2023 (mezclas E17 y B20: 83 % nafta, 80 % gasoil) · La Voz de San Justo</p>
 </section>
 
-<!-- 3 · Lo que es -->
+<!-- 3 · Problema -->
 <section class="slide">
   <h2>Hoy solo informan seguridad.</h2>
   <h2 class="muted" style="margin-top:20px">Lo que ven podría ser<br>mucho más.</h2>
 </section>
 
-<!-- 4 · Lo que podría ser -->
+<!-- 4 · A quién le pasa -->
+<section class="slide">
+  <h2><span class="lima">COYS</span>, el área de control<br>de la Municipalidad.</h2>
+  <p class="sub muted" style="margin-top:40px">Móviles y cámaras en toda la ciudad.<br>Un solo uso.</p>
+</section>
+
+<!-- 5 · Lo que podría ser -->
 <section class="slide">
   <h2>¿Y si cada kilómetro aportara a una ciudad más <span class="lima">sostenible, limpia y eficiente</span>?</h2>
 </section>
 
-<!-- 5 · La idea en dos frases -->
+<!-- 6 · Solución y prototipo -->
 <section class="slide">
   <h2 style="font-size:96px">Los vehículos que hoy recorren la ciudad y gastan combustible</h2>
   <h2 class="lima" style="font-size:96px;margin-top:50px">pueden usarse para más de un fin.</h2>
+  <p class="src" style="color:var(--lima)">▶ Prototipo en vivo</p>
 </section>
 
-<!-- 6 · Demo -->
+<!-- 7 · Evidencia: qué aprendimos -->
 <section class="slide">
-  <h2>Una pasada. Cuatro avisos.<span class="tag">simulado</span></h2>
-  <div class="alerts">
-    <div class="alert" style="border-color:var(--terracota)"><strong>Quema de residuos</strong><span>→ Ambiente</span></div>
-    <div class="alert" style="border-color:var(--ambar)"><strong>Microbasural</strong><span>→ Higiene urbana</span></div>
-    <div class="alert" style="border-color:var(--oliva)"><strong>Bache</strong><span>→ Vía pública</span></div>
-    <div class="alert" style="border-color:var(--verde)"><strong>Contenedor roto</strong><span>→ Higiene urbana</span></div>
-  </div>
+  <p class="sub muted" style="margin:0 0 40px">Qué aprendimos</p>
+  <h2 class="muted" style="font-size:84px">Empezamos optimizando rutas de basura.</h2>
+  <h2 style="font-size:84px;margin-top:40px">Los mentores nos mostraron algo más grande: <span class="lima">alertar a cada área de la ciudad.</span></h2>
 </section>
 
-<!-- 7 · Impacto -->
-<section class="slide">
-  <div class="three">
-    <div><b>Ambiental</b><p>Cero kilómetros nuevos.</p></div>
-    <div><b>Económico</b><p>Nadie sale a buscar el problema.</p></div>
-    <div><b>Social</b><p>Se arregla antes del reclamo.</p></div>
-  </div>
-</section>
-
-<!-- 8 · El pedido -->
-<section class="slide">
-  <p class="sub muted" style="margin:0 0 30px">Lo que pedimos</p>
-  <h2>Un barrio. Cuatro semanas.<br><span class="lima">Los móviles que ya existen.</span></h2>
-</section>
-
-<!-- 9 · Costo marginal cero -->
+<!-- 8 · Qué la hace distinta -->
 <section class="slide">
   <h2>Costo marginal <span class="lima">cero</span>.</h2>
   <div class="three" style="margin-top:90px">
@@ -116,22 +107,39 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   </div>
 </section>
 
-<!-- 10 · ODS -->
+<!-- 9 · Impacto sostenible -->
 <section class="slide">
-  <p class="sub muted" style="margin:0 0 50px">Objetivos de Desarrollo Sostenible que cubrimos</p>
-  <div class="ods-list">
-    <div><span>11</span><p>Ciudades y comunidades sostenibles<small>Una ciudad más limpia y mantenida.</small></p></div>
-    <div><span>12</span><p>Producción y consumo responsables<small>Cada litro de combustible rinde más.</small></p></div>
-    <div><span>13</span><p>Acción por el clima<small>Más servicio, sin emisiones nuevas.</small></p></div>
-    <div><span>9</span><p>Industria, innovación e infraestructura<small>Visión por computadora sobre lo que ya existe.</small></p></div>
-    <div><span>17</span><p>Alianzas para lograr los objetivos<small>Municipio, Policía y Cordobeses en Alerta.</small></p></div>
+  <div class="three">
+    <div><b>Ambiente</b><p>Cero kilómetros nuevos.</p></div>
+    <div><b>Comunidad</b><p>Nadie sale a buscar el problema.</p></div>
+    <div><b>Personas</b><p>Se arregla antes del reclamo.</p></div>
   </div>
+  <div class="ods-row">
+    <span><b>11</b> Ciudades sostenibles</span><span><b>12</b> Consumo responsable</span><span><b>13</b> Acción por el clima</span><span><b>9</b> Innovación e infraestructura</span><span><b>17</b> Alianzas</span>
+  </div>
+</section>
+
+<!-- 10 · Primer paso -->
+<section class="slide">
+  <p class="sub muted" style="margin:0 0 30px">Primer paso</p>
+  <h2>Una reunión con <span class="lima">COYS</span><br>y el municipio.</h2>
 </section>
 
 <!-- 11 · Cierre -->
 <section class="slide center">
   <h1>Mismos kilómetros,<br><span class="lima">el doble de ciudad.</span></h1>
   <svg class="logo" viewBox="0 0 96 96" data-logo style="width:110px;height:110px;margin:70px 0 0"></svg>
+</section>
+
+<!-- 12 · Plan B (solo si falla el prototipo en vivo) -->
+<section class="slide">
+  <h2>Una pasada. Cuatro avisos.<span class="tag">plan B · simulado</span></h2>
+  <div class="alerts">
+    <div class="alert" style="border-color:var(--terracota)"><strong>Quema de residuos</strong><span>→ Ambiente</span></div>
+    <div class="alert" style="border-color:var(--ambar)"><strong>Microbasural</strong><span>→ Higiene urbana</span></div>
+    <div class="alert" style="border-color:var(--oliva)"><strong>Bache</strong><span>→ Vía pública</span></div>
+    <div class="alert" style="border-color:var(--verde)"><strong>Contenedor roto</strong><span>→ Higiene urbana</span></div>
+  </div>
 </section>
 
 </div>
