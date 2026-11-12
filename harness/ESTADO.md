@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 15:55 · Oli
+**Actualizado:** 12/11 16:10 · Oli
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -20,7 +20,7 @@
 | Diego | | | |
 | Juani | | | |
 | Gina | | | |
-| Oli | Docs de producto alineados a las decisiones de las 15:08 (fuentes, aviso directo, cierre por pasada); deck del pitch en `pitch/deck.html` | Pitch flash 15:30 | Validar H1/H5/H7 (acceso a cámaras) |
+| Oli | Deck estilo TED (`pitch/deck.html`) y speech de 3 minutos (`pitch/speech.md`); sigue ensayar | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
 ## Decisiones abiertas
 
@@ -42,6 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 16:10 · Oli · Deck rehecho estilo TED (9 slides, mínimo texto, primera con nombre, logo y equipo) y nuevo `pitch/speech.md` con el guion de 3 minutos; cierra pidiendo un piloto de un barrio por 4 semanas · a Gina (co-dueña del pitch) y Juani (marca)
 - 15:55 · Oli · `idea-y-epicas.md` y `solucion-paso-a-paso.md` alineados a las decisiones de Samo (15:08): E1 con tres fuentes, E3 consolidación de incidencias, E4 derivación directa al área, E5 con vista general de COYS; épicas mapeadas 1 a 1 con los nodos 01–05. Resuelve el aviso de Samo de las 15:08 · a Samo y dueños de nodo
 - 15:40 · Oli · Nuevo `pitch/deck.html` (9 slides, marca Trama Urbana, contenido del pivot + fuentes y aviso directo de Samo). No usa el slogan ni el descriptor de `marca.md`, que siguen hablando de recolección · a Juani y Gina
 - 15:08 · Samo · Por recomendación de varios mentores: fuentes = COYS + Cordobeses en Alerta + móviles policiales; aviso directo a cada área (COYS solo tiene vista general); cierre del ciclo con la próxima pasada. `arquitectura/solucion.html`, `contratos.md` y el README están actualizados. En los docs de producto de Oli hay un aviso arriba, pero E4/E5 y la etapa 4 todavía dicen "COYS asigna" · a Oli (reescribir E4, E5 y la etapa 4) y a los dueños de nodo

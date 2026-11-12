@@ -183,7 +183,7 @@ Vite indica la URL local. [Detalles del prototipo](frontend/README.md)
 │   ├── contratos.md           Interfaces entre nodos
 │   ├── marca.md               Identidad visual y tono
 │   ├── pitch.md               Estructura y preguntas del jurado
-│   ├── pitch/deck.html     Deck del pitch en HTML (marca Trama Urbana)
+│   ├── pitch/              Deck en HTML (estilo TED, marca Trama Urbana) y speech de 3 minutos
 │   └── mentores.md            Notas de mentores, datos y no veredictos
 │
 └── research/

@@ -10,203 +10,121 @@
 :root{
   --asfalto:#11191C; --pizarra:#19252B; --niebla:#EAF0F0; --lima:#DFF691;
   --terracota:#BD472D; --ambar:#D79939; --oliva:#B2A638; --verde:#428571; --gris:#A5B3A9;
-  --muted:#8FA09C; --line:#2A3940;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --muted:#8FA09C; --line:#2A3940; --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--asfalto);color:var(--niebla);font-family:Barlow,system-ui,sans-serif;overflow:hidden}
-#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
-.slide{position:absolute;inset:0;padding:110px 140px 120px;display:none;flex-direction:column;background:var(--asfalto)}
-.slide.on{display:flex;animation:in .45s ease}
-@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.eyebrow{font:500 26px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--lima);margin:0 0 28px}
-h1{font-size:150px;line-height:.95;letter-spacing:-.045em;margin:0;font-weight:800}
-h2{font-size:92px;line-height:1;letter-spacing:-.04em;margin:0 0 40px;font-weight:700;max-width:1500px}
-p,li{font-size:40px;line-height:1.3;color:var(--niebla)}
-.muted{color:var(--muted)}
-.lima{color:var(--lima)}
-.tag{display:inline-block;font:500 22px var(--mono);padding:6px 14px;border-radius:6px;border:1px solid var(--line);color:var(--muted);vertical-align:middle}
-.tag.dato{border-color:var(--verde);color:#9fd3c1}
-.tag.est{border-color:var(--ambar);color:var(--ambar)}
-.tag.sim{border-color:var(--gris);color:var(--gris)}
-.footer{position:absolute;left:140px;right:140px;bottom:56px;display:flex;justify-content:space-between;align-items:center;font:400 22px var(--mono);color:var(--muted)}
-.brand{display:flex;align-items:center;gap:16px;font:700 28px Barlow;color:var(--niebla)}
-.brand svg{width:44px;height:44px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-.card{background:var(--pizarra);border:1px solid var(--line);border-radius:18px;padding:44px}
-.card h3{font-size:44px;margin:0 0 14px;letter-spacing:-.02em}
-.card p{font-size:32px;margin:0;color:#C9D4D3}
-.big{font-size:230px;font-weight:800;letter-spacing:-.05em;line-height:.9;color:var(--lima)}
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:20px}
-.step{background:var(--pizarra);border:1px solid var(--line);border-radius:16px;padding:34px 28px;position:relative}
-.step .n{font:500 24px var(--mono);color:var(--lima)}
-.step h3{font-size:38px;margin:14px 0 10px;line-height:1.05}
-.step p{font-size:27px;margin:0;color:#C9D4D3}
-.step:not(:last-child)::after{content:"→";position:absolute;right:-21px;top:50%;transform:translateY(-50%);color:var(--lima);font-size:34px}
-.ticket{background:var(--pizarra);border:1px solid var(--line);border-left:10px solid var(--terracota);border-radius:14px;padding:30px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.ticket strong{font-size:38px;display:block}
-.ticket small{font:400 24px var(--mono);color:var(--muted)}
-.dot{display:inline-block;width:18px;height:18px;border-radius:50%;margin-right:12px}
-table{border-collapse:collapse;width:100%;font-size:32px}
-td{padding:22px 0;border-bottom:1px solid var(--line);vertical-align:top}
-td:first-child{font:500 26px var(--mono);color:var(--lima);width:110px}
-td:last-child{text-align:right;width:260px}
-.hero{justify-content:center}
-.ods{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
-.ods span{font:600 30px Barlow;padding:14px 22px;border-radius:10px;background:var(--pizarra);border:1px solid var(--line)}
-#nav{position:fixed;right:18px;bottom:14px;opacity:0;transition:opacity .2s;font:400 13px var(--mono);color:var(--muted);user-select:none}
-#nav:hover{opacity:1}
-#nav button{background:var(--pizarra);color:var(--niebla);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font:inherit;cursor:pointer}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px}
+.slide{position:absolute;inset:0;padding:140px 180px;display:none;flex-direction:column;justify-content:center;background:var(--asfalto)}
+.slide.on{display:flex;animation:in .5s ease}
+@keyframes in{from{opacity:0}to{opacity:1}}
+h1{font-size:140px;line-height:.95;letter-spacing:-.045em;margin:0;font-weight:800}
+h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
+.lima{color:var(--lima)} .muted{color:var(--muted)}
+.mega{font-size:330px;font-weight:800;letter-spacing:-.06em;line-height:.85;color:var(--lima)}
+.sub{font-size:64px;font-weight:500;margin-top:30px}
+.src{position:absolute;left:180px;bottom:70px;font:400 22px var(--mono);color:var(--muted)}
+.team{font:400 32px var(--mono);color:var(--muted);margin-top:60px;letter-spacing:.02em}
+.logo{width:180px;height:180px;margin-bottom:56px}
+.center{align-items:center;text-align:center}
+.alerts{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px}
+.alert{border-top:12px solid;padding-top:28px}
+.alert strong{display:block;font-size:48px;line-height:1.05}
+.alert span{display:block;font:400 28px var(--mono);color:var(--muted);margin-top:14px}
+.tag{display:inline-block;font:500 24px var(--mono);padding:6px 14px;border:1px solid var(--gris);color:var(--gris);border-radius:6px;vertical-align:middle;margin-left:20px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:70px;margin-top:20px}
+.three b{display:block;font:500 28px var(--mono);color:var(--lima);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.three p{font-size:56px;line-height:1.1;margin:0;font-weight:600}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
+#hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
 </style>
 </head>
 <body>
 <div id="bar"></div>
 <div id="stage">
 
-<!-- 1 · Gancho -->
-<section class="slide hero">
-  <p class="eyebrow">Córdoba · 2023</p>
-  <h1>¿Sabían que Córdoba gasta <span class="lima">2&nbsp;millones de litros</span> por año solo en patrullar?</h1>
-  <p class="muted" style="margin-top:44px">Combustible de los vehículos del Ministerio de Seguridad <span class="tag dato">dato · La Voz de San Justo</span></p>
+<!-- 1 · Nombre, logo, equipo -->
+<section class="slide center">
+  <svg class="logo" viewBox="0 0 96 96" data-logo></svg>
+  <h1>Trama Urbana</h1>
+  <p class="sub lima" style="margin-top:24px">Un móvil para autosanar la ciudad.</p>
+  <p class="team">Samo · Lauti · Diego · Juani · Gina · Oli</p>
 </section>
 
-<!-- 2 · Problema -->
+<!-- 2 · El dato (por qué) -->
 <section class="slide">
-  <p class="eyebrow">El problema</p>
-  <h2>Kilómetros que ven todo y no le sirven a nadie más.</h2>
-  <div class="grid2">
-    <div class="card">
-      <h3>Un consumo, un solo uso</h3>
-      <p>Patrulleros, móviles de control y cámaras recorren la ciudad todo el día. Ese combustible y esas emisiones hoy rinden solo seguridad.</p>
-      <p style="margin-top:22px"><span class="tag dato">70 móviles de la Guardia Urbana al lanzarse</span></p>
-    </div>
-    <div class="card">
-      <h3>La ciudad se entera tarde</h3>
-      <p>Un microbasural, un bache o un cable suelto se conocen cuando un vecino reclama o un área sale a buscarlo.</p>
-      <p style="margin-top:22px"><span class="tag dato">Basura acumulada en Mercado Norte y Güemes</span></p>
-    </div>
+  <div class="mega">2.000.000</div>
+  <p class="sub">litros por año, solo para patrullar Córdoba.</p>
+  <p class="src">Ministerio de Seguridad de Córdoba, 2023 · La Voz de San Justo</p>
+</section>
+
+<!-- 3 · Lo que es -->
+<section class="slide">
+  <h2>Ven toda la ciudad.</h2>
+  <h2 class="muted" style="margin-top:20px">No le avisan a nadie.</h2>
+</section>
+
+<!-- 4 · Lo que podría ser -->
+<section class="slide">
+  <h2>¿Y si cada kilómetro<br>también <span class="lima">arreglara</span> la ciudad?</h2>
+</section>
+
+<!-- 5 · La idea en dos frases -->
+<section class="slide">
+  <h2 style="font-size:96px">Los vehículos con cámara que ya recorren Córdoba detectan lo que hay que arreglar.</h2>
+  <h2 class="lima" style="font-size:96px;margin-top:50px">Y le avisan directo al área que lo resuelve.</h2>
+</section>
+
+<!-- 6 · Demo -->
+<section class="slide">
+  <h2>Una pasada. Cuatro avisos.<span class="tag">simulado</span></h2>
+  <div class="alerts">
+    <div class="alert" style="border-color:var(--terracota)"><strong>Cable caído</strong><span>→ Alumbrado</span></div>
+    <div class="alert" style="border-color:var(--ambar)"><strong>Microbasural</strong><span>→ Higiene urbana</span></div>
+    <div class="alert" style="border-color:var(--oliva)"><strong>Bache</strong><span>→ Vía pública</span></div>
+    <div class="alert" style="border-color:var(--verde)"><strong>Contenedor roto</strong><span>→ Higiene urbana</span></div>
   </div>
 </section>
 
-<!-- 3 · Solución -->
+<!-- 7 · Impacto -->
 <section class="slide">
-  <p class="eyebrow">La solución</p>
-  <h2>Un móvil para autosanar la ciudad.</h2>
-  <p class="muted" style="margin:-10px 0 34px">Cada vehículo que ya circula con cámara detecta lo que la ciudad necesita arreglar y avisa al área que lo resuelve.</p>
-  <div class="flow">
-    <div class="step"><span class="n">01</span><h3>Captura</h3><p>COYS, Cordobeses en Alerta y móviles policiales siguen su recorrido.</p></div>
-    <div class="step"><span class="n">02</span><h3>Detección</h3><p>Visión por computadora clasifica el problema. Nunca guarda personas.</p></div>
-    <div class="step"><span class="n">03</span><h3>Incidencia</h3><p>Varias pasadas, un solo ticket con lugar y estado.</p></div>
-    <div class="step"><span class="n">04</span><h3>Aviso directo</h3><p>Llega solo al área que corresponde, sin intermediarios.</p></div>
-    <div class="step"><span class="n">05</span><h3>Cierre</h3><p>La próxima pasada confirma si se resolvió.</p></div>
+  <div class="three">
+    <div><b>Ambiental</b><p>Cero kilómetros nuevos.</p></div>
+    <div><b>Económico</b><p>Nadie sale a buscar el problema.</p></div>
+    <div><b>Social</b><p>Se arregla antes del reclamo.</p></div>
   </div>
 </section>
 
-<!-- 4 · Demo -->
+<!-- 8 · El pedido -->
 <section class="slide">
-  <p class="eyebrow">Así se ve <span class="tag sim" style="margin-left:14px">demo simulada</span></p>
-  <h2>Una pasada, cuatro avisos.</h2>
-  <div style="display:grid;gap:22px">
-    <div class="ticket" style="border-left-color:var(--terracota)"><div><strong><span class="dot" style="background:var(--terracota)"></span>Cable suelto sobre la vereda</strong><small>Güemes · 08:42 · visto en 3 pasadas</small></div><span class="tag">→ Alumbrado</span></div>
-    <div class="ticket" style="border-left-color:var(--ambar)"><div><strong><span class="dot" style="background:var(--ambar)"></span>Microbasural en esquina</strong><small>Mercado Norte · 08:51 · visto en 2 pasadas</small></div><span class="tag">→ Higiene urbana</span></div>
-    <div class="ticket" style="border-left-color:var(--oliva)"><div><strong><span class="dot" style="background:var(--oliva)"></span>Bache en carril central</strong><small>Alberdi · 09:05 · visto en 1 pasada</small></div><span class="tag">→ Vía pública</span></div>
-    <div class="ticket" style="border-left-color:var(--verde)"><div><strong><span class="dot" style="background:var(--verde)"></span>Contenedor roto</strong><small>Centro · 09:12 · posiblemente resuelto</small></div><span class="tag">→ Higiene urbana</span></div>
-  </div>
-</section>
-
-<!-- 5 · Qué probamos -->
-<section class="slide">
-  <p class="eyebrow">Qué aprendimos y qué falta validar</p>
-  <h2>Lo que sabemos y lo que todavía suponemos.</h2>
-  <table>
-    <tr><td>✓</td><td>Ya hay móviles municipales con cámaras (Parque Sarmiento) y lectoras de patentes en la Guardia Urbana.</td><td><span class="tag dato">dato</span></td></tr>
-    <tr><td>✓</td><td>Los mentores nos sacaron de optimizar la recolección: la oportunidad es ser la interfaz que alerta a cada servicio.</td><td><span class="tag dato">mentores</span></td></tr>
-    <tr><td>H6</td><td>La visión por computadora detecta bien desde un vehículo en movimiento.</td><td><span class="tag est">a validar</span></td></tr>
-    <tr><td>H7</td><td>Cordobeses en Alerta y la Policía comparten su video o el dato procesado.</td><td><span class="tag est">a validar</span></td></tr>
-    <tr><td>H8</td><td>Las áreas actúan sobre un aviso automático.</td><td><span class="tag est">test 3+3</span></td></tr>
-  </table>
-</section>
-
-<!-- 6 · Impacto -->
-<section class="slide">
-  <p class="eyebrow">Impacto en tres ejes</p>
-  <h2>El mismo kilómetro, el doble de ciudad.</h2>
-  <div class="grid3">
-    <div class="card"><h3 class="lima">Ambiental</h3><p>Kilómetros que ya se recorrían, reutilizados como detección. Sin sumar emisiones.</p><p style="margin-top:20px"><span class="tag est">~4.600 t CO₂/año en juego</span></p></div>
-    <div class="card"><h3 class="lima">Económico</h3><p>Las áreas dejan de salir a buscar problemas: reciben el aviso con ubicación.</p></div>
-    <div class="card"><h3 class="lima">Social</h3><p>Calles más limpias y seguras, atendidas antes de que llegue el reclamo.</p></div>
-  </div>
-  <div class="ods" style="margin-top:44px"><span>ODS 11 Ciudades</span><span>ODS 13 Clima</span><span>ODS 9 Infraestructura</span><span>ODS 12 Consumo</span><span>ODS 17 Alianzas</span></div>
-</section>
-
-<!-- 7 · Ecosistema -->
-<section class="slide">
-  <p class="eyebrow">Ecosistema y financiamiento</p>
-  <h2>No compra nada nuevo. Conecta lo que ya existe.</h2>
-  <div class="grid2">
-    <div class="card"><h3>Quién participa</h3><p>COYS y la Municipalidad · Cordobeses en Alerta · Policía de Córdoba · Áreas de higiene urbana, alumbrado y vía pública · Vecinos</p></div>
-    <div class="card"><h3>Quién lo financia</h3><p>Piloto con fondos de la UE (Global Gateway), BID o CFI. Después, servicio para el municipio, pagado con el ahorro en recorridos.</p></div>
-  </div>
-</section>
-
-<!-- 8 · Escala -->
-<section class="slide">
-  <p class="eyebrow">Cómo sigue</p>
-  <h2>De un barrio a cualquier ciudad con móviles y cámaras.</h2>
-  <div class="grid3">
-    <div class="card"><h3><span class="lima">01</span> Piloto</h3><p>4 semanas en Güemes o Mercado Norte con los móviles que ya lo recorren.</p></div>
-    <div class="card"><h3><span class="lima">02</span> Ciudad</h3><p>Todas las fuentes de Córdoba y más categorías.</p></div>
-    <div class="card"><h3><span class="lima">03</span> Red</h3><p>Otras ciudades de Argentina y Europa: misma trama, otras calles.</p></div>
-  </div>
+  <p class="sub muted" style="margin:0 0 30px">Lo que pedimos</p>
+  <h2>Un barrio. Cuatro semanas.<br><span class="lima">Los móviles que ya existen.</span></h2>
 </section>
 
 <!-- 9 · Cierre -->
-<section class="slide hero">
-  <div class="brand" style="font-size:44px;margin-bottom:50px"><svg id="logo-big" style="width:110px;height:110px"></svg>Trama Urbana</div>
+<section class="slide center">
   <h1>Mismos kilómetros,<br><span class="lima">el doble de ciudad.</span></h1>
-  <p class="muted" style="margin-top:50px;font-family:var(--mono);font-size:28px">Samo · Lauti · Diego · Juani · Gina · Oli — Mesa 24</p>
+  <svg class="logo" viewBox="0 0 96 96" data-logo style="width:110px;height:110px;margin:70px 0 0"></svg>
 </section>
 
 </div>
-<div id="nav"><button id="prev" aria-label="Anterior">←</button> <span id="count"></span> <button id="next" aria-label="Siguiente">→</button></div>
-
-
-
+<div id="hint">← → · f pantalla completa</div>
 <script>
-const slides=[...document.querySelectorAll('.slide')];
-const stage=document.getElementById('stage');
-const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/>   <g stroke="#11191C" stroke-width="2" stroke-linejoin="round">     <path d="M10 41 46 24v36L10 51Z" fill="#53666B"/>     <path d="M54 27 86 42v11L54 61Z" fill="#34464A"/>     <path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/>     <path d="M49 14 72 29v26L49 63Z" fill="#839493"/>   </g>   <g fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round">     <path fill="none" stroke="#11191C" stroke-width="2" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/>   </g>   <g fill="none" stroke="#DFF691" stroke-linecap="round">     <path fill="none" stroke="#DFF691" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5" stroke-width="4"/>     <path fill="none" stroke="#DFF691" d="M17 77c8 5 15 7 23 8m-28-3 8 4" stroke-width="2"/>   </g>   <circle cx="85" cy="54" r="3" fill="#DFF691"/> `;
-// footer con logo en cada slide salvo la portada y el cierre
-slides.forEach((s,i)=>{
-  if(i>0&&i<slides.length-1){
-    const f=document.createElement('div');f.className='footer';
-    f.innerHTML=`<span class="brand"><svg viewBox="0 0 96 96">${logo}</svg>Trama Urbana</span><span>${String(i+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}</span>`;
-    s.appendChild(f);
-  }
-});
-const big=document.getElementById('logo-big');big.setAttribute('viewBox','0 0 96 96');big.innerHTML=logo;
-let cur=0;
-try{const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)cur=h-1}catch(e){}
-function show(i){
-  cur=Math.max(0,Math.min(slides.length-1,i));
-  slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
-  document.getElementById('count').textContent=`${cur+1} / ${slides.length}`;
-  document.getElementById('bar').style.width=((cur+1)/slides.length*100)+'%';
-  history.replaceState(null,'','#'+(cur+1));
-}
+const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#11191C" stroke-width="2" stroke-linejoin="round"><path d="M10 41 46 24v36L10 51Z" fill="#53666B"/><path d="M54 27 86 42v11L54 61Z" fill="#34464A"/><path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/><path d="M49 14 72 29v26L49 63Z" fill="#839493"/></g><path fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="4" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="2" d="M17 77c8 5 15 7 23 8m-28-3 8 4"/><circle cx="85" cy="54" r="3" fill="#DFF691"/>`;
+document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
+const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage');
+let cur=0;const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)cur=h-1;
+function show(i){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  document.getElementById('bar').style.width=((cur+1)/slides.length*100)+'%';try{history.replaceState(null,'','#'+(cur+1))}catch(e){}}
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);fit();
 addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(cur+1)}
   if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(cur-1)}
-  if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+  if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);
   if(e.key==='f')document.documentElement.requestFullscreen?.();
 });
-document.getElementById('next').onclick=()=>show(cur+1);
-document.getElementById('prev').onclick=()=>show(cur-1);
-stage.addEventListener('click',e=>{show(e.clientX>innerWidth/2?cur+1:cur-1)});
+stage.addEventListener('click',e=>show(e.clientX>innerWidth/2?cur+1:cur-1));
 show(cur);
 </script>
 </body>
