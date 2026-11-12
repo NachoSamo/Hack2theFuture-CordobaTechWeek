@@ -172,8 +172,8 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
       map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: 0, pitch: 16, duration })
       return
     }
-    map.easeTo({ center: selected?.position ?? center, zoom: 13.25, pitch: 43, bearing: -22, duration })
-  }, [ready, selected?.position, showRoutes, suggestion])
+    map.easeTo({ center, zoom: 13.25, pitch: 43, bearing: -22, duration })
+  }, [ready, showRoutes, suggestion])
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />

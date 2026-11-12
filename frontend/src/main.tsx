@@ -67,6 +67,7 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 function App() {
   const [id, setId] = useState<string>()
   const [layer, setLayer] = useState<Layer>('tickets')
+  const [routeTicketId, setRouteTicketId] = useState<string>()
   const [step, setStep] = useState(0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
@@ -93,13 +94,14 @@ function App() {
     ? scenario.routes.suggestions[selected.id]
     : undefined
 
-  const routeOpen = layer === 'routes' && Boolean(suggestion)
-  const mapLayer = routeOpen ? 'routes' : layer === 'routes' ? 'tickets' : layer
+  const routeTicket = activeTickets.find(ticket => ticket.id === routeTicketId)
+  const displayedRoute = routeTicket && status(routeTicket) !== 'Posiblemente resuelta'
+    ? scenario.routes.suggestions[routeTicket.id]
+    : undefined
+  const routeOpen = layer === 'routes' && Boolean(displayedRoute) && routeTicketId === selected?.id
+  const mapLayer = layer === 'routes' && !displayedRoute ? 'tickets' : layer
 
-  const selectTicket = useCallback((ticketId: string) => {
-    setLayer(current => current === 'routes' ? 'tickets' : current)
-    setId(ticketId)
-  }, [])
+  const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
 
   return <main>
     <header className="top">
@@ -122,7 +124,7 @@ function App() {
         </div>
         <div className="map-canvas">
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
-          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={suggestion} onSelect={selectTicket} />
+          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} />
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
               <span><i className="swatch observed" />Observada, sin tickets activos</span>
@@ -138,12 +140,14 @@ function App() {
       <div className="panel-track" inert={!selected}>
         {panelTicket && <aside className="panel" aria-label="Ticket seleccionado">
         <TicketDetail key={panelTicket.id} ticket={panelTicket} suggestion={suggestion} routeOpen={routeOpen}
-          onToggleRoute={() => setLayer(routeOpen ? 'tickets' : 'routes')}
+          onToggleRoute={() => {
+            setRouteTicketId(routeOpen ? undefined : selected?.id)
+            setLayer(routeOpen ? 'tickets' : 'routes')
+          }}
           onClose={() => {
             const marker = document.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(panelTicket.id)}"]`)
             marker?.focus({ preventScroll: true })
             setId(undefined)
-            if (routeOpen) setLayer('tickets')
           }} />
         </aside>}
       </div>
