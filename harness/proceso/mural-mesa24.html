@@ -342,7 +342,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   </div>
   <div id="panel"></div>
   <div id="lamina"><div class="aviso"><h2>Cargando el lienzo…</h2><p>Estamos trayendo los marcos guardados del equipo.</p></div></div>
-  <p class="creditos">Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:01): decision log, arquitectura, pitch y prototipo. Los oficiales reemplazan lo escrito en papel; la foto de cada uno queda enlazada.</p>
+  <p class="creditos">Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:45): decision log, arquitectura de la rama architecture/init, pitch v10 y prototipo. Los oficiales reemplazan lo escrito en papel; la foto de cada uno queda enlazada.</p>
 </main>
 <div id="toastHost"></div>
 
@@ -723,8 +723,8 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   renderTabs();
 
 
-  // Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:01). Los oficiales reemplazan el papel; la foto del 12/11 queda enlazada.
-  const VIG = "Versión vigente al 12/11 22:01. Lo que escribimos en papel el 12/11 está en la foto.";
+  // Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:45). Los oficiales reemplazan el papel; la foto del 12/11 queda enlazada.
+  const VIG = "Versión vigente al 12/11 22:45. Lo que escribimos en papel el 12/11 está en la foto.";
   const PI = (pre, arr) => arr.map((x, n) => Object.assign({ id: pre + n }, typeof x === "string" ? { t: x } : x));
   const NOTA = (pre, arr) => ({ titulo: "Notas", tipo: "nota", ancho: "full", items: PI(pre, arr) });
   const VIGENCIA = (pre, extra) => NOTA(pre, [VIG].concat(extra || []));
@@ -743,6 +743,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           { anillo: "influyen", t: "COYS", nota: "Vista general del monitoreo" },
           { anillo: "influyen", t: "Ministerio de Seguridad", nota: "Móviles policiales (H7)" },
           { anillo: "influyen", t: "Cordobeses en Alerta" },
+          { anillo: "influyen", t: "Guardia Urbana", nota: "Fuente con cámara (22:45)" },
           { anillo: "influyen", t: "EPEC", nota: "Postes y cables" },
           { anillo: "influyen", t: "Defensa Civil", nota: "Recibe los llamados por postes caídos" },
           { anillo: "influyen", t: "Concejo Deliberante", nota: "Convenio con el municipio" },
@@ -822,16 +823,17 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           { tag: "Descartada", t: "Sensores dentro de los contenedores que trackeen su capacidad actual.", nota: "Un sensor por contenedor; Urbis usa la cámara del móvil" },
           { tag: "Futuro", t: "Data y machine learning para entrenar modelos que aprenden del contexto de la ciudad, dándoles interacción por sensores y cámaras.", nota: "Aprender del historial de incidencias" }]) },
         nuevas: { titulo: "Ideas que llegaron después", consigna: "De mentores, del test 3+3 y del trabajo de la noche del 12/11.", tipo: "postits", color: "verde", ancho: "full", items: PI("nv", [
-          { tag: "Vigente", t: "Todo vehículo con cámara como fuente: móviles municipales, Cordobeses en Alerta y policía.", nota: "Mentores, 15:08" },
+          { tag: "Vigente", t: "Todo vehículo con cámara como fuente: COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales.", nota: "Mentores, 15:08 · Guardia Urbana, 22:45" },
           { tag: "Vigente", t: "Aviso directo a cada área, sin persona en el medio.", nota: "Mentores, 15:08" },
           { tag: "Vigente", t: "Cierre del ciclo: la próxima pasada verifica si el problema sigue.", nota: "15:08" },
-          { tag: "Vigente", t: "Detección a bordo con un modelo liviano que envía solo telemetría, sin imágenes.", nota: "Arquitectura del sistema" },
+          { tag: "Planeada", t: "Detección a bordo con un modelo liviano (YOLO11n, a evaluar); en el MVP la captura es simulada.", nota: "Arquitectura en la rama architecture/init" },
+          { tag: "Propuesta", t: "Enviar solo frames de cada detección, con caras y patentes pixeladas.", nota: "22:45 · H11" },
           { tag: "Vigente", t: "Gravedad en cuatro niveles: bajo, medio, alto y extremo.", nota: "Arquitectura del sistema" },
           { tag: "Vigente", t: "Acciones desde el ticket: aviso manual, ruta sugerida para contenedores y plan de barrida.", nota: "Prototipo" },
           { tag: "Propuesta", t: "Sumar los domos de seguridad como fuente.", nota: "Diego y Lauti; sin decidir" }]) },
         conteo: { titulo: "Conteo", tipo: "chips", ancho: "mitad", items: PI("co", [
           { tag: "Ideas del bloque rojo", t: "11" }, { tag: "Semillas de Urbis", t: "3" }, { tag: "Descartadas por el pivot", t: "7" },
-          { tag: "Para el futuro", t: "1" }, { tag: "Ideas posteriores", t: "7" }]) },
+          { tag: "Para el futuro", t: "1" }, { tag: "Ideas posteriores", t: "8" }]) },
         reglas: { titulo: "Reglas", tipo: "reglas", ancho: "mitad", items: PI("rg", ["No juzgamos todavía.", "Construimos sobre la idea del otro: “sí, y además…”.", "Una idea, un post-it.", "Todo vale: lo raro también suma.", "Cada idea responde a nuestra pregunta “¿Cómo podríamos…?”."]) },
         notas: VIGENCIA("nt") } },
     o7: { num: "07", titulo: "Ficha de solución", corto: "Ficha de solución", foto: "fotos/07-ficha-de-solucion.jpg", tiempo: "Bloque azul · versión vigente",
@@ -847,16 +849,16 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
         problema: { titulo: "2. Problema", consigna: "¿Qué pasa hoy que no debería pasar?", tipo: "texto", ancho: "mitad", items: [{ id: "pr0", t: "Dos millones de litros de combustible por año recorren Córdoba monitoreando solo seguridad. Mientras tanto, la basura se acumula hasta que un vecino reclama, Defensa Civil recibe 198 llamados por postes caídos en una sola tormenta y hubo 66.000 reclamos de alumbrado en dos años." }] },
         aquien: { titulo: "3. A quién le pasa", consigna: "Persona o grupo específico.", tipo: "texto", ancho: "mitad", items: [{ id: "aq0", t: "Al municipio, que gasta millones de pesos en combustible y recibe los reclamos de lo que sus móviles vieron y nadie avisó. Y al vecino, que convive con incidentes evitables todos los días." }] },
         solucion: { titulo: "4. Solución", consigna: "Paso a paso, sin tecnicismos.", tipo: "pasos", ancho: "mitad", items: PI("so", [
-          "El móvil patrulla como siempre; un módulo de cómputo chico analiza la cámara a bordo.",
-          "Detecta contenedores rebalsados, basura acumulada, baches, luminarias apagadas, ramas y cables caídos, sin enviar imágenes.",
+          "El móvil patrulla como siempre; su cámara alimenta la detección (en el MVP, simulada; a futuro, un módulo de cómputo a bordo).",
+          "Detecta contenedores rebalsados, basura acumulada, baches, luminarias apagadas, ramas y cables caídos, y envía solo el frame de cada detección, con caras y patentes pixeladas (propuesta).",
           "Las observaciones de varias pasadas y fuentes se reúnen en una incidencia, con su gravedad.",
           "El aviso llega directo al área responsable, sin que nadie lo reenvíe; el municipio ve todo en el mapa.",
           "Cuando una pasada posterior ya no ve el problema, queda “posiblemente resuelto” y se mide el tiempo de resolución."]) },
-        distinta: { titulo: "5. Qué la hace distinta", consigna: "¿Qué existe hoy y por qué no alcanza?", tipo: "texto", ancho: "mitad", items: [{ id: "di0", t: "No suma vehículos, cámaras ni recorridos: solo un módulo de cómputo chico por móvil. Reúne varias fuentes y tipos de incidencia en un ticket por problema y avisa directo al área. Hoy los problemas aparecen solo si alguien reclama." }] },
-        impacto: { titulo: "6. Impacto y beneficio de sostenibilidad", consigna: "¿Qué cambia si funciona? ¿Cómo nos daríamos cuenta?", tipo: "texto", ancho: "mitad", items: [{ id: "im0", t: "Hoy el 0 % de los km de patrullaje sirve para cuidar la ciudad; con Urbis, hasta el 100 %. Ambiental: ni un litro ni un km más. Económico: no hay que comprar flota ni cámaras, y se sostiene después del piloto. Lo medimos con el aprovechamiento de la flota y los km reutilizados, con litros y CO₂.", nota: "Aprovechamiento = km con Urbis activo ÷ km totales (22:05). No está medido: lo mide el piloto." }] },
-        paso: { titulo: "7. Primer paso", consigna: "¿Qué necesitamos y qué haríamos primero?", tipo: "texto", ancho: "mitad", items: [{ id: "pa0", t: "Una reunión con el municipio para acordar un convenio de piloto: Urbis le da los datos de la calle al Observatorio de Movilidad del PMUS, que la UE financió con 600.000 €.", nota: "17:10 y 21:21" }] },
+        distinta: { titulo: "5. Qué la hace distinta", consigna: "¿Qué existe hoy y por qué no alcanza?", tipo: "texto", ancho: "mitad", items: [{ id: "di0", t: "No suma vehículos, cámaras ni recorridos: a futuro, solo un módulo de cómputo chico por móvil. Reúne varias fuentes (COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales) y tipos de incidencia en un ticket por problema y avisa directo al área. Hoy los problemas aparecen solo si alguien reclama." }] },
+        impacto: { titulo: "6. Impacto y beneficio de sostenibilidad", consigna: "¿Qué cambia si funciona? ¿Cómo nos daríamos cuenta?", tipo: "texto", ancho: "mitad", items: [{ id: "im0", t: "Hoy el 0 % de los km de patrullaje sirve para cuidar la ciudad; con Urbis, hasta el 100 %. Ambiental: ni un litro ni un km más. Económico: costo mínimo, porque usa la flota y las cámaras que ya existen, y ahorra inspecciones y reportes. Lo medimos con el aprovechamiento de la flota y los km reutilizados, con litros y CO₂.", nota: "Aprovechamiento = km con Urbis activo ÷ km totales (22:05). No está medido: lo mide el piloto." }] },
+        paso: { titulo: "7. Primer paso", consigna: "¿Qué necesitamos y qué haríamos primero?", tipo: "texto", ancho: "mitad", items: [{ id: "pa0", t: "Una reunión con el municipio para un piloto en un barrio. Ya existen iniciativas de la UE en Córdoba: apoyó con 600.000 € el Plan de Movilidad Sostenible, y Urbis le brinda datos de la calle a su Observatorio de Movilidad.", nota: "17:10, 21:21 y speech v10" }] },
         prototipo: { titulo: "Prototipo", tipo: "chips", ancho: "mitad", items: PI("pt", [
-          { tag: "Formato", t: "Prototipo funcional en React con mapa 3D" }, { tag: "Datos", t: "Simulados" },
+          { tag: "Formato", t: "Prototipo funcional en React con mapa 3D" }, { tag: "Datos", t: "194 tickets simulados" },
           { tag: "Probado con", t: "Test 3+3 del 12/11" }, { tag: "Marca", t: "Urbis · Detección urbana desde el patrullaje" }]) },
         notas: VIGENCIA("nt") } },
     o8: { num: "08", titulo: "Testear e iterar", corto: "Testear e iterar", foto: "fotos/08-testear-e-iterar.jpg", tiempo: "Bloque azul · versión vigente",
@@ -872,8 +874,8 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           "3 se quedan en la mesa: presentan la solución y reciben visitas.", "3 visitan una mesa vecina: prueban y dan feedback.", "El resto valida con mentores disponibles."]) },
         cambios: { titulo: "Cambios que hicimos por el feedback", tipo: "destacado", ancho: "full", items: [{ id: "ca0", t: "Pasamos de optimizar las rutas de recolección a detectar todo lo que la ciudad necesita arreglar y avisar directo a cada área (pivot 14:53 y mentores 15:08)." }] },
         respuestas: { titulo: "Cómo respondemos hoy", tipo: "pares", cols: ["Lo que preguntaron", "Respuesta vigente"], colorA: "rosa", colorB: "verde", ancho: "full", items: PI("rs", [
-          { t: "¿Cómo se financiaría?", m: "Para el municipio se sostiene solo: ahorra recorridos de inspección y el seguimiento de cada incidente. Para implementarlo, la UE ya invirtió 600.000 € en el PMUS de Córdoba, que prevé un Observatorio de Movilidad. (21:55)" },
-          { t: "¿Cuáles serían los primeros pasos?", m: "Una reunión con el municipio y un convenio de piloto. (17:10)" },
+          { t: "¿Cómo se financiaría?", m: "Para el municipio, costo mínimo: usa la flota y las cámaras que ya tiene y ahorra inspecciones y reportes. Para implementarlo, ya existen iniciativas de la UE en Córdoba: apoyó con 600.000 € el Plan de Movilidad Sostenible, que prevé un Observatorio de Movilidad. (23:55)" },
+          { t: "¿Cuáles serían los primeros pasos?", m: "Una reunión con el municipio para un piloto en un barrio. (17:10 y speech v10)" },
           { t: "Abarcar todas las problemáticas", m: "Hecho: seis tipos de incidencia en residuos y vía pública, cada uno con su ticket. (15:08)" },
           { t: "Ministerio de Seguridad", m: "Se mantienen todas las fuentes; el acceso al video queda como hipótesis H7. (21:21)" }]) },
         preguntas: { titulo: "? Preguntas abiertas", tipo: "postits", color: "amarillo", ancho: "full", items: PI("pq", [
@@ -930,7 +932,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           { t: "Clientes", m: "Municipios que monitorean la ciudad con flota propia; en Córdoba, la Secretaría de Movilidad y COYS. Beneficiario: el vecino." },
           { t: "Necesidades", m: "Enterarse antes del reclamo, sin sacar otro vehículo a la calle, y alimentar con datos el Observatorio de Movilidad del PMUS." },
           { t: "Competidores", m: "Hoy, el reclamo del vecino y las recorridas de cada área. Afuera, relevamiento vial con cámaras en vehículos municipales (por ejemplo, vialytics en Alemania, a verificar)." },
-          { t: "Riesgos", m: "Acceso al video de cada fuente (H7), precisión de la detección en movimiento (H3 y H6) y que las áreas actúen sobre un aviso automático (H8). Privacidad: no se envían imágenes ni se guardan caras o patentes." }]) },
+          { t: "Riesgos", m: "Acceso al video de cada fuente (H7), precisión de la detección en movimiento (H3 y H6) y que las áreas actúen sobre un aviso automático (H8). Privacidad: Solo se envían los frames de cada detección, nunca video, con caras y patentes pixeladas (propuesta, H11)." }]) },
         tipo: { titulo: "Tipo de mercado", tipo: "destacado", ancho: "mitad", items: [{ id: "t0", t: "Resegmentado" }] },
         justificacion: { titulo: "Justificación", tipo: "texto", ancho: "mitad", items: [{ id: "j0", t: "El relevamiento de incidencias urbanas ya existe: hoy depende del reclamo del vecino y de las recorridas de cada área. Urbis lo reposiciona sobre el patrullaje que ya circula: cada km recorrido pasa a detectar, consolidar y derivar incidencias, y la gestión de cada una mejora con un ticket por área y la verificación en la próxima pasada. Decisión de Samo, 12/11." }] } } },
     m4: { num: "4", titulo: "Identificar abundancia para apalancarse", corto: "Abundancia", tiempo: "Tiempo en equipo 40 a 60 minutos.",
@@ -939,9 +941,9 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
       secciones: {
         abundancias: { titulo: "Abundancias y oportunidades", tipo: "pares", cols: ["Abundancia", "Oportunidad que genera"], colorA: "lila", colorB: "lila", ancho: "full", items: PI("a", [
           { t: "Patrulleros y móviles que recorren la ciudad todo el día.", m: "Detectar incidencias sin sumar un solo km: el aprovechamiento de la flota pasa de 0 % a hasta 100 %." },
-          { t: "Cámaras en tres fuentes: móviles municipales, Cordobeses en Alerta y policía.", m: "Una ciudad viva: todo vehículo con cámara suma observaciones." },
+          { t: "Cámaras en cuatro fuentes: COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales.", m: "Una ciudad viva: todo vehículo con cámara suma observaciones." },
           { t: "GPS en los recorridos.", m: "Ubicar cada incidencia y medir qué parte de la ciudad está cubierta." },
-          { t: "Modelos de visión livianos que corren a bordo (YOLOv11n).", m: "Detectar en el móvil y enviar menos de 1 KB por evento, sin imágenes." },
+          { t: "Modelos de visión livianos que pueden correr a bordo (YOLO11n, a evaluar).", m: "A futuro, detectar en el móvil y enviar solo metadatos livianos y el frame de cada detección, pixelado." },
           { t: "Planes y fondos de la UE: el PMUS de Córdoba (600.000 €) y su Observatorio de Movilidad.", m: "Un canal para implementar el piloto y un destino para los datos." },
           { t: "431 ciudades de la UE que deben tener su plan de movilidad (SUMP) para 2027.", m: "Mercado para escalar con el mismo modelo.", nota: "Supuesto: que paguen por esto" }]) } } },
     m5a: { num: "5A", titulo: "Diseñar Business Model Canvas", corto: "Business Model", layout: "bmc", tiempo: "",
@@ -949,10 +951,10 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
       orden: ["socios", "actividades", "recursos", "propuesta", "relacion", "canales", "segmentos", "costos", "ingresos"],
       secciones: {
         socios: { titulo: "Socios clave", tipo: "postits", color: "amarillo", items: PI("so", [
-          "Secretaría de Movilidad de Córdoba (PMUS)", "COYS, área de monitoreo municipal", "Cordobeses en Alerta y Policía de Córdoba (fuentes)",
+          "Secretaría de Movilidad de Córdoba (PMUS)", "COYS, área de monitoreo municipal", "Cordobeses en Alerta, Guardia Urbana y Policía de Córdoba (fuentes)",
           "UE · EUROCLIMA · AFD · MobiliseYourCity", { t: "Universidades (UTN, UNC)", nota: "Para Horizon Europe, en consorcio" }]) },
         actividades: { titulo: "Actividades clave", tipo: "postits", color: "amarillo", items: PI("ac", [
-          "Detectar incidencias a bordo con visión por computadora.", "Consolidar observaciones en incidencias, sin duplicados.", "Derivar el ticket al área responsable.", "Mostrar el mapa de incidencias, las zonas de calor y el impacto."]) },
+          "Detectar incidencias con visión por computadora (simulada en el MVP).", "Consolidar observaciones en incidencias, sin duplicados.", "Derivar el ticket al área responsable.", "Mostrar el mapa de incidencias, las zonas de calor y el impacto."]) },
         recursos: { titulo: "Recursos clave", tipo: "postits", color: "amarillo", items: PI("re", [
           "Modelo de detección entrenado para Córdoba.", "Módulo de cómputo chico en cada móvil.", "Backend con base geoespacial (PostGIS).", "Acceso a las cámaras y recorridos de las fuentes."]) },
         propuesta: { titulo: "Propuesta de valor", tipo: "postits", color: "naranja", items: PI("pv", [
@@ -963,21 +965,21 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
         segmentos: { titulo: "Segmentos de clientes", tipo: "postits", color: "verde", items: PI("sc", [
           "Municipios que monitorean con flota propia.", "Áreas que resuelven: higiene urbana, alumbrado, vía pública.", "Vecinos (beneficiarios, no usuarios)."]) },
         costos: { titulo: "Estructura de costos", consigna: "De la arquitectura del sistema. Sin montos: no están estimados.", tipo: "postits", color: "rosa", items: PI("co", [
-          "Módulo de cómputo a bordo por móvil (~5–10 W, YOLOv11n cuantizado).", "Conectividad 4G/LTE (MQTT, menos de 1 KB por evento) y servidor con API REST.",
-          "Base geoespacial PostgreSQL/PostGIS y mapa de calor.", "Entrenamiento y etiquetado del dataset de incidencias de Córdoba.", "Integración con los canales de cada área, capacitación y soporte."]) },
+          "A futuro, módulo de cómputo a bordo por móvil (~5–10 W, valor de referencia sin medir).", "Conectividad (HTTPS o MQTT, por definir) y servidor con API REST.",
+          "Base geoespacial PostgreSQL/PostGIS, almacenamiento de la evidencia y mapa de calor.", "Entrenamiento y etiquetado del dataset de incidencias de Córdoba.", "Integración con los canales de cada área, capacitación y soporte."]) },
         ingresos: { titulo: "Fuentes de ingreso", tipo: "postits", color: "celeste", items: PI("in", [
-          "Piloto: lo paga el municipio, o es sin costo al principio.", "Para el municipio se sostiene solo: ahorra inspección y seguimiento de incidentes.",
+          "Piloto: lo paga el municipio, o es sin costo al principio.", "Para el municipio, costo mínimo: ahorra inspecciones y reportes (sin medir: lo mide el piloto).",
           "Siguiente etapa: el municipio pide fondos UE (EUROCLIMA, AFD, MobiliseYourCity) para implementar el PMUS."]) } } },
     m5b: { num: "5B", titulo: "Diseñar Value Proposition Canvas", corto: "Propuesta de valor", layout: "vpc", tiempo: "Tiempo en equipo 40 minutos.",
       indicaciones: "A la derecha, el cliente (municipio y vecino): qué trabajos tiene que hacer, qué le frustra y qué le alegraría. A la izquierda, Urbis: qué ofrece, qué frustraciones alivia y qué alegrías crea.",
       orden: ["productos", "creadores", "aliviadores", "trabajos", "alegrias", "frustraciones", "cadena"],
       secciones: {
         productos: { titulo: "Productos y servicios", tipo: "postits", color: "amarillo", items: PI("pr", [
-          "Detección a bordo con visión por computadora.", "Mapa de incidencias y zonas de calor (atención y cobertura).", "Tickets con aviso automático al área responsable.", "Acciones desde el ticket: aviso manual, ruta sugerida, plan de barrida."]) },
+          "Detección con visión por computadora (simulada en el MVP).", "Mapa de incidencias y zonas de calor (atención y cobertura).", "Tickets con aviso automático al área responsable.", "Acciones desde el ticket: aviso manual, ruta sugerida, plan de barrida."]) },
         creadores: { titulo: "Creadores de alegrías", tipo: "postits", color: "verde", items: PI("cr", [
           "Aprovechamiento de la flota: de 0 % a hasta 100 %.", "Datos de la calle para el Observatorio de Movilidad.", "Verificación automática en la próxima pasada."]) },
         aliviadores: { titulo: "Aliviadores de frustraciones", tipo: "postits", color: "rosa", items: PI("al", [
-          "Aviso antes del reclamo.", "Ningún área saca otro vehículo para buscar el problema.", "Un ticket por incidencia, sin duplicados.", "No se envían imágenes ni se guardan caras o patentes."]) },
+          "Aviso antes del reclamo.", "Ningún área saca otro vehículo para buscar el problema.", "Un ticket por incidencia, sin duplicados.", "Solo se envían los frames de cada detección, nunca video, con caras y patentes pixeladas (propuesta, H11)."]) },
         trabajos: { titulo: "Trabajos del cliente", tipo: "postits", color: "amarillo", items: PI("tr", [
           "Mantener la ciudad en condiciones (municipio).", "Responder los reclamos de los vecinos (municipio).", "Usar bien el combustible de la flota (municipio).", "Moverse seguro por su barrio (vecino)."]) },
         alegrias: { titulo: "Alegrías", tipo: "postits", color: "verde", items: PI("ag", ["Saber antes que el vecino.", "Mostrar resultados del plan de movilidad.", "Ver la calle arreglada sin tener que reclamar (vecino)."]) },
@@ -1005,24 +1007,24 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           { t: "Sprint Review", m: "El último día del sprint se muestran las tareas terminadas al coach, que propone ajustes al product backlog." },
           { t: "Retrospective", m: "El equipo analiza cómo trabajó y qué obstáculos le impiden avanzar, para irlos eliminando." }]) } } },
     m7: { num: "7", titulo: "Realizar un bosquejo o demo del producto", corto: "Demo", tiempo: "Tiempo en equipo máximo 8 horas.",
-      indicaciones: "La demo es el prototipo actual de Urbis (frontend/). Se levanta con npm run dev; recargar la página reinicia la secuencia automática.",
+      indicaciones: "En el pitch, la demo se narra sobre el video de la landing (detección con la cámara y después el mapa con datos simulados, decision log 23:55). El prototipo interactivo está en frontend/: se levanta con npm run dev y recargar la página reinicia la secuencia automática.",
       orden: ["pasos", "pantallas", "pautas", "preguntas", "aclaracion"],
       secciones: {
         pasos: { titulo: "Qué muestra la demo, paso a paso", tipo: "pasos", ancho: "full", items: PI("ps", [
           "Landing de Urbis: el video intercala tres detecciones simuladas (bache, rama caída y contenedor rebalsado) con el mapa, el ticket y la acción de cada una.",
-          "“Explorar el mapa” abre /#mapa: el mapa 3D de Córdoba en la vista Incidencias (vista COYS).",
+          "“Abrir mapa completo” lleva a /#mapa: el mapa 3D de Córdoba con 194 tickets simulados, en la vista Incidencias.",
           "La secuencia corre sola: se publica un ticket, otra pasada suma un avistamiento, sale el aviso automático al área y una pasada de verificación lo deja “posiblemente resuelto”.",
-          "La barra superior filtra por tipo, estado y área; al pasar sobre un marcador se ven la foto, la dirección y el estado.",
-          "El detalle del ticket muestra avistamientos, gravedad, área responsable, historial (automático o manual) y próximo paso.",
+          "La barra superior filtra por tipo, estado y área; al pasar sobre un marcador se ven el tipo, la ubicación y el estado.",
+          "Cada marcador abre una tarjeta sobre el mapa con foto ilustrativa, gravedad, área responsable, historial (automático o manual) y acciones; se cierra con Escape.",
           "Acciones desde el ticket: aviso manual, ruta sugerida para el contenedor rebalsado (recorrido fijo y desvío) y plan de barrida para residuos o ramas.",
           "Zonas de calor: rojo con tickets activos, verde para lo observado sin tickets y gris sin observación."]) },
         pantallas: { titulo: "Pantallas de la demo", tipo: "postits", color: "blanco", numerar: true, ancho: "mitad", items: PI("pa", [
           "Landing con el video de detección", "Mapa 3D · Incidencias", "Detalle del ticket", "Ruta sugerida o plan de barrida", "Zonas de calor"]) },
         pautas: { titulo: "Pautas de la demo", tipo: "reglas", ancho: "mitad", items: PI("pt", ["Tiene que ser realizable.", "Tiene que parecer real.", "Tiene que minimizar el desperdicio.", "Tiene que usar datos de aspecto real."]) },
         preguntas: { titulo: "Preguntas que nos van a hacer", tipo: "circulos", ancho: "full", items: PI("fq", [
-          { t: "¿Y la privacidad?", m: "El móvil detecta a bordo y envía menos de 1 KB, sin imágenes, caras ni patentes." },
-          { t: "¿Suma hardware?", m: "Solo un módulo de cómputo chico por móvil; ni vehículos ni cámaras nuevas." },
-          { t: "¿Quién lo paga?", m: "Se sostiene con el ahorro del municipio; la UE ya financió el PMUS." },
+          { t: "¿Y la privacidad?", m: "Nunca video: solo el frame de cada detección, con caras y patentes pixeladas (propuesta)." },
+          { t: "¿Suma hardware?", m: "A futuro, solo un módulo de cómputo chico por móvil; ni vehículos ni cámaras nuevas." },
+          { t: "¿Quién lo paga?", m: "Costo mínimo para el municipio; y ya existen iniciativas de la UE en Córdoba (PMUS)." },
           { t: "¿Funciona de verdad?", m: "Los tickets son simulados; la precisión la mide el piloto (H3 y H6)." }]) },
         aclaracion: { titulo: "Aclaración", tipo: "nota", ancho: "full", items: PI("ac", [
           "Los tickets, la cobertura y las coordenadas del prototipo son simulados.", "/#mapa/deteccion abre el ticket CBA-104 del contenedor que aparece en el video."]) } } },
@@ -1039,7 +1041,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
           { c: ["Cada área sale a buscar el problema", "Menos vehículos en la calle", "Recorridos de inspección evitados", "≥ 1 por semana por área"] }]) } } }
   };
   function localDb() {
-    const KEY = "lienzo-mesa24-v2"; let store = null;
+    const KEY = "lienzo-mesa24-v3"; let store = null;
     try { store = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
     if (!store || typeof store !== "object") store = clone(DATOS);
     for (const k in DATOS) if (!store[k]) store[k] = clone(DATOS[k]);

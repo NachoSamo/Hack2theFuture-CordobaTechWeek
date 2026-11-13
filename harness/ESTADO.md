@@ -3,10 +3,10 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 22:01 · Samo
-**Fase:** 0 · Explorar
-**Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
-**Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
+**Actualizado:** 12/11 22:45 · Samo
+**Fase:** 3 · Pitch (el prototipo y la arquitectura siguen en paralelo)
+**Vertical / problema:** movilidad sostenible: **Urbis**, «Mismo recorrido, más sustentabilidad»; el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
+**Próximo checkpoint:** Club del Pitch por vertical, 13/11 10:45 (ver [`evento.md`](evento.md#checkpoints))
 
 > Fases: 0 Explorar · Bloque rojo (oficial: sin computadoras ni IA) · 1 Registrar la selección · 1b Prototipar y
 > testear · 1c Diagramar · 2 Construir · 3 Pitch. Qué suele hacer falta en cada una (orientativo; los agentes trabajan en todas): [`../AGENTS.md`](../AGENTS.md).
@@ -15,7 +15,7 @@
 
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
-| Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias). Los 16 lienzos del [mural](proceso/mural-mesa24.html) sincronizados con Urbis (12/11 22:01) y `proceso.md` con POV, ideas y test 3+3; sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
+| Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado y mergear `architecture/init` | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing oscura con clips de detección en la portada y acceso al mapa interactivo dentro de la misma página. Vista previa y tarjeta de detalle con foto, historial y acciones para 194 tickets simulados. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
@@ -26,18 +26,23 @@
 
 Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al decision log.
 
-- [x] Vertical y problema: movilidad cruzando residuos (ver decision log 12/11 14:00)
-- [ ] Cómo contamos el doble impacto (la cifra principal quedó en km reutilizados, decision log 15:10)
+- [x] Vertical y problema: movilidad sostenible, detección urbana con Urbis (decision log 14:53 y 22:01)
+- [x] Cómo contamos el impacto: ambiental + económico (19:40); en el pitch, ODS y viabilidad económica, y el aprovechamiento de la flota como respuesta al jurado (23:20)
 - [ ] Tipo de prototipo: software, hardware + software, o datos + visualización
 - [ ] Stack y nodos de la arquitectura → [`contratos.md`](contratos.md)
 - [ ] Diagramas de [`arquitectura/`](arquitectura/) aprobados por cada dueño de nodo y por Samo (sin esto no se codea)
 - [ ] Reparto Gina / Oli dentro de producto → [`equipo.md`](equipo.md)
-- [ ] Quién pitchea (máximo 2 personas)
+- [ ] Quién pitchea (máximo 2 personas): el speech v10 está escrito para dos voces; se decide en el ensayo
 - [ ] Casa donde se construye la noche del 12/11 (y confirmar con el staff que se puede trabajar entre días)
-- [ ] Formato del recorrido simulado del día 1
-- [ ] Qué significa "3+3" en el testeo y cómo se entrega el registro del proceso (preguntar al staff)
+- [x] Formato del recorrido simulado del día 1: mockup digital (lienzo 07)
+- [x] Qué significa "3+3": 3 presentan en la mesa y 3 visitan otra mesa (lienzo 08); el registro va en el formulario oficial (QR)
 
 ## Avisos
+
+- 22:45 · Samo · README reescrito al 100 % sobre Urbis (estado real: prototipo con datos simulados, sin backend ni detección; arquitectura de la rama `architecture/init`). Decision log 22:45: frames de evidencia con caras y patentes pixeladas (propuesta), Guardia Urbana como cuarta fuente y «posiblemente resuelta» sin afirmar resolución. Inconsistencias que quedan en archivos de otros dueños:
+  - **Oli (speech v10, antes del pitch):** dice «1.400 llamados por árboles y postes caídos», pero según su propia fuente (Perfil, 7/8/2026) los 1.400 son todos los llamados de la tormenta y 198 fueron por postes o columnas; «procesa la imagen en el mismo móvil, sin transmitir ni grabar» choca con los frames de evidencia de la arquitectura; las notas citan «slide 10» en un deck de 9 y repiten «se sostiene solo». En `pitch.md`, la tabla de 8 bloques y la línea de «11 slides… costo marginal cero» quedaron viejas. Las horas de las filas 22:40–23:55 del decision log son posteriores a la hora real de su commit (≈22:35)
+  - **Juani (frontend):** el paquete se llama `trama-urbana-prototipo` y la UI dice «Vista COYS» mientras el pitch habla de municipio; rama y cable caído siguen fuera del catálogo de la arquitectura
+  - **Samo y Diego (arquitectura):** `architecture/init` sin mergear (main tiene la versión vieja de `arquitectura-sistema.md`, con edge y sin imágenes); decidir el pixelado (H11) y las 10 decisiones pendientes de la rama; `contratos.md` con el stack vacío y los nodos de las 15:08; `demo-path.md` con las tablas vacías
 
 - 12/11 · Juani · La demo abre tarjetas sobre el mapa. Se actualizó el recorrido en `demo-path.md` · a Samo
 

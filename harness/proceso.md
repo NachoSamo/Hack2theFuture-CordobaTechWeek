@@ -56,8 +56,9 @@ Lo que creemos y todavía no sabemos. Cada una se convierte en una prueba o qued
 | H6 | Visión por computadora detecta microbasurales, postes caídos y contenedores rotos desde un vehículo en movimiento | Spike con imágenes públicas | Sin probar |
 | H7 | Cordobeses en Alerta y la Policía de Córdoba (provincial) compartirían su video o un dato procesado con el municipio | Mentores y staff: quién opera cada fuente y quién lo autoriza | Sin probar |
 | H8 | Las áreas actúan sobre un aviso automático, sin validación humana, aunque haya falsos positivos | Test 3+3: mostrar el aviso a quien haría de área y preguntar qué haría | Sin probar |
-| H9 | Reutilizar cámaras y recorridos permite agregar detección urbana con costo marginal cero | Medir procesamiento, transmisión, integración y revisión adicionales frente al servicio existente | Sin probar; la guía de interfaz e identidad lo presenta como hipótesis, no como ahorro demostrado |
-| H10 | Es posible asignar cuatro niveles de gravedad de forma útil a las distintas categorías usando la evidencia disponible | Acordar criterios por categoría con el área responsable y contrastar clasificaciones sobre imágenes y contexto horario | Sin probar; el prototipo actual solo usa baja, media y alta |
+| H9 | Reutilizar cámaras y recorridos permite agregar detección urbana con costo marginal mínimo (flota, infraestructura y cámaras existentes; a futuro, un módulo de cómputo por móvil) | Medir procesamiento, transmisión, integración y revisión adicionales frente al servicio existente | Sin probar; la guía de interfaz e identidad lo presenta como hipótesis, no como ahorro demostrado |
+| H10 | Es posible asignar cuatro niveles de gravedad de forma útil a las distintas categorías usando la evidencia disponible | Acordar criterios por categoría con el área responsable y contrastar clasificaciones sobre imágenes y contexto horario | Sin probar; el prototipo ya usa los cuatro niveles (bajo, medio, alto y extremo) con datos simulados |
+| H11 | Se pueden pixelar caras y patentes en el frame de evidencia sin que deje de servirle al área para actuar | Pixelar frames de prueba de cada categoría y preguntarle a quien haría de área si alcanza para decidir | Sin probar; propuesta del 12/11 22:45, la arquitectura en revisión hoy no pixela |
 
 ## Pruebas
 
@@ -71,5 +72,5 @@ Incluye el test 3+3 del día 1 (14:35–15:10) y cualquier prueba con usuarios, 
 
 Lo que va al pitch, en dos listas cortas.
 
-- **Aprendimos:**
-- **Falta validar:**
+- **Aprendimos:** el problema no era la ruta de la basura: los mentores y el test 3+3 nos llevaron a detectar todo lo que la ciudad necesita arreglar y avisar a cada área (pivot 14:53 y 15:08). En el test entendieron la propuesta y les gustó la visión por computadora; las dudas fueron el financiamiento, los primeros pasos y la dependencia del Ministerio de Seguridad. Para implementar hay un canal que ya existe: la UE apoyó con 600.000 € el Plan de Movilidad Urbana Sostenible de Córdoba, que prevé un Observatorio de Movilidad.
+- **Falta validar:** el acceso al video de cada fuente (H1, H5 y H7), la precisión de la detección desde un vehículo en movimiento (H3 y H6), que las áreas actúen sobre un aviso automático (H8), el pixelado de la evidencia (H11) y el ahorro del municipio y el aprovechamiento de la flota, que mide el piloto.

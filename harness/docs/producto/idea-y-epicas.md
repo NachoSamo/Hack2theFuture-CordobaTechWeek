@@ -8,6 +8,8 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Idea y épicas: un móvil para autosanar la ciudad
 
+> **Vigente al 12/11 22:45 (Samo):** el producto se llama **Urbis** («Detección urbana desde el patrullaje») y el título de la solución es "Mismo recorrido, más sustentabilidad." ([decision log](../../decision-log.md) 22:01); "Un móvil para autosanar la ciudad" queda como histórico. El costo marginal es **mínimo**, no cero (22:55): a futuro suma un módulo de cómputo por móvil. Fuentes: COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales (22:45). En el MVP la captura y la detección son simuladas; la arquitectura técnica está en iteración en la rama `architecture/init`. Resumen vigente en el [README](../../../README.md).
+
 > Documento de producto. La **Parte A** pasa en limpio la idea; la **Parte B** la separa en épicas
 > para implementar y refinar. El dominio está en [`dominio-del-problema.md`](dominio-del-problema.md).
 > Nombre del producto: a definir en [`marca.md`](../../marca.md).

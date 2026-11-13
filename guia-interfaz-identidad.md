@@ -124,7 +124,7 @@ Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Ju
 
 ## 8. Límites del mensaje y decisiones pendientes
 
-- **Costo marginal cero:** hipótesis, no resultado medido. Se reutiliza infraestructura, pero falta estimar procesamiento, conectividad, integración y revisión.
+- **Costo marginal mínimo** (antes «cero»; decision log 22:55): hipótesis, no resultado medido. Se reutiliza infraestructura, pero falta estimar procesamiento, conectividad, integración y revisión.
 - **Impacto ambiental:** kilómetros reutilizados no equivalen a emisiones evitadas. No presentar ahorros sin una medición o sin identificar los supuestos de simulación.
 - **Detección:** una luminaria apagada o una imagen oscura no confirman por sí solas un corte eléctrico. La ubicación del vehículo tampoco garantiza la ubicación exacta del problema.
 - **Seguimiento:** «posiblemente resuelta» expresa incertidumbre; no mostrarlo como reparación verificada.

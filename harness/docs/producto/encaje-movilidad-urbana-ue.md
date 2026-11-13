@@ -10,6 +10,8 @@ fuentes: Comisión Europea, Sustainable Urban Mobility; New EU Urban Mobility Fr
 
 # Por qué "Un móvil para autosanar la ciudad" es movilidad sostenible según la UE
 
+> **Vigente al 12/11 22:45 (Samo):** el producto se llama **Urbis** («Detección urbana desde el patrullaje») y el título de la solución es "Mismo recorrido, más sustentabilidad." ([decision log](../../decision-log.md) 22:01); "Un móvil para autosanar la ciudad" queda como histórico. El costo marginal es **mínimo**, no cero (22:55): a futuro suma un módulo de cómputo por móvil. Fuentes: COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales (22:45). En el MVP la captura y la detección son simuladas; la arquitectura técnica está en iteración en la rama `architecture/init`. Resumen vigente en el [README](../../../README.md).
+
 > **Para qué sirve este documento.** Tiene tres lectores:
 >
 > 1. **El jurado de la vertical**, en las preguntas: respuesta a "¿por qué esto es movilidad y no residuos?".
@@ -81,7 +83,7 @@ monitoreo del marco.
 
 - **Argumento:** la UE pide a las ciudades que **recolecten datos** y usen **soluciones digitales** y
   **gemelos digitales locales** para gestionar la movilidad. Nosotros convertimos cada recorrido de
-  patrullaje en un relevamiento del estado de la calle, sin sensores nuevos.
+  patrullaje en un relevamiento del estado de la calle, sin cámaras ni vehículos nuevos (a futuro, un módulo de cómputo por móvil).
 - **Qué hay hoy:** el prototipo de [`frontend/`](../../../frontend/) muestra tickets simulados sobre un mapa de Córdoba.
 - **Qué falta:** detección real (E2) y acceso a las cámaras (H1, H7).
 - **Límite honesto:** no gestionamos flujos de tránsito (congestión, semáforos inteligentes). Gestionamos
@@ -136,7 +138,7 @@ monitoreo del marco.
 - **431 nodos urbanos** de la red TEN-T deben tener su SUMP para el **31/12/2027** y empezar a
   reportar indicadores. Necesitan datos baratos y continuos.
 - Muchas ciudades europeas ya tienen flotas municipales que recorren todo el territorio (limpieza,
-  inspección, policía local): el modelo "flota como sensor" se traslada sin hardware nuevo.
+  inspección, policía local): el modelo "flota como sensor" se traslada sin vehículos ni cámaras nuevas.
 - **Supuesto:** que una ciudad europea pagaría por esto. Hay competidores que montan cámaras o
   teléfonos en vehículos municipales para relevar el estado de las calles (por ejemplo,
   **vialytics** en Alemania, *a verificar en E7*). Nuestro diferencial tiene que ser otro (ver 4.4).

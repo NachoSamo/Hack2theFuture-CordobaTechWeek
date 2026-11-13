@@ -8,6 +8,8 @@ track: movilidad (equilibrio de emisiones), cruza residuos y mantenimiento urban
 
 # Dominio del problema: el móvil que autosana la ciudad
 
+> **Vigente al 12/11 22:45 (Samo):** el producto se llama **Urbis** («Detección urbana desde el patrullaje») y el título de la solución es "Mismo recorrido, más sustentabilidad." ([decision log](../../decision-log.md) 22:01); "Un móvil para autosanar la ciudad" queda como histórico. El costo marginal es **mínimo**, no cero (22:55): a futuro suma un módulo de cómputo por móvil. Fuentes: COYS, Cordobeses en Alerta, Guardia Urbana y móviles policiales (22:45). En el MVP la captura y la detección son simuladas; la arquitectura técnica está en iteración en la rama `architecture/init`. Resumen vigente en el [README](../../../README.md).
+
 > **Actualización 12/11 15:08 (Samo, por recomendación de varios mentores):** las fuentes son todo vehículo con cámara (móviles de monitoreo del municipio, Cordobeses en Alerta y móviles policiales); tras detectar, **aviso directo a cada área**, sin que COYS asigne (COYS queda con vista general); el ciclo se cierra cuando una pasada posterior ya no ve la incidencia. Donde este doc diga "COYS asigna", manda el [decision log](../../decision-log.md) del 12/11 15:08 y la [arquitectura](../../arquitectura/solucion.html). Falta reescribir esas partes (dueña: Oli).
 
 > **Pivot del 12/11 14:53.** Pasamos de "rutas de recolección guiadas por cámaras" a un concepto más
