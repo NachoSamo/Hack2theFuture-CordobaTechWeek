@@ -479,6 +479,13 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 
 /* Modo Flota */
 .fleet-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.fleet-speeds { display: flex; flex-wrap: wrap; gap: 4px; }
+.fleet-speeds button[aria-pressed="true"] {
+  color: #11191c;
+  background: var(--lime);
+  border-color: var(--lime);
+  font-weight: 700;
+}
 .fleet-play { color: #11191c; background: var(--lime); border-color: var(--lime); font-weight: 600; }
 .fleet-play:hover { background: #ebfab8; }
 .fleet-controls button:disabled { opacity: .55; cursor: default; }

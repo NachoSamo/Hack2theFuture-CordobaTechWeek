@@ -121,7 +121,7 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
       map.addLayer({
         id: 'fleet-dot', type: 'symbol', source: 'fleet',
         layout: {
-          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.35,
+          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.5525,
           'icon-rotation-alignment': 'viewport', 'icon-pitch-alignment': 'viewport',
           'icon-allow-overlap': true, 'icon-ignore-placement': true,
         },
