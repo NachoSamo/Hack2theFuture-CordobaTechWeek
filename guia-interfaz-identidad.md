@@ -1,4 +1,4 @@
-# Ichnos · Guía de interfaz e identidad visual
+# Urbis · Guía de interfaz e identidad visual
 
 **Documento de trabajo para Juani · Sesión con Diego y Lauti · 12/11/2026**
 
@@ -6,7 +6,7 @@ Objetivo: dar contexto suficiente para **iterar la landing y mostrar una propues
 
 ## 1. Qué tiene que entender quien ve el producto
 
-Ichnos propone aprovechar las cámaras y los recorridos existentes para **detectar problemas municipales, reunir las observaciones en incidencias, avisar al área responsable y mostrar su ubicación en un mapa**.
+Urbis propone aprovechar las cámaras y los recorridos existentes para **detectar problemas municipales, reunir las observaciones en incidencias, avisar al área responsable y mostrar su ubicación en un mapa**.
 
 - **Problemas:** residuos acumulados, contenedores rebalsados o rotos, baches, postes o cables caídos y otras necesidades de mantenimiento urbano.
 - **Usuarios:** áreas que atienden las incidencias y una vista general para COYS. El aviso va directo al área; COYS no asigna.
@@ -39,7 +39,7 @@ Piezas para explorar visualmente. Su orden, composición y acciones quedan por r
 
 | Pieza | Contenido disponible | Qué debe quedar claro |
 |---|---|---|
-| Presentación | Nombre: **Ichnos**. Slogan: **«De la huella a la acción.»** | Qué hace el producto y para quién |
+| Presentación | Nombre: **Urbis**. Slogan: **«Detección urbana desde el patrullaje.»** | Qué hace el producto y para quién |
 | Problema | La información que ya capturan las cámaras podría ayudar a detectar necesidades de mantenimiento | Las condiciones actuales del municipio y el uso exclusivo para seguridad siguen siendo hipótesis |
 | Funcionamiento | Captura → clasificación → incidencia → derivación → mapa | El recorrido completo, sin explicar herramientas ni APIs |
 | Vista del producto | Mapa con incidencias, listado y detalle de un caso | Identificar expresamente los datos simulados |
@@ -47,7 +47,7 @@ Piezas para explorar visualmente. Su orden, composición y acciones quedan por r
 | Valor | Reutilización de cámaras y recorridos; detección y seguimiento | Beneficio propuesto, sin cifras de ahorro inventadas |
 | Propuesta de MVP | Recorrido visual de la sección siguiente | Qué se puede demostrar y qué sigue pendiente |
 
-**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. Las referencias de composición fueron [Linear](https://linear.app/) y [Mapbox](https://www.mapbox.com/).
+**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. La portada alterna el clip con una vista interactiva del mapa. El ticket CBA-104 conserva la foto del contenedor que aparece en el clip. La paleta oscura y la entrada en perspectiva toman como referencia [(re)in](https://rein-os.rainmakerscompany.com/).
 
 ## 4. Vistas propuestas para mostrar el MVP
 
@@ -82,8 +82,8 @@ El prototipo actual usa tres niveles: baja, media y alta. **Extremo todavía no 
 
 Fuente: [documento de marca](harness/marca.md), de Juani, **propuesta para revisión**. Esta guía no cambia la identidad.
 
-- **Nombre:** Ichnos.
-- **Logo:** [símbolo existente](harness/marca/logo.svg), una esquina urbana atravesada por una ruta lima. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
+- **Nombre:** Urbis.
+- **Logo:** [símbolo existente](harness/marca/logo.svg), una esquina urbana en perspectiva con cámara y ruta lima. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
 - **Tipografías:** Barlow para títulos e interfaz; IBM Plex Mono para horas y datos compactos.
 - **Tono:** directo y operativo. Mostrar el problema, su lugar y su estado con términos comprensibles.
 - **Accesibilidad visual ya indicada en marca:** acompañar colores con etiquetas y leyenda; escribir el nivel y el estado, sin depender únicamente del color.
@@ -104,7 +104,7 @@ La paleta procede de la propuesta anterior de recolección. **Su correspondencia
 
 ### Mensaje de marca
 
-**Visión por computadora para el mantenimiento urbano.** El slogan **«De la huella a la acción»** conecta la observación en la calle con el ticket y el aviso al responsable.
+**Visión por computadora para el mantenimiento urbano.** El slogan **«Detección urbana desde el patrullaje»** conecta la observación en la calle con el ticket y el aviso al responsable.
 
 ## 7. Qué puede reutilizarse del prototipo
 

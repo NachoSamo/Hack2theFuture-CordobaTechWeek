@@ -2,7 +2,7 @@ import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type Ticket } from './tickets'
+import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
 import { scenario } from './scenario'
 import type { StreetRoute } from './model'
 import './style.css'
@@ -12,16 +12,22 @@ const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const modes: { id: Layer; label: string }[] = [
   { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' },
 ]
-const replayDelays = [4000, 12000, 25000, 55000]
+const replayDelays = [4000, 12000, 55000]
 
 function activityLabel(entry: Activity, index: number, area: string) {
+  if (entry.kind === 'manual') {
+    if (entry.action === 'route') return 'Ruta de recolección sugerida'
+    if (entry.action === 'sweep') return 'Barrida diagramada'
+    return 'Aviso simulado a ' + area
+  }
   if (entry.kind === 'notice') return 'Aviso simulado a ' + area
   if (entry.kind === 'clear') return 'Pasada sin volver a detectar la incidencia'
   return index === 0 ? 'Primera detección' : 'Avistamiento incorporado al ticket'
 }
 
-function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onClose: () => void }) {
+function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onAction: (action: TicketAction) => void; onClose: () => void }) {
   const sightings = ticket.activity.filter(entry => entry.kind === 'sighting')
+  const sweepPlanned = ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'sweep')
   const current = status(ticket)
   const next = current === 'Detectada'
     ? 'Enviar aviso al área responsable.'
@@ -33,24 +39,54 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onClose }:
     <div className="review-title"><span className="ticket-id">{ticket.id}</span><button onClick={onClose}>Cerrar</button></div>
     <h2>{ticket.type}</h2>
     <p>{locationLabel(ticket)} · {ticket.place}</p>
-    {suggestion && <div className="route-action"><button aria-pressed={routeOpen} onClick={onToggleRoute}>{routeOpen ? 'Volver al mapa' : 'Ver ruta de recolección'}</button>
-      {routeOpen && <p className="route-summary">Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados</p>}</div>}
+    {current !== 'Posiblemente resuelta' && <div className="ticket-actions" aria-label="Acciones del ticket">
+      <h3>Acciones simuladas</h3>
+      <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
+        onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
+      {suggestion && <button aria-pressed={routeOpen} onClick={onToggleRoute}>
+        {routeOpen ? 'Volver al mapa' : 'Sugerir ruta'}
+      </button>}
+      {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
+        <button disabled={sweepPlanned}
+          onClick={() => onAction('sweep')}>Diagramar barrida</button>}
+      {routeOpen && suggestion && <p className="route-summary">
+        Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados
+      </p>}
+    </div>}
+    {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
+      <h3>Plan de barrida simulado</h3>
+      <p>{locationLabel(ticket)} · {ticket.area}</p>
+      <ol>
+        <li>Revisar el punto reportado y las veredas del tramo.</li>
+        <li>Retirar {ticket.type === 'Rama caída' ? 'la rama y los restos vegetales' : 'los residuos acumulados'}.</li>
+        <li>Registrar el estado del tramo después de la intervención.</li>
+      </ol>
+    </section>}
     {ticket.photo && <figure className="ticket-photo">
       <img src={ticket.photo} alt={ticket.type + ' · imagen ilustrativa'} width="512" height="512" />
       <figcaption>Foto ilustrativa generada con IA</figcaption>
     </figure>}
     <dl className="facts">
-      <div><dt>Estado</dt><dd>{current}</dd></div>
+      <div><dt>Estado de la incidencia</dt><dd>{current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
+      <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
+      <div><dt>Incidencia vinculada</dt><dd>{ticket.payload.incident_id}</dd></div>
+      <div><dt>Referencia GPS</dt><dd>{ticket.payload.incident.location.reference === 'camara' ? 'Cámara' : 'Incidencia'} · {ticket.payload.incident.location.accuracy_m == null ? 'Precisión sin dato' : ticket.payload.incident.location.accuracy_m + ' m'}</dd></div>
       <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
+      <div><dt>Última observación</dt><dd>{sightings[sightings.length - 1]?.time ?? 'Sin dato'}</dd></div>
       <div><dt>Gravedad</dt><dd>{ticket.level}</dd></div>
       <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
     </dl>
+    {ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice') &&
+      <p role="status">Aviso manual simulado a {ticket.area}</p>}
     <h3>Actividad</h3>
-    <ol className="timeline">
-      {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind}>
+    <ol className="timeline" aria-live="polite">
+      {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
         <time>{entry.time}</time>
         <div><strong>{activityLabel(entry, index, ticket.area)}</strong>
-          {entry.kind !== 'notice' && <small>{entry.source}{entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}</small>}
+          <small>{entry.kind === 'manual' ? 'Manual' : 'Automática'}
+            {'source' in entry && ' · ' + entry.source}
+            {entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}
+          </small>
         </div>
       </li>)}
     </ol>
@@ -70,19 +106,22 @@ function Landing() {
 
   return <main className="landing">
     <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ichnos</strong></a>
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
+      <a className="landing-nav" href="#mapa">Abrir mapa <span aria-hidden="true">↗</span></a>
     </header>
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-copy">
-        <h1 id="landing-title">De la huella<br />a la acción<span>.</span></h1>
+        <h1 id="landing-title">Detección urbana<br />desde el patrullaje<span>.</span></h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
-        <a className="landing-cta" href="#mapa">Explorar el mapa <span aria-hidden="true">→</span></a>
       </div>
-      <figure className="landing-scene">
-        <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata" poster="/demo-vision.webp" aria-label="Demo de visión por computadora">
-          <source src="/demo-vision.mp4" type="video/mp4" />
-        </video>
-      </figure>
+      <div className="landing-stage">
+        <figure className="landing-scene">
+          <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
+            poster="/demo-vision.webp?v=urbis" aria-label="Demo de Urbis: detección, mapa y acciones">
+            <source src="/demo-flujo.mp4?v=urbis" type="video/mp4" />
+          </video>
+        </figure>
+      </div>
     </section>
   </main>
 }
@@ -91,6 +130,7 @@ function App({ demo = false }: { demo?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo ? replay.ticketId : undefined)
   const [layer, setLayer] = useState<Layer>('tickets')
   const [routeTicketId, setRouteTicketId] = useState<string>()
+  const [manual, setManual] = useState<Record<string, ManualActivity[]>>({})
   const [step, setStep] = useState(demo ? 1 : 0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
@@ -102,7 +142,10 @@ function App({ demo = false }: { demo?: boolean }) {
 
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
-    .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket), [step])
+    .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket)
+    .map(automaticNotice)
+    .map(ticket => manual[ticket.id] ? { ...ticket, activity: [...ticket.activity, ...manual[ticket.id]] } : ticket),
+  [step, manual])
   const visible = useMemo(() => activeTickets.filter(ticket =>
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
@@ -126,9 +169,20 @@ function App({ demo = false }: { demo?: boolean }) {
 
   const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
 
+  function recordAction(ticketId: string, action: TicketAction) {
+    const time = new Date().toLocaleTimeString('es-AR', {
+      timeZone: 'America/Argentina/Cordoba', hour: '2-digit', minute: '2-digit',
+    })
+    setManual(current => {
+      const entries = current[ticketId] ?? []
+      if (entries.some(entry => entry.action === action)) return current
+      return { ...current, [ticketId]: [...entries, { kind: 'manual', action, time }] }
+    })
+  }
+
   return <main>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ichnos</strong></a><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
@@ -151,19 +205,20 @@ function App({ demo = false }: { demo?: boolean }) {
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
               <span><i className="swatch observed" />Observada, sin tickets activos</span>
-              <span><i className="swatch hot" />Con tickets activos</span>
+              <span><i className="swatch warm" />Menor concentración</span>
+              <span><i className="swatch hot" />Mayor concentración de incidencias</span>
               <span><i className="swatch unobserved" />Sin observación</span>
             </> : <>
               <span><i className="swatch fixed-route" />Ruta fija</span>
               <span><i className="swatch suggested-route" />Ruta sugerida</span>
             </>}
           </div>}
-        </div>
-      </div>
       <div className="panel-track" inert={!selected}>
         {panelTicket && <aside className="panel" aria-label="Ticket seleccionado">
         <TicketDetail key={panelTicket.id} ticket={panelTicket} suggestion={suggestion} routeOpen={routeOpen}
+          onAction={action => recordAction(panelTicket.id, action)}
           onToggleRoute={() => {
+            if (!routeOpen) recordAction(panelTicket.id, 'route')
             setRouteTicketId(routeOpen ? undefined : selected?.id)
             setLayer(routeOpen ? 'tickets' : 'routes')
           }}
@@ -173,6 +228,8 @@ function App({ demo = false }: { demo?: boolean }) {
             setId(undefined)
           }} />
         </aside>}
+      </div>
+        </div>
       </div>
     </section>
   </main>

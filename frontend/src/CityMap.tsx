@@ -51,12 +51,24 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
       readyStyle = true
       window.clearTimeout(timeout)
       const firstLabel = map.getStyle().layers.find(item => item.type === 'symbol')?.id
+      map.addSource('coverage-background', {
+        type: 'geojson',
+        data: {
+          type: 'Polygon',
+          coordinates: [[[-180, -85], [0, -85], [180, -85], [180, 85], [0, 85], [-180, 85], [-180, -85]]],
+        },
+      })
+      map.addLayer({
+        id: 'coverage-background', type: 'fill', source: 'coverage-background',
+        layout: { visibility: 'none' },
+        paint: { 'fill-color': '#939b9f', 'fill-opacity': 0.32 },
+      }, firstLabel)
       map.addSource('attention', { type: 'geojson', data: attentionZones([]) })
       map.addLayer({
         id: 'attention', type: 'fill', source: 'attention',
+        filter: ['==', ['get', 'observed'], true],
         paint: {
-          'fill-color': ['case', ['boolean', ['get', 'observed'], false],
-            ['step', ['number', ['get', 'count'], 0], '#519985', 1, '#c65c56', 2, '#df6358'], '#939b9f'],
+          'fill-color': ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'],
           'fill-opacity': 0.32,
         },
       }, firstLabel)
@@ -148,7 +160,9 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
-    map.setLayoutProperty('attention', 'visibility', layer === 'zones' ? 'visible' : 'none')
+    for (const id of ['coverage-background', 'attention']) {
+      map.setLayoutProperty(id, 'visibility', layer === 'zones' ? 'visible' : 'none')
+    }
     if (map.getLayer('city-buildings')) {
       map.setLayoutProperty('city-buildings', 'visibility', layer === 'routes' ? 'none' : 'visible')
     }

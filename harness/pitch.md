@@ -13,7 +13,7 @@
 
 ## Estructura
 
-> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 12 slides con el plan B) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
+> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 14 slides, sin slide de plan B ni de la pregunta, con financiamiento) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
 
 Cubre los **seis componentes indispensables** de la guía oficial y el relato que pide: problema,
 evidencia, solución, prueba realizada, impacto y viabilidad, **qué aprendimos y qué falta validar**.
@@ -59,7 +59,7 @@ No distingue patrullaje de otros usos. Los ~5.500 litros por día y las ~4.600 t
 y ya hay móviles municipales con cámaras en el Parque Sarmiento
 ([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)).
 
-**Cierre:** "De la huella a la acción."
+**Cierre:** "Detección urbana desde el patrullaje."
 
 ## Guion
 

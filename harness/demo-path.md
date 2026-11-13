@@ -55,6 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada de Ichnos
+## Demostración de entrada de Urbis
 
-El montaje dura 10 segundos y alterna seis tomas ilustrativas con detección simulada. Muestra cinco tipos de incidencia con recuadros, confianza, gravedad, hora, coordenadas y área responsable. La landing reproduce el clip en bucle y sin audio. Para abrir CBA-104 durante el pitch, usá `/#mapa/deteccion`.
+La landing reproduce en bucle un solo video que intercala tres detecciones simuladas con grabaciones del prototipo. Después de cada detección se abre su marcador y se ejecuta la acción correspondiente. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. Para interactuar con el sistema, abrí `/#mapa`.
