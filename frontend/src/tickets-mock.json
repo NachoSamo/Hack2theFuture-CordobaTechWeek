@@ -6496,5 +6496,39 @@
       "00100000100000000000",
       "00000000000000000000"
     ]
-  }
+  },
+  "auditExamples": [
+    {
+      "ticketId": "CBA-101",
+      "time": "14:21",
+      "actor": "Agente conversacional de Urbis",
+      "action": "Coordinación con Higiene urbana",
+      "detail": "El agente reunió la ubicación y la evidencia, comunicó el caso a Higiene urbana y solicitó una confirmación de atención. La resolución sigue pendiente.",
+      "outcome": "coordinating"
+    },
+    {
+      "ticketId": "CBA-102",
+      "time": "14:25",
+      "actor": "Agente conversacional de Urbis",
+      "action": "Seguimiento con Alumbrado",
+      "detail": "El agente compartió el ticket con Alumbrado y consultó el estado de la intervención.",
+      "outcome": "coordinating"
+    },
+    {
+      "ticketId": "CBA-102",
+      "time": "14:28",
+      "actor": "Agente conversacional de Urbis · confirmación de Alumbrado",
+      "action": "Resolución confirmada por el área",
+      "detail": "Alumbrado confirmó que restableció la luminaria. El agente registró la respuesta y cerró la gestión del caso.",
+      "outcome": "resolved"
+    },
+    {
+      "ticketId": "CBA-108",
+      "time": "14:42",
+      "actor": "Sistema de derivación de Urbis",
+      "action": "Ticket delegado a EPEC",
+      "detail": "La incidencia de cable caído fue derivada a EPEC con ubicación y evidencia. Queda pendiente la confirmación de atención de la entidad.",
+      "outcome": "delegated"
+    }
+  ]
 }

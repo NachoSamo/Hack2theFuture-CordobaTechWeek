@@ -2,7 +2,7 @@ import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type ManualActivity, type TicketAction, type Ticket } from './tickets'
+import { auditTrail, automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Ticket } from './tickets'
 import { Impact } from './Impact'
 import './style.css'
 
@@ -17,25 +17,16 @@ function replayToast(step: number, ticket?: Ticket) {
   if (entry?.kind === 'clear') return { title: `Pasada sin volver a detectar · ${ticket.id}`, detail: 'Queda como posiblemente resuelta' }
 }
 
-function activityLabel(entry: Activity, index: number, area: string) {
-  if (entry.kind === 'manual') {
-    if (entry.action === 'sweep') return 'Barrida diagramada'
-    return 'Aviso simulado a ' + area
-  }
-  if (entry.kind === 'notice') return 'Aviso simulado a ' + area
-  if (entry.kind === 'clear') return 'Pasada sin volver a detectar la incidencia'
-  return index === 0 ? 'Primera detección' : 'Avistamiento incorporado al ticket'
-}
-
-function TicketDetail({ ticket, onAction, onClose }: { ticket: Ticket; onAction: (action: TicketAction) => void; onClose: () => void }) {
+function TicketDetail({ ticket, onClose }: { ticket: Ticket; onClose: () => void }) {
   const card = useRef<HTMLElement>(null)
   useEffect(() => {
     card.current?.focus({ preventScroll: true })
   }, [])
   const sightings = ticket.activity.filter(entry => entry.kind === 'sighting')
-  const sweepPlanned = ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'sweep')
   const current = status(ticket)
-  const next = current === 'Detectada'
+  const next = current === 'Resolución confirmada'
+    ? 'El área responsable confirmó la atención en este escenario simulado.'
+    : current === 'Detectada'
     ? 'Enviar aviso al área responsable.'
     : current === 'Área avisada'
       ? 'Esperar una nueva pasada para verificar el estado.'
@@ -62,8 +53,8 @@ function TicketDetail({ ticket, onAction, onClose }: { ticket: Ticket; onAction:
           <figcaption>Imagen ilustrativa del tipo de incidencia</figcaption>
         </figure>
         <dl className="facts">
-          <div><dt>Estado de la incidencia</dt><dd>{current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
-          <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
+          <div><dt>Estado de la incidencia</dt><dd>{current === 'Resolución confirmada' ? 'Resuelta (simulada)' : current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
+          <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice') ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
           <div><dt>Incidencia vinculada</dt><dd>{ticket.payload.incident_id}</dd></div>
           <div><dt>Referencia GPS</dt><dd>{ticket.payload.incident.location.reference === 'camara' ? 'Cámara' : 'Incidencia'} · {ticket.payload.incident.location.accuracy_m == null ? 'Precisión sin dato' : ticket.payload.incident.location.accuracy_m + ' m'}</dd></div>
           <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
@@ -72,38 +63,19 @@ function TicketDetail({ ticket, onAction, onClose }: { ticket: Ticket; onAction:
           <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
         </dl>
       </div>
-      {current !== 'Posiblemente resuelta' && <div className="ticket-actions" aria-label="Acciones del ticket">
-        <h3>Acciones simuladas</h3>
-        <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
-          onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
-        {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
-          <button disabled={sweepPlanned}
-            onClick={() => onAction('sweep')}>Diagramar barrida</button>}
-      </div>}
-      {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
-        <h3>Plan de barrida simulado</h3>
-        <p>{locationLabel(ticket)} · {ticket.area}</p>
-        <ol>
-          <li>Revisar el punto reportado y las veredas del tramo.</li>
-          <li>Retirar {ticket.type === 'Rama caída' ? 'la rama y los restos vegetales' : 'los residuos acumulados'}.</li>
-          <li>Registrar el estado del tramo después de la intervención.</li>
+      <section className="ticket-audit" aria-labelledby={`audit-${ticket.id}`}>
+        <h3 id={`audit-${ticket.id}`}>Auditoría del ticket</h3>
+        <p className="audit-note">Gestiones y confirmaciones simuladas.</p>
+        <ol className="timeline" aria-live="polite">
+          {auditTrail(ticket).map((entry, index) => <li key={entry.time + entry.actor + index}>
+            <time>{entry.time}</time>
+            <div><span className="audit-actor">{entry.actor}</span>
+              <strong>{entry.action}</strong>
+              <p>{entry.detail}</p>
+            </div>
+          </li>)}
         </ol>
-      </section>}
-
-      {ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice') &&
-        <p role="status">Aviso manual simulado a {ticket.area}</p>}
-      <h3>Historial de actividad</h3>
-      <ol className="timeline" aria-live="polite">
-        {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
-          <time>{entry.time}</time>
-          <div><strong>{activityLabel(entry, index, ticket.area)}</strong>
-            <small>{entry.kind === 'manual' ? 'Manual' : 'Automática'}
-              {'source' in entry && ' · ' + entry.source}
-              {entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}
-            </small>
-          </div>
-        </li>)}
-      </ol>
+      </section>
       <p className="next"><strong>Próximo paso</strong>{next}</p>
     </div>
   </section>
@@ -121,7 +93,6 @@ function Landing() {
   const [playing, setPlaying] = useState(false)
   const film = useRef<HTMLVideoElement>(null)
   const system = useRef<HTMLElement>(null)
-  const [announcement, setAnnouncement] = useState(true)
 
   function showSystem() {
     const section = system.current
@@ -134,10 +105,6 @@ function Landing() {
   }
 
   return <main className="landing">
-    {announcement && <div className="landing-banner">
-      Prototipo de Urbis · Detecciones simuladas en Córdoba
-      <button type="button" aria-label="Cerrar anuncio" onClick={() => setAnnouncement(false)}>×</button>
-    </div>}
     <header className="landing-top">
       <a className="brand" href="#" aria-label="Urbis, inicio"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
       <nav aria-label="Navegación principal">
@@ -172,7 +139,7 @@ function Landing() {
       <ol>
         <li><span>01</span><h3>Detectar</h3><p>La cámara registra incidencias como baches, ramas caídas y contenedores rebalsados.</p></li>
         <li><span>02</span><h3>Ubicar</h3><p>El mapa reúne evidencia, ubicación y avistamientos en el ticket de cada incidencia.</p></li>
-        <li><span>03</span><h3>Derivar</h3><p>Desde el ticket se puede simular un aviso o diagramar una barrida, según el caso.</p></li>
+        <li><span>03</span><h3>Derivar</h3><p>La auditoría del ticket muestra qué sistema o agente gestionó el caso y a qué área se derivó.</p></li>
       </ol>
     </section>
   </main>
@@ -196,7 +163,7 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
   return <section className="landing-prototype" id="prototipo" ref={sectionRef} tabIndex={-1} aria-labelledby="landing-prototype-title">
     <div className="landing-system-copy">
       <h2 id="landing-prototype-title">El sistema de Urbis</h2>
-      <p>Explorá las detecciones en el mapa y abrí un ticket para ver qué se detectó, a quién le corresponde y qué acciones podés tomar.</p>
+      <p>Explorá las detecciones en el mapa y abrí un ticket para ver qué se detectó, a quién le corresponde y cómo se gestionó el caso.</p>
       <a className="landing-cta" href="#mapa">Abrir mapa completo</a>
     </div>
     <div className="landing-monitor">
@@ -209,7 +176,6 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
 
 function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
-  const [manual, setManual] = useState<Record<string, ManualActivity[]>>({})
   const [step, setStep] = useState(demo ? 1 : 0)
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
@@ -222,9 +188,8 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
     .map(ticket => ticket.id === replay.ticketId ? { ...ticket, activity: [...ticket.activity, ...replay.activity.slice(0, step - 1)] } : ticket)
-    .map(automaticNotice)
-    .map(ticket => manual[ticket.id] ? { ...ticket, activity: [...ticket.activity, ...manual[ticket.id]] } : ticket),
-  [step, manual])
+    .map(automaticNotice),
+  [step])
   const visible = useMemo(() => activeTickets.filter(ticket =>
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
@@ -241,17 +206,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
 
   const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId?: string) => setId(ticketId), [])
-
-  function recordAction(ticketId: string, action: TicketAction) {
-    const time = new Date().toLocaleTimeString('es-AR', {
-      timeZone: 'America/Argentina/Cordoba', hour: '2-digit', minute: '2-digit',
-    })
-    setManual(current => {
-      const entries = current[ticketId] ?? []
-      if (entries.some(entry => entry.action === action)) return current
-      return { ...current, [ticketId]: [...entries, { kind: 'manual', action, time }] }
-    })
-  }
 
   const Container = embedded ? 'div' : 'main'
   const MapHeading = embedded ? 'h3' : 'h1'
@@ -298,7 +252,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
             <span><i className="swatch unobserved" />Sin observación</span>
           </div>
           {selected && <TicketDetail key={selected.id} ticket={selected}
-            onAction={action => recordAction(selected.id, action)}
             onClose={() => {
               const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
               if (marker) marker.focus({ preventScroll: true })

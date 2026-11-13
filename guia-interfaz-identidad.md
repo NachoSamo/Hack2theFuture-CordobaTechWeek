@@ -120,7 +120,7 @@ La paleta procede de la propuesta anterior de recolección. **Su correspondencia
 
 Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Juani](harness/marca/referencias/README.md).
 
-**Iteración posterior del prototipo:** la vista COYS muestra marcadores, filtros por tipo, estado y área en la barra del mapa, un panel que se abre al seleccionar un ticket con foto ilustrativa e historial y mapa 3D oscuro con zonas de calor siempre visibles, sin rutas sugeridas. La iteración del 13/11 solicitada por Juani aumenta la inclinación a 60°, acerca la cámara al seleccionar tickets o cuadrantes y permite volver al encuadre general con «Ver toda Córdoba». La altura y las entrecalles de ejemplo se cargan desde el mock. Al abrir el mapa de incidencias, el fixture publica automáticamente un ticket y actualiza su historial con avistamientos, aviso y verificación posterior. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
+**Iteración posterior del prototipo:** la vista COYS muestra marcadores, filtros por tipo, estado y área en la barra del mapa, un panel que se abre al seleccionar un ticket con foto ilustrativa y auditoría de lectura y mapa 3D oscuro con zonas de calor siempre visibles, sin rutas sugeridas. La iteración del 13/11 solicitada por Juani aumenta la inclinación a 60°, acerca la cámara al seleccionar tickets o cuadrantes y permite volver al encuadre general con «Ver toda Córdoba». La altura y las entrecalles de ejemplo se cargan desde el mock. Al abrir el mapa de incidencias, el fixture publica automáticamente un ticket y actualiza su auditoría con avistamientos, aviso y verificación posterior. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
 
 ## 8. Límites del mensaje y decisiones pendientes
 
@@ -133,3 +133,5 @@ Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Ju
 Para cerrar la propuesta visual faltan: categorías que se demostrarán, vista inicial, criterios y colores de los cuatro niveles, datos visibles del ticket, tratamiento de la evidencia y acción principal de la landing. El alcance y las pantallas se revisan con el equipo antes de congelar el MVP.
 
 [Idea y épicas](harness/docs/producto/idea-y-epicas.md) · [Flujo de producto](harness/docs/producto/solucion-paso-a-paso.md) · [Decisiones](harness/decision-log.md)
+
+**Iteración del 13/11 con Juani (en revisión):** logo con esquina, auto con cámara y recuadro de detección conservando el estilo; franja superior de la landing retirada; detalle sin acciones de aviso o barrida y con «Auditoría del ticket». Ejemplos de gestión conversacional, confirmación del área y derivación del sistema están identificados como simulados. Compilación PASS; revisión visual y pruebas en navegador pendientes.

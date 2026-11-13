@@ -79,3 +79,7 @@ El fixture correspondiente vive en `fixtures/<nodo>.json` y usa estos mismos eje
 2. Ninguna respuesta tira 500 en la demo: el error va en el body y la UI lo muestra.
 3. Cambiar un contrato = actualizar este archivo + su fixture + aviso en `ESTADO.md`, en el mismo commit.
 4. Si un archivo es de otro dueño, se le avisa antes de tocarlo.
+
+## Extensión local del prototipo · auditoría (13/11)
+
+`frontend/src/tickets-mock.json` incorpora `auditExamples`: lista de `{ ticketId, time, actor, action, detail, outcome }`. `outcome` usa `coordinating`, `delegated` o `resolved`; son ejemplos de UI simulados, separados del `payload` del hub y sin endpoint nuevo. CBA-101 coordina con Higiene urbana; CBA-102 registra confirmación simulada de Alumbrado; CBA-108 se deriva a EPEC. `tickets.ts` combina estos ejemplos con los avistamientos y avisos existentes por hora. «Resolución confirmada» corresponde al ejemplo explícito del área y se excluye de demanda activa; la ausencia de una detección por sí sola conserva «Posiblemente resuelta». No implica que exista integración con agentes ni mensajería real. Compilación PASS; smoke en navegador pendiente.

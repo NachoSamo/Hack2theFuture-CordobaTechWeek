@@ -206,22 +206,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   font-family: Arial, system-ui, sans-serif;
 }
 .landing :focus-visible { outline-color: var(--landing-accent); }
-.landing-banner {
-  position: relative;
-  padding: 17px 52px;
-  text-align: center;
-  color: #222d39;
-  background: var(--landing-accent);
-  line-height: 1.5;
-}
-.landing-banner button {
-  position: absolute;
-  inset: 50% 15px auto auto;
-  translate: 0 -50%;
-  background: transparent;
-  border: 0;
-  font-size: 24px;
-}
 .landing-top {
   width: min(1240px, calc(100% - 48px));
   min-height: 110px;
@@ -348,8 +332,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 @media (max-width: 680px) {
   .landing-top { width: calc(100% - 24px); min-height: 80px; }
   .landing-section-link { display: none; }
-  .landing-banner { padding: 12px 42px; font-size: .85rem; }
-  .landing-banner button { right: 6px; }
   .landing-hero { margin: 0 12px; min-height: 360px; }
   .landing-prototype { width: calc(100% - 24px); gap: 24px; }
   .landing-system-copy { padding-inline: 8px; }
@@ -376,11 +358,15 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 
 .map-toolbar { position: relative; z-index: 4; }
 .map-canvas { overflow: clip; }
-.ticket-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
-.ticket-actions h3, .ticket-actions p { flex-basis: 100%; }
-.ticket-actions button[aria-pressed=true] { color: var(--lime); }
-.ticket-actions button:disabled { opacity: .55; cursor: default; }
-.timeline small { display: block; margin-top: 2px; }
+/* Auditoría de lectura del ticket */
+.ticket-audit { margin-top: 22px; }
+.audit-note { margin: 5px 0 14px; font-size: 13px; }
+.ticket-audit .timeline li { padding: 12px 0; gap: 14px; }
+.ticket-audit .timeline li + li { border-top: 1px solid var(--border); }
+.ticket-audit .timeline li > div { min-width: 0; }
+.audit-actor { display: block; color: var(--lime); font-size: 12px; margin-bottom: 4px; }
+.ticket-audit .timeline strong { display: block; }
+.ticket-audit .timeline p { margin-top: 4px; line-height: 1.45; font-size: 13px; max-width: 65ch; }
 
 .swatch.warm { background: #b38046; }
 

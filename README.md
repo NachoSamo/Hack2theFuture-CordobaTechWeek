@@ -74,7 +74,7 @@ flowchart LR
 | Mapa de incidencias (`/#mapa`) | ¿Qué está pasando en la ciudad y dónde? |
 | Zonas de calor | ¿Dónde hay más incidencias y qué parte de la ciudad no está observada? |
 | Tarjeta del ticket | ¿Qué se detectó, con qué gravedad, quién lo resuelve y qué pasó hasta ahora? |
-| Acciones del ticket | ¿Qué hago ahora: aviso manual o plan de barrida? |
+| Auditoría del ticket | ¿Qué sistema o agente intervino, a quién derivó y qué resultado registró? |
 | Aviso en vivo (sobre el mapa) | ¿Qué acaba de detectar la flota y a quién se le avisó? |
 | Impacto (`/#impacto`) | ¿Cuánto combustible y CO₂ ya emitido gana un segundo uso, y qué escala tiene el problema? |
 | [Deck](harness/pitch/deck.html) y [speech](harness/pitch/speech.md) | ¿Cómo lo contamos en 3 minutos? |
@@ -89,8 +89,8 @@ flowchart LR
 | Pitch · video de la landing | Detecciones simuladas con la cámara: bache, rama caída y contenedor rebalsado, cada una con su ticket y su acción | Que una cámara en movimiento puede convertir lo que ve en un ticket accionable |
 | Prototipo · entrada | `/#mapa` abre el mapa oscuro de Córdoba con inclinación 3D de 60°, zonas de calor y 194 tickets simulados | Que el municipio ve toda la ciudad en un solo lugar |
 | Prototipo · secuencia automática | Se publica un ticket, otra pasada suma un avistamiento, sale el aviso y una pasada de verificación lo deja «posiblemente resuelto» | El ciclo completo, sin intervención humana |
-| Prototipo · tarjeta | Acercamiento automático al ticket; tipo, foto ilustrativa, gravedad, área responsable, historial automático o manual y próximo paso | Que el área recibe lo que necesita para actuar |
-| Prototipo · acciones | Aviso manual y plan de barrida para residuos o ramas | Que el ticket termina en una acción concreta |
+| Prototipo · tarjeta | Acercamiento automático al ticket; tipo, foto ilustrativa, gravedad, área responsable, auditoría simulada y próximo paso | Que el área recibe lo que necesita para actuar |
+| Prototipo · auditoría | Intervenciones de sistemas y agentes conversacionales, derivación al área y confirmación simulada de Alumbrado | Trazabilidad de la gestión; revisión en navegador pendiente |
 | Prototipo · zonas de calor | Siempre visibles: rojo con tickets activos, verde observado sin tickets y gris sin observación; seleccionar un cuadrante acerca la cámara | Atención y cobertura de la ciudad |
 
 `/#mapa/deteccion` abre directo el ticket CBA-104, el contenedor que aparece en el video. La secuencia exacta vive en [`harness/demo-path.md`](harness/demo-path.md).
@@ -156,7 +156,7 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 
 | Área | Estado |
 |---|---|
-| Prototipo frontend (landing, mapa, tarjetas, acciones, zonas de calor) | ✅ **Funciona**, con datos simulados |
+| Prototipo frontend (landing, mapa, tarjetas, auditoría, zonas de calor) | ✅ **Funciona**, con datos simulados |
 | Página de impacto y aviso en vivo | ✅ Integrados en `codex/mapa-ux`; cifras de CO₂ estimadas |
 | Backend, hub y API | ⬜ **Planeados** en la arquitectura; sin código |
 | Detección por visión por computadora | ⬜ **Por definir**: modelo real o resultados precargados |
@@ -193,10 +193,10 @@ npm run build
 
 1. Vite muestra una URL local (`http://127.0.0.1:5173` por defecto): la landing reproduce los clips de detección.
 2. `/#mapa` abre la única vista del mapa: oscura, inclinada a 60°, con tickets y zonas de calor. La secuencia automática arranca sola y recargar la reinicia.
-3. Un marcador acerca el mapa y abre su tarjeta; se cierra con Escape.
+3. Un marcador acerca el mapa y abre su tarjeta de lectura con auditoría; se cierra con Escape.
 4. Seleccionar un cuadrante acerca la cámara a esa zona. «Ver toda Córdoba» recupera el encuadre general. No hay rutas sugeridas.
 
-El detalle del prototipo está en [`frontend/README.md`](frontend/README.md).
+El detalle del prototipo está en [`frontend/README.md`](frontend/README.md). La iteración del 13/11 agrega el logo con auto y cámara, retira la franja superior y cambia las acciones por auditoría; compila, con revisión visual y smoke pendientes en [`ESTADO.md`](harness/ESTADO.md#en-proceso--juani).
 
 ---
 
