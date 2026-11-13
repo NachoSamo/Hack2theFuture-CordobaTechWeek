@@ -1,27 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
-  <title id="title">Urbis: esquina urbana en perspectiva con una cámara de patrullaje</title>
+  <title id="title">Urbis: un auto con cámara detecta un tacho junto a un muro en perspectiva</title>
   <rect width="96" height="96" rx="20" fill="#11191C"/>
-  <g stroke="#11191C" stroke-width="2" stroke-linejoin="round">
-    <path d="M10 41 46 24v36L10 51Z" fill="#53666B"/>
-    <path d="M54 27 86 42v11L54 61Z" fill="#34464A"/>
-    <path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/>
-    <path d="M49 14 72 29v26L49 63Z" fill="#839493"/>
-  </g>
-  <g fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round">
-    <path fill="none" stroke="#11191C" stroke-width="2" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/>
-  </g>
-  <g fill="none" stroke="#DFF691" stroke-linecap="round">
-    <path fill="none" stroke="#DFF691" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5" stroke-width="4"/>
-    <path fill="none" stroke="#DFF691" d="M17 77c8 5 15 7 23 8m-28-3 8 4" stroke-width="2"/>
-  </g>
-  <g stroke="#11191C" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M60 26v9l9 5" fill="none" stroke="#11191C" stroke-width="6" stroke-linecap="round"/>
-    <path d="M60 26v9l9 5" fill="none" stroke="#DFF691" stroke-linecap="round"/>
-    <path d="m58 19 17-8 14 8-17 9Z" fill="#EAF0F0"/>
-    <path d="m58 19 14 9v12l-14-9Z" fill="#839493"/>
-    <path d="m72 28 17-9v12l-17 9Z" fill="#DFF691"/>
-    <ellipse cx="81" cy="29" rx="4.4" ry="4.8" fill="#11191C"/>
-    <circle cx="82" cy="28" r="1.45" fill="#EAF0F0" stroke="none"/>
-  </g>
-  <circle cx="85" cy="54" r="3" fill="#DFF691"/>
+  <!-- Muro bajo y vereda convergen hacia el fondo de la calle. -->
+  <path d="M8 25 15 22 61 38 54 41Z" fill="#859793"/>
+  <path d="M8 25 54 41v12L8 63Z" fill="#46595A"/>
+  <path d="m8 42 46 4M8 53l46-4M22 30v14m16-9v10M14 44v14m19-12v8" fill="none" stroke="#667A77" stroke-width="1.5"/>
+  <path d="M8 65 55 54l30 12M11 81l24-13m-3 16 15-10" fill="none" stroke="#667A77" stroke-width="2" stroke-linecap="round"/>
+  <!-- Campo de visión y tacho detectado. -->
+  <path d="m57 50-26-6v20Z" fill="#DFF691" opacity=".15"/>
+  <path d="m24 49 13 1-2 12H26Z" fill="#DFF691"/>
+  <path d="m22 49 2-3 12 1 3 3m-12 2 1 7m5-6v6" fill="none" stroke="#11191C" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="m23 48 14 1" stroke="#DFF691" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M18 46v-5h6m11 0h6v5m0 15v6h-6m-11 0h-6v-6" fill="none" stroke="#DFF691" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Auto en tres cuartos con una cámara sobre el techo. -->
+  <path d="M46 69 54 61 60 56l13 2 7 6 8 4-2 9-35 6-7-5Z" fill="#849693" stroke="#11191C" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m46 69 8-8 6-5 13 2 7 6-20 8Z" fill="#EAF0F0" stroke="#11191C" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="m57 62 5-4 10 2 4 4-15 5Z" fill="#324749"/>
+  <path d="m46 69 14 3 26-6 1 4-27 7-15-4Z" fill="#C6D3D0"/>
+  <path d="m48 73 8 2m7 0 5-1" fill="none" stroke="#DFF691" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="60" cy="80" r="4.2" fill="#11191C" stroke="#849693" stroke-width="1.3"/>
+  <circle cx="81" cy="75" r="4.2" fill="#11191C" stroke="#849693" stroke-width="1.3"/>
+  <path d="M62 57v-3m-6-6 8-3 7 3v6l-8 3-7-3Z" fill="#DFF691" stroke="#11191C" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="m56 48 7 3 8-3m-8 3v6" fill="none" stroke="#53666B" stroke-width="1"/>
+  <circle cx="59.5" cy="51.5" r="1.7" fill="#11191C"/>
 </svg>
