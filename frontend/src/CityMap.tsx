@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'rea
 import maplibre, { type GeoJSONSource, type MapLayerMouseEvent, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { FeatureCollection, Point } from 'geojson'
-import { BASE_SPEED_MPS, carIcon, detectedUntil, fleetColors, detections, endMeters, fleetFeatures, rangeRadius } from './fleet'
+import { BASE_SPEED_MPS, carHeadings, carIcon, carIconId, carPitches, detectedUntil, fleetColors, detections, endMeters, fleetFeatures, rangeRadius } from './fleet'
 import { attentionZones, center, city, levels, locationLabel, status, type Ticket } from './tickets'
 
 export type FleetControl = {
@@ -111,13 +111,18 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
         },
       })
       for (const [fleetName, color] of Object.entries(fleetColors)) {
-        if (!map.hasImage('car-' + fleetName)) map.addImage('car-' + fleetName, carIcon(color), { pixelRatio: 2 })
+        if (!fleetMode) continue
+        for (const pitch of carPitches) {
+          for (let heading = 0; heading < carHeadings; heading++) {
+            map.addImage(carIconId(fleetName, pitch, heading), carIcon(color, pitch, heading), { pixelRatio: 2 })
+          }
+        }
       }
       map.addLayer({
         id: 'fleet-dot', type: 'symbol', source: 'fleet',
         layout: {
-          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.7,
-          'icon-rotate': ['get', 'bearing'], 'icon-rotation-alignment': 'map', 'icon-pitch-alignment': 'map',
+          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.35,
+          'icon-rotation-alignment': 'viewport', 'icon-pitch-alignment': 'viewport',
           'icon-allow-overlap': true, 'icon-ignore-placement': true,
         },
       })
@@ -132,7 +137,7 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
       map.remove()
       instance.current = null
     }
-  }, [embedded, overviewZoom, overviewPitch])
+  }, [embedded, overviewZoom, overviewPitch, fleetMode])
 
   const fleetTickets = useMemo(() => new Map(fleet?.tickets.map(ticket => [ticket.id, ticket])), [fleet?.tickets])
   const fleetSpeed = fleet?.speed ?? 1
@@ -141,8 +146,11 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
     if (!ready || !map || !fleet || !fleetMode) return
     const { meters, onProgress, playing } = fleet
     const pulseMeters = BASE_SPEED_MPS * fleetSpeed * 1.2 // el pulso dura ~1,2 s reales a cualquier velocidad
+    const drawVehicles = () => {
+      map.getSource<GeoJSONSource>('fleet')?.setData(fleetFeatures(meters.current, map.getBearing(), map.getPitch()))
+    }
     const draw = () => {
-      map.getSource<GeoJSONSource>('fleet')?.setData(fleetFeatures(meters.current))
+      drawVehicles()
       const features: FeatureCollection<Point>['features'] = []
       for (const detection of detections.slice(0, detectedUntil(meters.current))) {
         const ticket = fleetTickets.get(detection.ticketId)
@@ -157,6 +165,7 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
     }
     for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'visible')
     draw()
+    if (!playing) map.on('move', drawVehicles)
     let frame = 0
     if (playing) {
       let last = performance.now(), reported = last
@@ -172,6 +181,7 @@ export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = f
     }
     return () => {
       cancelAnimationFrame(frame)
+      map.off('move', drawVehicles)
       onProgress(meters.current)
       if (instance.current === map) for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'none')
     }
