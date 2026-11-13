@@ -57,13 +57,15 @@ Y le pasa al **vecino**, que convive con la basura o con la luz apagada hasta qu
 
 ### 5 · La pregunta (1:05–1:15)
 
-Entonces nos preguntamos: ¿cómo sacamos el máximo beneficio de esos recorridos para hacer una ciudad
-más sostenible, conectada y eficiente?
+Entonces nos preguntamos: ¿y si cada recorrido de monitoreo hiciera una ciudad más **sostenible**?
 
-### 6 · Solución y prototipo (1:15–1:55)
+### 6 · Solución: el móvil con cámara (1:15–1:25)
 
-Por eso presentamos **Ikhnos**, una solución que funciona sobre los servicios que el municipio ya
-tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
+Por eso presentamos **Ikhnos**: las cámaras que ya patrullan, ahora también detectan.
+
+### 6b · Qué detecta y prototipo (1:25–1:55)
+
+Funciona sobre los servicios que el municipio ya tiene. Con machine learning sobre esas cámaras, detecta puntos de residuos para los camiones de
 residuos, postes de luz caídos y riesgo de electrocución, y lo informa **en tiempo real**.
 
 *(Cambio al prototipo en vivo.)*
