@@ -46,7 +46,7 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 
 El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
 
-La landing usa un fondo oscuro entre `#0E1311` y `#202D27`, con texto claro y acentos lima.
+La landing del prototipo usa encabezado claro, acentos lima y una portada oscura con el video de Urbis de fondo. La composición toma como referencia [Vialytics](https://www.vialytics.com/). El mapa conserva la paleta de la tabla.
 
 ## Tipografía y tono
 

@@ -4,7 +4,7 @@ Ejecutá `npm ci` y `npm run dev` desde esta carpeta. Para compilar, usá `npm r
 
 La vista general de COYS muestra tickets de mantenimiento urbano. La barra superior filtra los marcadores por tipo, estado y área. Pasá el cursor o enfocá un marcador para ver la foto, la dirección y el estado. Seleccioná un marcador para abrir el panel con una foto ilustrativa generada con IA y el detalle, con avistamientos, gravedad, área responsable, historial y próximo paso.
 
-La raíz muestra la landing de Urbis. Abrí `/#mapa` para entrar directo al mapa 3D en Incidencias. Zonas de calor combina la atención y la cobertura del mock. Rojo indica tickets activos, verde indica una zona observada sin tickets activos y gris indica que no hay observación registrada, incluso fuera de la grilla.
+La raíz muestra la landing de Urbis con el video de fondo en bucle, control para pausarlo y accesos al mapa y al ticket de la demo. Abrí `/#mapa` para entrar directo al mapa 3D en Incidencias. Zonas de calor combina la atención y la cobertura del mock. Rojo indica tickets activos, verde indica una zona observada sin tickets activos y gris indica que no hay observación registrada, incluso fuera de la grilla.
 
 Los tickets activos de contenedor rebalsado se derivan a la empresa recolectora simulada. Su detalle permite ver el recorrido fijo y el desvío estimado cuando hay una ruta disponible. La altura y las entrecalles salen del mock. Si falta esa referencia, se muestra el cruce disponible o las coordenadas.
 

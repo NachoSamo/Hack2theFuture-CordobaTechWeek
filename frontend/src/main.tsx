@@ -1,5 +1,5 @@
 import { flushSync } from 'react-dom'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
 import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
@@ -103,25 +103,55 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
 
 function Landing() {
   const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [playing, setPlaying] = useState(false)
+  const film = useRef<HTMLVideoElement>(null)
+  const [announcement, setAnnouncement] = useState(true)
 
   return <main className="landing">
-    <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
-      <a className="landing-nav" href="#mapa">Abrir mapa <span aria-hidden="true">↗</span></a>
+    {announcement && <div className="landing-banner">
+      Prototipo de Urbis · Detecciones simuladas en Córdoba
+      <button type="button" aria-label="Cerrar anuncio" onClick={() => setAnnouncement(false)}>×</button>
+    </div>}
+    <header className="landing-top">
+      <a className="brand" href="#" aria-label="Urbis, inicio"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
+      <nav aria-label="Navegación principal">
+        <a className="landing-section-link" href="#como-funciona">Cómo funciona</a>
+        <a className="landing-section-link" href="#prototipo">Prototipo</a>
+        <a className="landing-cta" href="#mapa">Abrir mapa</a>
+      </nav>
     </header>
     <section className="landing-hero" aria-labelledby="landing-title">
+      <video ref={film} id="landing-film" autoPlay={autoPlay} muted loop playsInline preload={autoPlay ? 'metadata' : 'none'}
+        poster="/demo-vision.webp" aria-hidden="true" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>
+        <source src="/demo-flujo.mp4" type="video/mp4" />
+      </video>
       <div className="landing-copy">
-        <h1 id="landing-title">Detección urbana<br />desde el patrullaje<span>.</span></h1>
+        <h1 id="landing-title">Detección urbana<br />desde el patrullaje</h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
+        <a className="landing-cta" href="#mapa">Explorar el mapa</a>
       </div>
-      <div className="landing-stage">
-        <figure className="landing-scene">
-          <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
-            poster="/demo-vision.webp?v=urbis" aria-label="Demo de Urbis: detección, mapa y acciones">
-            <source src="/demo-flujo.mp4?v=urbis" type="video/mp4" />
-          </video>
-        </figure>
-      </div>
+      <button type="button" className="landing-play" aria-controls="landing-film" onClick={() => {
+        const video = film.current
+        if (!video) return
+        if (video.paused) void video.play().catch(() => setPlaying(false))
+        else video.pause()
+      }}>{playing ? 'Pausar video' : 'Reproducir video'}</button>
+    </section>
+    <section className="landing-explainer" id="como-funciona" aria-labelledby="landing-process">
+      <p className="landing-eyebrow">Del patrullaje a la acción</p>
+      <h2 id="landing-process">Cada recorrido deja evidencia</h2>
+      <p>Con los recorridos que el municipio ya realiza, Urbis reúne detecciones en un mapa que permite revisar qué pasó y decidir cómo actuar.</p>
+      <ol>
+        <li><span>01</span><h3>Detectar</h3><p>La cámara registra incidencias como baches, ramas caídas y contenedores rebalsados.</p></li>
+        <li><span>02</span><h3>Ubicar</h3><p>El mapa reúne evidencia, ubicación y avistamientos en el ticket de cada incidencia.</p></li>
+        <li><span>03</span><h3>Derivar</h3><p>Desde el ticket se puede simular un aviso, diagramar una barrida o sugerir una ruta, según el caso.</p></li>
+      </ol>
+    </section>
+    <section className="landing-prototype" id="prototipo" aria-labelledby="landing-prototype-title">
+      <p className="landing-eyebrow">Prototipo interactivo · Córdoba</p>
+      <h2 id="landing-prototype-title">De la detección al ticket</h2>
+      <p>Abrí el incidente del contenedor rebalsado y probá la sugerencia de ruta en el mapa.</p>
+      <a className="landing-cta" href="#mapa/deteccion">Abrir ticket en el mapa</a>
     </section>
   </main>
 }
@@ -235,13 +265,19 @@ function App({ demo = false }: { demo?: boolean }) {
   </main>
 }
 
+const readPage = () => location.hash === '#mapa' || location.hash === '#mapa/deteccion' ? location.hash : ''
+
 function Site() {
-  const [page, setPage] = useState(() => location.hash)
+  const [page, setPage] = useState(readPage)
   useEffect(() => {
     function navigate() {
+      const next = readPage()
+      if (next === page) return
       const update = () => {
-        flushSync(() => setPage(location.hash))
-        window.scrollTo(0, 0)
+        flushSync(() => setPage(next))
+        const anchor = document.getElementById(location.hash.slice(1))
+        if (anchor) anchor.scrollIntoView()
+        else window.scrollTo(0, 0)
       }
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.startViewTransition(update)
@@ -251,7 +287,7 @@ function Site() {
     }
     window.addEventListener('hashchange', navigate)
     return () => window.removeEventListener('hashchange', navigate)
-  }, [])
+  }, [page])
   if (page === '#mapa/deteccion') return <App key="deteccion" demo />
   return page === '#mapa' ? <App key="mapa" /> : <Landing />
 }

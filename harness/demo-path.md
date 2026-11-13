@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Demostración de entrada de Urbis
 
-La landing reproduce en bucle un solo video que intercala tres detecciones simuladas con grabaciones del prototipo. Después de cada detección se abre su marcador y se ejecuta la acción correspondiente. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. Para interactuar con el sistema, abrí `/#mapa`.
+La landing reproduce en bucle un solo video que intercala tres detecciones simuladas con grabaciones del prototipo. Después de cada detección se abre su marcador y se ejecuta la acción correspondiente. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. Para interactuar con el sistema, usá «Explorar el mapa» (`/#mapa`) o «Abrir ticket en el mapa» (`/#mapa/deteccion`), que abre el contenedor rebalsado.
