@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v10, v9 recortada a 3 minutos)
+estado: borrador para ensayar (v12: innovación y dato de alumbrado, recortada a menos de 3 minutos)
 ---
 
 # Speech: Urbis (3 minutos)
@@ -13,11 +13,11 @@ estado: borrador para ensayar (v10, v9 recortada a 3 minutos)
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** 405 palabras (medidas). A 140 palabras por minuto, más las pausas, da unos 3:08.
+> **Duración:** unas 365 palabras (v12, 13/11: se recortaron solución, ODS y viabilidad, y la frase del vecino volvió a la anterior). A 140 palabras por minuto, más las pausas, da unos **2:45**. Es una estimación: cronometrarlo en voz alta, con el video.
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
-> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos en un
-> video" (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
+> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
+> (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
 > decide en el ensayo, con cronómetro.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
@@ -36,8 +36,8 @@ Y está viendo cosas que **nadie va a registrar**.
 ### 2 · Gancho: 5.600.000 litros (0:10–0:27)
 
 Piensen en este número: **cinco millones y medio**.
-Estimamos que cinco millones y medio de litros de combustible por año, unos **doce mil millones de
-pesos**, se van en patrullar Córdoba. Patrulleros y móviles circulan todo el día con las cámaras
+Estimamos que cinco millones y medio de litros de combustible por año, unos **siete millones y medio de
+dólares**, se van en patrullar Córdoba. Patrulleros y móviles circulan todo el día con las cámaras
 encendidas, detectando **solo una cosa**: la seguridad.
 `[pausa]`
 
@@ -54,16 +54,16 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que gasta más de mil millones de pesos por año en combustible.
+Al **municipio**, que gasta casi setecientos mil dólares por año en combustible.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
 ### 6 · La solución (1:05–1:25)
 
-Por eso creamos **Urbis**: los **mismos kilómetros**, con un uso más eficiente.
-Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial y visión por
-computadora, reconoce lo que la ciudad necesita y le avisa **en tiempo real** al área que lo resuelve.
+Por eso creamos **Urbis**: **mismo recorrido, más sustentabilidad**.
+Hoy esas cámaras miran solo seguridad. Con Urbis, **cada pasada le avisa a todas las áreas**.
+Con inteligencia artificial, reconoce lo que ve y le avisa **en el momento** al área que lo resuelve.
 Se lo mostramos en un video.
 
 **— Persona B (demo y cierre) —**
@@ -79,19 +79,14 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 ### 7 · ODS involucrados (1:55–2:05)
 
-Así, cada litro rinde más, ayudamos a **equilibrar la huella de carbono** que emiten las ciudades,
-y aportamos a cinco Objetivos de
-Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
-alianzas.
+Así, cada litro rinde más y ayudamos a **equilibrar la huella de carbono** de la ciudad.
 
 ### 8 · Viabilidad económica (2:05–2:40)
 
-Vamos a la viabilidad económica: **¿quién lo paga?**
-Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene, procesa la imagen en
-el mismo móvil, sin transmitir ni grabar, y le ahorra salir a inspeccionar y gestionar reportes.
-Y para implementarlo, **ya existen iniciativas de financiamiento de la Unión Europea en Córdoba**: la
-ciudad ya trabaja en un Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se
-los brinda.
+**¿Quién lo paga?** Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene,
+y se ahorra salir a inspeccionar. Y para implementarlo, **ya existen iniciativas de financiamiento de la
+Unión Europea en Córdoba**, para un Plan de Movilidad Sostenible que necesita datos de la calle. Urbis se los da.
+
 ### 9 · Cierre (2:40–3:00)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
@@ -106,23 +101,23 @@ Gracias.
 
 ## Para los ensayos
 
-- **Cronómetro:** el prototipo (slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
-  se recorta en este orden: la slide de ODS (7) y la frase de financiamiento UE de la 10.
+- **Cronómetro:** el video (después de la slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
+  se recorta en este orden: la línea de ODS (7, ya reducida a una frase el 13/11) y la frase de financiamiento UE de la 8.
 - **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
   para un piloto en un barrio.
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
   pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad monitoreando solo seguridad.
-  - *¿Por qué es movilidad?* Slides 7 y 10: la flota es el recurso, y nadie saca otro vehículo a la calle.
-  - *¿Por qué es sustentable?* Slide 10: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
-  - *¿A quién le resolvemos?* Slide 6: al municipio, que paga y recibe reclamos, y al vecino, que espera.
+  - *¿Por qué es movilidad?* Slides 6 y 8: la flota es el recurso, y nadie saca otro vehículo a la calle.
+  - *¿Por qué es sustentable?* Slide 8: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
+  - *¿A quién le resolvemos?* Slide 5: al municipio, que paga y recibe reclamos, y al vecino, que espera.
 - **Voz** (Julian Treasure): bajar el ritmo en las slides 1, 2 y 9 (la escena del patrullero y el número), y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Urbis. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
-- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado quedan como respuesta al jurado): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
+- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado quedan como respuesta al jurado: unos 90 por día, cálculo propio): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
 - **Aprovechamiento de la flota (sin slide desde 12/11 23:20; respuesta al jurado):** km recorridos con Urbis activo ÷ km totales de patrullaje.
   Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
   decir "hasta el 100 %". No está medido: lo mide el piloto.
@@ -158,8 +153,8 @@ Gracias.
     No hay dato oficial: es el número más débil.
   - **Precio (con fuente):** $2.100 por litro, nafta súper (Infobae, 10/11/2026). Las camionetas son
     diésel, que es más caro, así que el monto es conservador.
-  - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año.
-    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones.
+  - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año (US$7,6 millones al cambio BNA de $1.560, 30/10/2026).
+    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones (casi US$700.000).
   - **Huella de carbono:** a unos 2,6 kg de CO₂ por litro de gasoil, son unas 14.600 toneladas de CO₂
     por año.
   - **Corrección del 12/11:** el dato anterior de 2 millones de litros (La Voz de San Justo,
