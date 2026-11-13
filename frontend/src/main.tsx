@@ -93,9 +93,16 @@ function Landing() {
   const [playing, setPlaying] = useState(false)
   const film = useRef<HTMLVideoElement>(null)
   const system = useRef<HTMLElement>(null)
+  const explainer = useRef<HTMLElement>(null)
 
-  function showSystem() {
-    const section = system.current
+  useEffect(() => {
+    if (film.current) {
+      film.current.defaultPlaybackRate = 1.5
+      film.current.playbackRate = 1.5
+    }
+  }, [])
+
+  function scrollToSection(section: HTMLElement | null) {
     if (!section) return
     section.focus({ preventScroll: true })
     section.scrollIntoView({
@@ -108,8 +115,8 @@ function Landing() {
     <header className="landing-top">
       <a className="brand" href="#" aria-label="Urbis, inicio"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
       <nav aria-label="Navegación principal">
-        <a className="landing-section-link" href="#como-funciona">Cómo funciona</a>
-        <button type="button" className="landing-section-link landing-scroll-link" onClick={showSystem}>Prototipo</button>
+        <button type="button" className="landing-scroll-link landing-how-link" onClick={() => scrollToSection(explainer.current)}>Cómo funciona</button>
+        <button type="button" className="landing-section-link landing-scroll-link" onClick={() => scrollToSection(system.current)}>Prototipo</button>
         <a className="landing-ghost" href="#impacto">Impacto</a>
         <a className="landing-cta" href="#mapa">Abrir mapa</a>
       </nav>
@@ -122,7 +129,7 @@ function Landing() {
       <div className="landing-copy">
         <h1 id="landing-title">Detección urbana<br />desde el patrullaje</h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
-        <button type="button" className="landing-cta" onClick={showSystem}>Ver el sistema</button>
+        <button type="button" className="landing-cta" onClick={() => scrollToSection(system.current)}>Ver el sistema</button>
       </div>
       <button type="button" className="landing-play" aria-controls="landing-film" onClick={() => {
         const video = film.current
@@ -132,7 +139,7 @@ function Landing() {
       }}>{playing ? 'Pausar video' : 'Reproducir video'}</button>
     </section>
     <LandingSystem sectionRef={system} />
-    <section className="landing-explainer" id="como-funciona" aria-labelledby="landing-process">
+    <section className="landing-explainer" id="como-funciona" ref={explainer} tabIndex={-1} aria-labelledby="landing-process">
       <p className="landing-eyebrow">Del patrullaje a la acción</p>
       <h2 id="landing-process">Cada recorrido deja evidencia</h2>
       <p>Con los recorridos que el municipio ya realiza, Urbis reúne detecciones en un mapa que permite revisar qué pasó y decidir cómo actuar.</p>

@@ -18,7 +18,7 @@
 | Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado; `architecture/init` integrada en `codex/mapa-ux` el 13/11 | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Logo con muro, tacho y auto con cámara, landing sin franja y ticket con auditoría simulada. Implementado; compilación PASS. Revisión visual y smoke pendientes, ver sección En proceso | Revisión de Juani | Falta verificar en navegador; sin bloqueo de implementación |
+| Juani | Logo con muro, contenedor y auto con cámara, landing sin franja y ticket con auditoría simulada. Implementado; compilación PASS. Revisión visual y smoke pendientes, ver sección En proceso | Revisión de Juani | Falta verificar en navegador; sin bloqueo de implementación |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -39,7 +39,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 
 ## Avisos
 
-- 13/11 · Juani · Se actualiza el logo de Urbis en frontend, marca y deck con un muro, un tacho y un auto con cámara · a Oli y Gina
+- 13/11 · Juani · Se actualiza el logo de Urbis en frontend, marca y deck con un muro, un contenedor y un auto con cámara · a Oli y Gina
 
 - 13/11 · Juani · Se recupera el logo del edificio con cámara en frontend, marca y deck. El mapa usa base negra y calor en las zonas observadas · a Oli, Gina y Diego
 
@@ -94,7 +94,7 @@ El prototipo de Urbis muestra avisos automáticos simulados y permite registrar 
 
 **Avance subido del 13/11 en `codex/mapa-ux`:**
 
-- [x] Logo con muro en perspectiva, tacho y auto con cámara aplicado al frontend, marca y deck.
+- [x] Logo con muro en perspectiva, contenedor y auto con cámara aplicado al frontend, marca y deck.
 - [x] Franja superior de la landing retirada.
 - [x] Acciones del ticket retiradas; queda Cerrar para navegación.
 - [x] «Auditoría del ticket» reemplaza el historial: actor, hora, intervención y resultado simulado.
