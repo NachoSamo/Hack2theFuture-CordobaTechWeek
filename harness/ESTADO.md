@@ -44,6 +44,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 23:15 · Oli · El pitch dice edge computing (procesamiento en el móvil, sin transmitir ni guardar video). En la arquitectura seguía abierto dónde se procesan las imágenes · a Samo y al dueño del nodo 02
 - 20:30 · Samo · Nuevo `docs/producto/encaje-movilidad-urbana-ue.md`: por qué el producto es movilidad sostenible según la UE (4 de los 8 pilares del Urban Mobility Framework, con límites), apalancamiento (credibilidad, mercado en Europa, fondos, diferenciación), una frase propuesta para el speech y respuestas para el jurado. No cambia contratos ni la demo · a Oli y Gina (pitch)
 - 19:40 · Oli · Speech v5 y deck: primera frase con el problema, "por qué es movilidad" (bloque 8), sustentabilidad ambiental + económica (bloque 9) y usuario municipio + vecino (slide 4). Suma unas 60 palabras: cronometrar · a Gina y a quien presente
 - 17:25 · Oli · COYS → "municipio" / "monitoreo municipal" en docs de producto, `proceso.md` (H5) y, **en archivos de Samo**, `contratos.md`, `arquitectura/solucion.html` y el diagrama del README: solo cambia el nombre, no la forma de ningún contrato. Quedan las menciones históricas · a Samo

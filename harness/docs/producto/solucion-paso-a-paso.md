@@ -50,7 +50,7 @@ Cada etapa sigue un nodo de la arquitectura de Samo (15:08): 01 Captura, 02 Dete
 - **Sale:** cuadros sueltos con lugar, hora y fuente.
 - **Recurso aprovechado:** el recorrido y el combustible del patrullaje, que se gastan igual.
 - **En la demo:** **simulado**, con video o imágenes georreferenciadas de un barrio de Córdoba (E1, regla 5 de código).
-- **Abierto:** dónde se procesan las imágenes (móvil o servidor); afecta la respuesta de privacidad.
+- **Decidido para el pitch (12/11 23:15, Oli):** edge computing, se procesa en el móvil y no se transmite ni guarda video. Falta que lo valide el equipo técnico en la arquitectura.
 - **Supuesto:** H1, H5 y H7 (los vehículos existen, hoy solo sirven a seguridad y sus dueños compartirían el dato).
 
 ## Etapa 2 · Detección y clasificación: de imagen a dato
@@ -122,7 +122,7 @@ Fuera de la demo: vista pública para vecinos.
 
 | Pregunta | Dónde se decide |
 |---|---|
-| ¿Dónde se procesan las imágenes (móvil o servidor)? | Arquitectura, equipo técnico |
+| ¿Dónde se procesan las imágenes? El pitch dice edge computing (en el móvil); falta validarlo en la arquitectura | Arquitectura, equipo técnico |
 | Umbral para avisar y para dar por resuelta una incidencia | E3 |
 | Lista de áreas, tabla categoría → área y canal del aviso | E4 |
 | Consumo por km del móvil y factor de CO₂, con fuente | E6 |

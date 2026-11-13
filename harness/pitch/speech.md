@@ -84,8 +84,9 @@ por el clima, innovación en infraestructura y alianzas.
 ### 11 · Viabilidad económica (2:05–2:40)
 
 ¿Quién lo paga? Para el municipio, **se sostiene solo**: el costo marginal es mínimo, porque usa la
-flota, la infraestructura y las cámaras que ya tiene, y ahorra recorridos de inspección y el
-seguimiento de cada incidente.
+flota, la infraestructura y las cámaras que ya tiene. Con **edge computing**, la imagen se procesa en el
+mismo móvil: no se transmite ni se guarda video. Y ahorra recorridos de inspección y el seguimiento de
+cada incidente.
 Y para implementarlo, la Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad
 Sostenible de Córdoba. Ese plan crea un Observatorio de Movilidad, y Urbis le da los datos de la calle.
 
