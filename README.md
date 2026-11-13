@@ -165,7 +165,7 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 | Detección por visión por computadora | ⬜ **Por definir**: modelo real o resultados precargados |
 | Arquitectura técnica | 🟡 Diseño mockeado integrado desde `architecture/init`; aprobación completa pendiente |
 | Diagramas y contratos ([`arquitectura/`](harness/arquitectura/README.md), [`contratos.md`](harness/contratos.md)) | 🟡 **Borrador**, sin aprobar |
-| Pitch | ✅ Deck de 9 slides y speech v10 para dos voces |
+| Pitch | ✅ Deck de 8 slides y speech v10 para dos voces |
 | Proceso registrado (mural, decision log, proceso, mentores) | ✅ **Al día** al 12/11 22:45 |
 | Harness del equipo | ✅ **Listo** |
 

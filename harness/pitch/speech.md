@@ -79,19 +79,15 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 *(Vuelta al deck.)*
 
-### 7 · Próximos pasos + impacto sustentable (1:55–2:10)
+### 7 · Próximos pasos, impacto sustentable y financiamiento (1:55–2:30)
 
 Nuestro primer paso: la **semana del 16** nos reunimos con la **Guardia Urbana, los municipios y las cooperativas**
-para **validar el financiamiento**. Desde ahí, Urbis suma a los ODS de
+para **validar el financiamiento**. Y no arrancamos de cero: **ya existen iniciativas de la Unión Europea**
+que impulsan planes de movilidad sustentable en Córdoba, y necesitan datos de la calle. Urbis se los da.
+Desde ahí, Urbis suma a los ODS de
 **alianzas, innovación, ciudades sostenibles y consumo responsable**: cada litro que ya se gasta trabaja para toda la ciudad.
 
-### 8 · Viabilidad económica (2:05–2:40)
-
-**¿Quién lo paga?** Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene,
-y se ahorra salir a inspeccionar. Y para implementarlo, **ya existen iniciativas de financiamiento de la
-Unión Europea en Córdoba**, para un Plan de Movilidad Sostenible que necesita datos de la calle. Urbis se los da.
-
-### 9 · Cierre (2:40–3:00)
+### 8 · Cierre (2:30–3:00)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
 `[pausa]`
@@ -168,3 +164,5 @@ Gracias.
   sola (ticket, avistamiento, aviso y pasada de verificación), y recargar la reinicia. Por eso conviene
   **recargar justo al cambiar al prototipo**, para que el jurado la vea desde el principio (ver
   `frontend/README.md`, que Juani cambió a las 16:50).
+
+- **Costo mínimo para el municipio (slide de viabilidad sacada el 13/11 a pedido de Oli; queda como respuesta al jurado):** usa la flota y las cámaras que ya tiene y se ahorra salir a inspeccionar; a futuro suma un módulo de cómputo por móvil.
