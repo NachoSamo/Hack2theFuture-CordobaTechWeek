@@ -63,6 +63,19 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .ph.dark b{display:block;font-size:120px;font-weight:800;letter-spacing:-.04em;line-height:1}
 .ph.dark span{display:block;font-size:34px;margin-top:14px;color:var(--niebla)}
 .slide.prob .src{bottom:28px;left:80px}
+.slide.fuel{padding:0;align-items:center}
+.tanks{position:absolute;inset:0;padding:34px 40px;display:grid;grid-template-columns:repeat(20,1fr);grid-template-rows:repeat(10,1fr);gap:18px 24px}
+.tk{width:100%;height:100%;display:block;overflow:visible}
+.tk .bg{fill:#0E1518}
+.tk .fl{fill:var(--ambar);transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
+.tk .x{fill:none;stroke:rgba(17,25,28,.55);stroke-width:3;stroke-linecap:round}
+.tk .ln{fill:none;stroke:var(--line);stroke-width:2.5;stroke-linejoin:round}
+.slide.on .tk .fl{animation:fillt .5s ease-out forwards;animation-delay:var(--d)}
+@keyframes fillt{to{transform:scaleY(1)}}
+.fuelbox{position:relative;z-index:2;text-align:center;padding:56px 90px 44px;border-radius:28px;background:rgba(17,25,28,.9);border:1px solid var(--line);box-shadow:0 0 0 40px rgba(17,25,28,.35)}
+.fuelbox .mega{font-size:290px}
+.legend{font:400 22px var(--mono);color:var(--muted);margin:40px 0 0}
+@media (prefers-reduced-motion:reduce){.tk .fl{transform:none}.slide.on .tk .fl{animation:none}}
 @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
 #hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
@@ -81,11 +94,13 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 </section>
 
 <!-- 2 · Gancho -->
-<section class="slide">
-  <div class="mega">2.000.000</div>
-  <p class="sub">litros de combustible por año recorren Córdoba</p>
-  <p class="sub lima" style="margin-top:14px">mirando un solo problema.</p>
-  <p class="src">Ministerio de Seguridad de Córdoba, 2023 (mezclas E17 y B20: 83 % nafta, 80 % gasoil) · La Voz de San Justo</p>
+<section class="slide fuel">
+  <div class="tanks" data-tanks aria-hidden="true"></div>
+  <div class="fuelbox">
+    <div class="mega">2.000.000</div>
+    <p class="sub">litros de combustible por año recorren Córdoba</p>
+    <p class="sub lima" style="margin-top:14px">monitoreando solo seguridad.</p>
+  </div>
 </section>
 
 <!-- 3a · Problemas: basura -->
@@ -187,6 +202,12 @@ const IMGS={poste:'data:image/webp;base64,UklGRmj2AQBXRUJQVlA4WAoAAAAgAAAASQMA/w
 document.querySelectorAll('[data-img]').forEach(i=>i.src=IMGS[i.dataset.img]);
 const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#11191C" stroke-width="2" stroke-linejoin="round"><path d="M10 41 46 24v36L10 51Z" fill="#53666B"/><path d="M54 27 86 42v11L54 61Z" fill="#34464A"/><path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/><path d="M49 14 72 29v26L49 63Z" fill="#839493"/></g><path fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="4" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="2" d="M17 77c8 5 15 7 23 8m-28-3 8 4"/><circle cx="85" cy="54" r="3" fill="#DFF691"/>`;
 document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
+// Gancho: 200 bidones de 10.000 litros = 2.000.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
+const CAN='M8 20H38L52 30V74Q52 78 48 78H12Q8 78 8 74ZM12 20V10Q12 6 16 6H28Q32 6 32 10V20H27V12H17V20ZM44 23L51 12L57 16L51 27Z';
+document.querySelectorAll('[data-tanks]').forEach(t=>{
+  let h=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="canclip"><path d="${CAN}"/></clipPath></defs></svg>`;
+  for(let r=0;r<10;r++)for(let c=0;c<20;c++)h+=`<svg class="tk" viewBox="0 0 60 80"><path class="bg" d="${CAN}"/><g clip-path="url(#canclip)"><rect class="fl" x="0" y="0" width="60" height="80" style="--d:${((c+9-r)*0.035).toFixed(3)}s"/></g><path class="x" d="M16 38L44 70M44 38L16 70"/><path class="ln" d="${CAN}"/></svg>`;
+  t.innerHTML=h;});
 const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage');
 let cur=0;const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)cur=h-1;
 function show(i){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,k)=>s.classList.toggle('on',k===cur));

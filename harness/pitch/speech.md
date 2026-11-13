@@ -28,9 +28,12 @@ Somos Ikhnos. Samo, Lauti, Diego, Juani, Gina y Oli.
 
 ### 2 · Gancho (0:08–0:25)
 
-**Dos millones de litros** de combustible por año recorren Córdoba mirando **un solo problema**.
+**Dos millones de litros** de combustible por año recorren Córdoba **monitoreando solo seguridad**.
 `[pausa]`
-Son patrulleros y móviles que circulan todo el día, con cámaras, y solo miran la seguridad.
+Son patrulleros y móviles que circulan todo el día, con cámaras.
+
+*(En pantalla: 200 bidones que se llenan en 1,5 segundos; cada uno vale 10.000 litros. La slide ya no
+muestra la fuente: si preguntan, ver "Si preguntan por el dato".)*
 
 ### 3 · Problemas de la ciudad (0:25–0:50) · tres slides que se acumulan
 
@@ -110,7 +113,7 @@ Gracias.
 - **Cronómetro:** el prototipo es lo que más tiempo se come, y la v5 suma unas 60 palabras en los bloques
   4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
-  - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad mirando un solo problema.
+  - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad monitoreando solo seguridad.
   - *¿Por qué es movilidad?* Bloque 8: la flota es el recurso, y hay menos vehículos en la calle.
   - *¿Por qué es sustentable?* Bloque 9: lo ambiental (ni un litro más) y lo económico (se sostiene sola).
   - *¿A quién le resolvemos?* Bloque 4: al municipio, que paga y recibe reclamos, y al vecino, que espera.
