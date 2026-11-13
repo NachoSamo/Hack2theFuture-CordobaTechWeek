@@ -55,8 +55,8 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que usa su combustible para seguridad.
-Y al **vecino**, que convive con incidentes que podrían ser notificados.
+Al **vecino**, que convive con incidentes que podrían ser notificados.
+Y al **municipio**, que usa su combustible para seguridad.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
