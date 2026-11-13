@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v11: innovación y dato de alumbrado; pasa los 3 minutos)
+estado: borrador para ensayar (v12: innovación y dato de alumbrado, recortada a menos de 3 minutos)
 ---
 
 # Speech: Urbis (3 minutos)
@@ -13,7 +13,7 @@ estado: borrador para ensayar (v11: innovación y dato de alumbrado; pasa los 3 
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** unas 430 palabras (v11, 13/11: v10 medía 405 y se sumaron la innovación y el dato de alumbrado). A 140 palabras por minuto, más las pausas, da unos **3:20: pasa los 3 minutos**. Recortar antes de ensayar (ver "Cronómetro").
+> **Duración:** unas 375 palabras (v12, 13/11: se recortaron solución, ODS y viabilidad). A 140 palabras por minuto, más las pausas, da unos **2:50**. Es una estimación: cronometrarlo en voz alta, con el video.
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
 > **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
@@ -64,8 +64,7 @@ Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo m
 
 Por eso creamos **Urbis**: **mismo recorrido, más sustentabilidad**.
 Hoy esas cámaras miran solo seguridad. Con Urbis, **cada pasada le avisa a todas las áreas**.
-Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial y visión por
-computadora, reconoce lo que la ciudad necesita y le avisa **en tiempo real** al área que lo resuelve.
+Con inteligencia artificial, reconoce lo que ve y le avisa **en el momento** al área que lo resuelve.
 Se lo mostramos en un video.
 
 **— Persona B (demo y cierre) —**
@@ -81,19 +80,14 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 ### 7 · ODS involucrados (1:55–2:05)
 
-Así, cada litro rinde más, ayudamos a **equilibrar la huella de carbono** que emiten las ciudades,
-y aportamos a cinco Objetivos de
-Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
-alianzas.
+Así, cada litro rinde más y ayudamos a **equilibrar la huella de carbono** de la ciudad.
 
 ### 8 · Viabilidad económica (2:05–2:40)
 
-Vamos a la viabilidad económica: **¿quién lo paga?**
-Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene, procesa la imagen en
-el mismo móvil, sin transmitir ni grabar, y le ahorra salir a inspeccionar y gestionar reportes.
-Y para implementarlo, **ya existen iniciativas de financiamiento de la Unión Europea en Córdoba**: la
-ciudad ya trabaja en un Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se
-los brinda.
+**¿Quién lo paga?** Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene,
+y se ahorra salir a inspeccionar. Y para implementarlo, **ya existen iniciativas de financiamiento de la
+Unión Europea en Córdoba**, para un Plan de Movilidad Sostenible que necesita datos de la calle. Urbis se los da.
+
 ### 9 · Cierre (2:40–3:00)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
@@ -109,7 +103,7 @@ Gracias.
 ## Para los ensayos
 
 - **Cronómetro:** el video (después de la slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
-  se recorta en este orden: la slide de ODS (7) y la frase de financiamiento UE de la 8.
+  se recorta en este orden: la línea de ODS (7, ya reducida a una frase el 13/11) y la frase de financiamiento UE de la 8.
 - **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
   para un piloto en un barrio.
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
