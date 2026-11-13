@@ -91,6 +91,11 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .ping{position:absolute;left:40.5%;top:4%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;border:5px solid var(--lima);opacity:0}
 .slide.sol.on .ping{animation:ping 2.4s ease-out infinite}
 .slide.sol.on .p1{animation-delay:1.1s}.slide.sol.on .p2{animation-delay:1.9s}.slide.sol.on .p3{animation-delay:2.7s}
+.rain{position:absolute;left:40.5%;top:4%;width:0;height:0;z-index:3;pointer-events:none}
+.drop{position:absolute;left:0;top:0;white-space:nowrap;font:500 34px var(--mono);color:var(--asfalto);background:var(--lima);padding:10px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0;transform:translate(-50%,-50%) scale(.5)}
+.slide.sol.on .drop{animation:rain 3.2s ease-out infinite;animation-delay:var(--d)}
+@keyframes rain{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}12%{opacity:1}70%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1)}}
+@media (prefers-reduced-motion:reduce){.slide.sol.on .drop{animation:none}}
 @keyframes ping{0%{transform:scale(.4);opacity:.9}100%{transform:scale(5);opacity:0}}
 .sol-card{position:absolute;margin:0;background:#fff;padding:14px;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5);z-index:1}
 .sol-card img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px}
@@ -164,6 +169,7 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   <div class="sol-car">
     <img data-img="movil" alt="Móvil de monitoreo urbano con cámara en el techo">
     <span class="ping p1"></span><span class="ping p2"></span><span class="ping p3"></span>
+    <div class="rain" data-rain aria-hidden="true"></div>
   </div>
 </section>
 
@@ -212,6 +218,14 @@ const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#111
 document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
 // Gancho: 40 bidones de 140.000 litros = 5.600.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
 const CAN='M8 20H38L52 30V74Q52 78 48 78H12Q8 78 8 74ZM12 20V10Q12 6 16 6H28Q32 6 32 10V20H27V12H17V20ZM44 23L51 12L57 16L51 27Z';
+// Solución: lluvia de incidencias que salen de la cámara, cada vez más seguido, para que se lea "son muchísimas"
+const INC=['Baches','Microbasural','Árbol caído','Poste dañado','Semáforo apagado','Contenedor lleno','Luminaria rota','Vereda rota','Señal tapada','Grafiti','Rama sobre cables','Tapa de cloaca','Pérdida de agua','Auto abandonado','Escombros','Cable caído','Bache','Contenedor roto','Basura en esquina','Cordón roto'];
+document.querySelectorAll('[data-rain]').forEach(r=>{
+  let h='',t=1.3,gap=.42;
+  INC.forEach((n,i)=>{const a=(-135+((i*47)%125))*Math.PI/180,d=600+((i*131)%420);
+    h+=`<span class="drop" style="--d:${t.toFixed(2)}s;--x:${Math.round(Math.cos(a)*d)}px;--y:${Math.round(Math.sin(a)*d*.85)}px">${n}</span>`;
+    t+=gap;gap=Math.max(.1,gap*.86);});
+  r.innerHTML=h;});
 document.querySelectorAll('[data-tanks]').forEach(t=>{
   let h=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="canclip"><path d="${CAN}"/></clipPath></defs></svg>`;
   for(let r=0;r<4;r++)for(let c=0;c<10;c++)h+=`<svg class="tk" viewBox="0 0 60 80"><path class="bg" d="${CAN}"/><g clip-path="url(#canclip)"><rect class="fl" x="0" y="0" width="60" height="80" style="--d:${((c+3-r)*0.08).toFixed(3)}s"/></g><path class="x" d="M16 38L44 70M44 38L16 70"/><path class="ln" d="${CAN}"/></svg>`;
