@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 13/11 00:26 · Juani
+**Actualizado:** 13/11 00:38 · Juani
 **Fase:** 3 · Pitch (el prototipo y la arquitectura siguen en paralelo)
 **Vertical / problema:** movilidad sostenible: **Urbis**, «Mismo recorrido, más sustentabilidad»; el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** Club del Pitch por vertical, 13/11 10:45 (ver [`evento.md`](evento.md#checkpoints))
@@ -38,6 +38,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 - [x] Qué significa "3+3": 3 presentan en la mesa y 3 visitan otra mesa (lienzo 08); el registro va en el formulario oficial (QR)
 
 ## Avisos
+
+- 13/11 00:38 · Juani · Actualizadas todas las referencias remotas e incorporado `main` hasta `af74dd0` en `codex/mapa-ux`: apertura del speech, ajustes de eficiencia del combustible y fuentes, y «× Hackaranda» en la portada. Se conservan las entradas de ambos lados del decision log y las mejoras del mapa. Archivos integrados de otros dueños: pitch (Oli/Gina) y marca (cofirma del equipo) · a Samo, Oli y Gina
 
 - 13/11 00:24 · Juani · Integradas `main`, `frontend/mlp-estadisticas-aviso` y `architecture/init` en `codex/mapa-ux`, conservando decisiones y avisos de todas las ramas. UX del prototipo: única vista oscura con calor e inclinación 60°, zoom al ticket/cuadrante y retiro de rutas sugeridas. Documentos compartidos actualizados: README, guía de interfaz, marca, demo path, recorrido del usuario, decision log y proceso; el contexto de iteración 1 queda señalado como histórico. No cambia ningún payload de API · a Samo (arquitectura y recorrido por revisar), Lauti y Diego (guía), Oli y Gina (demo)
 

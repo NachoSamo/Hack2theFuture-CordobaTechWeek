@@ -14,6 +14,8 @@
 
 El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. Una cámara con lente visible se monta sobre la fachada y comparte su perspectiva. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 
+**Logo del equipo (Hackaranda):** en la portada del deck, debajo de Urbis, va «× Hackaranda» con el logo horizontal de la dirección *Minimal / tech*: copa de jacarandá en píxeles con tronco de pista de circuito y «hackaranda» en Space Grotesk 700, en lila (`#9B7FD4`, `#B89CE8`) sobre el fondo del deck. Sale del sistema de marca de Hackaranda que armó Gina (artifact «Hackaranda», 13/11). Es la marca del equipo, no la del producto: no se mezcla con la paleta de Urbis fuera de esa línea.
+
 ## MLP
 
 El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, historial y responsable. Las zonas de calor muestran atención y cobertura. El mapa mantiene una única vista oscura con marcadores y zonas de calor, inclinada a 60°. Al seleccionar un ticket o cuadrante se acerca al lugar; «Ver toda Córdoba» vuelve a la vista general. Se retiran las rutas sugeridas por pedido de Juani (13/11). [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
