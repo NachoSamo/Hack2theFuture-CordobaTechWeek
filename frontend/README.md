@@ -19,3 +19,5 @@ La landing reproduce un clip ilustrativo de detección simulada. El acceso direc
 Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales, sugerir rutas para contenedores rebalsados y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
 
 El video de la landing intercala fragmentos de detección con grabaciones del mapa, del ticket correspondiente y de una acción simulada por caso.
+
+El fixture incluye el payload de ticket de la [arquitectura](../harness/arquitectura/arquitectura-sistema.md) y datos locales para el detalle. Las zonas usan avistamientos por gravedad como ponderación. La cobertura y las coordenadas agregadas son sintéticas. Rama y cable caído se conservan como extensiones locales de la taxonomía inicial.

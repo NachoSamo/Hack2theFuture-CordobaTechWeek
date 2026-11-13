@@ -10,11 +10,6 @@
       "id": "CBA-104",
       "address": "Oncativo y Rivadavia",
       "place": "Mercado Norte",
-      "position": [
-        -64.1809,
-        -31.4088
-      ],
-      "level": "Alta",
       "type": "Contenedor rebalsado",
       "area": "Empresa recolectora",
       "activity": [
@@ -33,17 +28,30 @@
           "San Martín"
         ]
       },
-      "photo": "/ticket-photos/photo-0.webp"
+      "photo": "/ticket-photos/photo-0.webp",
+      "payload": {
+        "ticket_id": "CBA-104",
+        "incident_id": "inc-cba-104",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:32:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "alto",
+          "location": {
+            "lat": -31.4088,
+            "lon": -64.1809,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:32:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-103",
       "address": "Belgrano y Fructuoso Rivera",
       "place": "Güemes",
-      "position": [
-        -64.1908,
-        -31.4262
-      ],
-      "level": "Alta",
       "type": "Bache",
       "area": "Vía pública",
       "activity": [
@@ -58,17 +66,30 @@
           "time": "14:29"
         }
       ],
-      "photo": "/ticket-photos/photo-1.webp"
+      "photo": "/ticket-photos/photo-1.webp",
+      "payload": {
+        "ticket_id": "CBA-103",
+        "incident_id": "inc-cba-103",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:29:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "alto",
+          "location": {
+            "lat": -31.4262,
+            "lon": -64.1908,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:29:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-102",
       "address": "9 de Julio y General Paz",
       "place": "Centro",
-      "position": [
-        -64.1866,
-        -31.4148
-      ],
-      "level": "Media",
       "type": "Luminaria apagada",
       "area": "Alumbrado",
       "activity": [
@@ -83,17 +104,30 @@
           "time": "14:23"
         }
       ],
-      "photo": "/ticket-photos/photo-2.webp"
+      "photo": "/ticket-photos/photo-2.webp",
+      "payload": {
+        "ticket_id": "CBA-102",
+        "incident_id": "inc-cba-102",
+        "recipient_id": "entidad-demo-alumbrado",
+        "created_at": "2026-11-12T14:23:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "luminaria_apagada_rota",
+          "severity": "medio",
+          "location": {
+            "lat": -31.4148,
+            "lon": -64.1866,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:23:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-101",
       "address": "Buenos Aires y San Lorenzo",
       "place": "Nueva Córdoba",
-      "position": [
-        -64.1847,
-        -31.425
-      ],
-      "level": "Baja",
       "type": "Residuos acumulados",
       "area": "Higiene urbana",
       "activity": [
@@ -108,17 +142,30 @@
           "time": "14:18"
         }
       ],
-      "photo": "/ticket-photos/photo-3.webp"
+      "photo": "/ticket-photos/photo-3.webp",
+      "payload": {
+        "ticket_id": "CBA-101",
+        "incident_id": "inc-cba-101",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:18:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.425,
+            "lon": -64.1847,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:18:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-105",
       "address": "Colón y Santa Fe",
       "place": "Alberdi",
-      "position": [
-        -64.2014,
-        -31.4119
-      ],
-      "level": "Media",
       "type": "Bache",
       "area": "Vía pública",
       "activity": [
@@ -129,17 +176,30 @@
           "confidence": 91
         }
       ],
-      "photo": "/ticket-photos/photo-1.webp"
+      "photo": "/ticket-photos/photo-1.webp",
+      "payload": {
+        "ticket_id": "CBA-105",
+        "incident_id": "inc-cba-105",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:34:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "medio",
+          "location": {
+            "lat": -31.4119,
+            "lon": -64.2014,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:34:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-106",
       "address": "27 de Abril y Belgrano",
       "place": "Centro",
-      "position": [
-        -64.1901,
-        -31.4169
-      ],
-      "level": "Alta",
       "type": "Rama caída",
       "area": "Arbolado urbano",
       "activity": [
@@ -154,17 +214,30 @@
           "time": "14:37"
         }
       ],
-      "photo": "/ticket-photos/photo-4.webp"
+      "photo": "/ticket-photos/photo-4.webp",
+      "payload": {
+        "ticket_id": "CBA-106",
+        "incident_id": "inc-cba-106",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:37:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "alto",
+          "location": {
+            "lat": -31.4169,
+            "lon": -64.1901,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:37:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-107",
       "address": "Estrada y Buenos Aires",
       "place": "Nueva Córdoba",
-      "position": [
-        -64.1851,
-        -31.4282
-      ],
-      "level": "Baja",
       "type": "Contenedor rebalsado",
       "area": "Empresa recolectora",
       "activity": [
@@ -179,18 +252,31 @@
           "time": "14:40"
         }
       ],
-      "photo": "/ticket-photos/photo-5.webp"
+      "photo": "/ticket-photos/photo-5.webp",
+      "payload": {
+        "ticket_id": "CBA-107",
+        "incident_id": "inc-cba-107",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:40:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.4282,
+            "lon": -64.1851,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:40:00-03:00"
+        }
+      }
     },
     {
       "id": "CBA-108",
       "type": "Cable caído",
       "address": "Av. General Paz y Santa Rosa",
       "place": "Centro",
-      "position": [
-        -64.1869,
-        -31.4129
-      ],
-      "level": "Alta",
       "area": "EPEC",
       "activity": [
         {
@@ -199,7 +285,1273 @@
           "source": "Móvil COYS",
           "confidence": 93
         }
-      ]
+      ],
+      "payload": {
+        "ticket_id": "CBA-108",
+        "incident_id": "inc-cba-108",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:41:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "alto",
+          "location": {
+            "lat": -31.4129,
+            "lon": -64.1869,
+            "reference": "incidencia",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:41:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-210",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:11",
+          "source": "Móvil COYS",
+          "confidence": 97
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-210",
+        "incident_id": "inc-cba-210",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:11:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "medio",
+          "location": {
+            "lat": -31.432484,
+            "lon": -64.182573,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:11:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-220",
+      "type": "Luminaria apagada",
+      "area": "Alumbrado",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:12",
+          "source": "Móvil COYS",
+          "confidence": 81
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-220",
+        "incident_id": "inc-cba-220",
+        "recipient_id": "entidad-demo-alumbrado",
+        "created_at": "2026-11-12T14:12:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "luminaria_apagada_rota",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.425611,
+            "lon": -64.20675,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:12:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-221",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:13",
+          "source": "Móvil COYS",
+          "confidence": 85
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-221",
+        "incident_id": "inc-cba-221",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:13:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.425935,
+            "lon": -64.205842,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:13:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-230",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:13",
+          "source": "Móvil COYS",
+          "confidence": 79
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-230",
+        "incident_id": "inc-cba-230",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:13:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.424675,
+            "lon": -64.19835,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:13:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-231",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:14",
+          "source": "Móvil COYS",
+          "confidence": 79
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-231",
+        "incident_id": "inc-cba-231",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:14:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.424682,
+            "lon": -64.199657,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:14:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-232",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:15",
+          "source": "Móvil COYS",
+          "confidence": 71
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-232",
+        "incident_id": "inc-cba-232",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:15:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.428258,
+            "lon": -64.199808,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:15:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-233",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:16",
+          "source": "Móvil COYS",
+          "confidence": 85
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-233",
+        "incident_id": "inc-cba-233",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:16:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "alto",
+          "location": {
+            "lat": -31.425996,
+            "lon": -64.195686,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:16:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-240",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:14",
+          "source": "Móvil COYS",
+          "confidence": 72
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-240",
+        "incident_id": "inc-cba-240",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:14:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.428761,
+            "lon": -64.190619,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:14:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-241",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:15",
+          "source": "Móvil COYS",
+          "confidence": 75
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-241",
+        "incident_id": "inc-cba-241",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:15:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "alto",
+          "location": {
+            "lat": -31.424743,
+            "lon": -64.185557,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:15:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-242",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:16",
+          "source": "Móvil COYS",
+          "confidence": 94
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-242",
+        "incident_id": "inc-cba-242",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:16:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.426385,
+            "lon": -64.185911,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:16:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-243",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:17",
+          "source": "Móvil COYS",
+          "confidence": 70
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-243",
+        "incident_id": "inc-cba-243",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:17:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.425702,
+            "lon": -64.186412,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:17:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-244",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:18",
+          "source": "Móvil COYS",
+          "confidence": 77
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-244",
+        "incident_id": "inc-cba-244",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:18:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "alto",
+          "location": {
+            "lat": -31.426721,
+            "lon": -64.186204,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:18:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-245",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:19",
+          "source": "Móvil COYS",
+          "confidence": 71
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-245",
+        "incident_id": "inc-cba-245",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:19:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "medio",
+          "location": {
+            "lat": -31.425458,
+            "lon": -64.188308,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:19:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-250",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:15",
+          "source": "Móvil COYS",
+          "confidence": 95
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-250",
+        "incident_id": "inc-cba-250",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:15:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.425045,
+            "lon": -64.17718,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:15:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-251",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:16",
+          "source": "Móvil COYS",
+          "confidence": 88
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-251",
+        "incident_id": "inc-cba-251",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:16:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "medio",
+          "location": {
+            "lat": -31.427183,
+            "lon": -64.178891,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:16:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-252",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:17",
+          "source": "Móvil COYS",
+          "confidence": 76
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-252",
+        "incident_id": "inc-cba-252",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:17:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.42407,
+            "lon": -64.178804,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:17:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-270",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:17",
+          "source": "Móvil COYS",
+          "confidence": 89
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-270",
+        "incident_id": "inc-cba-270",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:17:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "alto",
+          "location": {
+            "lat": -31.418054,
+            "lon": -64.197534,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:17:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-280",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:18",
+          "source": "Móvil COYS",
+          "confidence": 86
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-280",
+        "incident_id": "inc-cba-280",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:18:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.41964,
+            "lon": -64.18894,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:18:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-281",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:19",
+          "source": "Móvil COYS",
+          "confidence": 94
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-281",
+        "incident_id": "inc-cba-281",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:19:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.420235,
+            "lon": -64.186677,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:19:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-290",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:19",
+          "source": "Móvil COYS",
+          "confidence": 70
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-290",
+        "incident_id": "inc-cba-290",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:19:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "alto",
+          "location": {
+            "lat": -31.421292,
+            "lon": -64.178402,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:19:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-291",
+      "type": "Luminaria apagada",
+      "area": "Alumbrado",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:20",
+          "source": "Móvil COYS",
+          "confidence": 71
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-291",
+        "incident_id": "inc-cba-291",
+        "recipient_id": "entidad-demo-alumbrado",
+        "created_at": "2026-11-12T14:20:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "luminaria_apagada_rota",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.41989,
+            "lon": -64.178234,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:20:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-292",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:21",
+          "source": "Móvil COYS",
+          "confidence": 71
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-292",
+        "incident_id": "inc-cba-292",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:21:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.41741,
+            "lon": -64.182813,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:21:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-293",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:22",
+          "source": "Móvil COYS",
+          "confidence": 70
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-293",
+        "incident_id": "inc-cba-293",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:22:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "alto",
+          "location": {
+            "lat": -31.416966,
+            "lon": -64.177938,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:22:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-300",
+      "type": "Luminaria apagada",
+      "area": "Alumbrado",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:20",
+          "source": "Móvil COYS",
+          "confidence": 93
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-300",
+        "incident_id": "inc-cba-300",
+        "recipient_id": "entidad-demo-alumbrado",
+        "created_at": "2026-11-12T14:20:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "luminaria_apagada_rota",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.41251,
+            "lon": -64.205053,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:20:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-301",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:21",
+          "source": "Móvil COYS",
+          "confidence": 89
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-301",
+        "incident_id": "inc-cba-301",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:21:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.410168,
+            "lon": -64.207566,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:21:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-302",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:22",
+          "source": "Móvil COYS",
+          "confidence": 73
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-302",
+        "incident_id": "inc-cba-302",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:22:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.411372,
+            "lon": -64.209607,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:22:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-303",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:23",
+          "source": "Móvil COYS",
+          "confidence": 86
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-303",
+        "incident_id": "inc-cba-303",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:23:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "alto",
+          "location": {
+            "lat": -31.412108,
+            "lon": -64.205268,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:23:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-304",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:24",
+          "source": "Móvil COYS",
+          "confidence": 79
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-304",
+        "incident_id": "inc-cba-304",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:24:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "alto",
+          "location": {
+            "lat": -31.410363,
+            "lon": -64.205925,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:24:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-305",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:25",
+          "source": "Móvil COYS",
+          "confidence": 92
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-305",
+        "incident_id": "inc-cba-305",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:25:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "medio",
+          "location": {
+            "lat": -31.414128,
+            "lon": -64.207519,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:25:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-310",
+      "type": "Residuos acumulados",
+      "area": "Higiene urbana",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:21",
+          "source": "Móvil COYS",
+          "confidence": 88
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-310",
+        "incident_id": "inc-cba-310",
+        "recipient_id": "entidad-demo-higiene-urbana",
+        "created_at": "2026-11-12T14:21:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "basura_acumulada_piso",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.411432,
+            "lon": -64.19532,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:21:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-311",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:22",
+          "source": "Móvil COYS",
+          "confidence": 73
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-311",
+        "incident_id": "inc-cba-311",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:22:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "alto",
+          "location": {
+            "lat": -31.413536,
+            "lon": -64.199275,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:22:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-312",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:23",
+          "source": "Móvil COYS",
+          "confidence": 74
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-312",
+        "incident_id": "inc-cba-312",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:23:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.410013,
+            "lon": -64.195658,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:23:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-330",
+      "type": "Rama caída",
+      "area": "Arbolado urbano",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:23",
+          "source": "Móvil COYS",
+          "confidence": 67
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-330",
+        "incident_id": "inc-cba-330",
+        "recipient_id": "entidad-demo-arbolado-urbano",
+        "created_at": "2026-11-12T14:23:00-03:00",
+        "incident": {
+          "category": "via_publica",
+          "type_problem": "rama_caida",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.405493,
+            "lon": -64.200426,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:23:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-340",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:24",
+          "source": "Móvil COYS",
+          "confidence": 85
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-340",
+        "incident_id": "inc-cba-340",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:24:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.40363,
+            "lon": -64.191672,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:24:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-341",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:25",
+          "source": "Móvil COYS",
+          "confidence": 91
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-341",
+        "incident_id": "inc-cba-341",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:25:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.406952,
+            "lon": -64.189529,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:25:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-350",
+      "type": "Cable caído",
+      "area": "EPEC",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:25",
+          "source": "Móvil COYS",
+          "confidence": 89
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-350",
+        "incident_id": "inc-cba-350",
+        "recipient_id": "entidad-demo-epec",
+        "created_at": "2026-11-12T14:25:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "cable_caido",
+          "severity": "bajo",
+          "location": {
+            "lat": -31.406799,
+            "lon": -64.180225,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:25:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-351",
+      "type": "Contenedor rebalsado",
+      "area": "Empresa recolectora",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:26",
+          "source": "Móvil COYS",
+          "confidence": 73
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-351",
+        "incident_id": "inc-cba-351",
+        "recipient_id": "entidad-demo-empresa-recolectora",
+        "created_at": "2026-11-12T14:26:00-03:00",
+        "incident": {
+          "category": "residuos",
+          "type_problem": "contenedor_desbordado",
+          "severity": "extremo",
+          "location": {
+            "lat": -31.405157,
+            "lon": -64.181368,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:26:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-352",
+      "type": "Bache",
+      "area": "Vía pública",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:27",
+          "source": "Móvil COYS",
+          "confidence": 79
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-352",
+        "incident_id": "inc-cba-352",
+        "recipient_id": "entidad-demo-vía-pública",
+        "created_at": "2026-11-12T14:27:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "bache_calzada",
+          "severity": "medio",
+          "location": {
+            "lat": -31.407544,
+            "lon": -64.180321,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:27:00-03:00"
+        }
+      }
+    },
+    {
+      "id": "CBA-353",
+      "type": "Luminaria apagada",
+      "area": "Alumbrado",
+      "place": "Córdoba",
+      "activity": [
+        {
+          "kind": "sighting",
+          "time": "14:28",
+          "source": "Móvil COYS",
+          "confidence": 84
+        }
+      ],
+      "payload": {
+        "ticket_id": "CBA-353",
+        "incident_id": "inc-cba-353",
+        "recipient_id": "entidad-demo-alumbrado",
+        "created_at": "2026-11-12T14:28:00-03:00",
+        "incident": {
+          "category": "infraestructura",
+          "type_problem": "luminaria_apagada_rota",
+          "severity": "medio",
+          "location": {
+            "lat": -31.406471,
+            "lon": -64.182055,
+            "reference": "camara",
+            "accuracy_m": null
+          },
+          "last_seen_at": "2026-11-12T14:28:00-03:00"
+        }
+      }
     }
   ],
   "replay": {

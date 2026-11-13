@@ -67,8 +67,12 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, 
       <figcaption>Foto ilustrativa generada con IA</figcaption>
     </figure>}
     <dl className="facts">
-      <div><dt>Estado</dt><dd>{current}</dd></div>
+      <div><dt>Estado de la incidencia</dt><dd>{current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
+      <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
+      <div><dt>Incidencia vinculada</dt><dd>{ticket.payload.incident_id}</dd></div>
+      <div><dt>Referencia GPS</dt><dd>{ticket.payload.incident.location.reference === 'camara' ? 'Cámara' : 'Incidencia'} · {ticket.payload.incident.location.accuracy_m == null ? 'Precisión sin dato' : ticket.payload.incident.location.accuracy_m + ' m'}</dd></div>
       <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
+      <div><dt>Última observación</dt><dd>{sightings[sightings.length - 1]?.time ?? 'Sin dato'}</dd></div>
       <div><dt>Gravedad</dt><dd>{ticket.level}</dd></div>
       <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
     </dl>
@@ -201,7 +205,8 @@ function App({ demo = false }: { demo?: boolean }) {
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
               <span><i className="swatch observed" />Observada, sin tickets activos</span>
-              <span><i className="swatch hot" />Con tickets activos</span>
+              <span><i className="swatch warm" />Menor concentración</span>
+              <span><i className="swatch hot" />Mayor concentración de incidencias</span>
               <span><i className="swatch unobserved" />Sin observación</span>
             </> : <>
               <span><i className="swatch fixed-route" />Ruta fija</span>

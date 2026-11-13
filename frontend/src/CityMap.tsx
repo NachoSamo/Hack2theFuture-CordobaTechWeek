@@ -68,7 +68,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
         id: 'attention', type: 'fill', source: 'attention',
         filter: ['==', ['get', 'observed'], true],
         paint: {
-          'fill-color': ['step', ['number', ['get', 'count'], 0], '#519985', 1, '#c65c56', 2, '#df6358'],
+          'fill-color': ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'],
           'fill-opacity': 0.32,
         },
       }, firstLabel)
