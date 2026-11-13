@@ -56,7 +56,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 
 ¿A quién le pasa esto?
 Al **vecino**, que convive con incidentes que podrían ser notificados.
-Y al **municipio**, que usa su combustible para seguridad.
+Y al **municipio**, que usa su combustible únicamente para seguridad.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
