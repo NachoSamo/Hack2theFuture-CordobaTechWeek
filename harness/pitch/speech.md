@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v7, tono charla TED, deck de 9 slides)
+estado: borrador para ensayar (v8, dos voces; falta la narración de la demo)
 ---
 
 # Speech: Urbis (3 minutos)
@@ -13,15 +13,19 @@ estado: borrador para ensayar (v7, tono charla TED, deck de 9 slides)
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** 389 palabras dichas (medidas). A 140 palabras por minuto más unos 16 segundos de pausas
+> **Duración:** la v7 tenía 389 palabras (medidas); la v8 cambia la demo y hay que volver a medir. A 140 palabras por minuto más unos 16 segundos de pausas
 > da unos 3:03: es una estimación hasta cronometrarlo. Si se pasa, recortar primero la línea de los ODS.
 >
-> **Quién presenta:** se decide en el ensayo, con cronómetro. Una persona maneja el prototipo.
+> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos"
+> (slides 1 a 6). **Persona B** narra la demo y sigue hasta el cierre (slides 7 a 9). Quiénes son se
+> decide en el ensayo, con cronómetro.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
 > se apoya con la voz. `*(…)*` = indicación, no se dice.
 
 ---
+
+**— Persona A (hasta la demo) —**
 
 ### 1 · Urbis (0:00–0:12)
 
@@ -59,18 +63,22 @@ Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo m
 ### 6 · La solución y prototipo en vivo (1:12–1:58)
 
 Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
+Los kilómetros que ya se recorren pasan a tener un **uso más eficiente** y un **foco más sustentable**:
+el mismo móvil, en la misma vuelta, también cuida la ciudad.
 Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial, reconoce lo
-que la ciudad necesita: basura acumulada, postes caídos, cables con riesgo eléctrico. Y le avisa **en
-tiempo real** al área que lo resuelve.
+que la ciudad necesita, y le avisa **en tiempo real** al área que lo resuelve.
 Se lo mostramos.
 
 *(Cambio al prototipo. Recargar para que la secuencia arranque de cero.)*
 
-Un móvil pasa y detecta un contenedor rebalsado: nace un ticket. El aviso le llega directo al área,
-sin intermediarios. Y cuando el móvil vuelve a pasar y la esquina está limpia, queda resuelto.
-Sin un solo kilómetro extra.
+**— Persona B (demo) —**
+
+*(Pendiente: narración de lo que detecta el video, a medida que aparece en pantalla. Oli manda qué
+muestra el video.)*
 
 *(Vuelta al deck.)*
+
+**— Persona B (sigue después de la demo) —**
 
 ### 7 · ODS involucrados (1:58–2:10)
 
@@ -82,8 +90,8 @@ sostenibles, consumo responsable, acción por el clima, innovación y alianzas.
 **¿Y quién lo paga?**
 Para el municipio, se sostiene solo. El costo es mínimo: usa la flota y las cámaras que ya tiene,
 procesa la imagen en el mismo móvil, sin transmitir ni guardar video, y le ahorra salir a inspeccionar.
-Y para implementarlo, el camino ya está abierto: la Unión Europea invirtió **600.000 euros** en el Plan
-de Movilidad Sostenible de Córdoba. Ese plan necesita datos de la calle. Urbis se los brinda.
+Y para implementarlo, hay **oportunidades de financiamiento de la Unión Europea**: Córdoba ya trabaja
+con la UE en su Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se los brinda.
 
 ### 9 · Cierre (2:40–3:00)
 
@@ -120,6 +128,8 @@ Gracias.
   Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
   decir "hasta el 100 %". No está medido: lo mide el piloto.
 - **Viabilidad económica y financiamiento (slide 8):**
+  - En voz alta se dice "oportunidades de financiamiento de la UE", no que la plata ya está. El dato de
+    los 600.000 € queda en la slide y como respuesta si preguntan.
   - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
   - Los 600.000 € son asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD, dentro
     de MobiliseYourCity ([nota del 14/10/2025](https://www.mobiliseyourcity.net/cordobas-sustainable-urban-mobility-plan-paves-way-integrated-metropolitan-transport-system)).
