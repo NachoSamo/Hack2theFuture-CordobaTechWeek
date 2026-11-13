@@ -39,8 +39,6 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 
 ## Avisos
 
-- 13/11 · Juani · Vista Flota con 16 móviles simulados, reloj y velocidades ×1, ×30, ×60 y ×120. Los controles de reproducción quedan visibles al plegar los filtros.
-
 - 13/11 · Juani · `main` integra UX, frontend y arquitectura. El deck conserva los últimos cambios de Oli y el logo vigente. Simulación y filtros plegables verificados en Edge.
 
 - 13/11 · Juani · Se incorpora una pestaña de simulación con dos móviles y se pliega la barra de filtros del mapa. Se documenta el recorrido en `demo-path.md` · a Samo

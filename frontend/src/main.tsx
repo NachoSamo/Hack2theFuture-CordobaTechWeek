@@ -9,14 +9,7 @@ import './style.css'
 const types = [...new Set(tickets.map(ticket => ticket.type))]
 const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const replayDelays = [4000, 12000, 55000]
-const patrolEvents = [300000, 780000, 1440000]
-const patrolDuration = patrolEvents[patrolEvents.length - 1]
-const patrolSpeeds = [1, 30, 60, 120]
-
-function patrolTime(elapsed: number) {
-  const minutes = 14 * 60 + Math.floor(elapsed / 60000)
-  return `${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, '0')}`
-}
+const simulationDelays = [2500, 6500, 12000]
 function replayToast(step: number, ticket?: Ticket) {
   if (!ticket) return
   const entry = replay.activity[step - 2]
@@ -189,15 +182,10 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
   </section>
 }
 
-function App({ demo = false, embedded = false, simulation = false, heat = false }: { demo?: boolean; embedded?: boolean; simulation?: boolean; heat?: boolean }) {
+function App({ demo = false, embedded = false, simulation = false }: { demo?: boolean; embedded?: boolean; simulation?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
   const [step, setStep] = useState(demo ? 1 : 0)
-  const [elapsed, setElapsed] = useState(0)
-  const [running, setRunning] = useState(false)
-  const [speed, setSpeed] = useState(120)
-  const [mode, setMode] = useState<'combined' | 'incidents' | 'heat'>(heat ? 'heat' : 'combined')
-  const progress = useRef(0)
-  const fleetComplete = elapsed >= patrolDuration
+  const [run, setRun] = useState(0)
   const [patrolReady, setPatrolReady] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filtersId = useId()
@@ -206,32 +194,11 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
   const [state, setState] = useState('')
   const filterCount = [type, area, state].filter(Boolean).length
   useEffect(() => {
-    if (simulation) return
-    const timers = replayDelays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
+    if (simulation && run === 0) return
+    const delays = simulation ? simulationDelays : replayDelays
+    const timers = delays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
     return () => timers.forEach(timer => window.clearTimeout(timer))
-  }, [simulation])
-
-  useEffect(() => {
-    if (!running) return
-    let previous = performance.now()
-    const timer = window.setInterval(() => {
-      const now = performance.now()
-      progress.current = Math.min(progress.current + (now - previous) * speed, patrolDuration)
-      previous = now
-      setElapsed(progress.current)
-      setStep(patrolEvents.filter(event => event <= progress.current).length)
-      if (progress.current === patrolDuration) setRunning(false)
-    }, 50)
-    return () => window.clearInterval(timer)
-  }, [running, speed])
-
-  function resetPatrol() {
-    setRunning(false)
-    setId(undefined)
-    setStep(0)
-    progress.current = 0
-    setElapsed(0)
-  }
+  }, [run, simulation])
 
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
@@ -269,7 +236,7 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
       <div className="top-meta">
         {!embedded && <nav className="view-switch" aria-label="Vistas">
           <a href="#mapa" aria-current={simulation ? undefined : 'page'}>Mapa</a>
-          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Flota</a>
+          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Simulación</a>
           <a href="#impacto">Impacto</a>
         </nav>}
         <button type="button" className="filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId}
@@ -281,20 +248,6 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
     <section className="workspace" aria-label="Monitoreo urbano">
       <div className="map-stage">
         <MapHeading><span className="sr-only">{simulation ? 'Simulación de patrullaje' : 'Mapa urbano'}</span></MapHeading>
-        {!embedded && <div className="map-view-controls" aria-label="Capas del mapa">
-          <button type="button" aria-pressed={!simulation && mode === 'incidents'} onClick={() => {
-            if (simulation) location.hash = '#mapa'
-            else setMode(mode === 'incidents' ? 'combined' : 'incidents')
-          }}>Incidencias</button>
-          <button type="button" aria-pressed={!simulation && mode === 'heat'} onClick={() => {
-            if (simulation) location.hash = '#mapa/calor'
-            else {
-              setId(undefined)
-              setMode(mode === 'heat' ? 'combined' : 'heat')
-            }
-          }}>Zonas de calor</button>
-          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Flota</a>
-        </div>}
         <div className="map-toolbar" id={filtersId} hidden={!filtersOpen}>
           <div className="filters">
             <Filter label="Tipo" options={types} value={type} onChange={setType} />
@@ -304,15 +257,11 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
         </div>
         {simulation && <div className="simulation-toolbar">
           <button type="button" disabled={!patrolReady} onClick={() => {
-            if (fleetComplete) resetPatrol()
-            setRunning(!running)
-          }}>{running ? 'Pausar' : fleetComplete ? 'Repetir' : elapsed > 0 ? 'Continuar' : 'Iniciar recorrido'}</button>
-          <div className="patrol-speeds" role="group" aria-label="Velocidad del recorrido">
-            {patrolSpeeds.map(rate => <button type="button" key={rate} aria-pressed={speed === rate}
-              onClick={() => setSpeed(rate)}>×{rate}</button>)}
-          </div>
-          <button type="button" onClick={resetPatrol} disabled={elapsed === 0 && !running}>Reiniciar</button>
-          <output aria-label="Hora simulada" aria-live="off">{patrolTime(elapsed)}</output>
+            setId(undefined)
+            setStep(0)
+            setRun(current => current + 1)
+          }}>{run ? 'Reiniciar recorrido' : 'Iniciar recorrido'}</button>
+          <span role="status">{run === 0 ? (patrolReady ? 'Patrullaje simulado · 2 móviles' : 'Preparando recorrido…') : step === simulationDelays.length ? 'Recorrido completado' : 'Recorrido en curso'}</span>
         </div>}
         <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
@@ -322,21 +271,15 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
               <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
             </button>}
           </div>
-          <CityMap tickets={visible} showIncidents={simulation || mode !== 'heat'} showHeat={!simulation && mode !== 'incidents'} selected={selected} onSelect={selectTicket} embedded={embedded}
+          <CityMap tickets={visible} selected={selected} onSelect={selectTicket} embedded={embedded}
             onPatrolReady={simulation ? setPatrolReady : undefined}
-            patrolProgress={simulation ? elapsed / patrolDuration : undefined} />
-          {simulation && <div className="map-key fleet-key" aria-label="Leyenda de flota">
-            <span><i className="swatch fleet-municipal" />COYS</span>
-            <span><i className="swatch fleet-police" />Policía</span>
-            <span><i className="swatch fleet-guard" />Guardia Urbana</span>
-            <span>Rango de cámara: 50 m</span>
-          </div>}
-          {!simulation && mode !== 'incidents' && <div className="map-key" aria-label="Leyenda de zonas de calor">
+            patrolRun={simulation ? run : undefined} patrolDuration={simulationDelays[simulationDelays.length - 1]} />
+          <div className="map-key" aria-label="Leyenda de zonas de calor">
             <span><i className="swatch observed" />Observada, sin tickets activos</span>
             <span><i className="swatch warm" />Menor concentración</span>
             <span><i className="swatch hot" />Mayor concentración de incidencias</span>
-          </div>}
-          {selected && (simulation || mode !== 'heat') && <TicketDetail key={selected.id} ticket={selected}
+          </div>
+          {selected && <TicketDetail key={selected.id} ticket={selected}
             onClose={() => {
               const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
               if (marker) marker.focus({ preventScroll: true })
@@ -349,7 +292,7 @@ function App({ demo = false, embedded = false, simulation = false, heat = false 
   </Container>
 }
 
-const readPage = () => ['#mapa', '#mapa/deteccion', '#mapa/calor', '#impacto', '#simulacion'].includes(location.hash) ? location.hash : ''
+const readPage = () => ['#mapa', '#mapa/deteccion', '#impacto', '#simulacion'].includes(location.hash) ? location.hash : ''
 
 function Site() {
   const [page, setPage] = useState(readPage)
@@ -374,7 +317,6 @@ function Site() {
   }, [page])
   if (page === '#impacto') return <Impact />
   if (page === '#simulacion') return <App key="simulacion" simulation />
-  if (page === '#mapa/calor') return <App key="calor" heat />
   if (page === '#mapa/deteccion') return <App key="deteccion" demo />
   return page === '#mapa' ? <App key="mapa" /> : <Landing />
 }
