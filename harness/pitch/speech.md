@@ -81,8 +81,8 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 ### 7 · Próximos pasos + impacto sustentable (1:55–2:10)
 
-La **semana del 16** nos reunimos con el municipio para presentar Urbis; el **1 de diciembre** arranca el **barrio piloto**;
-y en el segundo semestre de 2027, **toda la ciudad**. En cada paso, Urbis suma a los ODS de
+Nuestro primer paso: la **semana del 16** nos reunimos con la **Guardia Urbana, los municipios y las cooperativas**
+para **validar el financiamiento**. Desde ahí, Urbis suma a los ODS de
 **alianzas, innovación, ciudades sostenibles y consumo responsable**: cada litro que ya se gasta trabaja para toda la ciudad.
 
 ### 8 · Viabilidad económica (2:05–2:40)

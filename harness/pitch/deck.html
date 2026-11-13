@@ -52,8 +52,10 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .step small{display:block;font-size:30px;font-weight:400;color:var(--muted);margin-top:14px;line-height:1.25}
 .odsb{display:inline-flex;align-items:center;gap:14px;margin-top:34px;font:600 30px Barlow;padding:12px 22px;border-radius:12px;background:var(--lima);color:var(--asfalto)}
 .odsb em{font-style:normal;font-weight:800;font-size:38px}
-.slide.on .step .dot,.slide.on .step .odsb{animation:lit .5s var(--d) ease-out both}
+.slide.on .step .dot,.slide.on .step .odsb,.slide.on .ods-row .odsb{animation:lit .5s var(--d) ease-out both}
 @keyframes lit{from{background:var(--pizarra);color:var(--muted);box-shadow:0 0 0 2px var(--line)}60%{box-shadow:0 0 0 14px rgba(223,246,145,.25)}to{background:var(--lima);color:var(--asfalto);box-shadow:0 0 0 0 rgba(223,246,145,0)}}
+.road.one{display:block;margin-top:60px}.road.one .step b{margin-top:0}.road.one .step p{font-size:64px}
+.ods-row{display:flex;flex-wrap:wrap;gap:20px;margin-top:60px}.ods-row .odsb{margin-top:0}
 .road-foot{margin-top:70px;font:400 30px var(--mono);color:var(--muted)}
 .road-foot span{color:var(--lima)}
 .slide.on .road-foot{animation:pop .6s 3.5s ease both}
@@ -203,28 +205,19 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 <!-- 9a · Próximos pasos y ODS -->
 <section class="slide">
   <h2 style="font-size:92px">Próximos pasos + <span class="lima">impacto sustentable</span></h2>
-  <div class="road">
-    <div class="track"><i></i></div>
+  <div class="road one">
     <div class="step" style="--d:.7s">
-      <div class="dot">1</div>
       <b>Semana 16/11 · Reunión</b>
-      <p>Con el municipio, para presentar Urbis y acordar el acceso.</p>
-      <span class="odsb" style="--d:.9s"><em>17</em> Alianzas</span>
-    </div>
-    <div class="step" style="--d:1.8s">
-      <div class="dot">2</div>
-      <b>1/12 · Barrio piloto</b>
-      <p>Güemes o Mercado Norte, cuatro semanas.</p>
-      <span class="odsb" style="--d:2s"><em>9</em> Innovación e infraestructura</span>
-    </div>
-    <div class="step" style="--d:2.9s">
-      <div class="dot">3</div>
-      <b>2º sem. 2027 · Ciudad</b>
-      <p>Toda la flota municipal y policial.</p>
-      <span class="odsb" style="--d:3.1s"><em>11</em> Ciudades sostenibles</span>
+      <p>Con la Guardia Urbana, municipios y cooperativas,<br>para validar el financiamiento.</p>
     </div>
   </div>
-  <p class="road-foot">Cada litro que ya se gasta trabaja para toda la ciudad · <span>ODS 12</span> Consumo responsable</p>
+  <div class="ods-row">
+    <span class="odsb" style="--d:1.1s"><em>17</em> Alianzas</span>
+    <span class="odsb" style="--d:1.3s"><em>9</em> Innovación e infraestructura</span>
+    <span class="odsb" style="--d:1.5s"><em>11</em> Ciudades sostenibles</span>
+    <span class="odsb" style="--d:1.7s"><em>12</em> Consumo responsable</span>
+  </div>
+  <p class="road-foot">Cada litro que ya se gasta trabaja para toda la ciudad.</p>
 </section>
 
 <!-- 9b · Viabilidad económica y financiamiento -->
