@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 22:45 · Samo
+**Actualizado:** 13/11 00:26 · Juani
 **Fase:** 3 · Pitch (el prototipo y la arquitectura siguen en paralelo)
 **Vertical / problema:** movilidad sostenible: **Urbis**, «Mismo recorrido, más sustentabilidad»; el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** Club del Pitch por vertical, 13/11 10:45 (ver [`evento.md`](evento.md#checkpoints))
@@ -15,10 +15,10 @@
 
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
-| Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado y mergear `architecture/init` | Checkpoint de la tarde | Dueños de nodo (en persona) |
+| Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado; `architecture/init` integrada en `codex/mapa-ux` el 13/11 | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing oscura con clips de detección en la portada y acceso al mapa interactivo dentro de la misma página. Vista previa y tarjeta de detalle con foto, historial y acciones para 194 tickets simulados. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
+| Juani | Urbis: integración de las tres ramas en `codex/mapa-ux`; mapa oscuro único con calor, inclinación 60°, zoom a tickets y cuadrantes y sin rutas sugeridas. Impacto, avisos en vivo y fotos por tipo conservados. Compilación y smoke del prototipo PASS en escritorio y móvil | Revisión de UX del 13/11 | Sin bloqueo para el prototipo; aprobación de diagramas e integración real siguen pendientes |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -38,6 +38,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 - [x] Qué significa "3+3": 3 presentan en la mesa y 3 visitan otra mesa (lienzo 08); el registro va en el formulario oficial (QR)
 
 ## Avisos
+
+- 13/11 00:24 · Juani · Integradas `main`, `frontend/mlp-estadisticas-aviso` y `architecture/init` en `codex/mapa-ux`, conservando decisiones y avisos de todas las ramas. UX del prototipo: única vista oscura con calor e inclinación 60°, zoom al ticket/cuadrante y retiro de rutas sugeridas. Documentos compartidos actualizados: README, guía de interfaz, marca, demo path, recorrido del usuario, decision log y proceso; el contexto de iteración 1 queda señalado como histórico. No cambia ningún payload de API · a Samo (arquitectura y recorrido por revisar), Lauti y Diego (guía), Oli y Gina (demo)
 
 - 22:45 · Samo · README reescrito al 100 % sobre Urbis (estado real: prototipo con datos simulados, sin backend ni detección; arquitectura de la rama `architecture/init`). Decision log 22:45: frames de evidencia con caras y patentes pixeladas (propuesta), Guardia Urbana como cuarta fuente y «posiblemente resuelta» sin afirmar resolución. Inconsistencias que quedan en archivos de otros dueños:
   - **Oli (speech v10, antes del pitch):** dice «1.400 llamados por árboles y postes caídos», pero según su propia fuente (Perfil, 7/8/2026) los 1.400 son todos los llamados de la tormenta y 198 fueron por postes o columnas; «procesa la imagen en el mismo móvil, sin transmitir ni grabar» choca con los frames de evidencia de la arquitectura; las notas citan «slide 10» en un deck de 9 y repiten «se sostiene solo». En `pitch.md`, la tabla de 8 bloques y la línea de «11 slides… costo marginal cero» quedaron viejas. Las horas de las filas 22:40–23:55 del decision log son posteriores a la hora real de su commit (≈22:35)

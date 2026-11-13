@@ -3,7 +3,7 @@ import fixture from './tickets-mock.json'
 import type { FeatureCollection, Polygon } from 'geojson'
 
 export type Position = [number, number]
-export type TicketAction = 'notice' | 'route' | 'sweep'
+export type TicketAction = 'notice' | 'sweep'
 export type ManualActivity = { kind: 'manual'; action: TicketAction; time: string }
 export type Activity =
   | { kind: 'sighting'; time: string; source: string; confidence: number }
@@ -86,7 +86,6 @@ export function automaticNotice(ticket: Ticket): Ticket {
 
 export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']
 export const levels: Record<string, string> = { Alta: '#ed8a6e', Media: '#e2bc5e', Baja: '#86bea6', Extrema: '#ef9bec' }
-export type Layer = 'tickets' | 'zones' | 'routes'
 
 export function locationLabel(ticket: Ticket) {
   const reference = ticket.streetReference

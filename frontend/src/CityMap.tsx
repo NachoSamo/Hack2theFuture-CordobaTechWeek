@@ -1,24 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import maplibre, { type GeoJSONSource, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { attentionZones, center, city, levels, locationLabel, status, type Layer, type Ticket } from './tickets'
-
-import type { LineString, FeatureCollection } from 'geojson'
-import type { StreetRoute } from './model'
-import { scenario } from './scenario'
+import { attentionZones, center, city, levels, locationLabel, status, type Ticket } from './tickets'
 
 type Props = {
   tickets: Ticket[]
   selected: Ticket | undefined
-  layer: Layer
-  suggestion?: StreetRoute
-  onSelect: (id: string) => void
+  onSelect: (id?: string) => void
   embedded?: boolean
 }
 
-export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedded = false }: Props) {
-  const showRoutes = layer === 'routes'
+export function CityMap({ tickets, selected, onSelect, embedded = false }: Props) {
   const overviewZoom = embedded ? 13.25 : 11.85
+  const overviewPitch = 60
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -33,7 +27,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
         style: 'https://tiles.openfreemap.org/styles/dark',
         center,
         zoom: overviewZoom,
-        pitch: 43,
+        pitch: overviewPitch,
         bearing: -22,
         cooperativeGestures: embedded,
       })
@@ -63,16 +57,15 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       })
       map.addLayer({
         id: 'coverage-background', type: 'fill', source: 'coverage-background',
-        layout: { visibility: 'none' },
-        paint: { 'fill-color': '#939b9f', 'fill-opacity': 0.32 },
+        paint: { 'fill-color': '#939b9f', 'fill-opacity': 0.10 },
       }, firstLabel)
       map.addSource('attention', { type: 'geojson', data: attentionZones([]) })
       map.addLayer({
         id: 'attention', type: 'fill', source: 'attention',
-        filter: ['==', ['get', 'observed'], true],
         paint: {
-          'fill-color': ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'],
-          'fill-opacity': 0.32,
+          'fill-color': ['case', ['==', ['get', 'observed'], true],
+            ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'], '#939b9f'],
+          'fill-opacity': ['case', ['==', ['get', 'observed'], true], 0.32, 0.10],
         },
       }, firstLabel)
       const vector = Object.entries(map.getStyle().sources).find(([, source]) => source.type === 'vector')?.[0]
@@ -88,17 +81,10 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
           },
         }, firstLabel)
       }
-      map.addSource('routes', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
-      for (const id of ['route-casing', 'route-lines']) {
-        map.addLayer({
-          id, type: 'line', source: 'routes',
-          layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
-          paint: {
-            'line-color': id === 'route-casing' ? '#172127' : ['get', 'color'],
-            'line-width': id === 'route-casing' ? ['+', ['get', 'width'], 3] : ['get', 'width'],
-          },
-        })
-      }
+      map.addLayer({
+        id: 'zone-outlines', type: 'line', source: 'attention',
+        paint: { 'line-color': '#a5b3a9', 'line-width': 1, 'line-opacity': 0.18 },
+      }, firstLabel)
       setReady(true)
     })
 
@@ -119,7 +105,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
-      marker.className = scenario.routes.suggestions[ticket.id] ? 'pin pin-with-route' : 'pin'
+      marker.className = 'pin'
       marker.dataset.ticketId = ticket.id
       marker.style.setProperty('--pin', levels[ticket.level])
       const detail = locationLabel(ticket) + ' · ' + status(ticket) + ' · ' + ticket.area
@@ -148,7 +134,10 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       marker.addEventListener('focus', placePreview)
       tooltip.setAttribute('aria-hidden', 'true')
       marker.append(tooltip)
-      marker.onclick = () => onSelect(ticket.id)
+      marker.onclick = event => {
+        event.stopPropagation()
+        onSelect(ticket.id)
+      }
       return new maplibre.Marker({ element: marker }).setLngLat(ticket.position).addTo(map)
     })
     return () => markers.forEach(marker => marker.remove())
@@ -157,13 +146,30 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
-    for (const id of ['coverage-background', 'attention']) {
-      map.setLayoutProperty(id, 'visibility', layer === 'zones' ? 'visible' : 'none')
+    const focusZone = (event: maplibre.MapLayerMouseEvent) => {
+      const geometry = event.features?.[0]?.geometry
+      if (geometry?.type !== 'Polygon') return
+      const bounds = geometry.coordinates[0].reduce(
+        (area, point) => area.extend([point[0], point[1]]), new maplibre.LngLatBounds(),
+      )
+      onSelect(undefined)
+      map.fitBounds(bounds, {
+        padding: { top: 100, right: 40, bottom: 50, left: 40 },
+        maxZoom: 15, pitch: overviewPitch, bearing: -22,
+        duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
+      })
     }
-    if (map.getLayer('city-buildings')) {
-      map.setLayoutProperty('city-buildings', 'visibility', layer === 'routes' ? 'none' : 'visible')
+    const enterZone = () => { map.getCanvas().style.cursor = 'pointer' }
+    const leaveZone = () => { map.getCanvas().style.cursor = '' }
+    map.on('click', 'attention', focusZone)
+    map.on('mouseenter', 'attention', enterZone)
+    map.on('mouseleave', 'attention', leaveZone)
+    return () => {
+      map.off('click', 'attention', focusZone)
+      map.off('mouseenter', 'attention', enterZone)
+      map.off('mouseleave', 'attention', leaveZone)
     }
-  }, [ready, layer])
+  }, [ready, onSelect])
 
   useEffect(() => {
     for (const marker of host.current?.querySelectorAll<HTMLButtonElement>('.pin') ?? []) {
@@ -171,46 +177,30 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
     }
   }, [ready, selected, tickets])
 
+  const selectedId = selected?.id
+  const selectedLongitude = selected?.position[0]
+  const selectedLatitude = selected?.position[1]
   useEffect(() => {
     const map = instance.current
-    if (!ready || !map || !showRoutes) return
-    const features: FeatureCollection<LineString>['features'] = [scenario.routes.fixed, ...(suggestion ? [suggestion] : [])].map((route, index) => ({
-      type: 'Feature',
-      properties: { color: index === 0 ? '#a4b8cf' : '#dff691', width: index === 0 ? 7 : 4 },
-      geometry: { type: 'LineString', coordinates: route.coordinates },
-    }))
-    map.getSource<GeoJSONSource>('routes')?.setData({ type: 'FeatureCollection', features })
-    for (const id of ['route-casing', 'route-lines']) map.setLayoutProperty(id, 'visibility', 'visible')
+    if (!ready || !map || selectedLongitude === undefined || selectedLatitude === undefined) return
+    map.easeTo({
+      center: [selectedLongitude, selectedLatitude], zoom: 15.5,
+      pitch: overviewPitch, bearing: -22,
+      duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
+    })
+  }, [ready, selectedId, selectedLongitude, selectedLatitude])
 
-    const start = document.createElement('span')
-    start.className = 'departure'
-    start.textContent = 'Salida'
-    start.setAttribute('aria-label', 'Salida del vehículo de recolección')
-    const marker = new maplibre.Marker({ element: start, anchor: 'bottom' })
-      .setLngLat(scenario.routes.fixed.coordinates[0]).addTo(map)
-    return () => {
-      if (instance.current === map) {
-        for (const id of ['route-casing', 'route-lines']) map.setLayoutProperty(id, 'visibility', 'none')
-      }
-      marker.remove()
-    }
-  }, [ready, showRoutes, suggestion])
-
-  useEffect(() => {
-    const map = instance.current
-    if (!ready || !map) return
-    const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420
-    if (showRoutes) {
-      const path = suggestion ? [...scenario.routes.fixed.coordinates, ...suggestion.coordinates] : scenario.routes.fixed.coordinates
-      const bounds = path.reduce((area, point) => area.extend(point), new maplibre.LngLatBounds())
-      map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: 0, pitch: 16, duration })
-      return
-    }
-    map.easeTo({ center, zoom: overviewZoom, pitch: 43, bearing: -22, duration })
-  }, [ready, showRoutes, suggestion, overviewZoom])
+  function showOverview() {
+    onSelect(undefined)
+    instance.current?.easeTo({
+      center, zoom: overviewZoom, pitch: overviewPitch, bearing: -22, padding: 0,
+      duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
+    })
+  }
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />
+    {ready && <button type="button" className="map-overview" onClick={showOverview}>Ver toda Córdoba</button>}
     {fallback && <p className="map-warning" role="status">Cartografía base no disponible.</p>}
   </>
 }

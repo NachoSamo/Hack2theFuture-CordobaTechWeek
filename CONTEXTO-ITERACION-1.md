@@ -1,5 +1,7 @@
 # Contexto del repositorio — Iteración 1
 
+> Registro histórico de la primera iteración, recuperado al integrar arquitectura el 13/11/2026. Describe ese momento; el estado vigente de Urbis está en [README.md](README.md) y [harness/ESTADO.md](harness/ESTADO.md).
+
 - **Repositorio:** `Hack2theFuture-CordobaTechWeek`
 - **Evento:** Hack to the Future · Córdoba Tech Week (12 y 13/11/2026)
 - **Estado general:** Fase de investigación completada parcialmente. El repositorio contiene únicamente investigación cualitativa (12 documentos) y cuantitativa (completa solo en **residuos**; *placeholders* en los otros tres ejes). No hay código de producto ni aplicación aún.

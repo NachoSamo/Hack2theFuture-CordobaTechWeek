@@ -16,7 +16,7 @@ El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren 
 
 ## MLP
 
-El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, historial y responsable. Las zonas de calor muestran atención y cobertura. Los contenedores rebalsados pueden incluir una ruta de recolección simulada. [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
+El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, historial y responsable. Las zonas de calor muestran atención y cobertura. El mapa mantiene una única vista oscura con marcadores y zonas de calor, inclinada a 60°. Al seleccionar un ticket o cuadrante se acerca al lugar; «Ver toda Córdoba» vuelve a la vista general. Se retiran las rutas sugeridas por pedido de Juani (13/11). [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
 
 ## Misión
 
@@ -50,7 +50,7 @@ La landing del prototipo usa un fondo oscuro entre `#0E1311` y `#202D27`, texto 
 
 ## Tipografía y tono
 
-Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El tono es directo y operativo. Usamos «Punto crítico», «Sin dato» y «Ruta sugerida». Las cifras de impacto muestran si son simuladas o estimadas y exponen sus supuestos.
+Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El tono es directo y operativo. Usamos «Punto crítico», «Sin dato» y «Ver toda Córdoba». Las cifras de impacto muestran si son simuladas o estimadas y exponen sus supuestos.
 
 [Referencias de diseño](marca/referencias/README.md) · [Prototipo](marca/prototipo-recoleccion-video.html)
 

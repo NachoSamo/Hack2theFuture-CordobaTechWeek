@@ -66,18 +66,14 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
   border-bottom: 1px solid var(--border);
 }
 .map-toolbar :is(h1, h3) { font-size: 17px; }
-.layer-switch { display: flex; gap: 4px; flex-wrap: wrap; }
-.layer-switch button { background: transparent; border-color: transparent; font-size: 14px; min-height: 32px; }
-.layer-switch button:hover { background: #26353a; }
-.layer-switch button[aria-pressed=true] { color: var(--lime); background: #283a35; border-color: #455b4c; }
 .map-key {
   position: absolute;
-  top: 10px;
+  bottom: 32px;
   left: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 13px;
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 66px);
   padding: 7px 10px;
   background: #19252b;
   border-radius: 6px;
@@ -89,17 +85,6 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .dot, .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .swatch { border-radius: 2px; }
 .hot { background: #c65c56; }
-.fixed-route, .suggested-route { width: 14px; height: 3px; background: #94a9bf; }
-.suggested-route { background: var(--lime); }
-.route-summary { color: var(--lime); }
-.departure {
-  background: #26353a;
-  color: #eaf0f0;
-  border: 1px solid #94a9bf;
-  border-radius: 4px;
-  font-size: 12px;
-  padding: 3px 6px;
-}
 .observed { background: #519985; }
 .unobserved { background: #939b9f; }
 .map-warning { position: absolute; left: 16px; bottom: 25px; background: var(--surface); padding: 8px 10px; max-width: 75%; }
@@ -196,7 +181,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 .pin-label strong { display: block; color: #eaf0f0; font-size: 14px; margin-bottom: 2px; }
 .pin-status { display: block; color: var(--lime); margin-top: 4px; }
 .pin-preview-below .pin-label { bottom: auto; top: calc(100% + 10px); }
-.pin-with-route { z-index: 1; }
 .pin:hover, .pin:focus-visible { z-index: 2; }
 .pin:hover .pin-label, .pin:focus-visible .pin-label { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -207,8 +191,7 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   .map-warning { left: 10px; }
 }
 
-.route-action { margin-top: 8px; }
-.route-action button[aria-pressed=true] { color: var(--lime); }
+
 
 
 
@@ -495,4 +478,13 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   .use-row { grid-template-columns: 64px minmax(0, 1fr); }
   .use-row strong { grid-column: 2; }
   .use-seg { font-size: 12px; padding-inline: 8px; }
+}
+
+.map-overview {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  min-height: 44px;
+  background: var(--surface);
 }

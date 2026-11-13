@@ -2,21 +2,21 @@
 
 Ejecutá `npm ci` y `npm run dev` desde esta carpeta. Para compilar, usá `npm run build`.
 
-La vista general de COYS muestra tickets de mantenimiento urbano. La barra superior filtra los marcadores por tipo, estado y área. Pasá el cursor o enfocá un marcador para ver el tipo, la ubicación y el estado. Seleccioná un marcador para abrir su tarjeta sobre el mapa, con foto ilustrativa, detalle, historial y acciones. Cerrala con Escape o con el botón Cerrar.
+La vista general de COYS muestra tickets de mantenimiento urbano. La barra superior filtra los marcadores por tipo, estado y área. Pasá el cursor o enfocá un marcador para ver el tipo, la ubicación y el estado. Seleccioná un marcador para acercar automáticamente el mapa y abrir su tarjeta, con foto ilustrativa, detalle, historial y acciones. Cerrala con Escape o con el botón Cerrar.
 
-La raíz muestra la landing de Urbis con el clips de detección en bucle y un control para pausarlos. La sección «El sistema de Urbis» incluye el mapa interactivo y un acceso al mapa completo. Abrí `/#mapa` para entrar directo al mapa 3D en Incidencias. Zonas de calor combina la atención y la cobertura del mock. Rojo indica tickets activos, verde indica una zona observada sin tickets activos y gris indica que no hay observación registrada, incluso fuera de la grilla.
+La raíz muestra la landing de Urbis con el clips de detección en bucle y un control para pausarlos. La sección «El sistema de Urbis» incluye el mapa interactivo y un acceso al mapa completo. Abrí `/#mapa` para entrar directo al mapa 3D con inclinación de 60°. Hay un único modo de visualización: cartografía oscura, marcadores y zonas de calor juntos. Seleccioná un cuadrante para acercarte a su zona; «Ver toda Córdoba» recupera el encuadre general. Zonas de calor combina la atención y la cobertura del mock. Rojo indica tickets activos, verde indica una zona observada sin tickets activos y gris indica que no hay observación registrada, incluso fuera de la grilla.
 
-Los tickets activos de contenedor rebalsado se derivan a la empresa recolectora simulada. Su detalle permite ver el recorrido fijo y el desvío estimado cuando hay una ruta disponible. La altura y las entrecalles salen del mock. Si falta esa referencia, se muestra el cruce disponible o las coordenadas.
+Los tickets activos de contenedor rebalsado se derivan a la empresa recolectora simulada. El mapa y el detalle ya no ofrecen rutas sugeridas. La altura y las entrecalles salen del mock. Si falta esa referencia, se muestra el cruce disponible o las coordenadas.
 
 Al abrir la página, el mock publica automáticamente un ticket, agrega un avistamiento, simula el aviso y luego registra una pasada de verificación. Recargar la página reinicia la secuencia. Si falla OpenFreeMap, los marcadores siguen disponibles sobre un fondo neutro siempre que el navegador soporte WebGL.
 
-Los datos de recolección están en `src/mock.json` y `src/street-routes.json`. Su script `scripts/generar-rutas.py` genera geometrías con OSRM.
+Los archivos `src/mock.json`, `src/street-routes.json`, `src/scenario.ts` y `scripts/generar-rutas.py` conservan el prototipo anterior de recolección; la interfaz actual no los importa. Los tickets y la cobertura actuales están en `src/tickets-mock.json`.
 
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)
 
 La landing reproduce un clip ilustrativo de detección simulada. El acceso directo `/#mapa/deteccion` abre el ticket CBA-104 del contenedor mostrado en el video.
 
-Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales, sugerir rutas para contenedores rebalsados y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
+Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
 
 **Aviso en vivo:** cuando la simulación publica el ticket, suma un avistamiento o registra la pasada de verificación, aparece un aviso arriba a la derecha del mapa. Al hacer clic, abre el ticket. Si el ticket ya está abierto, no se muestra.
 

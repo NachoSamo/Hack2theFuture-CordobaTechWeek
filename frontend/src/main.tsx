@@ -2,17 +2,12 @@ import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
-import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
-import { scenario } from './scenario'
+import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type ManualActivity, type TicketAction, type Ticket } from './tickets'
 import { Impact } from './Impact'
-import type { StreetRoute } from './model'
 import './style.css'
 
 const types = [...new Set(tickets.map(ticket => ticket.type))]
 const areas = [...new Set(tickets.map(ticket => ticket.area))]
-const modes: { id: Layer; label: string }[] = [
-  { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' },
-]
 const replayDelays = [4000, 12000, 55000]
 function replayToast(step: number, ticket?: Ticket) {
   if (!ticket) return
@@ -24,7 +19,6 @@ function replayToast(step: number, ticket?: Ticket) {
 
 function activityLabel(entry: Activity, index: number, area: string) {
   if (entry.kind === 'manual') {
-    if (entry.action === 'route') return 'Ruta de recolección sugerida'
     if (entry.action === 'sweep') return 'Barrida diagramada'
     return 'Aviso simulado a ' + area
   }
@@ -33,7 +27,7 @@ function activityLabel(entry: Activity, index: number, area: string) {
   return index === 0 ? 'Primera detección' : 'Avistamiento incorporado al ticket'
 }
 
-function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onAction: (action: TicketAction) => void; onClose: () => void }) {
+function TicketDetail({ ticket, onAction, onClose }: { ticket: Ticket; onAction: (action: TicketAction) => void; onClose: () => void }) {
   const card = useRef<HTMLElement>(null)
   useEffect(() => {
     card.current?.focus({ preventScroll: true })
@@ -82,18 +76,9 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, 
         <h3>Acciones simuladas</h3>
         <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
           onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
-        {suggestion && <button aria-pressed={routeOpen} onClick={onToggleRoute}>
-          {routeOpen ? 'Ocultar ruta' : 'Sugerir ruta'}
-        </button>}
         {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
           <button disabled={sweepPlanned}
             onClick={() => onAction('sweep')}>Diagramar barrida</button>}
-        {routeOpen && suggestion && <>
-          <p className="route-summary">
-            Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados
-          </p>
-          <button onClick={onClose}>Ver ruta en el mapa</button>
-        </>}
       </div>}
       {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
         <h3>Plan de barrida simulado</h3>
@@ -187,7 +172,7 @@ function Landing() {
       <ol>
         <li><span>01</span><h3>Detectar</h3><p>La cámara registra incidencias como baches, ramas caídas y contenedores rebalsados.</p></li>
         <li><span>02</span><h3>Ubicar</h3><p>El mapa reúne evidencia, ubicación y avistamientos en el ticket de cada incidencia.</p></li>
-        <li><span>03</span><h3>Derivar</h3><p>Desde el ticket se puede simular un aviso, diagramar una barrida o sugerir una ruta, según el caso.</p></li>
+        <li><span>03</span><h3>Derivar</h3><p>Desde el ticket se puede simular un aviso o diagramar una barrida, según el caso.</p></li>
       </ol>
     </section>
   </main>
@@ -224,8 +209,6 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
 
 function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
-  const [layer, setLayer] = useState<Layer>('tickets')
-  const [routeTicketId, setRouteTicketId] = useState<string>()
   const [manual, setManual] = useState<Record<string, ManualActivity[]>>({})
   const [step, setStep] = useState(demo ? 1 : 0)
   const [type, setType] = useState('')
@@ -246,17 +229,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
   const selected = visible.find(ticket => ticket.id === id)
-  const suggestion = selected?.type === 'Contenedor rebalsado' && status(selected) !== 'Posiblemente resuelta'
-    ? scenario.routes.suggestions[selected.id]
-    : undefined
-
-  const routeTicket = activeTickets.find(ticket => ticket.id === routeTicketId)
-  const displayedRoute = routeTicket && status(routeTicket) !== 'Posiblemente resuelta'
-    ? scenario.routes.suggestions[routeTicket.id]
-    : undefined
-  const routeOpen = layer === 'routes' && Boolean(displayedRoute) && routeTicketId === selected?.id
-  const mapLayer = layer === 'routes' && !displayedRoute ? 'tickets' : layer
-
   const [toast, setToast] = useState<{ title: string; detail: string }>()
   const replayTicket = activeTickets.find(ticket => ticket.id === replay.ticketId)
   useEffect(() => {
@@ -268,7 +240,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   }, [step]) // solo avisa cuando avanza la simulación
 
   const mapCanvas = useRef<HTMLDivElement>(null)
-  const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
+  const selectTicket = useCallback((ticketId?: string) => setId(ticketId), [])
 
   function recordAction(ticketId: string, action: TicketAction) {
     const time = new Date().toLocaleTimeString('es-AR', {
@@ -304,10 +276,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
       <div className="map-stage">
         <div className="map-toolbar">
           <MapHeading>Mapa urbano</MapHeading>
-          <div className="layer-switch" aria-label="Vista del mapa">
-            {modes.map(mode => <button key={mode.id} aria-pressed={mapLayer === mode.id}
-              onClick={() => setLayer(mode.id)}>{mode.label}</button>)}
-          </div>
         <div className="filters">
           <Filter label="Tipo" options={types} value={type} onChange={setType} />
           <Filter label="Estado" options={statuses} value={state} onChange={setState} />
@@ -322,28 +290,18 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
               <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
             </button>}
           </div>
-          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} />
-          {mapLayer !== 'tickets' && <div className="map-key">
-            {mapLayer === 'zones' ? <>
-              <span><i className="swatch observed" />Observada, sin tickets activos</span>
-              <span><i className="swatch warm" />Menor concentración</span>
-              <span><i className="swatch hot" />Mayor concentración de incidencias</span>
-              <span><i className="swatch unobserved" />Sin observación</span>
-            </> : <>
-              <span><i className="swatch fixed-route" />Ruta fija</span>
-              <span><i className="swatch suggested-route" />Ruta sugerida</span>
-            </>}
-          </div>}
-          {selected && <TicketDetail key={selected.id} ticket={selected} suggestion={suggestion} routeOpen={routeOpen}
+          <CityMap tickets={visible} selected={selected} onSelect={selectTicket} embedded={embedded} />
+          <div className="map-key" aria-label="Leyenda de zonas de calor">
+            <span><i className="swatch observed" />Observada, sin tickets activos</span>
+            <span><i className="swatch warm" />Menor concentración</span>
+            <span><i className="swatch hot" />Mayor concentración de incidencias</span>
+            <span><i className="swatch unobserved" />Sin observación</span>
+          </div>
+          {selected && <TicketDetail key={selected.id} ticket={selected}
             onAction={action => recordAction(selected.id, action)}
-            onToggleRoute={() => {
-              if (!routeOpen) recordAction(selected.id, 'route')
-              setRouteTicketId(routeOpen ? undefined : selected.id)
-              setLayer(routeOpen ? 'tickets' : 'routes')
-            }}
             onClose={() => {
               const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
-              if (marker && !routeOpen) marker.focus({ preventScroll: true })
+              if (marker) marker.focus({ preventScroll: true })
               else mapCanvas.current?.focus({ preventScroll: true })
               setId(undefined)
             }} />}

@@ -120,7 +120,7 @@ La paleta procede de la propuesta anterior de recolección. **Su correspondencia
 
 Referencia: [frontend actual](frontend/README.md) · [referencias visuales de Juani](harness/marca/referencias/README.md).
 
-**Iteración posterior del prototipo:** la vista COYS muestra marcadores, filtros por tipo, estado y área en la barra del mapa, un panel que se abre al seleccionar un ticket con foto ilustrativa e historial y mapa 3D con una vista de zonas de calor y rutas accesibles desde los tickets activos de contenedor rebalsado. La altura y las entrecalles de ejemplo se cargan desde el mock. Al abrir el mapa de incidencias, el fixture publica automáticamente un ticket y actualiza su historial con avistamientos, aviso y verificación posterior. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
+**Iteración posterior del prototipo:** la vista COYS muestra marcadores, filtros por tipo, estado y área en la barra del mapa, un panel que se abre al seleccionar un ticket con foto ilustrativa e historial y mapa 3D oscuro con zonas de calor siempre visibles, sin rutas sugeridas. La iteración del 13/11 solicitada por Juani aumenta la inclinación a 60°, acerca la cámara al seleccionar tickets o cuadrantes y permite volver al encuadre general con «Ver toda Córdoba». La altura y las entrecalles de ejemplo se cargan desde el mock. Al abrir el mapa de incidencias, el fixture publica automáticamente un ticket y actualiza su historial con avistamientos, aviso y verificación posterior. Los avisos y avistamientos de la simulación se generan en el frontend. [Cómo probarlo](frontend/README.md).
 
 ## 8. Límites del mensaje y decisiones pendientes
 

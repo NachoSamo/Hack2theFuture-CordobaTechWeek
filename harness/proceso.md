@@ -68,6 +68,14 @@ Incluye el test 3+3 del día 1 (14:35–15:10) y cualquier prueba con usuarios, 
 |---|---|---|---|---|---|
 | 12/11 14:35–15:10 | Que la propuesta se entiende y resuelve un problema real | Test 3+3: presentamos la solución en la mesa y recibimos visitas ([lienzo 08](proceso/mural-mesa24.html#o8), [foto](proceso/fotos/08-testear-e-iterar.jpg)) | Mesa 25 y un experto/a | Les gustó la visión por computadora y entendieron todo. Preguntaron cómo se financia y cuáles son los primeros pasos; pidieron abarcar todas las problemáticas, no solo residuos; la factibilidad depende del Ministerio de Seguridad | El pivot a detección urbana amplia con aviso directo (decision log 14:53, 15:08 y 21:21); financiamiento con el PMUS (21:21) |
 
+### 13/11 00:26 · Revisión del mapa con Juani
+
+Pedido: una única vista oscura con zonas de calor, retirar rutas sugeridas y acercar al seleccionar tickets o cuadrantes. Para el encuadre inicial se ofreció alejar, inclinar o ambas; Juani eligió mayor inclinación. Se conserva el zoom general y se fija una inclinación de 60°. El control «Ver toda Córdoba» permite recuperar ese encuadre.
+
+**Smoke check del prototipo: PASS.** Compilación con `npm run build`; revisión en navegador a 1440×900 y 390×844. Se comprobó apertura y acercamiento a un ticket, movimiento de cámara al seleccionar un cuadrante, regreso a la vista general, ausencia de selector de capas y acciones de rutas, filtro sin resultados y recuperación de 194 marcadores, acceso directo a CBA-104 y cierre con Escape. También se revisaron la página Impacto y el mapa de la landing. Sin errores de consola durante la revisión. Se corrigió la propagación del clic del marcador al cuadrante para evitar que una selección dispare dos enfoques.
+
+Las tres ramas remotas (`main`, `frontend/mlp-estadisticas-aviso`, `architecture/init`) quedaron integradas en `codex/mapa-ux`. La prueba usa fixtures y avisos simulados; no valida detección real, backend ni hipótesis de impacto. La aprobación completa de los diagramas sigue pendiente.
+
 ## Qué aprendimos y qué falta validar
 
 Lo que va al pitch, en dos listas cortas.
