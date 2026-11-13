@@ -99,6 +99,10 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .slide.sol.on .c2{animation:card2 .7s .45s ease-out both}
 @keyframes card1{from{opacity:0;transform:translateY(60px) rotate(-12deg)}to{opacity:1;transform:rotate(-5deg)}}
 @keyframes card2{from{opacity:0;transform:translateY(60px) rotate(10deg)}to{opacity:1;transform:rotate(4deg)}}
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:100px}
+.fin b{display:block;font:500 28px var(--mono);color:var(--lima);text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px}
+.fin h3{font-size:96px;line-height:1;letter-spacing:-.04em;margin:0 0 30px;font-weight:800}
+.fin p{font-size:40px;line-height:1.25;margin:0;color:#C9D4D3}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
 #hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
 </style>
@@ -210,13 +214,22 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   </div>
 </section>
 
-<!-- 9b · Financiamiento -->
+<!-- 9b · Viabilidad económica y financiamiento -->
 <section class="slide">
-  <p class="sub muted" style="margin:0 0 30px">Financiamiento</p>
-  <div class="mega" style="font-size:260px">600.000 €</div>
-  <p class="sub">La UE ya financió el Plan de Movilidad Urbana Sostenible de Córdoba.</p>
-  <p class="sub muted" style="margin-top:14px">El plan crea un Observatorio de Movilidad. <span class="lima">Urbis le da datos de la calle</span>, con la flota que ya circula.</p>
-  <p class="src">Asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD · MobiliseYourCity, 14/10/2025</p>
+  <p class="sub muted" style="margin:0 0 60px">Viabilidad económica</p>
+  <div class="fin">
+    <div>
+      <b>Para el municipio</b>
+      <h3>Se sostiene solo.</h3>
+      <p>Ahorra recorridos de inspección y seguimiento de incidentes. Mantenible más allá de cualquier fondo.</p>
+    </div>
+    <div>
+      <b>Para implementarlo</b>
+      <h3><span class="lima">600.000 €</span> de la UE</h3>
+      <p>ya financiaron el Plan de Movilidad Sostenible de Córdoba. Urbis le da datos de la calle a su Observatorio de Movilidad.</p>
+    </div>
+  </div>
+  <p class="src">Asistencia técnica de la UE (EUROCLIMA), implementada por la AFD · MobiliseYourCity, 14/10/2025</p>
 </section>
 
 <!-- 10 · Primer paso -->

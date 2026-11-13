@@ -99,12 +99,12 @@ En lo **económico**: como no depende de comprar flota ni sensores, se sostiene 
 El municipio gasta mejor, y el vecino ve su calle arreglada antes de tener que reclamar. Cubrimos los
 ODS 11, 12, 13, 9 y 17.
 
-### 9b · Financiamiento (≈15 s)
+### 9b · Viabilidad económica (≈20 s)
 
-La Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad Urbana Sostenible de Córdoba.
-Ese plan crea un Observatorio de Movilidad para medir si se cumple. **Urbis le da los datos de la
-calle**, con la flota que ya circula. Y la siguiente etapa la puede pedir el municipio por el mismo
-canal europeo.
+¿Quién lo paga? Para el municipio, **se sostiene solo**: ahorra recorridos de inspección y el
+seguimiento de cada incidente. Es mantenible más allá de cualquier fondo.
+Y para implementarlo, la Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad Urbana
+Sostenible de Córdoba. Ese plan crea un Observatorio de Movilidad, y Urbis le da los datos de la calle.
 
 ### 10 · Primer paso (2:40–2:50)
 
@@ -132,14 +132,15 @@ Gracias.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
 - **Fotos de las slides 3a a 3c:** las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
-- **Financiamiento (slide 9b):**
+- **Viabilidad económica y financiamiento (slide 9b):**
+  - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
   - Los 600.000 € son asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD, dentro
     de MobiliseYourCity ([nota del 14/10/2025](https://www.mobiliseyourcity.net/cordobas-sustainable-urban-mobility-plan-paves-way-integrated-metropolitan-transport-system)).
     No es el presupuesto total del plan.
   - El plan menciona un Observatorio de Movilidad para el monitoreo a largo plazo.
   - No prometer fondos nuevos con fecha. La UE financia al municipio, no a una startup.
   - Las fechas (2021–2024) y los 15 municipios salen de otra fuente que no pudimos abrir (capacity4dev dio error 403): no decirlas.
-  - La slide suma unos 15 segundos. Cronometrar.
+  - La slide suma unos 20 segundos. Cronometrar.
 - **Fuentes de la slide 3:**
   - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes). No se nombran en el pitch (Oli, 12/11): solo si el jurado pide un caso.
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
