@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v8, dos voces; falta la narración de la demo)
+estado: borrador para ensayar (v9, con las correcciones de Oli del 12/11)
 ---
 
 # Speech: Urbis (3 minutos)
@@ -13,11 +13,11 @@ estado: borrador para ensayar (v8, dos voces; falta la narración de la demo)
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** la v7 tenía 389 palabras (medidas); la v8 cambia la demo y hay que volver a medir. A 140 palabras por minuto más unos 16 segundos de pausas
-> da unos 3:03: es una estimación hasta cronometrarlo. Si se pasa, recortar primero la línea de los ODS.
+> **Duración:** 473 palabras (medidas). A 140 palabras por minuto, más las pausas, da unos 3:35: **se pasa
+> unos 35 segundos**. Hay que recortar antes de ensayar (ver propuestas en el chat del 12/11).
 >
-> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos"
-> (slides 1 a 6). **Persona B** narra la demo y sigue hasta el cierre (slides 7 a 9). Quiénes son se
+> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos en un
+> video" (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
 > decide en el ensayo, con cronómetro.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
@@ -27,32 +27,31 @@ estado: borrador para ensayar (v8, dos voces; falta la narración de la demo)
 
 **— Persona A (hasta la demo) —**
 
-### 1 · Urbis (0:00–0:12)
+### 1 · Urbis (0:00–0:10)
 
 Ahora mismo, mientras estamos acá, hay un patrullero dando vueltas por Córdoba.
 `[pausa]`
 Y está viendo cosas que **nadie va a registrar**.
-Somos **Urbis**.
-*(Los nombres del equipo, si hace falta, van en la presentación de la mesa.)*
+Creamos **Urbis**, y para entenderlo, primero los pongo en contexto.
 
-### 2 · Gancho: 2.000.000 de litros (0:12–0:30)
+### 2 · Gancho: 2.000.000 de litros (0:10–0:27)
 
-Piensen en un número: **dos millones**.
-Dos millones de litros de combustible por año recorren nuestra ciudad. Patrulleros y móviles que
-circulan todo el día, con las cámaras encendidas… mirando **una sola cosa**: la seguridad.
+Piensen en este número: **dos millones**.
+Dos millones de litros de combustible por año recorren nuestra ciudad. Patrulleros y móviles circulan
+todo el día con las cámaras encendidas, detectando **solo una cosa**: la seguridad.
 `[pausa]`
 
-### 3 · Problemas: la basura (0:30–0:43)
+### 3 · Problemas: la basura (0:27–0:40)
 
 Ahora pregúntense: ¿cuántas cosas pasan en la ciudad y **no estamos registrando**?
-Esta esquina, por ejemplo. La basura se acumula, y el móvil pasa. Una vez. Dos veces. Y nadie avisa.
+Esta esquina, por ejemplo. La basura se acumula y el móvil pasa. Una vez. Dos veces. Y nadie avisa.
 
-### 4 · Problemas: el árbol caído (0:43–0:55)
+### 4 · Problemas: árboles caídos (0:40–0:50)
 
-O esta otra. En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de
-caer. Y casi siempre, el primero en enterarse es el vecino.
+O esta otra. En una sola tormenta, Defensa Civil recibió **1.400 llamados** por árboles y postes
+caídos. Y casi siempre, el primero en enterarse es el vecino.
 
-### 5 · ¿A quién le pasa? (0:55–1:12)
+### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
 Al **municipio**, que gasta millones de pesos en combustible.
@@ -60,38 +59,42 @@ Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
-### 6 · La solución y prototipo en vivo (1:12–1:58)
+### 6 · La solución (1:05–1:25)
 
 Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
-Los kilómetros que ya se recorren pasan a tener un **uso más eficiente** y un **foco más sustentable**:
-el mismo móvil, en la misma vuelta, también cuida la ciudad.
-Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial, reconoce lo
-que la ciudad necesita, y le avisa **en tiempo real** al área que lo resuelve.
-Se lo mostramos.
+Los **mismos kilómetros** recorridos, pero con un uso más eficiente y abarcativo, maximizando los
+recursos.
+Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial y visión por
+computadora, reconoce lo que la ciudad necesita y le avisa **en tiempo real** al área que lo resuelve.
+Se lo mostramos en un video.
 
-*(Cambio al prototipo. Recargar para que la secuencia arranque de cero.)*
+**— Persona B (demo y cierre) —**
 
-**— Persona B (demo) —**
+*(Video de la landing.)*
 
-*(Pendiente: narración de lo que detecta el video, a medida que aparece en pantalla. Oli manda qué
-muestra el video.)*
+Como pueden ver, primero la cámara de la Guardia Urbana detecta la basura y todos los incidentes que
+fuimos viendo.
+Después pasamos a la demo funcional, con datos simulados: vemos cómo se reacciona ante cada ticket
+detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da estadísticas.
 
 *(Vuelta al deck.)*
 
-**— Persona B (sigue después de la demo) —**
+### 7 · ODS involucrados (1:55–2:05)
 
-### 7 · ODS involucrados (1:58–2:10)
+Y vamos a por qué somos sustentables. Así, cada litro rinde más, y aportamos a cinco Objetivos de
+Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
+alianzas.
 
-Así, cada litro rinde más, y aportamos a cinco Objetivos de Desarrollo Sostenible: ciudades
-sostenibles, consumo responsable, acción por el clima, innovación y alianzas.
+### 8 · Viabilidad económica (2:05–2:40)
 
-### 8 · Viabilidad económica (2:10–2:40)
-
-**¿Y quién lo paga?**
-Para el municipio, se sostiene solo. El costo es mínimo: usa la flota y las cámaras que ya tiene,
-procesa la imagen en el mismo móvil, sin transmitir ni guardar video, y le ahorra salir a inspeccionar.
-Y para implementarlo, hay **oportunidades de financiamiento de la Unión Europea**: Córdoba ya trabaja
-con la UE en su Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se los brinda.
+Vamos a la viabilidad económica: **¿quién lo paga?**
+Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene, procesa la imagen en
+el mismo móvil, sin transmitir ni grabar, y le ahorra salir a inspeccionar y gestionar reportes.
+Y para implementarlo, **ya existen iniciativas de financiamiento de la Unión Europea en Córdoba**: la
+ciudad ya trabaja en un Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se
+los brinda.
+Así unimos las dos partes: un sistema que al municipio le conviene mantener, porque ahorra y mejora la
+vida del vecino, y alianzas que ya financian el uso más eficiente de los recursos.
 
 ### 9 · Cierre (2:40–3:00)
 
@@ -138,6 +141,13 @@ Gracias.
   - No prometer fondos nuevos con fecha. La UE financia al municipio, no a una startup.
   - Las fechas (2021–2024) y los 15 municipios salen de otra fuente que no pudimos abrir (capacity4dev dio error 403): no decirlas.
   - La slide suma unos 20 segundos. Cronometrar.
+- **Árboles caídos (slide 4):** la nota de Perfil (7/8/2026) dice 1.400 llamados a Defensa Civil por la
+  tormenta: 198 por postes o columnas, 23 por cables colgando y 21 por ramas o árboles. Por eso se dice
+  "1.400 llamados por árboles y postes caídos" y no "198 por árboles": ese número es de postes.
+- **"Se sostiene solo":** se sacó de la slide y del speech (Oli, 12/11): no está probado. Se habla de
+  costo mínimo y ahorro.
+- **Bonos verdes:** Oli los mencionó como forma de financiamiento. No están en el speech porque no
+  tenemos fuente de bonos verdes para esto en Córdoba; si se suman, conseguir la fuente antes.
 - **Fuentes de los problemas:**
   - Basura: ficha 03 del research, noticias 284 (Mercado Norte) y 306 (Güemes). No se nombran en el pitch (Oli, 12/11): solo si el jurado pide un caso.
   - Alumbrado: La Voz, unos 66.000 reclamos sobre unas 130.000 luminarias en dos años.
