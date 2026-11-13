@@ -48,7 +48,7 @@ Le pasa al **municipio**, que gasta millones de pesos en combustible y después 
 que sus propios móviles vieron.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 
-### 6 · La solución y prototipo en vivo (0:55–1:35)
+### 6 · La solución y prototipo en vivo (0:52–1:35)
 
 Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
 
