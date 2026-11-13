@@ -133,12 +133,17 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .flota small{display:block;font:400 24px var(--mono);color:var(--muted);margin-top:18px}
 #bar{position:fixed;left:0;top:0;height:4px;background:var(--lima);transition:width .3s}
 #hint{position:fixed;right:16px;bottom:12px;font:400 12px var(--mono);color:var(--muted);opacity:.5}
+#timer{position:fixed;top:12px;right:14px;z-index:200;display:flex;align-items:center;gap:6px;padding:4px 6px 4px 10px;border-radius:8px;background:rgba(17,25,28,.75);border:1px solid rgba(165,179,169,.25);font:500 14px 'IBM Plex Mono',monospace;color:var(--gris);user-select:none}
+#timer.run{color:var(--lima)}#timer.low{color:var(--ambar)}#timer.over{color:var(--terracota)}
+#timer button{all:unset;cursor:pointer;width:22px;height:22px;display:grid;place-items:center;border-radius:5px;color:inherit;font-size:12px}
+#timer button:hover{background:rgba(165,179,169,.18)}
 #vid-overlay{position:fixed;inset:0;z-index:100;background:var(--asfalto);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .55s ease}
 #vid-overlay.on{opacity:1;pointer-events:auto}
 #vid-overlay video{width:100%;height:100%;object-fit:contain;display:block}
 </style>
 </head>
 <body>
+<div id="timer" title="Cronómetro del pitch (3:00)"><span id="t-left">3:00</span><button id="t-play" aria-label="Iniciar o pausar">▶</button><button id="t-reset" aria-label="Reiniciar">↺</button></div>
 <div id="bar"></div>
 <div id="stage">
 
@@ -344,6 +349,18 @@ addEventListener('keydown',e=>{
 });
 stage.addEventListener('click',e=>show(e.clientX>innerWidth/2?cur+1:cur-1));
 show(cur);
+
+// Cronómetro del pitch: 3:00 hacia atrás; ámbar en los últimos 30 s, terracota al pasarse (sigue contando en negativo)
+(()=>{const T=180,el=document.getElementById('timer'),lbl=document.getElementById('t-left'),bp=document.getElementById('t-play'),br=document.getElementById('t-reset');
+let used=0,start=0,iv=0;
+const left=()=>T-used-(iv?(Date.now()-start)/1000:0);
+function draw(){const l=left(),a=Math.abs(l),m=Math.floor(Math.ceil(a)/60),sec=Math.ceil(a)%60;
+  lbl.textContent=(l<0&&Math.ceil(a)>0?'-':'')+m+':'+String(sec).padStart(2,'0');
+  el.className=(iv?'run ':'')+(l<=0?'over':l<=30?'low':'');bp.textContent=iv?'❚❚':'▶';}
+bp.onclick=e=>{e.stopPropagation();if(iv){used+=(Date.now()-start)/1000;clearInterval(iv);iv=0}else{start=Date.now();iv=setInterval(draw,250)}draw()};
+br.onclick=e=>{e.stopPropagation();clearInterval(iv);iv=0;used=0;draw()};
+[bp,br].forEach(b=>b.addEventListener('mousedown',e=>e.preventDefault()));
+el.addEventListener('click',e=>e.stopPropagation());draw();})();
 </script>
 </body>
 </html>
