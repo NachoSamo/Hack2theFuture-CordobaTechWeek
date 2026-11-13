@@ -51,9 +51,9 @@ Y en dos años hubo **66.000 reclamos** de alumbrado.
 
 ### 4 · A quién le pasa (0:50–1:05)
 
-Le pasa al **municipio**, que paga ese combustible y, además, recibe los reclamos de todo lo que sus
-móviles vieron y nadie avisó.
-Y le pasa al **vecino**, que convive con la basura o con la luz apagada hasta que alguien la reporta.
+Le pasa al **municipio**, que gasta millones de litros de combustible y recibe los reclamos de todo
+lo que sus móviles vieron y nadie avisó.
+Y le pasa al **vecino**, que convive con incidentes evitables, todos los días.
 
 ### 5 · La pregunta (1:05–1:15)
 
