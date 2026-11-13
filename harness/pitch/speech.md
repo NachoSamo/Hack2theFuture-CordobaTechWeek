@@ -2,7 +2,7 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v9, con las correcciones de Oli del 12/11)
+estado: borrador para ensayar (v10, v9 recortada a 3 minutos)
 ---
 
 # Speech: Urbis (3 minutos)
@@ -13,8 +13,8 @@ estado: borrador para ensayar (v9, con las correcciones de Oli del 12/11)
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** 473 palabras (medidas). A 140 palabras por minuto, más las pausas, da unos 3:35: **se pasa
-> unos 35 segundos**. Hay que recortar antes de ensayar (ver propuestas en el chat del 12/11).
+> **Duración:** 405 palabras (medidas). A 140 palabras por minuto, más las pausas, da unos 3:08.
+> Es una estimación: cronometrarlo en voz alta, con el video.
 >
 > **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos en un
 > video" (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
@@ -32,7 +32,6 @@ estado: borrador para ensayar (v9, con las correcciones de Oli del 12/11)
 Ahora mismo, mientras estamos acá, hay un patrullero dando vueltas por Córdoba.
 `[pausa]`
 Y está viendo cosas que **nadie va a registrar**.
-Creamos **Urbis**, y para entenderlo, primero los pongo en contexto.
 
 ### 2 · Gancho: 2.000.000 de litros (0:10–0:27)
 
@@ -61,9 +60,7 @@ Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo m
 
 ### 6 · La solución (1:05–1:25)
 
-Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
-Los **mismos kilómetros** recorridos, pero con un uso más eficiente y abarcativo, maximizando los
-recursos.
+Por eso creamos **Urbis**: los **mismos kilómetros**, con un uso más eficiente.
 Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial y visión por
 computadora, reconoce lo que la ciudad necesita y le avisa **en tiempo real** al área que lo resuelve.
 Se lo mostramos en un video.
@@ -81,7 +78,7 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 ### 7 · ODS involucrados (1:55–2:05)
 
-Y vamos a por qué somos sustentables. Así, cada litro rinde más, y aportamos a cinco Objetivos de
+Así, cada litro rinde más, y aportamos a cinco Objetivos de
 Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
 alianzas.
 
@@ -93,9 +90,6 @@ el mismo móvil, sin transmitir ni grabar, y le ahorra salir a inspeccionar y ge
 Y para implementarlo, **ya existen iniciativas de financiamiento de la Unión Europea en Córdoba**: la
 ciudad ya trabaja en un Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se
 los brinda.
-Así unimos las dos partes: un sistema que al municipio le conviene mantener, porque ahorra y mejora la
-vida del vecino, y alianzas que ya financian el uso más eficiente de los recursos.
-
 ### 9 · Cierre (2:40–3:00)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
