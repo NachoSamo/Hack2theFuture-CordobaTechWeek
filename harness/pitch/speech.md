@@ -71,11 +71,6 @@ verificado.
 
 *(Vuelta al deck.)*
 
-### 9 · Qué aprendimos (1:35–1:47)
-
-Empezamos optimizando rutas de basura. Los mentores nos mostraron algo más grande: **alertar a cada
-área** de la ciudad.
-
 ### 10 · Qué la hace distinta: costo marginal cero (1:47–2:02)
 
 Y lo hacemos con costo marginal **cero**: sobre una flota que ya circula, una infraestructura que ya
@@ -111,8 +106,9 @@ Gracias.
 ## Para los ensayos
 
 - **Cronómetro:** el prototipo (slide 8) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
-  se recorta en este orden: la frase de los ODS (11), la slide 9 (qué aprendimos) y la segunda frase
-  de la 10.
+  se recorta en este orden: la frase de los ODS (11) y la segunda frase de la 10.
+- **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
+  pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad monitoreando solo seguridad.
   - *¿Por qué es movilidad?* Slide 10: la flota es el recurso, y ningún área saca otro vehículo a la calle.
