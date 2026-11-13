@@ -13,7 +13,7 @@ estado: borrador para ensayar (v13: abre con "Creamos Urbis" y va directo al pro
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** unas 370 palabras (v13, 13/11: la apertura dice "Creamos Urbis" y entra directo al patrullero; v12: se recortaron solución, ODS y viabilidad, y la frase del vecino volvió a la anterior). A 140 palabras por minuto, más las pausas, da unos **2:45**. Es una estimación: cronometrarlo en voz alta, con el video.
+> **Duración:** unas 390 palabras (v13, 13/11: la solución explica que se usan más eficientemente los litros ya gastados; la apertura dice "Creamos Urbis" y entra directo al patrullero; v12: se recortaron solución, ODS y viabilidad, y la frase del vecino volvió a la anterior). A 140 palabras por minuto, más las pausas, da unos **2:45**. Es una estimación: cronometrarlo en voz alta, con el video.
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
 > **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
@@ -63,6 +63,7 @@ Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo m
 ### 6 · La solución (1:05–1:25)
 
 Por eso creamos **Urbis**: **mismo recorrido, más sustentabilidad**.
+Usamos **los mismos litros** de combustible que ya se gastan, pero ahora cada litro sirve para la seguridad **y también para cuidar la ciudad**.
 Hoy esas cámaras miran solo seguridad. Con Urbis, **cada pasada le avisa a todas las áreas**.
 Con inteligencia artificial, reconoce lo que ve y le avisa **en el momento** al área que lo resuelve.
 Se lo mostramos en un video.
