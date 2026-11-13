@@ -50,12 +50,12 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 ## Gancho
 
 > "Piensen en este número: cinco millones y medio." Estimamos 5,6 millones de litros de combustible por
-> año, unos $12.000 millones, para patrullar Córdoba mirando solo la seguridad.
+> año, unos US$7,6 millones, para patrullar Córdoba mirando solo la seguridad.
 
 **Es una estimación nuestra (13/11):** 770 móviles con fuente (700 camionetas de la Policía, [Cadena 3,
 9/10/2025](https://www.cadena3.com/noticia/sociedad/cordoba-refuerza-seguridad-con-400-camionetas-y-nueva-unidad-especial-policial_472813),
 y 70 de la Guardia Urbana, [La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/ciudad-de-cordoba-con-70-moviles-y-400-efectivos-larga-este-lunes-la-guardia-urbana-municipal))
-× 20 litros por día (supuesto) × $2.100 por litro (nafta súper, Infobae 10/11/2026). Cuentas y
+× 20 litros por día (supuesto) × $2.100 por litro (nafta súper, Infobae 10/11/2026), que en el deck va en dólares: US$1,35 por litro al cambio BNA de $1.560 (30/10/2026). Cuentas y
 huella de carbono en [`pitch/speech.md`](pitch/speech.md).
 
 **Corrección:** antes se usaban 2 millones de litros de La Voz de San Justo (3/12/2024). Ese número era

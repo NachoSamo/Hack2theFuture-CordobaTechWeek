@@ -36,8 +36,8 @@ Y está viendo cosas que **nadie va a registrar**.
 ### 2 · Gancho: 5.600.000 litros (0:10–0:27)
 
 Piensen en este número: **cinco millones y medio**.
-Estimamos que cinco millones y medio de litros de combustible por año, unos **doce mil millones de
-pesos**, se van en patrullar Córdoba. Patrulleros y móviles circulan todo el día con las cámaras
+Estimamos que cinco millones y medio de litros de combustible por año, unos **siete millones y medio de
+dólares**, se van en patrullar Córdoba. Patrulleros y móviles circulan todo el día con las cámaras
 encendidas, detectando **solo una cosa**: la seguridad.
 `[pausa]`
 
@@ -54,7 +54,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que gasta más de mil millones de pesos por año en combustible.
+Al **municipio**, que gasta casi setecientos mil dólares por año en combustible.
 Y al **vecino**, que hace **noventa reclamos por día** solo por luces apagadas. En dos años falló más
 de la mitad del alumbrado de Córdoba.
 `[pausa]`
@@ -160,8 +160,8 @@ Gracias.
     No hay dato oficial: es el número más débil.
   - **Precio (con fuente):** $2.100 por litro, nafta súper (Infobae, 10/11/2026). Las camionetas son
     diésel, que es más caro, así que el monto es conservador.
-  - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año.
-    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones.
+  - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año (US$7,6 millones al cambio BNA de $1.560, 30/10/2026).
+    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones (casi US$700.000).
   - **Huella de carbono:** a unos 2,6 kg de CO₂ por litro de gasoil, son unas 14.600 toneladas de CO₂
     por año.
   - **Corrección del 12/11:** el dato anterior de 2 millones de litros (La Voz de San Justo,
