@@ -55,7 +55,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que paga un combustible que solo sirve para patrullar.
+Al **municipio**, que usa su combustible para seguridad.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
@@ -91,8 +91,8 @@ Unión Europea en Córdoba**, para un Plan de Movilidad Sostenible que necesita 
 
 ### 9 · Primer paso (2:40–2:55)
 
-**¿Cómo empezamos?** Con una reunión con el municipio. Y con un **barrio piloto** de cuatro semanas, con los
-móviles que ya lo recorren, para medir cuántas incidencias detectamos y cuánto tarda en resolverse cada una.
+**¿Cómo empezamos?** En diciembre, con una reunión con el municipio. Y en febrero, con un **barrio piloto** de
+cuatro semanas, con los móviles que ya lo recorren, para medir cuántas incidencias detectamos y cuánto tarda en resolverse cada una.
 
 ### 10 · Cierre (2:55–3:15)
 
@@ -110,7 +110,7 @@ Gracias.
 
 - **Cronómetro:** el video (después de la slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
   se recorta en este orden: la línea de ODS (7, ya reducida a una frase el 13/11) y la frase de financiamiento UE de la 8.
-- **Primer paso (slide 9, vuelve el 13/11):** punto de partida = una reunión con el municipio (acceso al monitoreo y un área que reciba los avisos). Prueba = barrio piloto de 4 semanas, Güemes o Mercado Norte (idea-y-epicas §7 y mural, lienzo 07). Metas de los lienzos: ≥ 30 % de la flota piloto con Urbis activo, ≥ 70 % de detecciones correctas; el tiempo de resolución se mide, sin meta. **Con esta slide el speech pasa los 3 minutos: cronometrar y recortar.**
+- **Primer paso (slide 9, vuelve el 13/11):** fechas propuestas por Claude el 13/11, a confirmar con el equipo: reunión en diciembre 2026 (acordar acceso y área que recibe avisos) y piloto de 4 semanas en febrero 2027 (da tiempo a preparar la detección y el acuerdo; enero es receso). No las dijo ningún mentor. punto de partida = una reunión con el municipio (acceso al monitoreo y un área que reciba los avisos). Prueba = barrio piloto de 4 semanas, Güemes o Mercado Norte (idea-y-epicas §7 y mural, lienzo 07). Metas de los lienzos: ≥ 30 % de la flota piloto con Urbis activo, ≥ 70 % de detecciones correctas; el tiempo de resolución se mide, sin meta. **Con esta slide el speech pasa los 3 minutos: cronometrar y recortar.**
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
   pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
