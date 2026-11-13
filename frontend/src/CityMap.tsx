@@ -18,6 +18,7 @@ type Props = {
 
 export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedded = false }: Props) {
   const showRoutes = layer === 'routes'
+  const overviewZoom = embedded ? 13.25 : 11.85
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -31,7 +32,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
         container: host.current,
         style: 'https://tiles.openfreemap.org/styles/dark',
         center,
-        zoom: 13.25,
+        zoom: overviewZoom,
         pitch: 43,
         bearing: -22,
         cooperativeGestures: embedded,
@@ -109,7 +110,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       map.remove()
       instance.current = null
     }
-  }, [embedded])
+  }, [embedded, overviewZoom])
 
   useEffect(() => {
     const map = instance.current
@@ -118,10 +119,11 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
-      marker.className = 'pin'
+      marker.className = scenario.routes.suggestions[ticket.id] ? 'pin pin-with-route' : 'pin'
       marker.dataset.ticketId = ticket.id
       marker.style.setProperty('--pin', levels[ticket.level])
       const detail = locationLabel(ticket) + ' · ' + status(ticket) + ' · ' + ticket.area
+      marker.setAttribute('aria-haspopup', 'dialog')
       marker.setAttribute('aria-label', ticket.type + ', ' + detail)
       const tooltip = document.createElement('span')
       tooltip.className = 'pin-label'
@@ -134,13 +136,6 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       ticketStatus.className = 'pin-status'
       ticketStatus.textContent = status(ticket)
       copy.append(title, address, ticketStatus)
-      if (ticket.photo) {
-        const image = document.createElement('img')
-        image.src = ticket.photo
-        image.alt = ''
-        image.decoding = 'async'
-        tooltip.append(image)
-      }
       tooltip.append(copy)
       const placePreview = () => {
         const pin = marker.getBoundingClientRect()
@@ -211,8 +206,8 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       map.fitBounds(bounds, { padding: 50, maxZoom: 13.65, bearing: 0, pitch: 16, duration })
       return
     }
-    map.easeTo({ center, zoom: 13.25, pitch: 43, bearing: -22, duration })
-  }, [ready, showRoutes, suggestion])
+    map.easeTo({ center, zoom: overviewZoom, pitch: 43, bearing: -22, duration })
+  }, [ready, showRoutes, suggestion, overviewZoom])
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />

@@ -2,7 +2,7 @@
 
 Ejecutá `npm ci` y `npm run dev` desde esta carpeta. Para compilar, usá `npm run build`.
 
-La vista general de COYS muestra tickets de mantenimiento urbano. La barra superior filtra los marcadores por tipo, estado y área. Pasá el cursor o enfocá un marcador para ver la foto, la dirección y el estado. Seleccioná un marcador para abrir el panel con una foto ilustrativa generada con IA y el detalle, con avistamientos, gravedad, área responsable, historial y próximo paso.
+La vista general de COYS muestra tickets de mantenimiento urbano. La barra superior filtra los marcadores por tipo, estado y área. Pasá el cursor o enfocá un marcador para ver el tipo, la ubicación y el estado. Seleccioná un marcador para abrir su tarjeta sobre el mapa, con foto ilustrativa, detalle, historial y acciones. Cerrala con Escape o con el botón Cerrar.
 
 La raíz muestra la landing de Urbis con el clips de detección en bucle y un control para pausarlos. La sección «El sistema de Urbis» incluye el mapa interactivo y un acceso al mapa completo. Abrí `/#mapa` para entrar directo al mapa 3D en Incidencias. Zonas de calor combina la atención y la cobertura del mock. Rojo indica tickets activos, verde indica una zona observada sin tickets activos y gris indica que no hay observación registrada, incluso fuera de la grilla.
 
@@ -18,4 +18,4 @@ La landing reproduce un clip ilustrativo de detección simulada. El acceso direc
 
 Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales, sugerir rutas para contenedores rebalsados y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
 
-El fixture incluye el payload de ticket de la [arquitectura](../harness/arquitectura/arquitectura-sistema.md) y datos locales para el detalle. Las zonas usan avistamientos por gravedad como ponderación. La cobertura y las coordenadas agregadas son sintéticas. Rama y cable caído se conservan como extensiones locales de la taxonomía inicial.
+El fixture incluye el payload de ticket de la [arquitectura](../harness/arquitectura/arquitectura-sistema.md) y datos locales para el detalle. Las zonas usan avistamientos por gravedad como ponderación. El mapa incluye 194 tickets simulados. La cobertura y las coordenadas agregadas son sintéticas. Las fotos son ilustrativas y se reutilizan por tipo de incidencia. Rama y cable caído se conservan como extensiones locales de la taxonomía inicial.

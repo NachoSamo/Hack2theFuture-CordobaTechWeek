@@ -18,7 +18,7 @@
 | Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias). Los 16 lienzos del [mural](proceso/mural-mesa24.html) sincronizados con Urbis (12/11 22:01) y `proceso.md` con POV, ideas y test 3+3; sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing oscura con clips de detección en la portada y acceso al mapa interactivo dentro de la misma página. Vista previa de tickets. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
+| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing oscura con clips de detección en la portada y acceso al mapa interactivo dentro de la misma página. Vista previa y tarjeta de detalle con foto, historial y acciones para 194 tickets simulados. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -38,6 +38,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 - [ ] Qué significa "3+3" en el testeo y cómo se entrega el registro del proceso (preguntar al staff)
 
 ## Avisos
+
+- 12/11 · Juani · La demo abre tarjetas sobre el mapa. Se actualizó el recorrido en `demo-path.md` · a Samo
 
 - 12/11 · Juani · Se separan los clips de detección y el mapa interactivo en la landing; está reflejado en `demo-path.md` · a Samo
 

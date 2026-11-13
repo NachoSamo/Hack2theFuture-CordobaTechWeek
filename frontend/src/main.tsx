@@ -26,6 +26,10 @@ function activityLabel(entry: Activity, index: number, area: string) {
 }
 
 function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, onClose }: { ticket: Ticket; suggestion?: StreetRoute; routeOpen: boolean; onToggleRoute: () => void; onAction: (action: TicketAction) => void; onClose: () => void }) {
+  const card = useRef<HTMLElement>(null)
+  useEffect(() => {
+    card.current?.focus({ preventScroll: true })
+  }, [])
   const sightings = ticket.activity.filter(entry => entry.kind === 'sighting')
   const sweepPlanned = ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'sweep')
   const current = status(ticket)
@@ -35,62 +39,80 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, 
       ? 'Esperar una nueva pasada para verificar el estado.'
       : 'Confirmar si la incidencia fue atendida.'
 
-  return <section className="review" aria-label="Detalle del ticket">
-    <div className="review-title"><span className="ticket-id">{ticket.id}</span><button onClick={onClose}>Cerrar</button></div>
-    <h2>{ticket.type}</h2>
-    <p>{locationLabel(ticket)} · {ticket.place}</p>
-    {current !== 'Posiblemente resuelta' && <div className="ticket-actions" aria-label="Acciones del ticket">
-      <h3>Acciones simuladas</h3>
-      <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
-        onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
-      {suggestion && <button aria-pressed={routeOpen} onClick={onToggleRoute}>
-        {routeOpen ? 'Volver al mapa' : 'Sugerir ruta'}
-      </button>}
-      {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
-        <button disabled={sweepPlanned}
-          onClick={() => onAction('sweep')}>Diagramar barrida</button>}
-      {routeOpen && suggestion && <p className="route-summary">
-        Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados
-      </p>}
-    </div>}
-    {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
-      <h3>Plan de barrida simulado</h3>
-      <p>{locationLabel(ticket)} · {ticket.area}</p>
-      <ol>
-        <li>Revisar el punto reportado y las veredas del tramo.</li>
-        <li>Retirar {ticket.type === 'Rama caída' ? 'la rama y los restos vegetales' : 'los residuos acumulados'}.</li>
-        <li>Registrar el estado del tramo después de la intervención.</li>
+  return <section ref={card} className="review ticket-card" role="dialog" tabIndex={-1}
+    aria-label={`Detalle del ticket ${ticket.id}`}
+    onKeyDown={event => {
+      if (event.key !== 'Escape') return
+      event.stopPropagation()
+      onClose()
+    }}>
+    <header className="ticket-card-header">
+      <div className="review-title"><span className="ticket-id">{ticket.id}</span><button onClick={onClose}>Cerrar</button></div>
+      <h2>{ticket.type}</h2>
+      <p>{locationLabel(ticket)} · {ticket.place}</p>
+    </header>
+    <div className="ticket-card-body">
+      <div className="ticket-overview">
+        <figure className="ticket-photo">
+          <div className="ticket-photo-frame">
+            <img src={ticket.photo} alt={ticket.type + ' · imagen ilustrativa'} />
+          </div>
+          <figcaption>Imagen ilustrativa del tipo de incidencia</figcaption>
+        </figure>
+        <dl className="facts">
+          <div><dt>Estado de la incidencia</dt><dd>{current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
+          <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
+          <div><dt>Incidencia vinculada</dt><dd>{ticket.payload.incident_id}</dd></div>
+          <div><dt>Referencia GPS</dt><dd>{ticket.payload.incident.location.reference === 'camara' ? 'Cámara' : 'Incidencia'} · {ticket.payload.incident.location.accuracy_m == null ? 'Precisión sin dato' : ticket.payload.incident.location.accuracy_m + ' m'}</dd></div>
+          <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
+          <div><dt>Última observación</dt><dd>{sightings[sightings.length - 1]?.time ?? 'Sin dato'}</dd></div>
+          <div><dt>Gravedad</dt><dd>{ticket.level}</dd></div>
+          <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
+        </dl>
+      </div>
+      {current !== 'Posiblemente resuelta' && <div className="ticket-actions" aria-label="Acciones del ticket">
+        <h3>Acciones simuladas</h3>
+        <button disabled={ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice')}
+          onClick={() => onAction('notice')}>Informar a {ticket.area}</button>
+        {suggestion && <button aria-pressed={routeOpen} onClick={onToggleRoute}>
+          {routeOpen ? 'Ocultar ruta' : 'Sugerir ruta'}
+        </button>}
+        {(ticket.type === 'Residuos acumulados' || ticket.type === 'Rama caída') &&
+          <button disabled={sweepPlanned}
+            onClick={() => onAction('sweep')}>Diagramar barrida</button>}
+        {routeOpen && suggestion && <>
+          <p className="route-summary">
+            Ruta sugerida · {(suggestion.meters / 1000).toLocaleString('es-AR', { maximumFractionDigits: 2 })} km estimados
+          </p>
+          <button onClick={onClose}>Ver ruta en el mapa</button>
+        </>}
+      </div>}
+      {sweepPlanned && <section className="sweep-plan" aria-label="Plan de barrida">
+        <h3>Plan de barrida simulado</h3>
+        <p>{locationLabel(ticket)} · {ticket.area}</p>
+        <ol>
+          <li>Revisar el punto reportado y las veredas del tramo.</li>
+          <li>Retirar {ticket.type === 'Rama caída' ? 'la rama y los restos vegetales' : 'los residuos acumulados'}.</li>
+          <li>Registrar el estado del tramo después de la intervención.</li>
+        </ol>
+      </section>}
+
+      {ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice') &&
+        <p role="status">Aviso manual simulado a {ticket.area}</p>}
+      <h3>Historial de actividad</h3>
+      <ol className="timeline" aria-live="polite">
+        {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
+          <time>{entry.time}</time>
+          <div><strong>{activityLabel(entry, index, ticket.area)}</strong>
+            <small>{entry.kind === 'manual' ? 'Manual' : 'Automática'}
+              {'source' in entry && ' · ' + entry.source}
+              {entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}
+            </small>
+          </div>
+        </li>)}
       </ol>
-    </section>}
-    {ticket.photo && <figure className="ticket-photo">
-      <img src={ticket.photo} alt={ticket.type + ' · imagen ilustrativa'} width="512" height="512" />
-      <figcaption>Foto ilustrativa generada con IA</figcaption>
-    </figure>}
-    <dl className="facts">
-      <div><dt>Estado de la incidencia</dt><dd>{current === 'Posiblemente resuelta' ? current : 'Activa'}</dd></div>
-      <div><dt>Estado del aviso</dt><dd>{ticket.activity.some(entry => entry.kind === 'notice' || (entry.kind === 'manual' && entry.action === 'notice')) ? 'Enviado (simulado)' : 'Pendiente'}</dd></div>
-      <div><dt>Incidencia vinculada</dt><dd>{ticket.payload.incident_id}</dd></div>
-      <div><dt>Referencia GPS</dt><dd>{ticket.payload.incident.location.reference === 'camara' ? 'Cámara' : 'Incidencia'} · {ticket.payload.incident.location.accuracy_m == null ? 'Precisión sin dato' : ticket.payload.incident.location.accuracy_m + ' m'}</dd></div>
-      <div><dt>Área responsable</dt><dd>{ticket.area}</dd></div>
-      <div><dt>Última observación</dt><dd>{sightings[sightings.length - 1]?.time ?? 'Sin dato'}</dd></div>
-      <div><dt>Gravedad</dt><dd>{ticket.level}</dd></div>
-      <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
-    </dl>
-    {ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice') &&
-      <p role="status">Aviso manual simulado a {ticket.area}</p>}
-    <h3>Actividad</h3>
-    <ol className="timeline" aria-live="polite">
-      {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
-        <time>{entry.time}</time>
-        <div><strong>{activityLabel(entry, index, ticket.area)}</strong>
-          <small>{entry.kind === 'manual' ? 'Manual' : 'Automática'}
-            {'source' in entry && ' · ' + entry.source}
-            {entry.kind === 'sighting' && ' · ' + entry.confidence + '% de confianza'}
-          </small>
-        </div>
-      </li>)}
-    </ol>
-    <p className="next"><strong>Próximo paso</strong>{next}</p>
+      <p className="next"><strong>Próximo paso</strong>{next}</p>
+    </div>
   </section>
 }
 
@@ -215,12 +237,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
   const selected = visible.find(ticket => ticket.id === id)
-  const [lastSelected, setLastSelected] = useState<Ticket>()
-  useEffect(() => {
-    if (selected) setLastSelected(selected)
-  }, [selected])
-  const panelTicket = selected ?? lastSelected
-
   const suggestion = selected?.type === 'Contenedor rebalsado' && status(selected) !== 'Posiblemente resuelta'
     ? scenario.routes.suggestions[selected.id]
     : undefined
@@ -232,6 +248,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   const routeOpen = layer === 'routes' && Boolean(displayedRoute) && routeTicketId === selected?.id
   const mapLayer = layer === 'routes' && !displayedRoute ? 'tickets' : layer
 
+  const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
 
   function recordAction(ticketId: string, action: TicketAction) {
@@ -258,7 +275,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
       </div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
-    <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
+    <section className="workspace" aria-label="Monitoreo urbano">
       <div className="map-stage">
         <div className="map-toolbar">
           <MapHeading>Mapa urbano</MapHeading>
@@ -272,7 +289,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
           <Filter label="Área" options={areas} value={area} onChange={setArea} />
         </div>
         </div>
-        <div className="map-canvas">
+        <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
           <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} />
           {mapLayer !== 'tickets' && <div className="map-key">
@@ -286,22 +303,19 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
               <span><i className="swatch suggested-route" />Ruta sugerida</span>
             </>}
           </div>}
-      <div className="panel-track" inert={!selected}>
-        {panelTicket && <aside className="panel" aria-label="Ticket seleccionado">
-        <TicketDetail key={panelTicket.id} ticket={panelTicket} suggestion={suggestion} routeOpen={routeOpen}
-          onAction={action => recordAction(panelTicket.id, action)}
-          onToggleRoute={() => {
-            if (!routeOpen) recordAction(panelTicket.id, 'route')
-            setRouteTicketId(routeOpen ? undefined : selected?.id)
-            setLayer(routeOpen ? 'tickets' : 'routes')
-          }}
-          onClose={() => {
-            const marker = document.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(panelTicket.id)}"]`)
-            marker?.focus({ preventScroll: true })
-            setId(undefined)
-          }} />
-        </aside>}
-      </div>
+          {selected && <TicketDetail key={selected.id} ticket={selected} suggestion={suggestion} routeOpen={routeOpen}
+            onAction={action => recordAction(selected.id, action)}
+            onToggleRoute={() => {
+              if (!routeOpen) recordAction(selected.id, 'route')
+              setRouteTicketId(routeOpen ? undefined : selected.id)
+              setLayer(routeOpen ? 'tickets' : 'routes')
+            }}
+            onClose={() => {
+              const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
+              if (marker && !routeOpen) marker.focus({ preventScroll: true })
+              else mapCanvas.current?.focus({ preventScroll: true })
+              setId(undefined)
+            }} />}
         </div>
       </div>
     </section>

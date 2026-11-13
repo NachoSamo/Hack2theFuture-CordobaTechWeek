@@ -13,7 +13,7 @@ export type Ticket = {
   id: string
   type: string
   address?: string
-  photo?: string
+  photo: string
   streetReference?: { street: string; number: number; between: string[] }
   place: string
   area: string
