@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Demostración de entrada de Ikhnos
 
-La landing reproduce el montaje de detecciones simuladas y abre el mapa del prototipo al terminar. La secuencia selecciona CBA-104, abre el panel, ejecuta «Sugerir ruta» y vuelve al montaje. La vista utiliza el mapa y los controles del sistema con datos simulados. Para repetir la acción en la interfaz completa, abrí `/#mapa/deteccion`.
+La landing intercala tres fragmentos de detección con el mapa interactivo. Después de cada fragmento abre su ticket y muestra una acción simulada. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. La secuencia vuelve al primer caso al terminar. Para probar la interfaz completa, abrí `/#mapa`.

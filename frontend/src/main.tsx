@@ -72,6 +72,8 @@ function TicketDetail({ ticket, suggestion, routeOpen, onToggleRoute, onAction, 
       <div><dt>Gravedad</dt><dd>{ticket.level}</dd></div>
       <div><dt>Avistamientos</dt><dd>{sightings.length}</dd></div>
     </dl>
+    {ticket.activity.some(entry => entry.kind === 'manual' && entry.action === 'notice') &&
+      <p role="status">Aviso manual simulado a {ticket.area}</p>}
     <h3>Actividad</h3>
     <ol className="timeline" aria-live="polite">
       {ticket.activity.map((entry, index) => <li key={entry.time + entry.kind + index}>
@@ -95,16 +97,22 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
   </select>
 }
 
-const previewTicket = tickets.find(ticket => ticket.id === replay.ticketId)
-const previewRoute = scenario.routes.suggestions[replay.ticketId]
+const demoCases = [
+  { id: 'CBA-105', start: 0, end: 1.48, action: 'notice' },
+  { id: 'CBA-106', start: 2.96, end: 4.44, action: 'sweep' },
+  { id: replay.ticketId, start: 7.4, end: 10, action: 'route' },
+] as const
 
 function Landing() {
   const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
-  const [phase, setPhase] = useState<'clip' | 'map' | 'ticket' | 'route'>('clip')
+  const [caseIndex, setCaseIndex] = useState(0)
+  const [phase, setPhase] = useState<'clip' | 'map' | 'ticket' | 'action'>('clip')
   const [previewId, setPreviewId] = useState<string>()
   const [previewActivity, setPreviewActivity] = useState<ManualActivity[]>([])
+  const demoCase = demoCases[caseIndex]
   const activePreview = tickets.find(ticket => ticket.id === previewId)
-  const suggestion = activePreview?.id === replay.ticketId ? previewRoute : undefined
+  const suggestion = activePreview?.type === 'Contenedor rebalsado' ? scenario.routes.suggestions[activePreview.id] : undefined
+  const routeOpen = previewActivity.some(entry => entry.action === 'route') && Boolean(suggestion)
 
   const openPreview = useCallback((ticketId: string) => {
     setPreviewId(ticketId)
@@ -112,26 +120,32 @@ function Landing() {
     setPhase('ticket')
   }, [])
 
-  const suggestPreviewRoute = useCallback(() => {
-    setPreviewActivity([{ kind: 'manual', action: 'route', time: '14:33' }])
-    setPhase('route')
+  const runAction = useCallback((action: TicketAction) => {
+    setPreviewActivity(entries => entries.some(entry => entry.action === action) ? entries :
+      [...entries, { kind: 'manual', action, time: '14:45' }])
+    setPhase('action')
   }, [])
 
   useEffect(() => {
     if (phase === 'clip') return
     const timer = window.setTimeout(() => {
-      if (phase === 'map' && previewTicket) openPreview(previewTicket.id)
+      if (phase === 'map') openPreview(demoCase.id)
       if (phase === 'ticket') {
-        if (suggestion) suggestPreviewRoute()
-        else setPhase('clip')
+        if (previewId === demoCase.id) runAction(demoCase.action)
+        else setPhase('action')
       }
-      if (phase === 'route') setPhase('clip')
-    }, { map: 2600, ticket: 3200, route: 4500 }[phase])
+      if (phase === 'action') {
+        setPreviewId(undefined)
+        setPreviewActivity([])
+        setCaseIndex(index => (index + 1) % demoCases.length)
+        setPhase('clip')
+      }
+    }, { map: 1800, ticket: 2400, action: 3700 }[phase])
     return () => window.clearTimeout(timer)
-  }, [phase, suggestion, openPreview, suggestPreviewRoute])
+  }, [phase, demoCase, previewId, openPreview, runAction])
 
   const detail = activePreview && automaticNotice(activePreview)
-  const showPanel = phase === 'ticket' || phase === 'route'
+  const showPanel = phase === 'ticket' || phase === 'action'
 
   return <main className="landing">
     <header className="top landing-top">
@@ -144,29 +158,32 @@ function Landing() {
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
       </div>
       <div className="landing-stage">
-        {phase === 'clip' ? <div className="landing-scene" key="clip">
-          <video autoPlay={autoPlay} muted controls playsInline preload="metadata"
-            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de visión por computadora"
-            onEnded={() => { setPreviewId(undefined); setPreviewActivity([]); setPhase('map') }}>
-            <source src="/demo-vision.mp4?v=ikhnos" type="video/mp4" />
-          </video>
-        </div> : <div className="landing-scene" key="system">
-          <div className={showPanel ? 'landing-map has-detail' : 'landing-map'}>
-            <CityMap tickets={tickets} selected={activePreview}
-              layer={phase === 'route' ? 'routes' : 'tickets'}
-              suggestion={phase === 'route' ? suggestion : undefined} onSelect={openPreview} />
-            {phase === 'route' && <div className="map-key"><span><i className="swatch suggested-route" />Ruta sugerida</span></div>}
+        <div className="landing-scene">
+          <div className={showPanel ? 'landing-map has-detail' : 'landing-map'} inert={phase === 'clip'}>
+            <CityMap tickets={tickets} selected={activePreview} layer={routeOpen ? 'routes' : 'tickets'}
+              suggestion={routeOpen ? suggestion : undefined} onSelect={openPreview} />
+            {routeOpen && <div className="map-key"><span><i className="swatch suggested-route" />Ruta sugerida</span></div>}
             <div className="panel-track" inert={!showPanel}>
               {detail && <aside className="panel" aria-label="Ticket de la demostración">
-                <TicketDetail ticket={{ ...detail, activity: [...detail.activity, ...previewActivity] }}
-                  suggestion={suggestion} routeOpen={phase === 'route'}
-                  onToggleRoute={() => phase === 'route' ? setPhase('map') : suggestPreviewRoute()}
-                  onAction={action => setPreviewActivity(entries => [...entries, { kind: 'manual', action, time: '14:33' }])}
-                  onClose={() => { setPreviewId(undefined); setPreviewActivity([]); setPhase('clip') }} />
+                <TicketDetail key={detail.id} ticket={{ ...detail, activity: [...detail.activity, ...previewActivity] }}
+                  suggestion={suggestion} routeOpen={routeOpen}
+                  onToggleRoute={() => routeOpen
+                    ? setPreviewActivity(entries => entries.filter(entry => entry.action !== 'route'))
+                    : runAction('route')}
+                  onAction={runAction}
+                  onClose={() => { setPreviewId(undefined); setPreviewActivity([]); setPhase('map') }} />
               </aside>}
             </div>
           </div>
-        </div>}
+          {phase === 'clip' && <video key={caseIndex} className="landing-clip"
+            autoPlay={autoPlay} muted controls playsInline preload="metadata"
+            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de visión por computadora"
+            onLoadedMetadata={event => { event.currentTarget.currentTime = demoCase.start }}
+            onTimeUpdate={event => { if (event.currentTarget.currentTime >= demoCase.end) setPhase('map') }}
+            onEnded={() => setPhase('map')}>
+            <source src="/demo-vision.mp4?v=ikhnos" type="video/mp4" />
+          </video>}
+        </div>
       </div>
     </section>
   </main>

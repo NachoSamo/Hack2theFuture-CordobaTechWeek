@@ -292,3 +292,10 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   from { transform: rotateX(11deg) rotateY(-15deg) translateY(10px); opacity: .65; }
   to { transform: none; opacity: 1; }
 }
+
+.landing-scene .landing-clip {
+  position: absolute;
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+}
