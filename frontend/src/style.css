@@ -231,10 +231,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 }
 .landing h1 span { color: #dff691; }
 .landing-copy p { max-width: 33ch; color: #b9c7bd; font-size: 1.17rem; line-height: 1.5; margin: 22px 0 27px; }
-.preview-switch { display: inline-flex; gap: 3px; padding: 3px; border: 1px solid #41534a; border-radius: 9px; }
-.preview-switch button { border: 0; border-radius: 6px; background: transparent; color: #cfdbd1; font-size: 14px; padding: 7px 10px; }
-.preview-switch button:hover { background: #26382e; }
-.preview-switch button[aria-pressed=true] { color: #17251e; background: #dff691; }
 .landing-stage { perspective: 1150px; min-width: 0; }
 .landing-scene {
   position: relative;
@@ -253,23 +249,16 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   border-radius: 8px;
 }
 .landing-map { position: relative; overflow: clip; }
-.landing-ticket {
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  max-width: calc(100% - 28px);
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px;
-  border-radius: 8px;
-  background: #19252b;
-  box-shadow: 0 5px 14px #080e0c99;
-  pointer-events: none;
+.landing-map .panel-track {
+  width: min(76%, 300px);
+  transition: transform 260ms ease-out;
 }
-.landing-ticket img { border-radius: 4px; object-fit: cover; }
-.landing-ticket strong, .landing-ticket span, .landing-ticket small { display: block; }
-.landing-ticket small, .landing-ticket span { color: #b9c7bd; font-size: 12px; }
+.landing-map .panel { padding: 12px; }
+.landing-map .ticket-photo { margin-block: 8px; }
+.landing-map .ticket-photo img { max-height: 94px; }
+@media (prefers-reduced-motion: reduce) {
+  .landing-map .panel-track { transition: none; }
+}
 @media (max-width: 840px) {
   .landing-top, .landing-hero { width: calc(100% - 40px); }
   .landing-hero { grid-template-columns: 1fr; min-height: auto; padding: 36px 0 46px; gap: 27px; }

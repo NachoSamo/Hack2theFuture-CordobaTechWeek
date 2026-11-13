@@ -55,6 +55,6 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ listo · 🔧 hardcodeado · ❌ 
 
 Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta primero.
 
-## Video de entrada de Ikhnos
+## Demostración de entrada de Ikhnos
 
-El clip de la landing enlaza una detección simulada de contenedor rebalsado con capturas del prototipo. Muestra CBA-104 en el mapa, abre el ticket y ejecuta «Sugerir ruta» para mostrar el recorrido. Se reproduce sin audio y en bucle. El montaje usa capturas del sistema con rótulos y un cursor animado. Para repetir la acción en vivo, abrí `/#mapa/deteccion`.
+La landing reproduce el montaje de detecciones simuladas y abre el mapa del prototipo al terminar. La secuencia selecciona CBA-104, abre el panel, ejecuta «Sugerir ruta» y vuelve al montaje. La vista utiliza el mapa y los controles del sistema con datos simulados. Para repetir la acción en la interfaz completa, abrí `/#mapa/deteccion`.
