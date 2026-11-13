@@ -33,15 +33,45 @@ JSON y fixture los define cada dueño.
 
 ## Contratos
 
-Uno por interfaz: forma del JSON con un ejemplo real, no una descripción. El fixture correspondiente
-vive en `fixtures/<nodo>.json` y es el mismo ejemplo.
+Contratos acordados para la estructura inicial mockeada del hub (alineados con [`arquitectura/arquitectura-sistema.md`](arquitectura/arquitectura-sistema.md)):
 
-```text
-<MÉTODO> /api/...
-  request:
-  response:
-  si falla:
+### 1. Ingesta de evento + evidencia (`POST /api/v1/telemetry/events`)
+- **Transporte:** HTTPS `multipart/form-data` con campo `event` (JSON) y `image` (JPEG anotado con recuadro de detección, sin pixelado, ≤ 1–2 MB).
+- **Idempotencia:** `event_id` único; el reenvío con el mismo `event_id` retorna `200` sin duplicar observación ni adjunto.
+- **Request (`event`):**
+```json
+{
+  "event_id": "evt-demo-001",
+  "device_id": "camara-demo-04",
+  "timestamp": "2026-11-12T18:10:00Z",
+  "location": {
+    "lat": -31.4167,
+    "lon": -64.1833,
+    "reference": "camara",
+    "accuracy_m": null
+  },
+  "detection": {
+    "category": "residuos",
+    "type_problem": "contenedor_desbordado",
+    "confidence": 0.89
+  }
+}
 ```
+*(Nota: `severity` no se envía desde la fuente; lo asigna el hub por regla determinística según `type_problem`.)*
+- **Response (`201` / `200` tras guardar JSON e imagen):** `{ "status": "accepted", "event_id": "evt-demo-001", "incident_id": "inc-demo-001", "evidence_id": "evd-demo-001", "deduplicated": false }`
+- **Si falla:** `{ "status": "error", "code": "...", "message": "..." }` (sin 500 no controlado).
+
+### 2. Consultas de incidencias, mapa de calor y evidencia
+- `GET /api/v1/analytics/heatmap?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → GeoJSON con **1 contribución por incidencia activa** ponderada por gravedad (no multiplica por frames).
+- `GET /api/v1/incidents?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → listado paginado de incidencias consolidadas (`{ "items": [...], "total": N }`, `pass_count` marcado como estimado; sin binarios).
+- `GET /api/v1/incidents/{incident_id}` → detalle de una incidencia puntual + `evidence_ids` (ej. `["evd-demo-001"]`) para pedir sus fotos.
+- `GET /api/v1/evidence/{evidence_id}` → devuelve el binario `image/jpeg` (frame anotado guardado en carpeta persistente, sin exponer rutas internas del servidor).
+
+### 3. Derivación y actualización de ticket (receptor simulado en MVP)
+- **Salida hacia receptor (`POST <webhook_simulado>`):** payload de ticket (`ticket_id`, `incident_id`, `recipient_id`, `evidence_ref`, `incident`) con `ticket_id` estable en reintentos.
+- **Actualización de estado (`PATCH /api/v1/tickets/{ticket_id}/status`):** `{ "status": "recibido" | "en_atencion" | "resuelto", "note": "..." }`.
+
+El fixture correspondiente vive en `fixtures/<nodo>.json` y usa estos mismos ejemplos.
 
 ## Reglas
 
@@ -49,3 +79,7 @@ vive en `fixtures/<nodo>.json` y es el mismo ejemplo.
 2. Ninguna respuesta tira 500 en la demo: el error va en el body y la UI lo muestra.
 3. Cambiar un contrato = actualizar este archivo + su fixture + aviso en `ESTADO.md`, en el mismo commit.
 4. Si un archivo es de otro dueño, se le avisa antes de tocarlo.
+
+## Extensión local del prototipo · auditoría (13/11)
+
+`frontend/src/tickets-mock.json` incorpora `auditExamples`: lista de `{ ticketId, time, actor, action, detail, outcome }`. `outcome` usa `coordinating`, `delegated` o `resolved`; son ejemplos de UI simulados, separados del `payload` del hub y sin endpoint nuevo. CBA-101 coordina con Higiene urbana; CBA-102 registra confirmación simulada de Alumbrado; CBA-108 se deriva a EPEC. `tickets.ts` combina estos ejemplos con los avistamientos y avisos existentes por hora. «Resolución confirmada» corresponde al ejemplo explícito del área y se excluye de demanda activa; la ausencia de una detección por sí sola conserva «Posiblemente resuelta». No implica que exista integración con agentes ni mensajería real. Compilación PASS; smoke en navegador pendiente.

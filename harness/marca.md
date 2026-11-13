@@ -12,13 +12,15 @@
 
 ![Símbolo de Urbis](marca/logo.svg)
 
-El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. Una cámara con lente visible se monta sobre la fachada y comparte su perspectiva. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
+Dos fachadas con ventanas y una entrada forman una esquina de ciudad. El auto a la izquierda y el contenedor a la derecha están dibujados en tres cuartos. La cámara apunta al contenedor, marcado en lima.
 
 **Logo del equipo (Hackaranda):** en la portada del deck, pegado debajo de Urbis, va «by Hackaranda» (y más abajo «Movilidad urbana sustentable») con el logo horizontal de la dirección *Minimal / tech*: copa de jacarandá en píxeles con tronco de pista de circuito y «hackaranda» en Space Grotesk 700, en lila (`#9B7FD4`, `#B89CE8`) sobre el fondo del deck. Sale del sistema de marca de Hackaranda que armó Gina (artifact «Hackaranda», 13/11). Es la marca del equipo, no la del producto: no se mezcla con la paleta de Urbis fuera de esa línea.
 
 ## MLP
 
-El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, historial y responsable. Las zonas de calor muestran atención y cobertura. Los contenedores rebalsados pueden incluir una ruta de recolección simulada. [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
+El detalle es de lectura: se retiran las acciones de aviso y barrida. «Auditoría del ticket» identifica el sistema o agente que interviene, qué hizo y a qué área derivó el caso. Los ejemplos de agentes conversacionales y confirmaciones son simulados. La landing ya no tiene la franja superior lima. Esta iteración compila; su revisión visual está pendiente.
+
+El mapa muestra incidencias detectadas. Cada marcador ofrece una vista previa y abre un ticket con evidencia, ubicación, auditoría y responsable. Las zonas de calor muestran atención y cobertura. El mapa mantiene una única vista oscura con marcadores y zonas de calor, inclinada a 60°. Al seleccionar un ticket o cuadrante se acerca al lugar; «Ver toda Córdoba» vuelve a la vista general. Se retiran las rutas sugeridas por pedido de Juani (13/11). [Prototipo React](../frontend/README.md) · [Solución paso a paso](docs/producto/solucion-paso-a-paso.md)
 
 ## Misión
 
@@ -44,15 +46,14 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 | Ámbar | `#D79939` | Demanda alta |
 | Oliva | `#B2A638` | Demanda media |
 | Verde | `#428571` | Demanda baja |
-| Gris cartográfico | `#A5B3A9` | Zona sin dato |
 
-El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
+El mapa usa una base negra con calles y edificios en tonos oscuros. La capa de calor colorea las zonas observadas y la leyenda identifica sus niveles. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
 
 La landing del prototipo usa un fondo oscuro entre `#0E1311` y `#202D27`, texto claro y acentos lima. La portada compacta muestra clips de detección simulada y debajo aparece el sistema interactivo enmarcado como un monitor. La composición toma como referencia [Vialytics](https://www.vialytics.com/). El mapa conserva la paleta de la tabla.
 
 ## Tipografía y tono
 
-Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El tono es directo y operativo. Usamos «Punto crítico», «Sin dato» y «Ruta sugerida». Las cifras de impacto muestran si son simuladas o estimadas y exponen sus supuestos.
+Barlow para títulos e interfaz. IBM Plex Mono para horas y datos compactos. El tono es directo y operativo. Usamos «Punto crítico», «Sin dato» y «Ver toda Córdoba». Las cifras de impacto muestran si son simuladas o estimadas y exponen sus supuestos.
 
 [Referencias de diseño](marca/referencias/README.md) · [Prototipo](marca/prototipo-recoleccion-video.html)
 

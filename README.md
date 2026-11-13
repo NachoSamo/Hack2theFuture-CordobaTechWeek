@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="harness/marca/logo.svg" alt="Logo de Urbis" width="96">
+
 # Urbis
 
 **Detección urbana desde el patrullaje.**
@@ -37,7 +39,7 @@ Un móvil pasa por una esquina de Córdoba.
 > **Mismo recorrido, más sustentabilidad.** Urbis no suma vehículos, cámaras ni kilómetros: le da más usos a la flota que ya circula.
 
 > [!NOTE]
-> **Estado actual (12/11/2026 22:45):** hay un prototipo frontend con 194 tickets **simulados**, un deck de 9 slides y el registro del proceso. No hay backend, API ni detección real. La arquitectura técnica está en iteración en la rama [`architecture/init`](https://github.com/NachoSamo/Hack2theFuture-CordobaTechWeek/blob/architecture/init/harness/arquitectura/arquitectura-sistema.md), todavía sin mergear ni aprobar.
+> **Estado actual (13/11/2026):** prototipo Urbis con 194 tickets **simulados**, mapa oscuro único con calor y zoom a tickets/cuadrantes, página de impacto, avisos en vivo, deck y registro del proceso. `main` integra la rama de UX, la simulación de patrullaje y los filtros plegables. No hay backend, API ni detección real. La arquitectura mockeada está documentada; su aprobación completa sigue pendiente.
 
 ---
 
@@ -74,7 +76,9 @@ flowchart LR
 | Mapa de incidencias (`/#mapa`) | ¿Qué está pasando en la ciudad y dónde? |
 | Zonas de calor | ¿Dónde hay más incidencias y qué parte de la ciudad no está observada? |
 | Tarjeta del ticket | ¿Qué se detectó, con qué gravedad, quién lo resuelve y qué pasó hasta ahora? |
-| Acciones del ticket | ¿Qué hago ahora: aviso manual, ruta sugerida o plan de barrida? |
+| Auditoría del ticket | ¿Qué sistema o agente intervino, a quién derivó y qué resultado registró? |
+| Aviso en vivo (sobre el mapa) | ¿Qué acaba de detectar la flota y a quién se le avisó? |
+| Impacto (`/#impacto`) | ¿Cuánto combustible y CO₂ ya emitido gana un segundo uso, y qué escala tiene el problema? |
 | [Deck](harness/pitch/deck.html) y [speech](harness/pitch/speech.md) | ¿Cómo lo contamos en 3 minutos? |
 | [Mural de lienzos](harness/proceso/mural-mesa24.html) | ¿Cómo llegamos a esta solución y qué decidimos en el camino? |
 
@@ -85,11 +89,11 @@ flowchart LR
 | Momento | Qué se ve | Qué prueba |
 |---|---|---|
 | Pitch · video de la landing | Detecciones simuladas con la cámara: bache, rama caída y contenedor rebalsado, cada una con su ticket y su acción | Que una cámara en movimiento puede convertir lo que ve en un ticket accionable |
-| Prototipo · entrada | `/#mapa` abre el mapa 3D de Córdoba con 194 tickets simulados | Que el municipio ve toda la ciudad en un solo lugar |
+| Prototipo · entrada | `/#mapa` abre el mapa oscuro de Córdoba con inclinación 3D de 60°, zonas de calor y 194 tickets simulados | Que el municipio ve toda la ciudad en un solo lugar |
 | Prototipo · secuencia automática | Se publica un ticket, otra pasada suma un avistamiento, sale el aviso y una pasada de verificación lo deja «posiblemente resuelto» | El ciclo completo, sin intervención humana |
-| Prototipo · tarjeta | Tipo, foto ilustrativa, gravedad, área responsable, historial automático o manual y próximo paso | Que el área recibe lo que necesita para actuar |
-| Prototipo · acciones | Aviso manual, ruta sugerida para el contenedor y plan de barrida para residuos o ramas | Que el ticket termina en una acción concreta |
-| Prototipo · zonas de calor | Rojo con tickets activos, verde observado sin tickets y gris sin observación | Atención y cobertura de la ciudad |
+| Prototipo · tarjeta | Acercamiento automático al ticket; tipo, foto ilustrativa, gravedad, área responsable, auditoría simulada y próximo paso | Que el área recibe lo que necesita para actuar |
+| Prototipo · auditoría | Intervenciones de sistemas y agentes conversacionales, derivación al área y confirmación simulada de Alumbrado | Trazabilidad de la gestión; revisión en navegador pendiente |
+| Prototipo · zonas de calor | Calor en zonas observadas: verde sin tickets activos y ámbar o rojo según la concentración. Las demás zonas muestran la base negra. Seleccionar un cuadrante acerca el mapa | Atención y cobertura de la ciudad |
 
 `/#mapa/deteccion` abre directo el ticket CBA-104, el contenedor que aparece en el video. La secuencia exacta vive en [`harness/demo-path.md`](harness/demo-path.md).
 
@@ -97,13 +101,13 @@ flowchart LR
 
 ## Arquitectura objetivo
 
-Resumen de la versión en iteración de [`arquitectura-sistema.md`](https://github.com/NachoSamo/Hack2theFuture-CordobaTechWeek/blob/architecture/init/harness/arquitectura/arquitectura-sistema.md) (rama `architecture/init`, 12/11 22:09). Nada de esto está implementado todavía.
+Resumen de [`arquitectura-sistema.md`](harness/arquitectura/arquitectura-sistema.md), con las decisiones de la estructura inicial mockeada del 12/11 22:35 y 23:08. La arquitectura y el frontend de Impacto se incorporaron a `main` a través de `codex/mapa-ux` el 13/11. El backend objetivo todavía no está implementado.
 
 ```mermaid
 flowchart LR
     subgraph Captura[Captura · simulada en el MVP]
         A[Frames + ubicación + fecha y hora<br/>cámaras de móviles y domos a futuro]
-        B[Detección y clasificación<br/>modo por definir · YOLO11n como propuesta]
+        B[Detección y clasificación<br/>mockeada para el MVP]
     end
     subgraph Hub[Hub de incidencias]
         C[Ingesta<br/>evento JSON + frame anotado]
@@ -121,17 +125,17 @@ flowchart LR
 
 ### Núcleo técnico
 
-El centro es un **hub de incidencias**: recibe eventos de detección, los consolida en una incidencia por problema y alimenta dos salidas que no dependen entre sí, la API para el mapa y la derivación de tickets. La rama define cuatro contratos: **evento** (fuente → hub), **incidencia** (hub → API), **ticket** (hub → entidad) y **evidencia visual** (el frame con el recuadro de la detección). La gravedad usa cuatro niveles (bajo, medio, alto y extremo). YOLO11n con ONNX Runtime o TensorRT, el umbral de confianza de 0,65 y el radio de deduplicación de 15–20 m con ventana de 6 horas son **valores de referencia**, no decisiones validadas.
+El centro es un **hub de incidencias**: recibe eventos de detección, los consolida en una incidencia por problema y alimenta dos salidas que no dependen entre sí, la API para el mapa y la derivación de tickets. La arquitectura define cuatro contratos: **evento** (fuente → hub), **incidencia** (hub → API), **ticket** (hub → entidad) y **evidencia visual** (el frame con el recuadro de la detección). La gravedad usa cuatro niveles (bajo, medio, alto y extremo). YOLO11n con ONNX Runtime o TensorRT, el umbral de confianza de 0,65 y el radio de deduplicación de 15–20 m con ventana de 6 horas son **valores de referencia**, no decisiones validadas.
 
 ### Contrato de confianza
 
 - **Siempre simulado en el MVP:** la captura, las detecciones, los 194 tickets, la cobertura y las coordenadas agregadas. Las fotos son ilustrativas y se reutilizan por tipo de incidencia.
 - **Nunca video:** se envían solo los frames asociados a una detección.
-- **Privacidad (propuesta):** pixelar caras y patentes antes de enviar el frame. La rama hoy envía el frame sin pixelar; queda como decisión pendiente para la arquitectura ([decision log, 12/11 22:45](harness/decision-log.md)).
+- **Privacidad (propuesta):** pixelar caras y patentes antes de enviar el frame. El contrato actual prevé enviar el frame sin pixelar; queda como decisión pendiente para la arquitectura ([decision log, 12/11 22:45](harness/decision-log.md)).
 - **«Posiblemente resuelta» no es «resuelta»:** que una pasada no vuelva a detectar un problema no prueba que se haya resuelto.
 - **Una luminaria detectada es un indicio visual**, no la confirmación de la causa.
 - **Cifras de impacto sin medir:** el aprovechamiento de la flota (km con Urbis activo ÷ km totales) y el ahorro del municipio son lo que mide el piloto.
-- **Decisiones abiertas en la rama:** pasadas, gravedad, consolidación, estados, transporte (HTTPS o MQTT), derivación, modo de detección del MVP, consultas, verificación y evidencia visual.
+- **Diseño mockeado acordado:** ingesta HTTPS multipart, gravedad determinística en el hub, consolidación por tipo y proximidad, estados de ticket separados, receptor simulado y consultas de mapa/listado/detalle/evidencia. Captura y detección mockeadas. Véanse las decisiones del 12/11 22:35 y 23:08; diagramas y aprobación de Samo y dueños siguen pendientes.
 
 ---
 
@@ -141,7 +145,8 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 |---|---|---|
 | El prototipo muestra 194 tickets simulados en un mapa 3D de Córdoba | [`frontend/src/tickets-mock.json`](frontend/src/tickets-mock.json), [`CityMap.tsx`](frontend/src/CityMap.tsx) | Correr el frontend y abrir `/#mapa` |
 | La gravedad tiene cuatro niveles | [`frontend/src/tickets.ts`](frontend/src/tickets.ts) (`severityLabels`) | Filtrar o abrir tickets de distinta gravedad |
-| El ciclo ticket → avistamiento → aviso → verificación corre solo | [`frontend/src/main.tsx`](frontend/src/main.tsx) | Recargar `/#mapa` y mirar la secuencia |
+| El ciclo ticket → avistamiento → aviso → verificación corre solo | [`frontend/src/main.tsx`](frontend/src/main.tsx) | Recargar `/#mapa` y mirar la secuencia (con aviso en vivo a los 4, 12 y 55 s) |
+| La página de impacto calcula el CO₂ con los supuestos del speech | [`frontend/src/Impact.tsx`](frontend/src/Impact.tsx) | Abrir `/#impacto`: 70 × 20 L × 365 × 2,6 kg = 1.329 t/año |
 | El ticket sigue el payload de la arquitectura | [`tickets-mock.json`](frontend/src/tickets-mock.json) y [`arquitectura-sistema.md`](harness/arquitectura/arquitectura-sistema.md) | Comparar los campos del mock con la sección 3.3 |
 | Las cifras del pitch tienen fuente | [`harness/pitch/speech.md`](harness/pitch/speech.md), sección «Para los ensayos» | Revisar la fuente de cada cifra |
 | El proceso de Design Thinking quedó registrado | [`harness/proceso/mural-mesa24.html`](harness/proceso/mural-mesa24.html), [`fotos/`](harness/proceso/fotos/), [`proceso.md`](harness/proceso.md) | Abrir el mural en el navegador |
@@ -153,10 +158,11 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 
 | Área | Estado |
 |---|---|
-| Prototipo frontend (landing, mapa, tarjetas, acciones, zonas de calor) | ✅ **Funciona**, con datos simulados |
+| Prototipo frontend (landing, mapa, tarjetas, auditoría, zonas de calor) | ✅ **Funciona**, con datos simulados |
+| Página de impacto y aviso en vivo | ✅ Integrados en `main`; cifras de CO₂ estimadas |
 | Backend, hub y API | ⬜ **Planeados** en la arquitectura; sin código |
 | Detección por visión por computadora | ⬜ **Por definir**: modelo real o resultados precargados |
-| Arquitectura técnica | 🟡 **En revisión** en la rama `architecture/init` |
+| Arquitectura técnica | 🟡 Diseño mockeado integrado desde `architecture/init`; aprobación completa pendiente |
 | Diagramas y contratos ([`arquitectura/`](harness/arquitectura/README.md), [`contratos.md`](harness/contratos.md)) | 🟡 **Borrador**, sin aprobar |
 | Pitch | ✅ Deck de 9 slides y speech v10 para dos voces |
 | Proceso registrado (mural, decision log, proceso, mentores) | ✅ **Al día** al 12/11 22:45 |
@@ -188,10 +194,11 @@ npm run build
 ### Cómo verificar que funciona
 
 1. Vite muestra una URL local (`http://127.0.0.1:5173` por defecto): la landing reproduce los clips de detección.
-2. `/#mapa` abre el mapa 3D con los tickets. La secuencia automática arranca sola y recargar la reinicia.
-3. Un marcador abre su tarjeta sobre el mapa; se cierra con Escape.
+2. `/#mapa` abre la única vista del mapa: oscura, inclinada a 60°, con tickets y zonas de calor. La secuencia automática arranca sola y recargar la reinicia.
+3. Un marcador acerca el mapa y abre su tarjeta de lectura con auditoría; se cierra con Escape.
+4. Seleccionar un cuadrante acerca la cámara a esa zona. «Ver toda Córdoba» recupera el encuadre general. No hay rutas sugeridas.
 
-El detalle del prototipo está en [`frontend/README.md`](frontend/README.md).
+El detalle del prototipo está en [`frontend/README.md`](frontend/README.md). La iteración del 13/11 aplica el logo de la esquina urbana con auto, cámara y contenedor al frontend y al [deck del pitch](harness/pitch/deck.html). La landing reproduce los clips a 1,5× y «Cómo funciona» lleva a su sección. El estado de las verificaciones figura en [`ESTADO.md`](harness/ESTADO.md#en-proceso--juani).
 
 ---
 
@@ -201,8 +208,12 @@ No hay API: el prototipo lee datos simulados locales. La arquitectura en revisi�
 
 | Método | Ruta | Propósito |
 |---|---|---|
-| `POST` | `/api/v1/telemetry/events` | Planeada: ingesta de eventos de detección |
+| `POST` | `/api/v1/telemetry/events` | Planeada: ingesta de JSON + JPEG anotado vía HTTPS multipart |
 | `GET` | `/api/v1/analytics/heatmap` | Planeada: GeoJSON para el mapa de calor, con filtros de categoría, gravedad y fechas |
+| `GET` | `/api/v1/incidents` | Planeada: listado paginado y filtrado de incidencias |
+| `GET` | `/api/v1/incidents/{incident_id}` | Planeada: detalle con referencias de evidencia |
+| `GET` | `/api/v1/evidence/{evidence_id}` | Planeada: imagen JPEG de evidencia |
+| `PATCH` | `/api/v1/tickets/{ticket_id}/status` | Planeada: actualización del estado del ticket |
 
 ---
 
@@ -213,12 +224,15 @@ No hay API: el prototipo lee datos simulados locales. La arquitectura en revisi�
 ├── README.md
 ├── AGENTS.md                    Reglas para personas y agentes (fuente única)
 ├── CLAUDE.md                    Importa AGENTS.md para Claude Code
+├── CONTEXTO-ITERACION-1.md       Registro histórico de la primera iteración
+├── Sin título.base              Configuración de vista de Obsidian
 ├── guia-interfaz-identidad.md   Contenido de la landing, vistas del MVP e identidad
 │
 ├── frontend/                    Prototipo React + Vite + MapLibre
 │   ├── public/                  Logo, clips de detección y fotos ilustrativas de tickets
-│   ├── scripts/                 Generación de rutas con OSRM
-│   └── src/                     App, mapa, tickets y datos simulados
+│   ├── scripts/                 Generación histórica de rutas OSRM (sin uso en la UI actual)
+│   └── src/                     App, mapa, impacto (Impact.tsx), tickets y datos simulados
+│       └── assets/ticket-photos/  Fotos extra por tipo de incidencia (una carpeta por tipo)
 │
 ├── harness/
 │   ├── ESTADO.md                Tablero vivo: fase, tareas, avisos y bloqueos

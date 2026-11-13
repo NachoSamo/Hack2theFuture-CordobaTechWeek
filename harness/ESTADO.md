@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 22:45 · Samo
+**Actualizado:** 13/11 01:01 · Juani
 **Fase:** 3 · Pitch (el prototipo y la arquitectura siguen en paralelo)
 **Vertical / problema:** movilidad sostenible: **Urbis**, «Mismo recorrido, más sustentabilidad»; el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** Club del Pitch por vertical, 13/11 10:45 (ver [`evento.md`](evento.md#checkpoints))
@@ -15,10 +15,10 @@
 
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
-| Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado y mergear `architecture/init` | Checkpoint de la tarde | Dueños de nodo (en persona) |
+| Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado; `architecture/init` integrada en `codex/mapa-ux` el 13/11 | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing oscura con clips de detección en la portada y acceso al mapa interactivo dentro de la misma página. Vista previa y tarjeta de detalle con foto, historial y acciones para 194 tickets simulados. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
+| Juani | Logo en landing, mapa, pestaña, documentación y deck. Landing con clips a 1,5×, mapa negro con calor, tarjetas de auditoría e Impacto. Compilación y recorrido principal verificados en Edge | Revisión de UX con el equipo | Falta comprobar visualmente la exclusión de incidencias resueltas del calor |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -39,6 +39,22 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 
 ## Avisos
 
+- 13/11 · Juani · `main` integra UX, frontend y arquitectura. El deck conserva los últimos cambios de Oli y el logo vigente. Simulación y filtros plegables verificados en Edge.
+
+- 13/11 · Juani · Se incorpora una pestaña de simulación con dos móviles y se pliega la barra de filtros del mapa. Se documenta el recorrido en `demo-path.md` · a Samo
+
+- 13/11 · Juani · Logo aplicado a la pestaña y el README, además de la cabecera, la ficha de marca y el deck. Se sincronizan la guía de interfaz (Lauti y Diego), el recorrido de demo y el estado (Samo) y las referencias del pitch (Oli y Gina).
+
+- 13/11 · Juani · Se actualiza el logo de Urbis en frontend, marca y deck con un muro, un contenedor y un auto con cámara · a Oli y Gina
+
+- 13/11 · Juani · Se recupera el logo del edificio con cámara en frontend, marca y deck. El mapa usa base negra y calor en las zonas observadas · a Oli, Gina y Diego
+
+- 13/11 01:01 · Juani · Avance solicitado para push: logo actualizado en frontend, marca y deck (archivo de Oli/Gina); franja superior retirada; detalle sin acciones y con auditoría simulada. Fixture local agrega `auditExamples` y contratos documenta esta extensión sin cambiar el payload del hub. Actualizados READMEs, guía compartida de Lauti/Diego, marca, demo path, recorrido, decisiones y proceso (documentos de Samo/producto). Integra también `main` hasta `050c905` (cofirma «by Hackaranda»). Compilación PASS, revisión visual y smoke pendientes · a Samo, Lauti, Diego, Oli y Gina
+
+- 13/11 00:38 · Juani · Actualizadas todas las referencias remotas e incorporado `main` hasta `af74dd0` en `codex/mapa-ux`: apertura del speech, ajustes de eficiencia del combustible y fuentes, y «× Hackaranda» en la portada. Se conservan las entradas de ambos lados del decision log y las mejoras del mapa. Archivos integrados de otros dueños: pitch (Oli/Gina) y marca (cofirma del equipo) · a Samo, Oli y Gina
+
+- 13/11 00:24 · Juani · Integradas `main`, `frontend/mlp-estadisticas-aviso` y `architecture/init` en `codex/mapa-ux`, conservando decisiones y avisos de todas las ramas. UX del prototipo: única vista oscura con calor e inclinación 60°, zoom al ticket/cuadrante y retiro de rutas sugeridas. Documentos compartidos actualizados: README, guía de interfaz, marca, demo path, recorrido del usuario, decision log y proceso; el contexto de iteración 1 queda señalado como histórico. No cambia ningún payload de API · a Samo (arquitectura y recorrido por revisar), Lauti y Diego (guía), Oli y Gina (demo)
+
 - 22:45 · Samo · README reescrito al 100 % sobre Urbis (estado real: prototipo con datos simulados, sin backend ni detección; arquitectura de la rama `architecture/init`). Decision log 22:45: frames de evidencia con caras y patentes pixeladas (propuesta), Guardia Urbana como cuarta fuente y «posiblemente resuelta» sin afirmar resolución. Inconsistencias que quedan en archivos de otros dueños:
   - **Oli (speech v10, antes del pitch):** dice «1.400 llamados por árboles y postes caídos», pero según su propia fuente (Perfil, 7/8/2026) los 1.400 son todos los llamados de la tormenta y 198 fueron por postes o columnas; «procesa la imagen en el mismo móvil, sin transmitir ni grabar» choca con los frames de evidencia de la arquitectura; las notas citan «slide 10» en un deck de 9 y repiten «se sostiene solo». En `pitch.md`, la tabla de 8 bloques y la línea de «11 slides… costo marginal cero» quedaron viejas. Las horas de las filas 22:40–23:55 del decision log son posteriores a la hora real de su commit (≈22:35)
   - **Juani (frontend):** el paquete se llama `trama-urbana-prototipo` y la UI dice «Vista COYS» mientras el pitch habla de municipio; rama y cable caído siguen fuera del catálogo de la arquitectura
@@ -51,6 +67,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 00:01 (13/11) · Samo · Rama `frontend/mlp-estadisticas-aviso` (archivos de Juani): página `/#impacto` con contadores de CO₂ y litros con doble uso (estimados) y gráficos del mock, botón Impacto en el mapa y en la landing, aviso en vivo sobre el mapa y soporte para varias fotos por tipo (`src/assets/ticket-photos/<tipo>/`). Sin mergear · a Juani (revisar y mergear antes del video de las ~02:00) y a Oli y Gina (Impacto respalda «nos da estadísticas»; 1.329 t es la cifra del municipio, no las 14.600 t de toda la flota)
 - 00:10 (13/11) · Oli · El gancho del pitch cambia: 5,6 millones de litros y ~$12.000 millones por año (estimación con 770 móviles). Los 2 millones de litros eran biocombustible de toda la flota oficial, no patrullaje. `proceso/mural-mesa24.html` todavía cita los 2 millones (registro del mural, no lo toqué) · a todo el equipo
 - 23:15 · Oli · El pitch dice edge computing (procesamiento en el móvil, sin transmitir ni guardar video). En la arquitectura seguía abierto dónde se procesan las imágenes · a Samo y al dueño del nodo 02
 - 22:01 · Samo · Mural sincronizado con el contexto vigente de Urbis: los lienzos oficiales reemplazan el papel (la foto queda enlazada); la empatía se divide en municipio y vecino; los agregados (PTM, Team Canvas, Mercado, Abundancia, BMC, VPC, Cronograma, Demo con la UI actual y Métricas) pasan al pivot. Decision log 22:01: PTM «Ciudades que se autosanen», mercado resegmentado, metas del piloto, costos, título «Mismo recorrido, más sustentabilidad» y **hardware: suma un módulo de cómputo chico por móvil**. Coincide con el pitch («costo marginal mínimo» y edge computing, 22:55 y 23:15). `proceso.md` con POV, 11 ideas y la prueba del test 3+3 · a Oli y Gina (pitch) y a Juani (marca y demo en los lienzos)
@@ -60,6 +77,7 @@ Formato: `hora · quién · qué cambió · a quién afecta`.
 - 17:25 · Oli · COYS → "municipio" / "monitoreo municipal" en docs de producto, `proceso.md` (H5) y, **en archivos de Samo**, `contratos.md`, `arquitectura/solucion.html` y el diagrama del README: solo cambia el nombre, no la forma de ningún contrato. Quedan las menciones históricas · a Samo
 - 17:10 · Oli · Pitch: el usuario pasa a ser "los municipios" (ya no COYS) y se suma una slide con problemas de la ciudad con fuente (basura, alumbrado, postes caídos). Docs de producto actualizados a las 17:25 · a Samo, Gina y Juani (el prototipo todavía dice "vista general de COYS")
 - 16:50 · Oli · Reglas oficiales del pitch en `guia-oficial.md` (3 min, prototipo obligatorio, 7 bloques, criterios del 13/11). Deck v3 con el prototipo de `frontend/` en vivo en la slide 6 · a Juani (que el panel esté listo para mostrarse) y a Gina
+- 22:35 · Lauti · Cerradas decisiones de arquitectura y contratos del hub de incidencias (estructura inicial mockeada) en `arquitectura/arquitectura-sistema.md`, `contratos.md` y `decision-log.md` · a Samo y dueños de nodos técnicos
 - 16:30 · Oli · Deck v2 (11 slides: costo marginal cero y ODS 11, 12, 13, 9 y 17) y speech actualizado. La demo del deck usa "quema de residuos", que no está en las categorías de E2 · a Gina (ODS y speech) y a quien tenga el nodo 02
 - 12/11/2026 (sesión Diego y Lauti) · Nuevo `guia-interfaz-identidad.md`, enfocado en contenido de landing, vistas del MVP e identidad existente, según la aclaración de Diego y Lauti. Se restaura el contenido previo del README raíz, con una entrada al nuevo archivo en el mapa, por corrección de Diego y Lauti: el pedido era un documento separado. Documenta el aviso directo decidido por Samo y distingue implementación de objetivos. Domos y escala bajo/medio/alto/extremo quedan como requisitos planteados en la sesión, pendientes de alinear; no se cambian contratos ni diagramas. El prototipo sigue centrado en recolección y tiene tres niveles. Descriptor y slogan de marca requieren revisión con Juani. Archivos compartidos actualizados: mapa del README y registro de proceso · a Juani, Samo y Oli
 - 16:10 · Oli · Deck rehecho estilo TED (9 slides, mínimo texto, primera con nombre, logo y equipo) y nuevo `pitch/speech.md` con el guion de 3 minutos; cierra pidiendo un piloto de un barrio por 4 semanas · a Gina (co-dueña del pitch) y Juani (marca)
@@ -76,4 +94,22 @@ Formato: `hora · quién · qué cambió · a quién afecta`.
 
 -
 
-El prototipo de Urbis muestra avisos automáticos simulados y permite registrar acciones manuales desde el ticket. El historial identifica su origen.
+El prototipo de esta rama muestra avisos automáticos y una auditoría de solo lectura con gestiones simuladas.
+
+## En proceso · Juani
+
+**Avance del 13/11 integrado en `main`:**
+
+- [x] Logo con fachada urbana, auto con cámara y contenedor en perspectiva aplicado a frontend, documentación y deck.
+- [x] Franja superior de la landing retirada.
+- [x] Acciones del ticket retiradas; queda Cerrar para navegación.
+- [x] «Auditoría del ticket» reemplaza el historial: actor, hora, intervención y resultado simulado.
+- [x] Ejemplos locales CBA-101 (coordinación conversacional), CBA-102 (confirmación de Alumbrado) y CBA-108 (derivación a EPEC).
+- [x] `npm run build`: PASS.
+- [x] Verificar el logo en la cabecera de la landing y el deck.
+- [x] Probar auditoría y filtro «Resolución confirmada».
+- [ ] Comprobar en el mapa de calor la exclusión del caso resuelto de la demanda activa.
+- [x] Probar que CBA-104 conserva el replay y el estado «Posiblemente resuelta».
+- [x] Probar landing, Impacto, cierre con Escape, regreso al encuadre general y tarjeta móvil en Edge.
+
+Estos pendientes corresponden a esta iteración; no son una validación con usuarios ni una integración real de agentes.

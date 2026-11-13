@@ -1,27 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
-  <title id="title">Urbis: esquina urbana en perspectiva con una cámara de patrullaje</title>
+  <title id="title">Urbis: un auto con cámara detecta un contenedor en una esquina de ciudad</title>
   <rect width="96" height="96" rx="20" fill="#11191C"/>
-  <g stroke="#11191C" stroke-width="2" stroke-linejoin="round">
-    <path d="M10 41 46 24v36L10 51Z" fill="#53666B"/>
-    <path d="M54 27 86 42v11L54 61Z" fill="#34464A"/>
-    <path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/>
-    <path d="M49 14 72 29v26L49 63Z" fill="#839493"/>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M12 31 48 13v47L12 50Z" fill="#465B5D"/>
+    <path d="M48 13 84 29v21L48 60Z" fill="#78908A"/>
+    <path d="m18 33 8-4v8l-8 3Zm13-6 9-4v9l-9 3Z" fill="#A5B7B3"/>
+    <path d="m56 24 9 4v8l-9-2Zm14 6 8 3v7l-8-2Z" fill="#D0DED9"/>
+    <path d="m57 54 0-13 14 3v7Z" fill="#2E4245"/>
+    <path d="m11 55 37 11 38-11" fill="none" stroke="#78908A" stroke-width="2.5"/>
+
+    <path d="M62 62v-5h5m16 0h5v5m0 16v5h-5m-16 0h-5v-5" fill="none" stroke="#DFF691" stroke-width="2.5"/>
+    <path d="m66 67 7 4 11-5-2 10-9 5-6-4Z" fill="#AFC68C"/>
+    <path d="m66 67 7 4v10l-6-4Z" fill="#657C5D"/>
+    <path d="m65 66 11-5 9 5-12 6Z" fill="#DCEBB7"/>
+    <path d="m52 58 7 3m-6 2 6 2" stroke="#DFF691" stroke-width="1.8"/>
+
+    <path d="m9 69 10-4 6-8 12-3 9 7 2 7 10 5-2 9-11 5-33-9Z" fill="#A5B7B3" stroke="#11191C" stroke-width="2"/>
+    <path d="m9 69 10-4 6-8 12-3 9 7 2 7 10 5-13 6Z" fill="#EAF0F0" stroke="#11191C" stroke-width="1.4"/>
+    <path d="m22 65 5-6 9-2-2 9-7 2Zm15 1 2-8 6 5 1 4-6 2Z" fill="#364A4D"/>
+    <path d="m45 79 13-6-2 9-11 5Z" fill="#748B88" stroke="#11191C" stroke-width="1.4"/>
+    <path d="m36 70 11 4m1 7 6-3" stroke="#DFF691" stroke-width="2.1"/>
+    <circle cx="18" cy="78" r="4.4" fill="#11191C" stroke="#A5B7B3" stroke-width="1.4"/>
+    <circle cx="36" cy="83" r="4.4" fill="#11191C" stroke="#A5B7B3" stroke-width="1.4"/>
+    <path d="M34 55v-4" stroke="#DFF691" stroke-width="2"/>
+    <path d="m28 46 8-3 9 3-8 4Z" fill="#EAF0F0"/>
+    <path d="m28 46 9 4 8-4v7l-8 4-9-4Z" fill="#DFF691" stroke="#11191C" stroke-width="1.3"/>
+    <circle cx="42" cy="50.5" r="1.5" fill="#11191C"/>
   </g>
-  <g fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round">
-    <path fill="none" stroke="#11191C" stroke-width="2" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/>
-  </g>
-  <g fill="none" stroke="#DFF691" stroke-linecap="round">
-    <path fill="none" stroke="#DFF691" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5" stroke-width="4"/>
-    <path fill="none" stroke="#DFF691" d="M17 77c8 5 15 7 23 8m-28-3 8 4" stroke-width="2"/>
-  </g>
-  <g stroke="#11191C" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M60 26v9l9 5" fill="none" stroke="#11191C" stroke-width="6" stroke-linecap="round"/>
-    <path d="M60 26v9l9 5" fill="none" stroke="#DFF691" stroke-linecap="round"/>
-    <path d="m58 19 17-8 14 8-17 9Z" fill="#EAF0F0"/>
-    <path d="m58 19 14 9v12l-14-9Z" fill="#839493"/>
-    <path d="m72 28 17-9v12l-17 9Z" fill="#DFF691"/>
-    <ellipse cx="81" cy="29" rx="4.4" ry="4.8" fill="#11191C"/>
-    <circle cx="82" cy="28" r="1.45" fill="#EAF0F0" stroke="none"/>
-  </g>
-  <circle cx="85" cy="54" r="3" fill="#DFF691"/>
 </svg>
