@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import fixture from './tickets-mock.json'
 import type { FeatureCollection, Polygon } from 'geojson'
 
@@ -43,10 +44,27 @@ export const center = position(fixture.center)
 const severityLabels: Record<string, string> = { bajo: 'Baja', medio: 'Media', alto: 'Alta', extremo: 'Extrema' }
 const severityWeights: Record<string, number> = { bajo: 1, medio: 2, alto: 3, extremo: 4 }
 
+// Fotos extra por tipo: soltar imágenes en src/assets/ticket-photos/<tipo>/ (p. ej. rama-caida/). Sin carpeta, queda la foto del mock.
+const slug = (type: string) => type.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')
+const photoFiles = import.meta.glob<string>('./assets/ticket-photos/*/*.{webp,jpg,jpeg,png,avif}', { eager: true, import: 'default' })
+const photosByType: Record<string, string[]> = {}
+Object.entries(photoFiles).sort(([a], [b]) => a.localeCompare(b)).forEach(([path, url]) => {
+  const folder = path.split('/').at(-2)!
+  ;(photosByType[folder] ??= []).push(url)
+})
+function photoFor(ticket: (typeof fixture.tickets)[number]) {
+  const extra = photosByType[slug(ticket.type)]
+  // CBA-104 conserva la foto del contenedor que aparece en el video de la landing
+  if (!extra?.length || ticket.id === 'CBA-104') return ticket.photo
+  const pool = [ticket.photo, ...extra]
+  return pool[Number(ticket.id.replace(/\D/g, '')) % pool.length]
+}
+
 export const tickets: Ticket[] = fixture.tickets.map(ticket => {
   const { location, severity } = ticket.payload.incident
   return {
     ...ticket,
+    photo: photoFor(ticket),
     id: ticket.payload.ticket_id,
     position: position([location.lon, location.lat]),
     level: severityLabels[severity] ?? 'Sin asignar',

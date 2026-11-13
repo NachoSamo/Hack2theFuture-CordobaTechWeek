@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
 import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
 import { scenario } from './scenario'
+import { Impact } from './Impact'
 import type { StreetRoute } from './model'
 import './style.css'
 
@@ -13,6 +14,13 @@ const modes: { id: Layer; label: string }[] = [
   { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' },
 ]
 const replayDelays = [4000, 12000, 55000]
+function replayToast(step: number, ticket?: Ticket) {
+  if (!ticket) return
+  const entry = replay.activity[step - 2]
+  if (step === 1) return { title: `Nueva detección · ${ticket.type}`, detail: `${ticket.address ?? ticket.place} → aviso automático a ${ticket.area}` }
+  if (entry?.kind === 'sighting') return { title: `Nuevo avistamiento · ${entry.source}`, detail: `${entry.confidence}% de confianza · se suma al ticket ${ticket.id}` }
+  if (entry?.kind === 'clear') return { title: `Pasada sin volver a detectar · ${ticket.id}`, detail: 'Queda como posiblemente resuelta' }
+}
 
 function activityLabel(entry: Activity, index: number, area: string) {
   if (entry.kind === 'manual') {
@@ -150,6 +158,7 @@ function Landing() {
       <nav aria-label="Navegación principal">
         <a className="landing-section-link" href="#como-funciona">Cómo funciona</a>
         <button type="button" className="landing-section-link landing-scroll-link" onClick={showSystem}>Prototipo</button>
+        <a className="landing-ghost" href="#impacto">Impacto</a>
         <a className="landing-cta" href="#mapa">Abrir mapa</a>
       </nav>
     </header>
@@ -248,6 +257,16 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   const routeOpen = layer === 'routes' && Boolean(displayedRoute) && routeTicketId === selected?.id
   const mapLayer = layer === 'routes' && !displayedRoute ? 'tickets' : layer
 
+  const [toast, setToast] = useState<{ title: string; detail: string }>()
+  const replayTicket = activeTickets.find(ticket => ticket.id === replay.ticketId)
+  useEffect(() => {
+    const next = replayToast(step, replayTicket)
+    setToast(next)
+    if (!next) return
+    const timer = window.setTimeout(() => setToast(undefined), 8000)
+    return () => window.clearTimeout(timer)
+  }, [step]) // solo avisa cuando avanza la simulación
+
   const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
 
@@ -273,7 +292,13 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
           : <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>}
         <span className="city">{city}</span>
       </div>
-      <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
+      <div className="top-meta">
+        <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
+        {!embedded && <nav className="view-switch" aria-label="Vistas">
+          <a href="#mapa" aria-current="page">Mapa</a>
+          <a href="#impacto">Impacto</a>
+        </nav>}
+      </div>
     </header>
     <section className="workspace" aria-label="Monitoreo urbano">
       <div className="map-stage">
@@ -291,6 +316,12 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
         </div>
         <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
+          <div className="live-region" role="status" aria-live="polite">
+            {toast && selected?.id !== replay.ticketId && <button key={toast.title} className="live-toast" onClick={() => setId(replay.ticketId)}>
+              <span className="live-dot" aria-hidden="true" />
+              <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
+            </button>}
+          </div>
           <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} />
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
@@ -322,7 +353,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   </Container>
 }
 
-const readPage = () => location.hash === '#mapa' || location.hash === '#mapa/deteccion' ? location.hash : ''
+const readPage = () => ['#mapa', '#mapa/deteccion', '#impacto'].includes(location.hash) ? location.hash : ''
 
 function Site() {
   const [page, setPage] = useState(readPage)
@@ -345,6 +376,7 @@ function Site() {
     window.addEventListener('hashchange', navigate)
     return () => window.removeEventListener('hashchange', navigate)
   }, [page])
+  if (page === '#impacto') return <Impact />
   if (page === '#mapa/deteccion') return <App key="deteccion" demo />
   return page === '#mapa' ? <App key="mapa" /> : <Landing />
 }

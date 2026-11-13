@@ -75,6 +75,8 @@ flowchart LR
 | Zonas de calor | ¿Dónde hay más incidencias y qué parte de la ciudad no está observada? |
 | Tarjeta del ticket | ¿Qué se detectó, con qué gravedad, quién lo resuelve y qué pasó hasta ahora? |
 | Acciones del ticket | ¿Qué hago ahora: aviso manual, ruta sugerida o plan de barrida? |
+| Aviso en vivo (sobre el mapa) | ¿Qué acaba de detectar la flota y a quién se le avisó? |
+| Impacto (`/#impacto`) | ¿Cuánto combustible y CO₂ ya emitido gana un segundo uso, y qué escala tiene el problema? |
 | [Deck](harness/pitch/deck.html) y [speech](harness/pitch/speech.md) | ¿Cómo lo contamos en 3 minutos? |
 | [Mural de lienzos](harness/proceso/mural-mesa24.html) | ¿Cómo llegamos a esta solución y qué decidimos en el camino? |
 
@@ -141,7 +143,8 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 |---|---|---|
 | El prototipo muestra 194 tickets simulados en un mapa 3D de Córdoba | [`frontend/src/tickets-mock.json`](frontend/src/tickets-mock.json), [`CityMap.tsx`](frontend/src/CityMap.tsx) | Correr el frontend y abrir `/#mapa` |
 | La gravedad tiene cuatro niveles | [`frontend/src/tickets.ts`](frontend/src/tickets.ts) (`severityLabels`) | Filtrar o abrir tickets de distinta gravedad |
-| El ciclo ticket → avistamiento → aviso → verificación corre solo | [`frontend/src/main.tsx`](frontend/src/main.tsx) | Recargar `/#mapa` y mirar la secuencia |
+| El ciclo ticket → avistamiento → aviso → verificación corre solo | [`frontend/src/main.tsx`](frontend/src/main.tsx) | Recargar `/#mapa` y mirar la secuencia (con aviso en vivo a los 4, 12 y 55 s) |
+| La página de impacto calcula el CO₂ con los supuestos del speech | [`frontend/src/Impact.tsx`](frontend/src/Impact.tsx) | Abrir `/#impacto`: 70 × 20 L × 365 × 2,6 kg = 1.329 t/año |
 | El ticket sigue el payload de la arquitectura | [`tickets-mock.json`](frontend/src/tickets-mock.json) y [`arquitectura-sistema.md`](harness/arquitectura/arquitectura-sistema.md) | Comparar los campos del mock con la sección 3.3 |
 | Las cifras del pitch tienen fuente | [`harness/pitch/speech.md`](harness/pitch/speech.md), sección «Para los ensayos» | Revisar la fuente de cada cifra |
 | El proceso de Design Thinking quedó registrado | [`harness/proceso/mural-mesa24.html`](harness/proceso/mural-mesa24.html), [`fotos/`](harness/proceso/fotos/), [`proceso.md`](harness/proceso.md) | Abrir el mural en el navegador |
@@ -154,6 +157,7 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 | Área | Estado |
 |---|---|
 | Prototipo frontend (landing, mapa, tarjetas, acciones, zonas de calor) | ✅ **Funciona**, con datos simulados |
+| Página de impacto y aviso en vivo | 🟡 **En la rama** `frontend/mlp-estadisticas-aviso`, pendiente de revisión de Juani; cifras de CO₂ estimadas |
 | Backend, hub y API | ⬜ **Planeados** en la arquitectura; sin código |
 | Detección por visión por computadora | ⬜ **Por definir**: modelo real o resultados precargados |
 | Arquitectura técnica | 🟡 **En revisión** en la rama `architecture/init` |
@@ -218,7 +222,8 @@ No hay API: el prototipo lee datos simulados locales. La arquitectura en revisi�
 ├── frontend/                    Prototipo React + Vite + MapLibre
 │   ├── public/                  Logo, clips de detección y fotos ilustrativas de tickets
 │   ├── scripts/                 Generación de rutas con OSRM
-│   └── src/                     App, mapa, tickets y datos simulados
+│   └── src/                     App, mapa, impacto (Impact.tsx), tickets y datos simulados
+│       └── assets/ticket-photos/  Fotos extra por tipo de incidencia (una carpeta por tipo)
 │
 ├── harness/
 │   ├── ESTADO.md                Tablero vivo: fase, tareas, avisos y bloqueos
