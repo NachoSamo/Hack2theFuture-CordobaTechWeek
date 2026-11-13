@@ -61,7 +61,7 @@ Entonces nos preguntamos: ¿y si cada recorrido de monitoreo hiciera una ciudad 
 
 ### 6 · Solución: el móvil con cámara (1:15–1:25)
 
-Por eso presentamos **Urbis**: las cámaras que ya patrullan, ahora también detectan.
+Por eso presentamos **Urbis**: mismo recorrido, más sustentabilidad.
 
 ### 6b · Qué detecta y prototipo (1:25–1:55)
 
