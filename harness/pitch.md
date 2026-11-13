@@ -13,7 +13,7 @@
 
 ## Estructura
 
-> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 10 slides al 13/11: suma «un caso, de punta a punta» después de la solución, con financiamiento) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
+> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 9 slides al 13/11, con financiamiento) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
 
 Cubre los **seis componentes indispensables** de la guía oficial y el relato que pide: problema,
 evidencia, solución, prueba realizada, impacto y viabilidad, **qué aprendimos y qué falta validar**.
