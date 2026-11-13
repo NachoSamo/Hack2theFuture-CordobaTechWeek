@@ -105,7 +105,18 @@ function Landing() {
   const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [playing, setPlaying] = useState(false)
   const film = useRef<HTMLVideoElement>(null)
+  const system = useRef<HTMLElement>(null)
   const [announcement, setAnnouncement] = useState(true)
+
+  function showSystem() {
+    const section = system.current
+    if (!section) return
+    section.focus({ preventScroll: true })
+    section.scrollIntoView({
+      behavior: autoPlay ? 'smooth' : 'instant',
+      block: 'start',
+    })
+  }
 
   return <main className="landing">
     {announcement && <div className="landing-banner">
@@ -116,7 +127,7 @@ function Landing() {
       <a className="brand" href="#" aria-label="Urbis, inicio"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
       <nav aria-label="Navegación principal">
         <a className="landing-section-link" href="#como-funciona">Cómo funciona</a>
-        <a className="landing-section-link" href="#prototipo">Prototipo</a>
+        <button type="button" className="landing-section-link landing-scroll-link" onClick={showSystem}>Prototipo</button>
         <a className="landing-cta" href="#mapa">Abrir mapa</a>
       </nav>
     </header>
@@ -128,7 +139,7 @@ function Landing() {
       <div className="landing-copy">
         <h1 id="landing-title">Detección urbana<br />desde el patrullaje</h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
-        <a className="landing-cta" href="#prototipo">Ver el sistema</a>
+        <button type="button" className="landing-cta" onClick={showSystem}>Ver el sistema</button>
       </div>
       <button type="button" className="landing-play" aria-controls="landing-film" onClick={() => {
         const video = film.current
@@ -137,7 +148,7 @@ function Landing() {
         else video.pause()
       }}>{playing ? 'Pausar video' : 'Reproducir video'}</button>
     </section>
-    <LandingSystem />
+    <LandingSystem sectionRef={system} />
     <section className="landing-explainer" id="como-funciona" aria-labelledby="landing-process">
       <p className="landing-eyebrow">Del patrullaje a la acción</p>
       <h2 id="landing-process">Cada recorrido deja evidencia</h2>
@@ -151,7 +162,7 @@ function Landing() {
   </main>
 }
 
-function LandingSystem() {
+function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
   const screen = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -166,7 +177,7 @@ function LandingSystem() {
     return () => observer.disconnect()
   }, [])
 
-  return <section className="landing-prototype" id="prototipo" aria-labelledby="landing-prototype-title">
+  return <section className="landing-prototype" id="prototipo" ref={sectionRef} tabIndex={-1} aria-labelledby="landing-prototype-title">
     <div className="landing-system-copy">
       <h2 id="landing-prototype-title">El sistema de Urbis</h2>
       <p>Explorá las detecciones en el mapa y abrí un ticket para ver qué se detectó, a quién le corresponde y qué acciones podés tomar.</p>

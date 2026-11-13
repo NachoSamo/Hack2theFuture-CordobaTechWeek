@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Demostración de entrada de Urbis
 
-La portada reproduce clips de detecciones simuladas en bucle. «Ver el sistema» baja a una sección con el mapa interactivo. Ahí se pueden abrir marcadores y probar acciones como sugerir una ruta para un contenedor rebalsado. «Abrir mapa completo» lleva a `/#mapa`. El enlace directo `/#mapa/deteccion` abre el ticket del contenedor.
+La portada reproduce clips de detecciones simuladas en bucle. «Ver el sistema» desplaza la misma página hasta la sección con el mapa interactivo. Ahí se pueden abrir marcadores y probar acciones como sugerir una ruta para un contenedor rebalsado. «Abrir mapa completo» lleva a `/#mapa`. El enlace directo `/#mapa/deteccion` abre el ticket del contenedor.

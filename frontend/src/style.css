@@ -199,19 +199,20 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 
 .brand { color: inherit; text-decoration: none; }
 .landing {
-  --landing-ink: #222d39;
+  --landing-ink: #f0f3ed;
   --landing-accent: #dff691;
   min-height: 100svh;
   color: var(--landing-ink);
-  background: #fcfcfc;
-  color-scheme: light;
+  background: radial-gradient(ellipse at 80% 70%, #202d27 0%, #111815 53%, #0e1311 83%);
+  color-scheme: dark;
   font-family: Arial, system-ui, sans-serif;
 }
-.landing :focus-visible { outline-color: #607c1d; }
+.landing :focus-visible { outline-color: var(--landing-accent); }
 .landing-banner {
   position: relative;
   padding: 17px 52px;
   text-align: center;
+  color: #222d39;
   background: var(--landing-accent);
   line-height: 1.5;
 }
@@ -238,12 +239,14 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 .landing-top nav { display: flex; align-items: center; gap: clamp(14px, 3vw, 42px); }
 .landing-section-link { color: inherit; text-decoration: none; }
 .landing-section-link:hover { text-decoration: underline; }
+.landing-scroll-link, .landing-scroll-link:hover { padding: 0; border: 0; background: transparent; }
 .landing-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 48px;
   padding: 12px 18px;
+  border: 0;
   border-radius: 8px;
   background: var(--landing-accent);
   color: #222d39;
@@ -300,7 +303,7 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   list-style: none;
   text-align: left;
 }
-.landing-explainer li { padding: 26px; border-top: 3px solid var(--landing-accent); background: #f2f4f0; }
+.landing-explainer li { padding: 26px; border-top: 3px solid var(--landing-accent); background: #192520; }
 .landing-explainer li span { font: .85rem var(--mono); }
 .landing-explainer h3 { margin: 12px 0 8px; font-size: 1.45rem; }
 .landing-prototype {
@@ -317,7 +320,7 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 .landing-monitor {
   padding: 12px 12px 24px;
   border-radius: 20px;
-  background: linear-gradient(#e4e7e6 calc(100% - 20px), #d6dad9 calc(100% - 20px));
+  background: linear-gradient(#35443d calc(100% - 20px), #293731 calc(100% - 20px));
 }
 .landing-monitor-screen {
   height: clamp(420px, 40vw, 550px);

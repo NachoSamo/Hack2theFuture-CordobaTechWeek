@@ -46,7 +46,7 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 
 El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
 
-La landing del prototipo usa encabezado claro, acentos lima y una portada compacta con clips de detección simulada y una sección clara con el sistema interactivo enmarcado como un monitor. La composición toma como referencia [Vialytics](https://www.vialytics.com/). El mapa conserva la paleta de la tabla.
+La landing del prototipo usa un fondo oscuro entre `#0E1311` y `#202D27`, texto claro y acentos lima. La portada compacta muestra clips de detección simulada y debajo aparece el sistema interactivo enmarcado como un monitor. La composición toma como referencia [Vialytics](https://www.vialytics.com/). El mapa conserva la paleta de la tabla.
 
 ## Tipografía y tono
 
