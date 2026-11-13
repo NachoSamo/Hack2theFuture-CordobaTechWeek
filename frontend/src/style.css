@@ -411,7 +411,6 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   text-align: left;
   background: var(--surface);
   border: 1px solid #455b4c;
-  border-left: 3px solid var(--lime);
   border-radius: 8px;
   box-shadow: 0 10px 30px #0008;
 }
