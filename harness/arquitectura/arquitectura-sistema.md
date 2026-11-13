@@ -1,8 +1,8 @@
 # Arquitectura del sistema: hub de incidencias urbanas
 
-- **Fecha:** 12/11/2026
-- **Estado:** diseño técnico en iteración; no acredita implementación ni aprobación de diagramas.
-- **Alcance funcional:** recibir detecciones y sus frames de evidencia, consolidar incidencias en un hub y ofrecer dos salidas: consulta por API para el mapa y derivación de tickets a entidades responsables. El MVP parte de captura simulada; la integración con cámaras de móviles, domos y procesamiento Edge se plantea para después.
+- **Fecha:** 12/11/2026 (actualizado 22:35)
+- **Estado:** diseño técnico cerrado para estructura inicial mockeada del MVP; pendiente de completar diagramas en `harness/arquitectura/` y aprobación de dueños de nodo y Samo.
+- **Alcance funcional:** recibir detecciones y sus frames de evidencia vía HTTPS multipart, consolidar incidencias en un hub y ofrecer dos salidas independientes: API de consulta para el mapa/listado/detalle y derivación de tickets a un receptor simulado. El MVP se verifica sobre una **estructura inicial mockeada** (frames preparados, resultados precargados de respaldo y receptor simulado); la integración con cámaras reales, domos, MQTT y Edge en hardware queda para etapas posteriores.
 
 ---
 
@@ -49,17 +49,19 @@ La recepción y las actualizaciones que informe la entidad se vinculan a la inci
 
 ### Catálogo de referencia y niveles de gravedad
 
-Los tipos del documento base se conservan como referencia. La selección para el MVP, las reglas de gravedad y la tabla de destinatarios siguen pendientes.
+La gravedad se asigna mediante **reglas determinísticas por `type_problem` en el hub** (sin LLM por evento). La fuente envía `severity: null`.
 
-1. **Gestión de Residuos:**
-   - `contenedor_vacio` (Normal / Sin despacho)
-   - `contenedor_lleno` (Contenedor lleno)
-   - `contenedor_desbordado` (Contenedor desbordado)
-   - `basura_acumulada_piso` (Basura acumulada en la vía pública)
-   - *Escalable:* Poda, escombros, bolsas clasificadas por color.
-2. **Infraestructura y Vía Pública:**
-   - `bache_calzada` (Daño asfáltico en calzada)
-   - `luminaria_apagada_rota` (Indicio visual de problema de alumbrado; no confirma la causa)
+1. **Gestión de Residuos (`residuos`):**
+   - `contenedor_vacio` → `bajo` (Normal / Sin despacho)
+   - `contenedor_lleno` → `medio` (Contenedor lleno)
+   - `contenedor_desbordado` → `alto` (Contenedor desbordado)
+   - `basura_acumulada_piso` → `medio` (Basura acumulada en la vía pública)
+   - *Escalable:* poda, escombros, bolsas clasificadas por color.
+2. **Infraestructura y Vía Pública (`calzada`, `alumbrado`, `senalizacion`):**
+   - `bache_calzada` → `alto` (Daño asfáltico en calzada)
+   - `luminaria_apagada_rota` → `medio` (Indicio visual de problema de alumbrado; no confirma la causa)
+   - `poste_caido` → `extremo` (Poste caído o inclinado con riesgo en vía pública)
+   - `semaforo_danado` → `extremo` (Semáforo dañado o apagado)
 3. **Escala de Severidad:**
    - `bajo` | `medio` | `alto` | `extremo`
 
@@ -68,44 +70,38 @@ Los tipos del documento base se conservan como referencia. La selección para el
 ## 2. Componentes del Sistema
 
 ### Componente 1: Captura y detección
-- **Entrada inicial:** frames y metadatos de ubicación, fecha/hora y fuente simulados. La integración con cámaras de móviles, domos y GPS reales será posterior.
-- **Salida:** evento de detección con la estructura definida en la sección 3.1 y su frame anotado con el recuadro de detección. La elección entre detección real y resultados precargados para el MVP sigue pendiente.
-- **Responsabilidad del emisor:** producir y entregar eventos; no mantener un historial de incidencias. El emisor descarta su copia una vez recibidos los datos y la imagen por el hub. La confirmación de entrega completa, las fallas parciales y los reintentos quedan por definir.
-- **Responsabilidad del hub:** centralizar las observaciones, consolidarlas en incidencias y mantener su información para consulta y derivación.
-- **Modelo propuesto en la referencia:** YOLO11n y ejecución mediante ONNX Runtime / TensorRT. Pesos, hardware y optimización FP16/INT8 pendientes de evaluar.
-- **Consumo de referencia:** 5–10 W, estimación del documento base sin medición del proyecto.
-- **Disparo propuesto:** analizar frames y emitir eventos que cumplan el umbral de confianza. El valor `conf > 0.65` procede de la referencia y sigue pendiente de validación.
-- **Transmisión:** JSON compacto más archivo de imagen asociado. El objetivo de menos de 1 KB se limita a los metadatos; formato, compresión y límites de la imagen quedan pendientes. El transporte de eventos e imágenes puede diferir, según la alternativa que se acuerde.
-- **Preparación de la evidencia:** dibujar el recuadro de la detección sobre el frame y enviar esa imagen, sin pixelado. Se envían frames asociados a detecciones; no se plantea transmitir video continuo. Acceso y conservación de las imágenes quedan por definir.
+- **Entrada inicial:** frames preparados y metadatos de ubicación, fecha/hora y fuente simulados/mockeados. La integración con cámaras de móviles, domos y GPS reales será posterior.
+- **Modelo y modo del MVP:** enfoque híbrido sobre frames preparados: **YOLO11n real** en categorías con pesos disponibles (residuos/contenedores y baches) + **YOLO-World (open-vocabulary)** o clasificador auxiliar para categorías nuevas (`poste_caido`, `luminaria_apagada_rota`, `semaforo_danado`), manteniendo **resultados precargados como respaldo identificado**.
+- **Salida:** evento de detección con la estructura definida en la sección 3.1 y su frame JPEG anotado con el recuadro de detección.
+- **Responsabilidad del emisor:** producir y entregar eventos vía HTTPS `multipart/form-data` (JSON + JPEG juntos); retener en cola local lo pendiente y reintentar conservando el mismo `event_id` hasta que el hub confirme la recepción de ambos.
+- **Disparo y umbrales de referencia:** `conf > 0.65` (referencia) y consumo Edge 5–10 W (estimación de referencia para hardware real futuro).
+- **Preparación de la evidencia:** JPEG con el recuadro de la detección dibujado sobre el frame, sin pixelado (límite orientativo ≤ 1–2 MB). No se transmite video continuo.
 
 ### Componente 2: Ingesta y consolidación en el hub
-- **Entrada:** evento de detección de la sección 3.1 y frame de evidencia asociado; requisitos de vinculación en la sección 3.5.
-- **Endpoint de ingesta:** `POST /api/v1/telemetry/events`.
-- **Control de reenvíos:** reconocer `event_id` ya recibidos para no registrar otra observación ni aumentar contadores por el mismo mensaje. Los reintentos de la evidencia deben mantener la vinculación con el evento y evitar adjuntos duplicados; la confirmación de imagen completa queda pendiente.
-- **Consolidación:** relacionar una observación nueva con una incidencia existente mediante `detection.type_problem`, `location.lat`, `location.lon` y `timestamp`; crear una incidencia cuando corresponda a un problema nuevo.
-- **Persistencia:** centralizar observaciones, incidencias y referencias a sus imágenes. PostgreSQL/PostGIS es la tecnología planteada para los datos; la solución de almacenamiento de archivos queda por definir.
-- **Salida:** incidencia con la estructura de la sección 3.2.
-- **Conteos:** `observation_count` cuenta observaciones diferentes de una incidencia. El número de incidencias de un tipo se obtiene agrupando incidencias consolidadas por `type_problem`; es distinto del número de frames o mensajes recibidos.
-- **Pendiente:** decidir si se conservan `pass_id` y `pass_count`. Su finalidad anterior era distinguir pasadas, pero su generación y utilidad no quedaron acordadas; se mantienen provisionalmente en los ejemplos.
-
-El radio de 15–20 metros y la ventana de seis horas son valores de referencia, no reglas validadas. La duración de una incidencia y las condiciones para asociar nuevas observaciones siguen pendientes de definición.
+- **Entrada:** solicitud HTTPS `multipart/form-data` en `POST /api/v1/telemetry/events` con evento JSON (sección 3.1) y frame JPEG anotado.
+- **Control de reenvíos (idempotencia):** reconocer `event_id` ya recibidos para no registrar otra observación, no duplicar adjuntos ni aumentar contadores. El hub confirma aceptación únicamente después de guardar ambos.
+- **Asignación de gravedad:** reglas determinísticas por `type_problem` en el hub (sin LLM); `severity` entra como `null` desde el emisor.
+- **Consolidación:** asociar por `type_problem`, proximidad (`15–20 m` iniciales) e incidencia `activa`. La ventana de `6 h` se usa para buscar observaciones recientes, sin crear automáticamente una nueva incidencia si vence el plazo mientras la incidencia siga activa.
+- **Persistencia:** PostgreSQL/PostGIS para observaciones, incidencias y referencias a evidencia; carpeta persistente en el servidor para los archivos JPEG durante el MVP, detrás de una interfaz de almacenamiento desacoplada.
+- **Conteos y pasadas:** `observation_count` cuenta observaciones distintas. `pass_id` no es obligatorio en el emisor; `pass_count` se calcula en el hub como **estimado** agrupando observaciones por `device_id` e intervalo temporal configurable (ej. 30 min).
 
 ### Componente 3: API de consulta y mapa de calor
 - **Entrada:** incidencias consolidadas del hub.
-- **Consulta de incidencias:** listado y detalle mediante la estructura de la sección 3.2. El detalle debe permitir recuperar los frames vinculados a la incidencia, con el recuadro de detección visible y sin pixelado. Rutas, permisos y referencias de acceso a la imagen quedan pendientes.
-- **Endpoint Analítico:** `GET /api/v1/analytics/heatmap` (parámetros: `categoria`, `severidad`, `desde`, `hasta`).
-- **Respuesta geográfica:** GeoJSON para representar el mapa de calor. La ponderación frecuencia × gravedad procede de la referencia y queda por validar.
-- **Evidencia visual:** al consultar un punto del mapa, la aplicación obtiene el detalle y su imagen mediante el mecanismo autorizado que se acuerde. La base de datos conserva la relación evento–imagen–incidencia; el diseño no obliga a incluir el archivo dentro de cada respuesta JSON.
+- **Endpoints de consulta:**
+  - `GET /api/v1/analytics/heatmap` → GeoJSON para mapa de calor; **1 contribución por incidencia activa** ponderada por gravedad (sin multiplicar por cantidad de frames).
+  - `GET /api/v1/incidents` → listado paginado filtrable por tipo (`category`/`type_problem`), gravedad (`severity`), estado (`status`), entidad (`recipient_id`) y fecha (`desde`/`hasta`).
+  - `GET /api/v1/incidents/{incident_id}` → detalle completo de la incidencia y lista de referencias (`evidence_ids`).
+  - `GET /api/v1/evidence/{evidence_id}` → recuperación controlada del JPEG anotado.
 - **Consumidores:** interfaz del mapa y entidades que consulten la API. La consulta y la derivación de tickets son salidas independientes del hub.
 
 ### Componente 4: Derivación de Tickets
 - **Entrada:** incidencia consolidada y registrada en el hub.
-- **Proceso:** determinar la entidad responsable según el tipo de problema y su jurisdicción; generar o actualizar el ticket vinculado a esa incidencia.
-- **Salida:** ticket con la estructura acordada en la sección 3.3; `ticket_id` identifica la derivación e `incident_id` la vincula al problema central.
-- **Seguimiento:** registrar el resultado del envío y la confirmación de recepción cuando el canal la permita. Conservar el aviso pendiente o fallido si la entrega no se completa.
-- **Independencia:** la derivación y la consulta del mapa trabajan sobre las mismas incidencias; ninguna necesita esperar a que la otra sea utilizada.
-- **Pendiente:** tabla de destinatarios y jurisdicciones, canal de entrega, respuestas de recepción y reglas de reintento y actualización. La estructura base del ticket está definida; su implementación real o simulada en el MVP debe acordarse. También queda por decidir si la entidad destinataria tendrá acceso a la imagen y por qué mecanismo; no se agrega todavía un adjunto al contrato 3.3.
-- **Verificación en evaluación:** actualización por la entidad responsable y observaciones posteriores de cámaras. Las condiciones para pasar a resuelta o posiblemente resuelta, y la información necesaria para verificar cobertura, siguen abiertas. No se considera una falta de nuevos eventos como confirmación de resolución.
+- **Proceso:** resolver destinatario mediante tabla configurable `(type_problem, jurisdiccion) → recipient_id`. Para el MVP: **1 entidad destinataria por incidencia** y un **receptor HTTP simulado**.
+- **Salida:** ticket con la estructura de la sección 3.3; `ticket_id` estable ante reintentos e `incident_id` vinculado. Si el receptor necesita la foto, recibe una referencia controlada (`evidence_ref`) sin adjuntar el binario.
+- **Seguimiento y estados:**
+  - **Estados de ticket:** `pendiente_envio | fallido | recibido | en_atencion | resuelto`.
+  - **Estados de incidencia:** `activa | en_atencion | resuelta` (en fase posterior, verificación por cámaras podrá marcar `posiblemente_resuelta`).
+  - La entidad informa `recibido → en_atencion → resuelto`. **Nunca se cierra una incidencia por ausencia de nuevos eventos.** Un fallo de entrega del ticket mantiene el aviso visible como pendiente/fallido sin bloquear la consulta de la incidencia.
 
 ---
 
@@ -115,14 +111,13 @@ Los siguientes ejemplos describen los tres payloads JSON acordados para el flujo
 
 ### 3.1. Evento de detección — fuente → backend
 
-Representa una observación enviada por la fuente. `event_id` identifica el evento y se conserva al reintentar su envío. La permanencia y el significado operativo de `pass_id` siguen pendientes; no se lo usa como sustituto de `event_id`.
+Representa una observación enviada por la fuente junto al frame JPEG anotado vía HTTPS `multipart/form-data`. `event_id` identifica el evento y se conserva al reintentar su envío (idempotencia). `pass_id` no es obligatorio; el hub estima las pasadas.
 
 ```json
 {
   "event_id": "evt-demo-001",
   "device_id": "camara-demo-04",
   "timestamp": "2026-11-12T18:10:00Z",
-  "pass_id": "pasada-demo-01",
   "location": {
     "lat": -31.4167,
     "lon": -64.1833,
@@ -140,7 +135,7 @@ Representa una observación enviada por la fuente. `event_id` identifica el even
 
 ### 3.2. Incidencia — hub → consumidores de la API
 
-Representa el problema centralizado que reúne observaciones. `observation_count` cuenta observaciones distintas y `last_confidence` corresponde a la última detección. `pass_count` permanece provisional hasta decidir el uso de pasadas.
+Representa el problema centralizado que reúne observaciones. `observation_count` cuenta observaciones distintas y `pass_count` es un **estimado** calculado en el hub por `device_id` e intervalo configurable.
 
 ```json
 {
@@ -159,20 +154,23 @@ Representa el problema centralizado que reúne observaciones. `observation_count
   "last_seen_at": "2026-11-12T18:25:00Z",
   "observation_count": 3,
   "pass_count": 2,
-  "last_confidence": 0.89
+  "last_confidence": 0.89,
+  "evidence_ids": ["evd-demo-001"]
 }
 ```
 
 ### 3.3. Ticket — hub → entidad responsable
 
-Representa la derivación a una entidad. `ticket_id` identifica el ticket, `incident_id` lo vincula con la incidencia central y `recipient_id` identifica al destinatario. El bloque `incident` incluye los datos necesarios para entender el aviso. Este payload describe la salida; las respuestas de recepción y actualización todavía no están definidas.
+Representa la derivación a una entidad. `ticket_id` es estable en reintentos, `incident_id` vincula la incidencia central, `recipient_id` identifica al destinatario (1 entidad por incidencia en el MVP, receptor simulado) y `evidence_ref` da acceso controlado al JPEG sin adjuntar el binario.
 
 ```json
 {
   "ticket_id": "tkt-demo-001",
   "incident_id": "inc-demo-001",
   "recipient_id": "entidad-demo-higiene",
+  "status": "pendiente_envio",
   "created_at": "2026-11-12T18:26:00Z",
+  "evidence_ref": "/api/v1/evidence/evd-demo-001",
   "incident": {
     "category": "residuos",
     "type_problem": "contenedor_desbordado",
@@ -200,14 +198,10 @@ Representa la derivación a una entidad. `ticket_id` identifica el ticket, `inci
 
 ### 3.5. Evidencia visual asociada
 
-- **Contenido:** frame con el recuadro de detección de YOLO, para visualizarlo en el detalle de la incidencia. La escena se conserva sin pixelado.
-- **Relación:** la imagen debe vincularse al `event_id` que la originó y, tras la consolidación, al `incident_id` correspondiente. Una incidencia puede reunir evidencia de varias observaciones.
-- **Anotación:** el recuadro forma parte de la imagen enviada. No se exige que el frontend lo reconstruya ni se agregan todavía coordenadas de la caja a los payloads JSON.
-- **Entrega:** el contrato debe permitir saber cuándo están recibidos tanto los metadatos como el archivo; la confirmación conjunta y el tratamiento de fallas parciales quedan pendientes.
-- **Consulta:** el detalle de la incidencia debe proporcionar acceso autorizado a su evidencia; el mapa de calor no necesita transportar las imágenes de todos los puntos.
-- **Opciones por definir:** envío conjunto de JSON y archivo, o carga del archivo separada y posterior asociación mediante una referencia. No se introduce todavía una propiedad de imagen en los JSON ni un endpoint adicional.
-- **Almacenamiento y retención:** definir dónde se guarda el archivo, quién puede consultarlo, cuánto se conserva y si se mantienen todos los frames o una selección representativa.
-
+- **Contenido:** frame JPEG con el recuadro de detección dibujado, sin pixelado (límite orientativo ≤ 1–2 MB).
+- **Relación:** vinculada al `event_id` original y al `incident_id` consolidado en BD.
+- **Entrega:** envío conjunto de JSON + JPEG vía HTTPS `multipart/form-data` en `POST /api/v1/telemetry/events`; confirmación conjunta tras guardar ambos.
+- **Almacenamiento y consulta:** carpeta persistente del servidor en el MVP, detrás de una interfaz desacoplada y servida por `GET /api/v1/evidence/{evidence_id}`. Los tickets reciben `evidence_ref` sin adjuntar binario.
 
 ---
 
@@ -215,25 +209,23 @@ Representa la derivación a una entidad. `ticket_id` identifica el ticket, `inci
 
 | Fase | Tarea | Dependencia |
 |---|---|---|
-| **Fase 1 (Actual)** | Resolver las decisiones pendientes y validar arquitectura y contratos de evento, evidencia visual, incidencia y ticket | Revisión con participantes y dueños de nodo |
-| **Fase 2** | Definir fixtures de eventos, frames de evidencia y metadatos de ubicación y tiempo, identificados como simulados | Fase 1 |
+| **Fase 1 (Cerrada)** | Decisiones de arquitectura y contratos cerradas (estructura inicial mockeada del MVP) | Actualizado en `contratos.md` y `decision-log.md` |
+| **Fase 2** | Definir fixtures simulados de eventos, frames JPEG anotados y casos de prueba | Fase 1 |
 | **Fase 3** | Completar y aprobar los diagramas de solución y recorrido del usuario en `harness/arquitectura/` | Fase 2; aprobación de dueños de nodo y Samo |
-| **Fase 4** | Implementar ingesta, consolidación, almacenamiento y consulta de evidencia, consultas de incidencias, datos para el mapa y derivación de tickets según el modo acordado para el MVP | Fase 3 aprobada |
-| **Fase 5** | Integrar mapa y detalle con el frame y su recuadro de detección; verificar consulta y derivación, incluyendo fallas de carga de imagen | Fase 4 y criterios de aceptación acordados |
+| **Fase 4** | Implementar estructura inicial mockeada (ingesta, consolidación, almacenamiento local, 4 endpoints de consulta y receptor simulado de tickets) | Fase 3 aprobada |
+| **Fase 5** | Verificación punta a punta mockeada (flujo completo + reenvío idempotente + fallo simulado de entrega) | Fase 4 |
 
 ---
 
-## 5. Decisiones pendientes para la próxima iteración
+## 5. Decisiones cerradas (Iteración 2 — 12/11 22:35)
 
-Estas cuestiones permanecen abiertas. Las recomendaciones discutidas no se consideran decisiones tomadas.
-
-1. **Identificadores de pasada:** conservar o quitar `pass_id` y `pass_count`; definir su significado si se conservan.
-2. **Gravedad:** reglas del hub, IA o combinación; responsable de asignarla y criterios para los cuatro niveles.
-3. **Consolidación:** condiciones para unir observaciones, distinguir problemas cercanos y tratar incidencias activas; radio y ventana temporal.
-4. **Estados y resolución:** estados permitidos, actualizaciones de la entidad y evidencia para indicar «posiblemente resuelta»; necesidad y formato de información de cobertura.
-5. **Comunicación:** HTTPS o MQTT, confirmación de recepción, reintentos y conservación temporal de eventos pendientes.
-6. **Derivación:** destinatarios y jurisdicciones, canal de entrega, respuestas de recepción y actualización, y posibilidad de varios destinatarios por incidencia.
-7. **Detección del MVP:** modelo real o resultados precargados; categorías, pesos, hardware, umbrales y presupuesto de recursos. Las tecnologías del documento base son propuestas por evaluar.
-8. **Consultas y mapa:** rutas de listado y detalle, filtros y ponderación del mapa de calor.
-9. **Verificación del MVP:** recorrido y resultados necesarios para considerarlo funcionando; pasos reales y simulados identificados.
-10. **Evidencia visual:** transporte de JSON e imagen anotada, confirmación de entrega completa, formato/tamaño/compresión, almacenamiento, permisos, retención, selección de frames y acceso desde tickets.
+1. **Identificadores de pasada:** `pass_id` no obligatorio en el emisor; `pass_count` estimado en el hub por `device_id` e intervalo configurable.
+2. **Gravedad:** reglas determinísticas por `type_problem` en el hub (sin LLM); fuente envía `severity: null`.
+3. **Consolidación:** `type_problem` + radio `15–20 m` + incidencia `activa` (búsqueda 6 h, sin crear nueva incidencia al vencer).
+4. **Estados y resolución:** ticket (`pendiente_envio | fallido | recibido | en_atencion | resuelto`) separado de incidencia (`activa | en_atencion | resuelta`, más `posiblemente_resuelta` a futuro). Nunca cerrar por ausencia de eventos.
+5. **Comunicación:** HTTPS `multipart/form-data` (JSON + JPEG), confirmación conjunta e idempotencia por `event_id`; MQTT post-MVP.
+6. **Derivación:** tabla `(type_problem, jurisdiccion) → recipient_id`, 1 entidad en MVP, receptor HTTP simulado, `ticket_id` estable y `evidence_ref` controlada.
+7. **Detección del MVP:** híbrido sobre frames preparados (YOLO11n real en categorías con pesos + YOLO-World para clases nuevas) con respaldo precargado/mockeado identificado.
+8. **Consultas y mapa:** `heatmap` (1 contribución por incidencia activa), listado filtrado, detalle y evidencia.
+9. **Verificación del MVP:** flujo completo **mockeado** punta a punta + pruebas de reenvío sin duplicación y fallo de entrega con ticket visible.
+10. **Evidencia visual:** JPEG anotado ≤ 1–2 MB en carpeta persistente detrás de `GET /api/v1/evidence/{evidence_id}`.

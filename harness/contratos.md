@@ -33,15 +33,45 @@ JSON y fixture los define cada dueño.
 
 ## Contratos
 
-Uno por interfaz: forma del JSON con un ejemplo real, no una descripción. El fixture correspondiente
-vive en `fixtures/<nodo>.json` y es el mismo ejemplo.
+Contratos acordados para la estructura inicial mockeada del hub (alineados con [`arquitectura/arquitectura-sistema.md`](arquitectura/arquitectura-sistema.md)):
 
-```text
-<MÉTODO> /api/...
-  request:
-  response:
-  si falla:
+### 1. Ingesta de evento + evidencia (`POST /api/v1/telemetry/events`)
+- **Transporte:** HTTPS `multipart/form-data` con campo `event` (JSON) y `image` (JPEG anotado con recuadro de detección, sin pixelado, ≤ 1–2 MB).
+- **Idempotencia:** `event_id` único; el reenvío con el mismo `event_id` retorna `200` sin duplicar observación ni adjunto.
+- **Request (`event`):**
+```json
+{
+  "event_id": "evt-demo-001",
+  "device_id": "camara-demo-04",
+  "timestamp": "2026-11-12T18:10:00Z",
+  "location": {
+    "lat": -31.4167,
+    "lon": -64.1833,
+    "reference": "camara",
+    "accuracy_m": null
+  },
+  "detection": {
+    "category": "residuos",
+    "type_problem": "contenedor_desbordado",
+    "severity": null,
+    "confidence": 0.89
+  }
+}
 ```
+- **Response (`201` / `200` tras guardar JSON e imagen):** `{ "status": "accepted", "event_id": "evt-demo-001", "incident_id": "inc-demo-001", "evidence_id": "evd-demo-001", "deduplicated": false }`
+- **Si falla:** `{ "status": "error", "code": "...", "message": "..." }` (sin 500 no controlado).
+
+### 2. Consultas de incidencias, mapa de calor y evidencia
+- `GET /api/v1/analytics/heatmap?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → GeoJSON con **1 contribución por incidencia activa** ponderada por gravedad.
+- `GET /api/v1/incidents?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → listado de incidencias consolidadas (`pass_count` marcado como estimado).
+- `GET /api/v1/incidents/{incident_id}` → detalle de incidencia + arreglo `evidence_ids`.
+- `GET /api/v1/evidence/{evidence_id}` → binario `image/jpeg` con acceso controlado.
+
+### 3. Derivación y actualización de ticket (receptor simulado en MVP)
+- **Salida hacia receptor (`POST <webhook_simulado>`):** payload de ticket (`ticket_id`, `incident_id`, `recipient_id`, `evidence_ref`, `incident`) con `ticket_id` estable en reintentos.
+- **Actualización de estado (`PATCH /api/v1/tickets/{ticket_id}/status`):** `{ "status": "recibido" | "en_atencion" | "resuelto", "note": "..." }`.
+
+El fixture correspondiente vive en `fixtures/<nodo>.json` y usa estos mismos ejemplos.
 
 ## Reglas
 
