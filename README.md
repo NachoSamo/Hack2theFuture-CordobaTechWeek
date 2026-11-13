@@ -73,6 +73,7 @@ flowchart LR
 | Landing ([`frontend/`](frontend/README.md)) | ¿Qué es Urbis y cómo se ve una detección? |
 | Mapa de incidencias (`/#mapa`) | ¿Qué está pasando en la ciudad y dónde? |
 | Zonas de calor | ¿Dónde hay más incidencias y qué parte de la ciudad no está observada? |
+| Flota (modo del mapa) | ¿Cómo detectan las incidencias los vehículos que ya circulan por la ciudad? |
 | Tarjeta del ticket | ¿Qué se detectó, con qué gravedad, quién lo resuelve y qué pasó hasta ahora? |
 | Acciones del ticket | ¿Qué hago ahora: aviso manual, ruta sugerida o plan de barrida? |
 | Aviso en vivo (sobre el mapa) | ¿Qué acaba de detectar la flota y a quién se le avisó? |
@@ -157,6 +158,7 @@ El centro es un **hub de incidencias**: recibe eventos de detección, los consol
 | Área | Estado |
 |---|---|
 | Prototipo frontend (landing, mapa, tarjetas, acciones, zonas de calor) | ✅ **Funciona**, con datos simulados |
+| Modo Flota (16 vehículos simulados por calles reales) | 🟡 **En la rama** `frontend/mlp-estadisticas-aviso`; recorridos precalculados con OSRM |
 | Página de impacto y aviso en vivo | 🟡 **En la rama** `frontend/mlp-estadisticas-aviso`, pendiente de revisión de Juani; cifras de CO₂ estimadas |
 | Backend, hub y API | ⬜ **Planeados** en la arquitectura; sin código |
 | Detección por visión por computadora | ⬜ **Por definir**: modelo real o resultados precargados |
@@ -221,8 +223,8 @@ No hay API: el prototipo lee datos simulados locales. La arquitectura en revisi�
 │
 ├── frontend/                    Prototipo React + Vite + MapLibre
 │   ├── public/                  Logo, clips de detección y fotos ilustrativas de tickets
-│   ├── scripts/                 Generación de rutas con OSRM
-│   └── src/                     App, mapa, impacto (Impact.tsx), tickets y datos simulados
+│   ├── scripts/                 Generación de rutas de recolección y de flota con OSRM
+│   └── src/                     App, mapa, impacto (Impact.tsx), flota (fleet.ts), tickets y datos simulados
 │       └── assets/ticket-photos/  Fotos extra por tipo de incidencia (una carpeta por tipo)
 │
 ├── harness/

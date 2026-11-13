@@ -86,7 +86,7 @@ export function automaticNotice(ticket: Ticket): Ticket {
 
 export const statuses = ['Detectada', 'Área avisada', 'Posiblemente resuelta']
 export const levels: Record<string, string> = { Alta: '#ed8a6e', Media: '#e2bc5e', Baja: '#86bea6', Extrema: '#ef9bec' }
-export type Layer = 'tickets' | 'zones' | 'routes'
+export type Layer = 'tickets' | 'zones' | 'routes' | 'fleet'
 
 export function locationLabel(ticket: Ticket) {
   const reference = ticket.streetReference

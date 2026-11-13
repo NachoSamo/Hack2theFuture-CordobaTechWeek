@@ -1,7 +1,8 @@
 import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { CityMap } from './CityMap'
+import { CityMap, type FleetControl } from './CityMap'
+import { clock, detectedUntil, endMeters, fleetColors, rangeMeters, SPEEDS, totalDetections, vehicles } from './fleet'
 import { automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Activity, type Layer, type ManualActivity, type TicketAction, type Ticket } from './tickets'
 import { scenario } from './scenario'
 import { Impact } from './Impact'
@@ -11,8 +12,9 @@ import './style.css'
 const types = [...new Set(tickets.map(ticket => ticket.type))]
 const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const modes: { id: Layer; label: string }[] = [
-  { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' },
+  { id: 'tickets', label: 'Incidencias' }, { id: 'zones', label: 'Zonas de calor' }, { id: 'fleet', label: 'Flota' },
 ]
+const fleets = Object.keys(fleetColors)
 const replayDelays = [4000, 12000, 55000]
 function replayToast(step: number, ticket?: Ticket) {
   if (!ticket) return
@@ -267,6 +269,25 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
     return () => window.clearTimeout(timer)
   }, [step]) // solo avisa cuando avanza la simulación
 
+  const fleetMeters = useRef(0)
+  const [fleetPlaying, setFleetPlaying] = useState(false)
+  const [fleetSpeed, setFleetSpeed] = useState(60)
+  const [fleetVersion, setFleetVersion] = useState(0)
+  const [fleetProgress, setFleetProgress] = useState(0)
+  const onFleetProgress = useCallback((meters: number) => {
+    setFleetProgress(meters)
+    if (meters >= endMeters) setFleetPlaying(false)
+  }, [])
+  function resetFleet() {
+    fleetMeters.current = 0
+    setFleetProgress(0)
+    setFleetPlaying(false)
+    setFleetVersion(version => version + 1)
+  }
+  const fleet: FleetControl = { meters: fleetMeters, playing: fleetPlaying, speed: fleetSpeed, version: fleetVersion, tickets: activeTickets, onProgress: onFleetProgress }
+  const fleetCount = detectedUntil(fleetProgress)
+  const fleetDone = fleetCount === totalDetections
+
   const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId: string) => setId(ticketId), [])
 
@@ -306,25 +327,44 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
           <MapHeading>Mapa urbano</MapHeading>
           <div className="layer-switch" aria-label="Vista del mapa">
             {modes.map(mode => <button key={mode.id} aria-pressed={mapLayer === mode.id}
-              onClick={() => setLayer(mode.id)}>{mode.label}</button>)}
+              onClick={() => {
+                if (mode.id !== 'fleet') resetFleet()
+                setLayer(mode.id)
+              }}>{mode.label}</button>)}
           </div>
-        <div className="filters">
+        {mapLayer === 'fleet' ? <div className="fleet-controls" aria-label="Controles de la simulación">
+          <button type="button" className="fleet-play" disabled={fleetDone} onClick={() => setFleetPlaying(!fleetPlaying)}>
+            {fleetDone ? 'Completa' : fleetPlaying ? 'Pausa' : fleetProgress ? 'Seguir' : 'Iniciar'}
+          </button>
+          <div className="layer-switch" aria-label="Velocidad">
+            {SPEEDS.map(speed => <button key={speed} type="button" aria-pressed={fleetSpeed === speed} onClick={() => setFleetSpeed(speed)}>×{speed}</button>)}
+          </div>
+          <button type="button" disabled={!fleetProgress} onClick={resetFleet}>Reiniciar</button>
+          <span className="fleet-clock" aria-label="Hora simulada">{clock(fleetProgress)}</span>
+        </div> : <div className="filters">
           <Filter label="Tipo" options={types} value={type} onChange={setType} />
           <Filter label="Estado" options={statuses} value={state} onChange={setState} />
           <Filter label="Área" options={areas} value={area} onChange={setArea} />
-        </div>
+        </div>}
         </div>
         <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
-          {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
+          {!visible.length && mapLayer !== 'fleet' && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
           <div className="live-region" role="status" aria-live="polite">
-            {toast && selected?.id !== replay.ticketId && <button key={toast.title} className="live-toast" onClick={() => setId(replay.ticketId)}>
+            {toast && mapLayer !== 'fleet' && selected?.id !== replay.ticketId && <button key={toast.title} className="live-toast" onClick={() => setId(replay.ticketId)}>
               <span className="live-dot" aria-hidden="true" />
               <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
             </button>}
           </div>
-          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} />
+          <CityMap tickets={mapLayer === 'fleet' ? [] : visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} fleet={fleet} />
+          {mapLayer === 'fleet' && !fleetProgress && !fleetPlaying && <div className="fleet-start">
+            <p>{vehicles.length} vehículos que ya circulan por {city}, cada uno con una cámara de {rangeMeters} m de rango.</p>
+            <button type="button" className="fleet-play" onClick={() => setFleetPlaying(true)}>Iniciar recorrido</button>
+          </div>}
           {mapLayer !== 'tickets' && <div className="map-key">
-            {mapLayer === 'zones' ? <>
+            {mapLayer === 'fleet' ? <>
+              {fleets.map(name => <span key={name}><i className="dot" style={{ background: fleetColors[name] }} />{name}</span>)}
+              <span><i className="dot fleet-range-swatch" />Rango de cámara {rangeMeters} m</span>
+            </> : mapLayer === 'zones' ? <>
               <span><i className="swatch observed" />Observada, sin tickets activos</span>
               <span><i className="swatch warm" />Menor concentración</span>
               <span><i className="swatch hot" />Mayor concentración de incidencias</span>

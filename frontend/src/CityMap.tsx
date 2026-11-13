@@ -1,11 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
-import maplibre, { type GeoJSONSource, type Map as MapInstance } from 'maplibre-gl'
+import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react'
+import maplibre, { type GeoJSONSource, type MapLayerMouseEvent, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { attentionZones, center, city, levels, locationLabel, status, type Layer, type Ticket } from './tickets'
 
-import type { LineString, FeatureCollection } from 'geojson'
+import type { LineString, FeatureCollection, Point } from 'geojson'
 import type { StreetRoute } from './model'
 import { scenario } from './scenario'
+import { BASE_SPEED_MPS, carIcon, detectedUntil, fleetColors, detections, endMeters, fleetFeatures, rangeRadius } from './fleet'
+
+export type FleetControl = {
+  meters: MutableRefObject<number>
+  playing: boolean
+  speed: number
+  version: number
+  tickets: Ticket[]
+  onProgress: (meters: number) => void
+}
 
 type Props = {
   tickets: Ticket[]
@@ -14,10 +24,14 @@ type Props = {
   suggestion?: StreetRoute
   onSelect: (id: string) => void
   embedded?: boolean
+  fleet?: FleetControl
 }
 
-export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedded = false }: Props) {
+const fleetLayers = ['fleet-range', 'fleet-dot', 'fleet-tickets']
+
+export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedded = false, fleet }: Props) {
   const showRoutes = layer === 'routes'
+  const fleetMode = layer === 'fleet' && Boolean(fleet)
   const overviewZoom = embedded ? 13.25 : 11.85
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
@@ -36,6 +50,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
         pitch: 43,
         bearing: -22,
         cooperativeGestures: embedded,
+        attributionControl: false, // ponytail: créditos de OSM/OpenFreeMap fuera del mapa; ver frontend/README.md
       })
     } catch {
       setFallback(true)
@@ -99,6 +114,37 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
           },
         })
       }
+      const empty: FeatureCollection = { type: 'FeatureCollection', features: [] }
+      map.addSource('fleet', { type: 'geojson', data: empty })
+      map.addSource('fleet-tickets', { type: 'geojson', data: empty })
+      map.addLayer({
+        id: 'fleet-tickets', type: 'circle', source: 'fleet-tickets', layout: { visibility: 'none' },
+        paint: {
+          'circle-color': ['get', 'color'],
+          'circle-radius': ['+', 7, ['*', 12, ['get', 'pulse']]],
+          'circle-opacity': ['-', 1, ['*', 0.4, ['get', 'pulse']]],
+          'circle-stroke-color': '#11191C', 'circle-stroke-width': 2,
+        },
+      })
+      map.addLayer({
+        id: 'fleet-range', type: 'circle', source: 'fleet', layout: { visibility: 'none' },
+        paint: {
+          'circle-color': ['get', 'color'], 'circle-opacity': 0.16,
+          'circle-radius': rangeRadius as never, 'circle-pitch-alignment': 'map',
+          'circle-stroke-color': ['get', 'color'], 'circle-stroke-width': 1, 'circle-stroke-opacity': 0.5,
+        },
+      })
+      for (const [fleetName, color] of Object.entries(fleetColors)) {
+        if (!map.hasImage('car-' + fleetName)) map.addImage('car-' + fleetName, carIcon(color), { pixelRatio: 2 })
+      }
+      map.addLayer({
+        id: 'fleet-dot', type: 'symbol', source: 'fleet',
+        layout: {
+          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.7,
+          'icon-rotate': ['get', 'bearing'], 'icon-rotation-alignment': 'map', 'icon-pitch-alignment': 'map',
+          'icon-allow-overlap': true, 'icon-ignore-placement': true,
+        },
+      })
       setReady(true)
     })
 
@@ -195,6 +241,68 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedd
       marker.remove()
     }
   }, [ready, showRoutes, suggestion])
+
+  const fleetTickets = useMemo(() => new Map(fleet?.tickets.map(ticket => [ticket.id, ticket])), [fleet?.tickets])
+  const fleetSpeed = fleet?.speed ?? 1
+  useEffect(() => {
+    const map = instance.current
+    if (!ready || !map || !fleet || !fleetMode) return
+    const { meters, onProgress, playing } = fleet
+    const pulseMeters = BASE_SPEED_MPS * fleetSpeed * 1.2 // el pulso dura ~1,2 s reales a cualquier velocidad
+    const draw = () => {
+      map.getSource<GeoJSONSource>('fleet')?.setData(fleetFeatures(meters.current))
+      const features: FeatureCollection<Point>['features'] = []
+      for (const detection of detections.slice(0, detectedUntil(meters.current))) {
+        const ticket = fleetTickets.get(detection.ticketId)
+        if (!ticket) continue
+        features.push({
+          type: 'Feature',
+          properties: { id: ticket.id, color: levels[ticket.level] ?? '#A5B3A9', pulse: playing ? Math.max(0, 1 - (meters.current - detection.at) / pulseMeters) : 0 },
+          geometry: { type: 'Point', coordinates: ticket.position },
+        })
+      }
+      map.getSource<GeoJSONSource>('fleet-tickets')?.setData({ type: 'FeatureCollection', features })
+    }
+    for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'visible')
+    draw()
+    let frame = 0
+    if (playing) {
+      let last = performance.now(), reported = last
+      const tick = (now: number) => {
+        meters.current = Math.min(endMeters, meters.current + (now - last) / 1000 * BASE_SPEED_MPS * fleetSpeed)
+        last = now
+        draw()
+        const done = meters.current >= endMeters
+        if (done || now - reported > 200) { reported = now; onProgress(meters.current) }
+        if (!done) frame = requestAnimationFrame(tick)
+      }
+      frame = requestAnimationFrame(tick)
+    }
+    return () => {
+      cancelAnimationFrame(frame)
+      onProgress(meters.current)
+      if (instance.current === map) for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'none')
+    }
+  }, [ready, fleetMode, fleet?.playing, fleetSpeed, fleet?.version, fleetTickets]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const map = instance.current
+    if (!ready || !map) return
+    const select = (event: MapLayerMouseEvent) => {
+      const id = event.features?.[0]?.properties?.id
+      if (typeof id === 'string') onSelect(id)
+    }
+    const pointer = () => { map.getCanvas().style.cursor = 'pointer' }
+    const reset = () => { map.getCanvas().style.cursor = '' }
+    map.on('click', 'fleet-tickets', select)
+    map.on('mouseenter', 'fleet-tickets', pointer)
+    map.on('mouseleave', 'fleet-tickets', reset)
+    return () => {
+      map.off('click', 'fleet-tickets', select)
+      map.off('mouseenter', 'fleet-tickets', pointer)
+      map.off('mouseleave', 'fleet-tickets', reset)
+    }
+  }, [ready, onSelect])
 
   useEffect(() => {
     const map = instance.current

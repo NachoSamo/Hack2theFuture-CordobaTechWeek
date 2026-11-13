@@ -12,6 +12,8 @@ Al abrir la página, el mock publica automáticamente un ticket, agrega un avist
 
 Los datos de recolección están en `src/mock.json` y `src/street-routes.json`. Su script `scripts/generar-rutas.py` genera geometrías con OSRM.
 
+El modo **Flota** usa `src/fleet-routes.json`: 16 recorridos por calles reales, uno por zona (k-means sobre las incidencias), que pasan por las 194 incidencias, más el punto de cada recorrido en el que se detecta cada una. Se regenera con `python scripts/generar-flota.py` (usa el mismo OSRM público, o `TRAMA_OSRM_URL`). El rango de cámara (50 m) está en el script, y la velocidad base y los multiplicadores en `src/fleet.ts`. Hay 8 incidencias a más de 50 m de una calle ruteable (Los Boulevares, Villa Belgrano y Las Palmas, con un máximo de 446 m) que se detectan en el punto más cercano del recorrido. El mapa no muestra el control de atribución: si se publica, hay que acreditar a © OpenStreetMap, OpenFreeMap y OpenMapTiles en otro lugar visible (la licencia ODbL lo exige).
+
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)
 
 La landing reproduce un clip ilustrativo de detección simulada. El acceso directo `/#mapa/deteccion` abre el ticket CBA-104 del contenedor mostrado en el video.
