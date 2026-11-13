@@ -27,9 +27,7 @@ tags: [hackathon, entregables, idea, pitch]
 Un móvil para autosanar la ciudad.
 
 ### 2. Problema · 3–5 líneas
-Los vehículos con cámara que patrullan Córdoba gastan combustible solo para seguridad. Mientras tanto,
-microbasurales, postes caídos, baches o contenedores rotos se conocen tarde: por reclamo de un vecino o
-porque un área sale a buscarlos. **Causa raíz:** la ciudad no tiene un dato continuo de lo que se rompe;
+Los vehículos con cámara que patrullan Córdoba gastan combustible solo para seguridad. Mientras tanto, microbasurales, postes caídos, baches o contenedores rotos se conocen tarde: por reclamo de un vecino o porque un área sale a buscarlos. **Causa raíz:** la ciudad no tiene un dato continuo de lo que se rompe;
 se entera por reclamo.
 
 - Dato o caso: basura acumulada en el Mercado Norte después del Carnaval (fila 284), en Güemes después
