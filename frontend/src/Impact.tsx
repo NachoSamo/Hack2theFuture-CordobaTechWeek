@@ -89,7 +89,7 @@ export function Impact() {
       </div>
       <nav className="view-switch" aria-label="Vistas">
         <a href="#mapa">Mapa</a>
-        <a href="#simulacion">Simulación</a>
+        <a href="#simulacion">Flota</a>
         <a href="#impacto" aria-current="page">Impacto</a>
       </nav>
     </header>

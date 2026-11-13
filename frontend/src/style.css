@@ -92,7 +92,25 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
   pointer-events: none;
   z-index: 1;
 }
-.patrol-marker.police { background: #a4d7fb; }
+.patrol-marker.police, .fleet-police { background: #a4d7fb; }
+.patrol-marker.guard, .fleet-guard { background: #66d9ca; }
+.fleet-municipal { background: var(--lime); }
+.fleet-key { top: 60px; bottom: auto; }
+.patrol-speeds, .map-view-controls { display: flex; flex-wrap: wrap; gap: 4px; }
+.map-view-controls { justify-content: center; padding: 5px 10px; background: #11191c; }
+.map-view-controls a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.patrol-speeds button[aria-pressed=true], .map-view-controls [aria-pressed=true], .map-view-controls [aria-current=page] {
+  color: var(--lime);
+  background: #283934;
+}
+.simulation-toolbar output { min-width: 5ch; font-variant-numeric: tabular-nums; }
 .patrol-marker svg { width: 18px; height: 18px; }
 .map-key {
   position: absolute;

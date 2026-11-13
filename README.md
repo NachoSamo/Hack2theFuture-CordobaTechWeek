@@ -194,7 +194,7 @@ npm run build
 ### Cómo verificar que funciona
 
 1. Vite muestra una URL local (`http://127.0.0.1:5173` por defecto): la landing reproduce los clips de detección.
-2. `/#mapa` abre la única vista del mapa: oscura, inclinada a 60°, con tickets y zonas de calor. La secuencia automática arranca sola y recargar la reinicia.
+2. `/#mapa` abre el mapa oscuro con tickets y zonas de calor. Los controles de capas permiten alternar entre Incidencias, Zonas de calor y Flota. La secuencia automática arranca sola y recargar la reinicia.
 3. Un marcador acerca el mapa y abre su tarjeta de lectura con auditoría; se cierra con Escape.
 4. Seleccionar un cuadrante acerca la cámara a esa zona. «Ver toda Córdoba» recupera el encuadre general. No hay rutas sugeridas.
 

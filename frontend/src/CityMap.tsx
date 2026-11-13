@@ -4,23 +4,33 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { scenario } from './scenario'
 import { attentionZones, center, city, levels, locationLabel, status, type Ticket } from './tickets'
 
-function framePatrol(map: MapInstance) {
-  const bounds = scenario.routes.fixed.coordinates.reduce((box, point) => box.extend(point), new maplibre.LngLatBounds())
-  map.fitBounds(bounds, { padding: 48, maxZoom: 14, bearing: -22, pitch: 35, duration: 0 })
-}
+const patrolRoutes = [scenario.routes.fixed, ...Object.values(scenario.routes.suggestions)]
+const fleetGroups = [
+  { name: 'COYS', css: 'municipal' },
+  { name: 'Policía', css: 'police' },
+  { name: 'Guardia Urbana', css: 'guard' },
+]
+
+const fleet = Array.from({ length: 16 }, (_, index) => ({
+  group: fleetGroups[index % fleetGroups.length],
+  route: patrolRoutes[index % patrolRoutes.length].coordinates,
+  offset: index / 16,
+}))
 
 type Props = {
   tickets: Ticket[]
   selected: Ticket | undefined
   onSelect: (id?: string) => void
   embedded?: boolean
-  patrolRun?: number
-  patrolDuration?: number
+  patrolProgress?: number
+  showHeat?: boolean
+  showIncidents?: boolean
   onPatrolReady?: (ready: boolean) => void
 }
 
-export function CityMap({ tickets, selected, onSelect, embedded = false, patrolRun, patrolDuration = 12000, onPatrolReady }: Props) {
-  const showPatrol = patrolRun !== undefined
+export function CityMap({ tickets, selected, onSelect, embedded = false, patrolProgress, showHeat = true, showIncidents = true, onPatrolReady }: Props) {
+  const showPatrol = patrolProgress !== undefined
+  const vehicleMarkers = useRef<maplibre.Marker[]>([])
   const overviewZoom = showPatrol ? 13.5 : embedded ? 13.25 : 11.85
   const overviewPitch = 60
   const host = useRef<HTMLDivElement>(null)
@@ -100,70 +110,60 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
   useEffect(() => {
     const map = instance.current
     if (!ready || !map || !showPatrol) return
-    map.addSource('patrol-routes', {
+    map.addSource('camera-range', {
       type: 'geojson',
-      data: {
-        type: 'Feature',
-        properties: {},
-        geometry: { type: 'LineString', coordinates: scenario.routes.fixed.coordinates },
-      },
+      data: { type: 'FeatureCollection', features: [] },
     })
     map.addLayer({
-      id: 'patrol-routes', type: 'line', source: 'patrol-routes',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#dff691', 'line-width': 3, 'line-opacity': .68 },
+      id: 'camera-range', type: 'fill', source: 'camera-range',
+      paint: { 'fill-color': '#dff691', 'fill-opacity': .16, 'fill-outline-color': '#dff691' },
     })
-    framePatrol(map)
+
+    const markers = fleet.map(({ group, route }, index) => {
+      const element = document.createElement('span')
+      element.className = `patrol-marker ${group.css}`
+      element.setAttribute('role', 'img')
+      element.setAttribute('aria-label', `Móvil ${index + 1} · ${group.name}`)
+      element.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m5 11 2-5h10l2 5M4 11h16v7H4zm2 7v2m12-2v2m-11-6h2m6 0h2"/></svg>'
+      return new maplibre.Marker({ element }).setLngLat(route[0]).addTo(map)
+    })
+    vehicleMarkers.current = markers
     onPatrolReady?.(true)
     return () => {
+      vehicleMarkers.current = []
+      markers.forEach(marker => marker.remove())
       if (instance.current !== map) return
-      map.removeLayer('patrol-routes')
-      map.removeSource('patrol-routes')
+      map.removeLayer('camera-range')
+      map.removeSource('camera-range')
     }
   }, [ready, showPatrol, onPatrolReady])
 
   useEffect(() => {
-    const map = instance.current
-    if (!ready || !map || patrolRun === undefined) return
-    if (patrolRun > 0) framePatrol(map)
-    const route = scenario.routes.fixed.coordinates
-    const vehicles = ['Móvil municipal', 'Móvil policial'].map((label, index) => {
-      const element = document.createElement('span')
-      element.className = index === 0 ? 'patrol-marker' : 'patrol-marker police'
-      element.setAttribute('aria-label', label)
-      element.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m5 11 2-5h10l2 5M4 11h16v7H4zm2 7v2m12-2v2m-11-6h2m6 0h2"/></svg>'
-      const path = index === 0 ? route : [...route].reverse()
-      return { marker: new maplibre.Marker({ element }).setLngLat(path[0]).addTo(map), path }
-    })
-
-    let frame = 0
-    const start = performance.now()
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
-    function moveVehicles(now: number) {
-      const progress = Math.min((now - start) / patrolDuration, 1)
-      vehicles.forEach(({ marker, path }) => {
-        const index = progress * (path.length - 1)
-        const point = path[Math.floor(index)]
-        const next = path[Math.min(Math.floor(index) + 1, path.length - 1)]
-        const fraction = index % 1
-        marker.setLngLat([
-          point[0] + (next[0] - point[0]) * fraction,
-          point[1] + (next[1] - point[1]) * fraction,
-        ])
+    if (!ready || patrolProgress === undefined) return
+    const motion = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : patrolProgress
+    const features = fleet.map(({ route, offset }, index) => {
+      const position = ((motion + offset) % 1) * (route.length - 1)
+      const point = route[Math.floor(position)]
+      const next = route[Math.min(Math.floor(position) + 1, route.length - 1)]
+      const part = position % 1
+      const lon = point[0] + (next[0] - point[0]) * part
+      const lat = point[1] + (next[1] - point[1]) * part
+      vehicleMarkers.current[index]?.setLngLat([lon, lat])
+      const ring = Array.from({ length: 16 }, (_, vertex) => {
+        const angle = vertex * Math.PI / 8
+        return [lon + 50 * Math.cos(angle) / (111320 * Math.cos(lat * Math.PI / 180)), lat + 50 * Math.sin(angle) / 111320]
       })
-      if (progress < 1) frame = requestAnimationFrame(moveVehicles)
-    }
-    if (patrolRun > 0 && !reducedMotion) frame = requestAnimationFrame(moveVehicles)
-    return () => {
-      cancelAnimationFrame(frame)
-      vehicles.forEach(({ marker }) => marker.remove())
-    }
-  }, [ready, patrolRun, patrolDuration])
+      return { type: 'Feature' as const, properties: {}, geometry: { type: 'Polygon' as const, coordinates: [[...ring, ring[0]]] } }
+    })
+    instance.current?.getSource<GeoJSONSource>('camera-range')?.setData({ type: 'FeatureCollection', features })
+  }, [ready, patrolProgress])
 
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
     map.getSource<GeoJSONSource>('attention')?.setData(attentionZones(tickets))
+    map.setLayoutProperty('attention', 'visibility', showHeat ? 'visible' : 'none')
+    if (!showIncidents) return
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
@@ -203,7 +203,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
       return new maplibre.Marker({ element: marker }).setLngLat(ticket.position).addTo(map)
     })
     return () => markers.forEach(marker => marker.remove())
-  }, [ready, tickets, onSelect])
+  }, [ready, tickets, onSelect, showHeat, showIncidents])
 
   useEffect(() => {
     const map = instance.current
@@ -255,10 +255,6 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
   function showOverview() {
     onSelect(undefined)
     const map = instance.current
-    if (showPatrol && map) {
-      framePatrol(map)
-      return
-    }
     map?.easeTo({
       center, zoom: overviewZoom, pitch: overviewPitch, bearing: -22, padding: 0,
       duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
@@ -267,7 +263,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />
-    {ready && <button type="button" className="map-overview" onClick={showOverview}>{showPatrol ? 'Ver recorrido' : 'Ver toda Córdoba'}</button>}
+    {ready && <button type="button" className="map-overview" onClick={showOverview}>Ver toda Córdoba</button>}
     {fallback && <p className="map-warning" role="status">Cartografía base no disponible.</p>}
   </>
 }
