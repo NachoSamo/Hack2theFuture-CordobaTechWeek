@@ -177,6 +177,7 @@ Vite indica la URL local. [Detalles del prototipo](frontend/README.md)
 │   ├── evento.md              Criterios, agenda y checkpoints
 │   ├── kickoff.md             Cómo elegimos el problema
 │   ├── proceso.md             Ideas, hipótesis, pruebas y resultados
+│   ├── proceso/               Mural HTML: lienzos oficiales del día 1 (+ fotos del papel) y lienzos agregados
 │   ├── decision-log.md        Decisiones con opciones y motivo
 │   ├── demo-path.md           Recorrido simulado y demo, paso a paso
 │   ├── arquitectura/          Diagramas HTML: solución y recorrido del usuario

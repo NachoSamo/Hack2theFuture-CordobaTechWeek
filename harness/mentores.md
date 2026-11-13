@@ -57,3 +57,13 @@ La guía oficial pide **registrar qué recomendación cambió una decisión**: p
 - Impacto: problema / producto / arquitectura
 - Recomendación a Samo: accionada por Samo
 - ¿Cambió una decisión?: sí → decision log 12/11 15:08 (fuentes, aviso directo y arquitectura)
+
+### Mesa 25 y un experto/a · test 3+3 · 12/11 14:35–15:10
+- Relación con el problema: visitaron la mesa en la dinámica 3+3 (lienzo 08, [foto](proceso/fotos/08-testear-e-iterar.jpg) y [pestaña](proceso/mural-mesa24.html#o8))
+- Qué dijo (según el lienzo, no textual): les gustó la visión computacional y entendieron todo. Dudas: "¿cómo se financiaría?" y "¿cuáles serían los primeros pasos?". Sugerencia: abarcar todas las problemáticas, no solo residuos, con una solución. Riesgo: la factibilidad operativa depende de la aceptación del Ministerio de Seguridad
+- Caso real que contó: no quedó registrado
+- Qué actores nombró: Ministerio de Seguridad
+- Qué implicaría si lo accionamos: concepto amplio de detección urbana (ya accionado con el pivot), un modelo de financiamiento y un primer paso concreto
+- Impacto: problema / producto / pitch
+- Recomendación a Samo: accionada por Samo
+- ¿Cambió una decisión?: sí → decision log 12/11 21:21 (el pivot también se apoya en este test; modelo de financiamiento; se mantienen todas las fuentes pese al riesgo del Ministerio)
