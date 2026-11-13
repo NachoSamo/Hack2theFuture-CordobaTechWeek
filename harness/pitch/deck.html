@@ -64,7 +64,7 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 .ph.dark span{display:block;font-size:34px;margin-top:14px;color:var(--niebla)}
 .slide.prob .src{bottom:28px;left:80px}
 .slide.fuel{padding:0;align-items:center}
-.tanks{position:absolute;inset:0;padding:34px 40px;display:grid;grid-template-columns:repeat(20,1fr);grid-template-rows:repeat(10,1fr);gap:18px 24px}
+.tanks{position:absolute;inset:0;padding:34px 40px;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(4,1fr);gap:36px 60px}
 .tk{width:100%;height:100%;display:block;overflow:visible}
 .tk .bg{fill:#0E1518}
 .tk .fl{fill:var(--ambar);transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)}
@@ -138,23 +138,23 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
   <div class="pgrid g1"><figure class="ph new" style="grid-area:a"><img data-img="basura" alt="Contenedores desbordados y bolsas de basura sobre la vereda"></figure></div>
 </section>
 
-<!-- 3b · Problemas: + postes y árboles caídos -->
+<!-- 3b · Problemas: árbol caído -->
 <section class="slide prob" data-build>
   <h2 class="ptitle">¿Cuántas cosas pasan en la ciudad y <span class="lima">no estamos registrando</span>?</h2>
-  <div class="pgrid g2"><figure class="ph" style="grid-area:a"><img data-img="basura" alt="Contenedores desbordados y bolsas de basura sobre la vereda"></figure><figure class="ph new" style="grid-area:b"><img data-img="arbol" alt="Árbol caído sobre la calle con cables"></figure></div>
+  <div class="pgrid g1"><figure class="ph new" style="grid-area:a"><img data-img="arbol" alt="Árbol caído sobre la calle con cables"></figure></div>
 </section>
 
-<!-- 3c · Problemas: + alumbrado -->
+<!-- 3c · Problemas: poste de luminaria caído -->
 <section class="slide prob" data-build>
   <h2 class="ptitle">¿Cuántas cosas pasan en la ciudad y <span class="lima">no estamos registrando</span>?</h2>
-  <div class="pgrid g3"><figure class="ph" style="grid-area:a"><img data-img="basura" alt="Contenedores desbordados y bolsas de basura sobre la vereda"></figure><figure class="ph" style="grid-area:b"><img data-img="arbol" alt="Árbol caído sobre la calle con cables"></figure><figure class="ph new" style="grid-area:c"><img data-img="poste" alt="Poste de luminaria inclinado sobre la vereda"></figure></div>
+  <div class="pgrid g1"><figure class="ph new" style="grid-area:a"><img data-img="poste" alt="Poste de luminaria inclinado sobre la vereda" style="object-position:50% 40%"></figure></div>
 </section>
 
 <!-- 4 · A quién le pasa -->
 <section class="slide">
   <p class="sub muted" style="margin:0 0 50px">¿A quién le pasa?</p>
-  <h2>Al <span class="lima">municipio</span>, que gasta millones de pesos en combustible.</h2>
-  <h2 style="margin-top:60px">Al <span class="lima">vecino</span>, que convive con incidentes evitables todos los días.</h2>
+  <h2 style="font-size:96px">Al <span class="lima">municipio</span>, que gasta millones de pesos en combustible.</h2>
+  <h2 style="font-size:96px;margin-top:60px">Al <span class="lima">vecino</span>, que convive con incidentes evitables todos los días.</h2>
 </section>
 
 <!-- 6 · Solución: el móvil con cámara -->
@@ -253,11 +253,11 @@ const IMGS={movil:'data:image/webp;base64,UklGRqCvAwBXRUJQVlA4WAoAAAAwAAAA/wUA/w
 document.querySelectorAll('[data-img]').forEach(i=>i.src=IMGS[i.dataset.img]);
 const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#11191C" stroke-width="2" stroke-linejoin="round"><path d="M10 41 46 24v36L10 51Z" fill="#53666B"/><path d="M54 27 86 42v11L54 61Z" fill="#34464A"/><path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/><path d="M49 14 72 29v26L49 63Z" fill="#839493"/></g><path fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="4" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5"/><path fill="none" stroke="#DFF691" stroke-linecap="round" stroke-width="2" d="M17 77c8 5 15 7 23 8m-28-3 8 4"/><circle cx="85" cy="54" r="3" fill="#DFF691"/>`;
 document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
-// Gancho: 200 bidones de 10.000 litros = 2.000.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
+// Gancho: 40 bidones de 50.000 litros = 2.000.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
 const CAN='M8 20H38L52 30V74Q52 78 48 78H12Q8 78 8 74ZM12 20V10Q12 6 16 6H28Q32 6 32 10V20H27V12H17V20ZM44 23L51 12L57 16L51 27Z';
 document.querySelectorAll('[data-tanks]').forEach(t=>{
   let h=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="canclip"><path d="${CAN}"/></clipPath></defs></svg>`;
-  for(let r=0;r<10;r++)for(let c=0;c<20;c++)h+=`<svg class="tk" viewBox="0 0 60 80"><path class="bg" d="${CAN}"/><g clip-path="url(#canclip)"><rect class="fl" x="0" y="0" width="60" height="80" style="--d:${((c+9-r)*0.035).toFixed(3)}s"/></g><path class="x" d="M16 38L44 70M44 38L16 70"/><path class="ln" d="${CAN}"/></svg>`;
+  for(let r=0;r<4;r++)for(let c=0;c<10;c++)h+=`<svg class="tk" viewBox="0 0 60 80"><path class="bg" d="${CAN}"/><g clip-path="url(#canclip)"><rect class="fl" x="0" y="0" width="60" height="80" style="--d:${((c+3-r)*0.08).toFixed(3)}s"/></g><path class="x" d="M16 38L44 70M44 38L16 70"/><path class="ln" d="${CAN}"/></svg>`;
   t.innerHTML=h;});
 const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage');
 let cur=0;const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)cur=h-1;

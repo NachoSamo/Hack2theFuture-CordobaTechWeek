@@ -38,11 +38,11 @@ Patrulleros y móviles que circulan todo el día, con cámaras encendidas.
 Y mientras tanto, ¿cuántas cosas pasan en la ciudad y **no estamos registrando**?
 La basura se acumula en las esquinas hasta que un vecino reclama.
 
-### 4 · Problemas: se suma el árbol caído (0:28–0:35)
+### 4 · Problemas: el árbol caído (0:28–0:35)
 
 En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer.
 
-### 5 · Problemas: se suma el poste de luminaria (0:35–0:42)
+### 5 · Problemas: el poste de luminaria (0:35–0:42)
 
 Y en dos años hubo **66.000 reclamos** de alumbrado.
 `[pausa]`
