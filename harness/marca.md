@@ -12,7 +12,7 @@
 
 ![Símbolo de Urbis](marca/logo.svg)
 
-El símbolo muestra una calle en perspectiva con un muro bajo y un contenedor. La cámara del auto apunta al contenedor, marcado con un recuadro lima.
+Dos caras de un muro bajo y el cordón de la vereda dibujan una esquina en perspectiva. Junto al muro hay un contenedor. La cámara del auto apunta al contenedor, marcado con un recuadro lima.
 
 **Logo del equipo (Hackaranda):** en la portada del deck, pegado debajo de Urbis, va «by Hackaranda» (y más abajo «Movilidad urbana sustentable») con el logo horizontal de la dirección *Minimal / tech*: copa de jacarandá en píxeles con tronco de pista de circuito y «hackaranda» en Space Grotesk 700, en lila (`#9B7FD4`, `#B89CE8`) sobre el fondo del deck. Sale del sistema de marca de Hackaranda que armó Gina (artifact «Hackaranda», 13/11). Es la marca del equipo, no la del producto: no se mezcla con la paleta de Urbis fuera de esa línea.
 
