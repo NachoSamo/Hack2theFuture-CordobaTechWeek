@@ -2,22 +2,22 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v10, v9 recortada a 3 minutos)
+estado: borrador para ensayar (v11: caso de punta a punta, innovación y dato de alumbrado; pasa los 3 minutos)
 ---
 
 # Speech: Urbis (3 minutos)
 
-> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 9).
+> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 10).
 >
 > **Tono:** charla TED, en castellano rioplatense y formal. Se le habla al público de "ustedes", con
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** 405 palabras (medidas). A 140 palabras por minuto, más las pausas, da unos 3:08.
+> **Duración:** unas 490 palabras (v11, 13/11: v10 medía 405 y se sumaron unas 85 con el caso, la innovación y el dato de alumbrado). A 140 palabras por minuto, más las pausas, da unos **3:40: pasa los 3 minutos**. Recortar antes de ensayar (ver "Cronómetro").
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
-> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta "Se lo mostramos en un
-> video" (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
+> **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
+> (slides 1 a 6). **Persona B** cuenta el caso, narra el video y sigue hasta el cierre (slides 7 a 10). Quiénes son se
 > decide en el ensayo, con cronómetro.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
@@ -55,36 +55,45 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 
 ¿A quién le pasa esto?
 Al **municipio**, que gasta más de mil millones de pesos por año en combustible.
-Y al **vecino**, que convive con incidentes evitables todos los días.
+Y al **vecino**, que hace **noventa reclamos por día** solo por luces apagadas. En dos años falló más
+de la mitad del alumbrado de Córdoba.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
 ### 6 · La solución (1:05–1:25)
 
-Por eso creamos **Urbis**: los **mismos kilómetros**, con un uso más eficiente.
+Por eso creamos **Urbis**: **mismo recorrido, más sustentabilidad**.
+Hoy esas cámaras miran solo seguridad. Con Urbis, **cada pasada le avisa a todas las áreas**.
 Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial y visión por
 computadora, reconoce lo que la ciudad necesita y le avisa **en tiempo real** al área que lo resuelve.
-Se lo mostramos en un video.
 
-**— Persona B (demo y cierre) —**
+**— Persona B (caso, demo y cierre) —**
+
+### 7 · Un caso de punta a punta (1:25–1:45)
+
+Un caso. Son las diez y cuarto de la noche y el móvil pasa por la avenida Colón, como siempre.
+La cámara ve una luz apagada. Urbis la reconoce ahí mismo y, en un minuto, le llega un aviso a
+**Alumbrado**, con foto y ubicación. Nadie tuvo que llamar.
+`[pausa]`
+Al otro día el móvil vuelve a pasar. Si la luz ya funciona, el caso queda **posiblemente resuelto**.
 
 *(Video de la landing.)*
 
-Como pueden ver, primero la cámara de la Guardia Urbana detecta la basura y todos los incidentes que
+Así se ve en el prototipo: la cámara de la Guardia Urbana detecta la basura y todos los incidentes que
 fuimos viendo.
 Después pasamos a la demo funcional, con datos simulados: vemos cómo se reacciona ante cada ticket
 detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da estadísticas.
 
 *(Vuelta al deck.)*
 
-### 7 · ODS involucrados (1:55–2:05)
+### 8 · ODS involucrados (1:55–2:05)
 
 Así, cada litro rinde más, ayudamos a **equilibrar la huella de carbono** que emiten las ciudades,
 y aportamos a cinco Objetivos de
 Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
 alianzas.
 
-### 8 · Viabilidad económica (2:05–2:40)
+### 9 · Viabilidad económica (2:05–2:40)
 
 Vamos a la viabilidad económica: **¿quién lo paga?**
 Para el municipio, el costo es **mínimo**: usa la flota y las cámaras que ya tiene, procesa la imagen en
@@ -92,7 +101,7 @@ el mismo móvil, sin transmitir ni grabar, y le ahorra salir a inspeccionar y ge
 Y para implementarlo, **ya existen iniciativas de financiamiento de la Unión Europea en Córdoba**: la
 ciudad ya trabaja en un Plan de Movilidad Sostenible, y ese plan necesita datos de la calle. Urbis se
 los brinda.
-### 9 · Cierre (2:40–3:00)
+### 10 · Cierre (2:40–3:00)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
 `[pausa]`
@@ -106,27 +115,27 @@ Gracias.
 
 ## Para los ensayos
 
-- **Cronómetro:** el prototipo (slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
-  se recorta en este orden: la slide de ODS (7) y la frase de financiamiento UE de la 10.
+- **Cronómetro:** el caso y el video (slide 7) son lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
+  se recorta en este orden: la slide de ODS (8) y la frase de financiamiento UE de la 9.
 - **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
   para un piloto en un barrio.
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
   pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad monitoreando solo seguridad.
-  - *¿Por qué es movilidad?* Slides 7 y 10: la flota es el recurso, y nadie saca otro vehículo a la calle.
-  - *¿Por qué es sustentable?* Slide 10: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
-  - *¿A quién le resolvemos?* Slide 6: al municipio, que paga y recibe reclamos, y al vecino, que espera.
-- **Voz** (Julian Treasure): bajar el ritmo en las slides 1, 2 y 9 (la escena del patrullero y el número), y no llenar los silencios.
+  - *¿Por qué es movilidad?* Slides 6 y 9: la flota es el recurso, y nadie saca otro vehículo a la calle.
+  - *¿Por qué es sustentable?* Slide 9: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
+  - *¿A quién le resolvemos?* Slide 5: al municipio, que paga y recibe reclamos, y al vecino, que espera.
+- **Voz** (Julian Treasure): bajar el ritmo en las slides 1, 2 y 10 (la escena del patrullero y el número), y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Urbis. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
-- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado quedan como respuesta al jurado): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
+- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado pasaron a la slide 5 como 90 reclamos por día, 13/11): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
 - **Aprovechamiento de la flota (sin slide desde 12/11 23:20; respuesta al jurado):** km recorridos con Urbis activo ÷ km totales de patrullaje.
   Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
   decir "hasta el 100 %". No está medido: lo mide el piloto.
-- **Viabilidad económica y financiamiento (slide 8):**
+- **Viabilidad económica y financiamiento (slide 9):**
   - En voz alta se dice "oportunidades de financiamiento de la UE", no que la plata ya está. El dato de
     los 600.000 € queda en la slide y como respuesta si preguntan.
   - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
