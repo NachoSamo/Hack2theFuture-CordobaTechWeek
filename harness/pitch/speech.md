@@ -79,9 +79,9 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 *(Vuelta al deck.)*
 
-### 7 · Impacto sustentable: próximos pasos y ODS (1:55–2:10)
+### 7 · Próximos pasos + impacto sustentable (1:55–2:10)
 
-Arrancamos con un **barrio piloto**, después **toda la ciudad**, y después **la provincia y otras flotas**.
+En febrero arrancamos con un **barrio piloto**; en el segundo semestre, **toda la ciudad**; y en 2028, **la provincia y otras flotas**.
 En cada paso, Urbis suma a los ODS de **innovación, ciudades sostenibles y consumo responsable**:
 cada litro que ya se gasta trabaja para toda la ciudad.
 
