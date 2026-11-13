@@ -55,13 +55,9 @@ Le pasa al **municipio**, que gasta millones de pesos en combustible y recibe lo
 lo que sus móviles vieron y nadie avisó.
 Y le pasa al **vecino**, que convive con incidentes evitables todos los días.
 
-### 5 · La pregunta (1:05–1:15)
-
-Entonces nos preguntamos: ¿y si cada recorrido de monitoreo hiciera una ciudad más **sostenible**?
-
 ### 6 · Solución: el móvil con cámara (1:15–1:25)
 
-Por eso presentamos **Urbis**: mismo recorrido, más sustentabilidad.
+Presentamos **Urbis**: mismo recorrido, más sustentabilidad.
 
 ### 6b · Qué detecta y prototipo (1:25–1:55)
 
@@ -121,7 +117,7 @@ Gracias.
 ## Para los ensayos
 
 - **Cronómetro:** el prototipo es lo que más tiempo se come, y la v5 suma unas 60 palabras en los bloques
-  4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta primero la slide 5 y después la frase de los ODS.
+  4, 8 y 9. Si un ensayo pasa los 3 minutos, se recorta la frase de los ODS (la slide 5, la pregunta, ya se sacó).
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
   - *¿Cuál es el problema?* Primera frase: el combustible que recorre la ciudad monitoreando solo seguridad.
   - *¿Por qué es movilidad?* Bloque 8: la flota es el recurso, y hay menos vehículos en la calle.
