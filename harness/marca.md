@@ -14,7 +14,7 @@
 
 El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. Una cámara con lente visible se monta sobre la fachada y comparte su perspectiva. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 
-**Logo del equipo (Hackaranda):** en la portada del deck, debajo de Urbis, va «× Hackaranda» con el logo horizontal de la dirección *Minimal / tech*: copa de jacarandá en píxeles con tronco de pista de circuito y «hackaranda» en Space Grotesk 700, en lila (`#9B7FD4`, `#B89CE8`) sobre el fondo del deck. Sale del sistema de marca de Hackaranda que armó Gina (artifact «Hackaranda», 13/11). Es la marca del equipo, no la del producto: no se mezcla con la paleta de Urbis fuera de esa línea.
+**Logo del equipo (Hackaranda):** en la portada del deck, pegado debajo de Urbis, va «by Hackaranda» (y más abajo «Movilidad urbana sustentable») con el logo horizontal de la dirección *Minimal / tech*: copa de jacarandá en píxeles con tronco de pista de circuito y «hackaranda» en Space Grotesk 700, en lila (`#9B7FD4`, `#B89CE8`) sobre el fondo del deck. Sale del sistema de marca de Hackaranda que armó Gina (artifact «Hackaranda», 13/11). Es la marca del equipo, no la del producto: no se mezcla con la paleta de Urbis fuera de esa línea.
 
 ## MLP
 
