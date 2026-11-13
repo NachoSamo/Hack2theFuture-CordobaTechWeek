@@ -41,7 +41,7 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 
 ## Lo que se puede preparar antes del evento
 
-- [x] Plantilla de slides con la marca de [`marca.md`](marca.md): deck en HTML, [`pitch/deck.html`](pitch/deck.html), estilo charla TED: una idea por slide y el mínimo texto (Oli, 12/11). 11 slides: nombre con logo y equipo, dato de combustible, lo que es, lo que podría ser, la idea, demo, impacto, pedido, costo marginal cero, ODS y cierre. Flechas para navegar, `f` para pantalla completa. Speech de 3 minutos en [`pitch/speech.md`](pitch/speech.md)
+- [x] Plantilla de slides con la marca de [`marca.md`](marca.md): deck en HTML, [`pitch/deck.html`](pitch/deck.html), estilo charla TED: una idea por slide y el mínimo texto (Oli, 12/11). 11 slides: nombre con logo y equipo, dato de combustible, lo que es, lo que podría ser, la idea, demo, impacto, pedido, costo marginal cero, ODS y cierre (con los nombres de los seis integrantes, 12/11). Flechas para navegar, `f` para pantalla completa. Speech de 3 minutos en [`pitch/speech.md`](pitch/speech.md)
 - [ ] Slide de equipo
 - [ ] Panorama de financiamiento: fondos verdes de la UE, Global Gateway, CFI y BID (con fuentes verificadas)
 - [ ] Mapa de actores por vertical: municipio, cooperativas, recuperadores, productores, exportadores
