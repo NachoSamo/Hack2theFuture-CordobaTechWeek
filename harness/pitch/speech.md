@@ -2,87 +2,97 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v6, alineado al deck de 9 slides)
+estado: borrador para ensayar (v7, tono charla TED, deck de 9 slides)
 ---
 
 # Speech: Urbis (3 minutos)
 
 > Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 9).
-> Son unas 380 palabras (medidas), más unos 20 segundos de prototipo en vivo.
 >
-> **Cómo está armado:** sigue el orden oficial del lienzo 07 (gancho, problema, a quién le pasa,
-> solución y prototipo, qué la hace distinta, impacto sostenible, primer paso), más identidad,
-> evidencia y viabilidad económica. Empieza por el problema (Sinek) y alterna lo que es con lo que
-> podría ser (Duarte).
+> **Tono:** charla TED, en castellano rioplatense y formal. Se le habla al público de "ustedes", con
+> preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
+> dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
+>
+> **Duración:** 389 palabras dichas (medidas). A 140 palabras por minuto más unos 16 segundos de pausas
+> da unos 3:03: es una estimación hasta cronometrarlo. Si se pasa, recortar primero la línea de los ODS.
 >
 > **Quién presenta:** se decide en el ensayo, con cronómetro. Una persona maneja el prototipo.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
-> se apoya con la voz.
+> se apoya con la voz. `*(…)*` = indicación, no se dice.
 
 ---
 
-### 1 · Urbis (0:00–0:05)
+### 1 · Urbis (0:00–0:12)
 
-Somos Urbis: Samo, Lauti, Diego, Juani, Gina y Oli.
-
-### 2 · Gancho: 2.000.000 de litros (0:05–0:20)
-
-En Córdoba, **dos millones de litros** de combustible por año recorren la ciudad monitoreando solo
-seguridad.
+Ahora mismo, mientras estamos acá, hay un patrullero dando vueltas por Córdoba.
 `[pausa]`
-Patrulleros y móviles que circulan todo el día, con cámaras encendidas.
+Y está viendo cosas que **nadie va a registrar**.
+Somos **Urbis**.
+*(Los nombres del equipo, si hace falta, van en la presentación de la mesa.)*
 
-### 3 · Problemas: la basura (0:20–0:28)
+### 2 · Gancho: 2.000.000 de litros (0:12–0:30)
 
-Y mientras tanto, ¿cuántas cosas pasan en la ciudad y **no estamos registrando**?
-La basura se acumula en las esquinas hasta que un vecino reclama.
+Piensen en un número: **dos millones**.
+Dos millones de litros de combustible por año recorren nuestra ciudad. Patrulleros y móviles que
+circulan todo el día, con las cámaras encendidas… mirando **una sola cosa**: la seguridad.
+`[pausa]`
 
-### 4 · Problemas: el árbol caído (0:28–0:38)
+### 3 · Problemas: la basura (0:30–0:43)
 
-En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de caer.
+Ahora pregúntense: ¿cuántas cosas pasan en la ciudad y **no estamos registrando**?
+Esta esquina, por ejemplo. La basura se acumula, y el móvil pasa. Una vez. Dos veces. Y nadie avisa.
 
-### 5 · ¿A quién le pasa? (0:38–0:52)
+### 4 · Problemas: el árbol caído (0:43–0:55)
 
-Le pasa al **municipio**, que gasta millones de pesos en combustible y después recibe el reclamo de lo
-que sus propios móviles vieron.
+O esta otra. En una sola tormenta, Defensa Civil recibió **198 llamados** por postes caídos o a punto de
+caer. Y casi siempre, el primero en enterarse es el vecino.
+
+### 5 · ¿A quién le pasa? (0:55–1:12)
+
+¿A quién le pasa esto?
+Al **municipio**, que gasta millones de pesos en combustible.
 Y al **vecino**, que convive con incidentes evitables todos los días.
+`[pausa]`
+Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
-### 6 · La solución y prototipo en vivo (0:52–1:35)
+### 6 · La solución y prototipo en vivo (1:12–1:58)
 
 Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
-
-Urbis funciona sobre lo que el municipio ya tiene. Con machine learning sobre esas cámaras, detecta
-puntos de residuos, postes de luz caídos y riesgo de electrocución, y avisa **en tiempo real** al área
-que lo resuelve.
+Urbis se monta sobre las cámaras que el municipio ya tiene y, con inteligencia artificial, reconoce lo
+que la ciudad necesita: basura acumulada, postes caídos, cables con riesgo eléctrico. Y le avisa **en
+tiempo real** al área que lo resuelve.
+Se lo mostramos.
 
 *(Cambio al prototipo. Recargar para que la secuencia arranque de cero.)*
 
-Un móvil pasa y detecta un contenedor rebalsado: nace un ticket. Otra pasada lo confirma. El aviso
-llega directo al área, sin que nadie lo reenvíe. Y cuando el móvil vuelve a pasar y ya no está, queda
-verificado.
+Un móvil pasa y detecta un contenedor rebalsado: nace un ticket. El aviso le llega directo al área,
+sin intermediarios. Y cuando el móvil vuelve a pasar y la esquina está limpia, queda resuelto.
+Sin un solo kilómetro extra.
 
 *(Vuelta al deck.)*
 
-### 7 · ODS (1:35–1:45)
+### 7 · ODS involucrados (1:58–2:10)
 
-Cubrimos cinco Objetivos de Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción
-por el clima, innovación en infraestructura y alianzas.
+Así, cada litro rinde más, y aportamos a cinco Objetivos de Desarrollo Sostenible: ciudades
+sostenibles, consumo responsable, acción por el clima, innovación y alianzas.
 
-### 8 · Viabilidad económica (1:45–2:20)
+### 8 · Viabilidad económica (2:10–2:40)
 
-¿Quién lo paga? Para el municipio, **se sostiene solo**: el costo marginal es mínimo, porque usa la
-flota, la infraestructura y las cámaras que ya tiene. Con **edge computing**, la imagen se procesa en el
-mismo móvil: no se transmite ni se guarda video. Y ahorra recorridos de inspección y el seguimiento de
-cada incidente.
-Y para implementarlo, la Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad
-Sostenible de Córdoba. Ese plan crea un Observatorio de Movilidad, y Urbis le brinda los datos de la calle.
+**¿Y quién lo paga?**
+Para el municipio, se sostiene solo. El costo es mínimo: usa la flota y las cámaras que ya tiene,
+procesa la imagen en el mismo móvil, sin transmitir ni guardar video, y le ahorra salir a inspeccionar.
+Y para implementarlo, el camino ya está abierto: la Unión Europea invirtió **600.000 euros** en el Plan
+de Movilidad Sostenible de Córdoba. Ese plan necesita datos de la calle. Urbis se los brinda.
 
-### 9 · Cierre (2:20–2:30)
+### 9 · Cierre (2:40–3:00)
 
-Urbis.
+Volvamos a ese patrullero que está dando vueltas ahora mismo.
 `[pausa]`
-Detección urbana desde el patrullaje.
+No necesitamos más autos, ni más cámaras, ni más combustible.
+Necesitamos que lo que ya mira la ciudad… **también la cuide**.
+`[pausa]`
+Urbis. Detección urbana desde el patrullaje.
 Gracias.
 
 ---
@@ -100,7 +110,7 @@ Gracias.
   - *¿Por qué es movilidad?* Slides 7 y 10: la flota es el recurso, y nadie saca otro vehículo a la calle.
   - *¿Por qué es sustentable?* Slide 10: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
   - *¿A quién le resolvemos?* Slide 6: al municipio, que paga y recibe reclamos, y al vecino, que espera.
-- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 4 y 9, y no llenar los silencios.
+- **Voz** (Julian Treasure): bajar el ritmo en las slides 1, 2 y 9 (la escena del patrullero y el número), y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Urbis. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
