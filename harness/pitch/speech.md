@@ -74,7 +74,7 @@ Un móvil pasa y la cámara detecta un contenedor rebalsado: se arma un ticket. 
 ver. El aviso llega directo al área, sin que nadie lo reenvíe. Cuando el móvil vuelve a pasar y el
 problema ya no está, queda verificado.
 
-*(Vuelta al deck. Si el prototipo falla, ir a la slide 12, el plan B.)*
+*(Vuelta al deck.)*
 
 ### 7 · Qué aprendimos (1:50–2:05)
 
