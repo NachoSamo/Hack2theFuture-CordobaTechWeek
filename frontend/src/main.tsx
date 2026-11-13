@@ -1,7 +1,8 @@
 import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { CityMap } from './CityMap'
+import { CityMap, type FleetControl } from './CityMap'
+import { clock, detectedUntil, endMeters, fleetColors, rangeMeters, SPEEDS, totalDetections, vehicles } from './fleet'
 import { auditTrail, automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Ticket } from './tickets'
 import { Impact } from './Impact'
 import './style.css'
@@ -9,7 +10,9 @@ import './style.css'
 const types = [...new Set(tickets.map(ticket => ticket.type))]
 const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const replayDelays = [4000, 12000, 55000]
-const simulationDelays = [2500, 6500, 12000]
+const fleets = Object.keys(fleetColors)
+const fleetTickets = tickets.map(automaticNotice)
+const emptyTickets: Ticket[] = []
 function replayToast(step: number, ticket?: Ticket) {
   if (!ticket) return
   const entry = replay.activity[step - 2]
@@ -185,8 +188,6 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
 function App({ demo = false, embedded = false, simulation = false }: { demo?: boolean; embedded?: boolean; simulation?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
   const [step, setStep] = useState(demo ? 1 : 0)
-  const [run, setRun] = useState(0)
-  const [patrolReady, setPatrolReady] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filtersId = useId()
   const [type, setType] = useState('')
@@ -194,11 +195,10 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
   const [state, setState] = useState('')
   const filterCount = [type, area, state].filter(Boolean).length
   useEffect(() => {
-    if (simulation && run === 0) return
-    const delays = simulation ? simulationDelays : replayDelays
-    const timers = delays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
+    if (simulation) return
+    const timers = replayDelays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
     return () => timers.forEach(timer => window.clearTimeout(timer))
-  }, [run, simulation])
+  }, [simulation])
 
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
@@ -208,7 +208,7 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
   const visible = useMemo(() => activeTickets.filter(ticket =>
     (!type || ticket.type === type) && (!area || ticket.area === area) && (!state || status(ticket) === state)),
   [activeTickets, type, area, state])
-  const selected = visible.find(ticket => ticket.id === id)
+  const selected = (simulation ? fleetTickets : visible).find(ticket => ticket.id === id)
   const [toast, setToast] = useState<{ title: string; detail: string }>()
   const replayTicket = activeTickets.find(ticket => ticket.id === replay.ticketId)
   useEffect(() => {
@@ -218,6 +218,26 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
     const timer = window.setTimeout(() => setToast(undefined), 8000)
     return () => window.clearTimeout(timer)
   }, [step]) // solo avisa cuando avanza la simulación
+
+  const fleetMeters = useRef(0)
+  const [fleetPlaying, setFleetPlaying] = useState(false)
+  const [fleetSpeed, setFleetSpeed] = useState(60)
+  const [fleetVersion, setFleetVersion] = useState(0)
+  const [fleetProgress, setFleetProgress] = useState(0)
+  const onFleetProgress = useCallback((meters: number) => {
+    setFleetProgress(meters)
+    if (meters >= endMeters) setFleetPlaying(false)
+  }, [])
+  function resetFleet() {
+    setId(undefined)
+    fleetMeters.current = 0
+    setFleetProgress(0)
+    setFleetPlaying(false)
+    setFleetVersion(version => version + 1)
+  }
+  const fleet: FleetControl = { meters: fleetMeters, playing: fleetPlaying, speed: fleetSpeed, version: fleetVersion, tickets: fleetTickets, onProgress: onFleetProgress }
+  const fleetCount = detectedUntil(fleetProgress)
+  const fleetDone = fleetCount === totalDetections
 
   const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId?: string) => setId(ticketId), [])
@@ -236,13 +256,13 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
       <div className="top-meta">
         {!embedded && <nav className="view-switch" aria-label="Vistas">
           <a href="#mapa" aria-current={simulation ? undefined : 'page'}>Mapa</a>
-          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Simulación</a>
+          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Flota</a>
           <a href="#impacto">Impacto</a>
         </nav>}
-        <button type="button" className="filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId}
+        {!simulation && <button type="button" className="filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId}
           onClick={() => setFiltersOpen(open => !open)}>
           {filtersOpen ? 'Ocultar filtros' : 'Filtros'}{filterCount > 0 ? ` (${filterCount})` : ''}
-        </button>
+        </button>}
       </div>
     </header>
     <section className="workspace" aria-label="Monitoreo urbano">
@@ -255,30 +275,40 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
             <Filter label="Área" options={areas} value={area} onChange={setArea} />
           </div>
         </div>
-        {simulation && <div className="simulation-toolbar">
-          <button type="button" disabled={!patrolReady} onClick={() => {
-            setId(undefined)
-            setStep(0)
-            setRun(current => current + 1)
-          }}>{run ? 'Reiniciar recorrido' : 'Iniciar recorrido'}</button>
-          <span role="status">{run === 0 ? (patrolReady ? 'Patrullaje simulado · 2 móviles' : 'Preparando recorrido…') : step === simulationDelays.length ? 'Recorrido completado' : 'Recorrido en curso'}</span>
+        {simulation && <div className="map-toolbar">
+          <div className="fleet-controls" aria-label="Controles de la simulación">
+            <button type="button" className="fleet-play" disabled={fleetDone} onClick={() => setFleetPlaying(!fleetPlaying)}>
+              {fleetDone ? 'Completa' : fleetPlaying ? 'Pausa' : fleetProgress ? 'Seguir' : 'Iniciar'}
+            </button>
+            <div className="layer-switch" aria-label="Velocidad">
+              {SPEEDS.map(speed => <button key={speed} type="button" aria-pressed={fleetSpeed === speed} onClick={() => setFleetSpeed(speed)}>×{speed}</button>)}
+            </div>
+            <button type="button" disabled={!fleetProgress} onClick={resetFleet}>Reiniciar</button>
+            <span className="fleet-clock" aria-label="Hora simulada">{clock(fleetProgress)}</span>
+          </div>
         </div>}
         <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
-          {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
+          {!simulation && !visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
           <div className="live-region" role="status" aria-live="polite">
-            {toast && selected?.id !== replay.ticketId && <button key={toast.title} className="live-toast" onClick={() => setId(replay.ticketId)}>
+            {!simulation && toast && selected?.id !== replay.ticketId && <button key={toast.title} className="live-toast" onClick={() => setId(replay.ticketId)}>
               <span className="live-dot" aria-hidden="true" />
               <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
             </button>}
           </div>
-          <CityMap tickets={visible} selected={selected} onSelect={selectTicket} embedded={embedded}
-            onPatrolReady={simulation ? setPatrolReady : undefined}
-            patrolRun={simulation ? run : undefined} patrolDuration={simulationDelays[simulationDelays.length - 1]} />
-          <div className="map-key" aria-label="Leyenda de zonas de calor">
+          <CityMap tickets={simulation ? emptyTickets : visible} selected={selected} onSelect={selectTicket}
+            embedded={embedded} fleet={simulation ? fleet : undefined} />
+          {simulation && !fleetProgress && !fleetPlaying && <div className="fleet-start">
+            <p>{vehicles.length} vehículos que ya circulan por {city}, cada uno con una cámara de {rangeMeters} m de rango.</p>
+            <button type="button" className="fleet-play" onClick={() => setFleetPlaying(true)}>Iniciar recorrido</button>
+          </div>}
+          {simulation ? <div className="map-key fleet-key" aria-label="Leyenda de flota">
+            {fleets.map(name => <span key={name}><i className="dot" style={{ background: fleetColors[name] }} />{name}</span>)}
+            <span><i className="dot fleet-range-swatch" />Rango de cámara {rangeMeters} m</span>
+          </div> : <div className="map-key" aria-label="Leyenda de zonas de calor">
             <span><i className="swatch observed" />Observada, sin tickets activos</span>
             <span><i className="swatch warm" />Menor concentración</span>
             <span><i className="swatch hot" />Mayor concentración de incidencias</span>
-          </div>
+          </div>}
           {selected && <TicketDetail key={selected.id} ticket={selected}
             onClose={() => {
               const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)

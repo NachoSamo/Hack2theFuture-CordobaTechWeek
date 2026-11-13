@@ -1,12 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
-import maplibre, { type GeoJSONSource, type Map as MapInstance } from 'maplibre-gl'
+import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react'
+import maplibre, { type GeoJSONSource, type MapLayerMouseEvent, type Map as MapInstance } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { scenario } from './scenario'
+import type { FeatureCollection, Point } from 'geojson'
+import { BASE_SPEED_MPS, carIcon, detectedUntil, fleetColors, detections, endMeters, fleetFeatures, rangeRadius } from './fleet'
 import { attentionZones, center, city, levels, locationLabel, status, type Ticket } from './tickets'
 
-function framePatrol(map: MapInstance) {
-  const bounds = scenario.routes.fixed.coordinates.reduce((box, point) => box.extend(point), new maplibre.LngLatBounds())
-  map.fitBounds(bounds, { padding: 48, maxZoom: 14, bearing: -22, pitch: 35, duration: 0 })
+export type FleetControl = {
+  meters: MutableRefObject<number>
+  playing: boolean
+  speed: number
+  version: number
+  tickets: Ticket[]
+  onProgress: (meters: number) => void
 }
 
 type Props = {
@@ -14,15 +19,15 @@ type Props = {
   selected: Ticket | undefined
   onSelect: (id?: string) => void
   embedded?: boolean
-  patrolRun?: number
-  patrolDuration?: number
-  onPatrolReady?: (ready: boolean) => void
+  fleet?: FleetControl
 }
 
-export function CityMap({ tickets, selected, onSelect, embedded = false, patrolRun, patrolDuration = 12000, onPatrolReady }: Props) {
-  const showPatrol = patrolRun !== undefined
-  const overviewZoom = showPatrol ? 13.5 : embedded ? 13.25 : 11.85
-  const overviewPitch = 60
+const fleetLayers = ['fleet-range', 'fleet-dot', 'fleet-tickets']
+
+export function CityMap({ tickets, selected, onSelect, embedded = false, fleet }: Props) {
+  const fleetMode = Boolean(fleet)
+  const overviewZoom = embedded ? 13.25 : 11.85
+  const overviewPitch = fleetMode ? 43 : 60
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -84,6 +89,37 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
           },
         }, firstLabel)
       }
+      const empty: FeatureCollection = { type: 'FeatureCollection', features: [] }
+      map.addSource('fleet', { type: 'geojson', data: empty })
+      map.addSource('fleet-tickets', { type: 'geojson', data: empty })
+      map.addLayer({
+        id: 'fleet-tickets', type: 'circle', source: 'fleet-tickets', layout: { visibility: 'none' },
+        paint: {
+          'circle-color': ['get', 'color'],
+          'circle-radius': ['+', 7, ['*', 12, ['get', 'pulse']]],
+          'circle-opacity': ['-', 1, ['*', 0.4, ['get', 'pulse']]],
+          'circle-stroke-color': '#11191C', 'circle-stroke-width': 2,
+        },
+      })
+      map.addLayer({
+        id: 'fleet-range', type: 'circle', source: 'fleet', layout: { visibility: 'none' },
+        paint: {
+          'circle-color': ['get', 'color'], 'circle-opacity': 0.16,
+          'circle-radius': rangeRadius as never, 'circle-pitch-alignment': 'map',
+          'circle-stroke-color': ['get', 'color'], 'circle-stroke-width': 1, 'circle-stroke-opacity': 0.5,
+        },
+      })
+      for (const [fleetName, color] of Object.entries(fleetColors)) {
+        if (!map.hasImage('car-' + fleetName)) map.addImage('car-' + fleetName, carIcon(color), { pixelRatio: 2 })
+      }
+      map.addLayer({
+        id: 'fleet-dot', type: 'symbol', source: 'fleet',
+        layout: {
+          visibility: 'none', 'icon-image': ['get', 'icon'], 'icon-size': 1.7,
+          'icon-rotate': ['get', 'bearing'], 'icon-rotation-alignment': 'map', 'icon-pitch-alignment': 'map',
+          'icon-allow-overlap': true, 'icon-ignore-placement': true,
+        },
+      })
       setReady(true)
     })
 
@@ -95,57 +131,75 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
       map.remove()
       instance.current = null
     }
-  }, [embedded, overviewZoom])
+  }, [embedded, overviewZoom, overviewPitch])
 
+  const fleetTickets = useMemo(() => new Map(fleet?.tickets.map(ticket => [ticket.id, ticket])), [fleet?.tickets])
+  const fleetSpeed = fleet?.speed ?? 1
   useEffect(() => {
     const map = instance.current
-    if (!ready || !map || !showPatrol) return
-    framePatrol(map)
-    onPatrolReady?.(true)
-  }, [ready, showPatrol, onPatrolReady])
-
-  useEffect(() => {
-    const map = instance.current
-    if (!ready || !map || patrolRun === undefined) return
-    if (patrolRun > 0) framePatrol(map)
-    const route = scenario.routes.fixed.coordinates
-    const vehicles = ['Móvil municipal', 'Móvil policial'].map((label, index) => {
-      const element = document.createElement('span')
-      element.className = index === 0 ? 'patrol-marker' : 'patrol-marker police'
-      element.setAttribute('aria-label', label)
-      element.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m5 11 2-5h10l2 5M4 11h16v7H4zm2 7v2m12-2v2m-11-6h2m6 0h2"/></svg>'
-      const path = index === 0 ? route : [...route].reverse()
-      return { marker: new maplibre.Marker({ element }).setLngLat(path[0]).addTo(map), path }
-    })
-
-    let frame = 0
-    const start = performance.now()
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
-    function moveVehicles(now: number) {
-      const progress = Math.min((now - start) / patrolDuration, 1)
-      vehicles.forEach(({ marker, path }) => {
-        const index = progress * (path.length - 1)
-        const point = path[Math.floor(index)]
-        const next = path[Math.min(Math.floor(index) + 1, path.length - 1)]
-        const fraction = index % 1
-        marker.setLngLat([
-          point[0] + (next[0] - point[0]) * fraction,
-          point[1] + (next[1] - point[1]) * fraction,
-        ])
-      })
-      if (progress < 1) frame = requestAnimationFrame(moveVehicles)
+    if (!ready || !map || !fleet || !fleetMode) return
+    const { meters, onProgress, playing } = fleet
+    const pulseMeters = BASE_SPEED_MPS * fleetSpeed * 1.2 // el pulso dura ~1,2 s reales a cualquier velocidad
+    const draw = () => {
+      map.getSource<GeoJSONSource>('fleet')?.setData(fleetFeatures(meters.current))
+      const features: FeatureCollection<Point>['features'] = []
+      for (const detection of detections.slice(0, detectedUntil(meters.current))) {
+        const ticket = fleetTickets.get(detection.ticketId)
+        if (!ticket) continue
+        features.push({
+          type: 'Feature',
+          properties: { id: ticket.id, color: levels[ticket.level] ?? '#A5B3A9', pulse: playing ? Math.max(0, 1 - (meters.current - detection.at) / pulseMeters) : 0 },
+          geometry: { type: 'Point', coordinates: ticket.position },
+        })
+      }
+      map.getSource<GeoJSONSource>('fleet-tickets')?.setData({ type: 'FeatureCollection', features })
     }
-    if (patrolRun > 0 && !reducedMotion) frame = requestAnimationFrame(moveVehicles)
+    for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'visible')
+    draw()
+    let frame = 0
+    if (playing) {
+      let last = performance.now(), reported = last
+      const tick = (now: number) => {
+        meters.current = Math.min(endMeters, meters.current + (now - last) / 1000 * BASE_SPEED_MPS * fleetSpeed)
+        last = now
+        draw()
+        const done = meters.current >= endMeters
+        if (done || now - reported > 200) { reported = now; onProgress(meters.current) }
+        if (!done) frame = requestAnimationFrame(tick)
+      }
+      frame = requestAnimationFrame(tick)
+    }
     return () => {
       cancelAnimationFrame(frame)
-      vehicles.forEach(({ marker }) => marker.remove())
+      onProgress(meters.current)
+      if (instance.current === map) for (const id of fleetLayers) map.setLayoutProperty(id, 'visibility', 'none')
     }
-  }, [ready, patrolRun, patrolDuration])
+  }, [ready, fleetMode, fleet?.playing, fleetSpeed, fleet?.version, fleetTickets]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const map = instance.current
+    if (!ready || !map) return
+    const select = (event: MapLayerMouseEvent) => {
+      const id = event.features?.[0]?.properties?.id
+      if (typeof id === 'string') onSelect(id)
+    }
+    const pointer = () => { map.getCanvas().style.cursor = 'pointer' }
+    const reset = () => { map.getCanvas().style.cursor = '' }
+    map.on('click', 'fleet-tickets', select)
+    map.on('mouseenter', 'fleet-tickets', pointer)
+    map.on('mouseleave', 'fleet-tickets', reset)
+    return () => {
+      map.off('click', 'fleet-tickets', select)
+      map.off('mouseenter', 'fleet-tickets', pointer)
+      map.off('mouseleave', 'fleet-tickets', reset)
+    }
+  }, [ready, onSelect])
 
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
     map.getSource<GeoJSONSource>('attention')?.setData(attentionZones(tickets))
+    map.setLayoutProperty('attention', 'visibility', fleetMode ? 'none' : 'visible')
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
@@ -185,7 +239,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
       return new maplibre.Marker({ element: marker }).setLngLat(ticket.position).addTo(map)
     })
     return () => markers.forEach(marker => marker.remove())
-  }, [ready, tickets, onSelect])
+  }, [ready, tickets, onSelect, fleetMode])
 
   useEffect(() => {
     const map = instance.current
@@ -245,7 +299,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />
-    {ready && !showPatrol && <button type="button" className="map-overview" onClick={showOverview}>Ver toda Córdoba</button>}
+    {ready && !fleetMode && <button type="button" className="map-overview" onClick={showOverview}>Ver toda Córdoba</button>}
     {fallback && <p className="map-warning" role="status">Cartografía base no disponible.</p>}
   </>
 }

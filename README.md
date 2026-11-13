@@ -75,6 +75,7 @@ flowchart LR
 | Landing ([`frontend/`](frontend/README.md)) | ¿Qué es Urbis y cómo se ve una detección? |
 | Mapa de incidencias (`/#mapa`) | ¿Qué está pasando en la ciudad y dónde? |
 | Zonas de calor | ¿Dónde hay más incidencias y qué parte de la ciudad no está observada? |
+| Flota (`/#simulacion`) | ¿Cómo detectan incidencias los 16 móviles que ya circulan por Córdoba? |
 | Tarjeta del ticket | ¿Qué se detectó, con qué gravedad, quién lo resuelve y qué pasó hasta ahora? |
 | Auditoría del ticket | ¿Qué sistema o agente intervino, a quién derivó y qué resultado registró? |
 | Aviso en vivo (sobre el mapa) | ¿Qué acaba de detectar la flota y a quién se le avisó? |

@@ -10,7 +10,7 @@ Los tickets activos de contenedor rebalsado se derivan a la empresa recolectora 
 
 Al abrir la página, el mock publica automáticamente un ticket, agrega un avistamiento, simula el aviso y luego registra una pasada de verificación. Recargar la página reinicia la secuencia. Si falla OpenFreeMap, los marcadores siguen disponibles sobre un fondo negro siempre que el navegador soporte WebGL.
 
-La pestaña «Simulación» (`/#simulacion`) reutiliza el recorrido fijo de `src/street-routes.json` para mover los móviles simulados y repetir la secuencia del ticket CBA-104 en 12 segundos. El trayecto no se dibuja en el mapa. Los tickets y la cobertura actuales están en `src/tickets-mock.json`.
+El modo **Flota** usa `src/fleet-routes.json`: 16 recorridos por calles reales, uno por zona (k-means sobre las incidencias), que pasan por las 194 incidencias, más el punto de cada recorrido en el que se detecta cada una. Se regenera con `python scripts/generar-flota.py` (usa el mismo OSRM público, o `TRAMA_OSRM_URL`). El rango de cámara (50 m) está en el script, y la velocidad base y los multiplicadores en `src/fleet.ts`. Hay 8 incidencias a más de 50 m de una calle ruteable (Los Boulevares, Villa Belgrano y Las Palmas, con un máximo de 446 m) que se detectan en el punto más cercano del recorrido. El mapa conserva los créditos de la cartografía. Se abre desde «Flota» (`/#simulacion`).
 
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)
 

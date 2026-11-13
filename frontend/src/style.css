@@ -67,33 +67,6 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 }
 .map-toolbar[hidden] { display: none; }
 .filters-toggle { min-height: 34px; font-size: 14px; }
-.simulation-toolbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-  padding: 8px 16px;
-  color: var(--muted);
-  background: #11191c;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px;
-}
-.simulation-toolbar button { color: var(--lime); }
-.patrol-marker {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  color: #11191c;
-  background: var(--lime);
-  border: 2px solid #11191c;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px #0009;
-  pointer-events: none;
-  z-index: 1;
-}
-.patrol-marker.police { background: #a4d7fb; }
-.patrol-marker svg { width: 18px; height: 18px; }
 .map-key {
   position: absolute;
   bottom: 32px;
@@ -503,3 +476,19 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   min-height: 44px;
   background: var(--surface);
 }
+
+/* Modo Flota */
+.fleet-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.fleet-play { color: #11191c; background: var(--lime); border-color: var(--lime); font-weight: 600; }
+.fleet-play:hover { background: #ebfab8; }
+.fleet-controls button:disabled { opacity: .55; cursor: default; }
+.fleet-clock { font-family: var(--mono); font-size: 14px; color: var(--muted); padding: 0 4px; }
+.fleet-start {
+  position: absolute; z-index: 2; left: 50%; bottom: 40px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  width: min(420px, calc(100% - 32px)); padding: 14px 18px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 30px #0008;
+}
+.fleet-start .fleet-play { font-size: 16px; padding: 8px 18px; }
+.fleet-range-swatch { width: 12px; height: 12px; background: #dff69129; border: 1px solid #dff69180; }
+.fleet-key { top: 10px; bottom: auto; }
