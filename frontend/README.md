@@ -10,7 +10,7 @@ Los tickets activos de contenedor rebalsado se derivan a la empresa recolectora 
 
 Al abrir la página, el mock publica automáticamente un ticket, agrega un avistamiento, simula el aviso y luego registra una pasada de verificación. Recargar la página reinicia la secuencia. Si falla OpenFreeMap, los marcadores siguen disponibles sobre un fondo negro siempre que el navegador soporte WebGL.
 
-La pestaña «Simulación» (`/#simulacion`) reutiliza el recorrido fijo de `src/street-routes.json` para mostrar dos móviles simulados y repetir la secuencia del ticket CBA-104 en 12 segundos. Los tickets y la cobertura actuales están en `src/tickets-mock.json`.
+La pestaña «Simulación» (`/#simulacion`) reutiliza el recorrido fijo de `src/street-routes.json` para mover los móviles simulados y repetir la secuencia del ticket CBA-104 en 12 segundos. El trayecto no se dibuja en el mapa. Los tickets y la cobertura actuales están en `src/tickets-mock.json`.
 
 [Reel de referencia](https://www.instagram.com/p/DYxYcy2tZeG/) · [Componentes de mapa de 21st](https://dev.21st.dev/community/components/s/map) · [Mapcn](https://docs.21st.dev/blog/mapcn-components)
 

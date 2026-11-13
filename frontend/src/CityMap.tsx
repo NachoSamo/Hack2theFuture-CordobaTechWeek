@@ -100,26 +100,8 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
   useEffect(() => {
     const map = instance.current
     if (!ready || !map || !showPatrol) return
-    map.addSource('patrol-routes', {
-      type: 'geojson',
-      data: {
-        type: 'Feature',
-        properties: {},
-        geometry: { type: 'LineString', coordinates: scenario.routes.fixed.coordinates },
-      },
-    })
-    map.addLayer({
-      id: 'patrol-routes', type: 'line', source: 'patrol-routes',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: { 'line-color': '#dff691', 'line-width': 3, 'line-opacity': .68 },
-    })
     framePatrol(map)
     onPatrolReady?.(true)
-    return () => {
-      if (instance.current !== map) return
-      map.removeLayer('patrol-routes')
-      map.removeSource('patrol-routes')
-    }
   }, [ready, showPatrol, onPatrolReady])
 
   useEffect(() => {
@@ -255,10 +237,6 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
   function showOverview() {
     onSelect(undefined)
     const map = instance.current
-    if (showPatrol && map) {
-      framePatrol(map)
-      return
-    }
     map?.easeTo({
       center, zoom: overviewZoom, pitch: overviewPitch, bearing: -22, padding: 0,
       duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
@@ -267,7 +245,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, patrolR
 
   return <>
     <div ref={host} className="map-host" aria-label={'Mapa de ' + city} />
-    {ready && <button type="button" className="map-overview" onClick={showOverview}>{showPatrol ? 'Ver recorrido' : 'Ver toda Córdoba'}</button>}
+    {ready && !showPatrol && <button type="button" className="map-overview" onClick={showOverview}>Ver toda Córdoba</button>}
     {fallback && <p className="map-warning" role="status">Cartografía base no disponible.</p>}
   </>
 }
