@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="harness/marca/logo.svg" alt="Logo de Urbis" width="96">
+
 # Urbis
 
 **Detección urbana desde el patrullaje.**
@@ -91,7 +93,7 @@ flowchart LR
 | Prototipo · secuencia automática | Se publica un ticket, otra pasada suma un avistamiento, sale el aviso y una pasada de verificación lo deja «posiblemente resuelto» | El ciclo completo, sin intervención humana |
 | Prototipo · tarjeta | Acercamiento automático al ticket; tipo, foto ilustrativa, gravedad, área responsable, auditoría simulada y próximo paso | Que el área recibe lo que necesita para actuar |
 | Prototipo · auditoría | Intervenciones de sistemas y agentes conversacionales, derivación al área y confirmación simulada de Alumbrado | Trazabilidad de la gestión; revisión en navegador pendiente |
-| Prototipo · zonas de calor | Siempre visibles: rojo con tickets activos, verde observado sin tickets y gris sin observación; seleccionar un cuadrante acerca la cámara | Atención y cobertura de la ciudad |
+| Prototipo · zonas de calor | Calor en zonas observadas: verde sin tickets activos y ámbar o rojo según la concentración. Las demás zonas muestran la base negra. Seleccionar un cuadrante acerca el mapa | Atención y cobertura de la ciudad |
 
 `/#mapa/deteccion` abre directo el ticket CBA-104, el contenedor que aparece en el video. La secuencia exacta vive en [`harness/demo-path.md`](harness/demo-path.md).
 
@@ -196,7 +198,7 @@ npm run build
 3. Un marcador acerca el mapa y abre su tarjeta de lectura con auditoría; se cierra con Escape.
 4. Seleccionar un cuadrante acerca la cámara a esa zona. «Ver toda Córdoba» recupera el encuadre general. No hay rutas sugeridas.
 
-El detalle del prototipo está en [`frontend/README.md`](frontend/README.md). La iteración del 13/11 agrega el logo con auto y cámara, retira la franja superior y cambia las acciones por auditoría; compila, con revisión visual y smoke pendientes en [`ESTADO.md`](harness/ESTADO.md#en-proceso--juani).
+El detalle del prototipo está en [`frontend/README.md`](frontend/README.md). La iteración del 13/11 aplica el logo de la esquina urbana con auto, cámara y contenedor al frontend y al [deck del pitch](harness/pitch/deck.html). La landing reproduce los clips a 1,5× y «Cómo funciona» lleva a su sección. El estado de las verificaciones figura en [`ESTADO.md`](harness/ESTADO.md#en-proceso--juani).
 
 ---
 

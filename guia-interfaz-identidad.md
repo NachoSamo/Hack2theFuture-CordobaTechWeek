@@ -83,7 +83,7 @@ El prototipo actual usa tres niveles: baja, media y alta. **Extremo todavía no 
 Fuente: [documento de marca](harness/marca.md), de Juani, **propuesta para revisión**. Esta guía no cambia la identidad.
 
 - **Nombre:** Urbis.
-- **Logo:** [símbolo existente](harness/marca/logo.svg), una esquina urbana en perspectiva con cámara y ruta lima. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
+- **Logo:** [símbolo existente](harness/marca/logo.svg), una fachada de esquina con un auto con cámara a la izquierda y un contenedor marcado en lima a la derecha. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
 - **Tipografías:** Barlow para títulos e interfaz; IBM Plex Mono para horas y datos compactos.
 - **Tono:** directo y operativo. Mostrar el problema, su lugar y su estado con términos comprensibles.
 - **Accesibilidad visual ya indicada en marca:** acompañar colores con etiquetas y leyenda; escribir el nivel y el estado, sin depender únicamente del color.
@@ -134,4 +134,4 @@ Para cerrar la propuesta visual faltan: categorías que se demostrarán, vista i
 
 [Idea y épicas](harness/docs/producto/idea-y-epicas.md) · [Flujo de producto](harness/docs/producto/solucion-paso-a-paso.md) · [Decisiones](harness/decision-log.md)
 
-**Iteración del 13/11 con Juani (en revisión):** logo con esquina, auto con cámara y recuadro de detección conservando el estilo; franja superior de la landing retirada; detalle sin acciones de aviso o barrida y con «Auditoría del ticket». Ejemplos de gestión conversacional, confirmación del área y derivación del sistema están identificados como simulados. Compilación PASS; revisión visual y pruebas en navegador pendientes.
+**Iteración del 13/11 con Juani (en revisión):** logo con esquina, auto con cámara y recuadro de detección conservando el estilo; franja superior de la landing retirada; detalle sin acciones de aviso o barrida y con «Auditoría del ticket». Ejemplos de gestión conversacional, confirmación del área y derivación del sistema están identificados como simulados. Compilación y recorrido del prototipo verificados en navegador.
