@@ -55,7 +55,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que gasta casi setecientos mil dólares por año en combustible.
+Al **municipio**, que paga un combustible que solo sirve para patrullar.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
@@ -125,7 +125,7 @@ Gracias.
   decir "hasta el 100 %". No está medido: lo mide el piloto.
 - **Viabilidad económica y financiamiento (slide 8):**
   - En voz alta se dice "oportunidades de financiamiento de la UE", no que la plata ya está. El dato de
-    los 600.000 € queda en la slide y como respuesta si preguntan.
+    los 600.000 € ya no está en la slide (13/11): queda como respuesta si preguntan.
   - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
   - Los 600.000 € son asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD, dentro
     de MobiliseYourCity ([nota del 14/10/2025](https://www.mobiliseyourcity.net/cordobas-sustainable-urban-mobility-plan-paves-way-integrated-metropolitan-transport-system)).
@@ -156,7 +156,7 @@ Gracias.
   - **Precio (con fuente):** $2.100 por litro, nafta súper (Infobae, 10/11/2026). Las camionetas son
     diésel, que es más caro, así que el monto es conservador.
   - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año (US$7,6 millones al cambio BNA de $1.560, 30/10/2026).
-    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones (casi US$700.000).
+    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones (casi US$700.000). Ya no está en el deck ni en el speech (13/11): solo como respuesta al jurado.
   - **Huella de carbono:** a unos 2,6 kg de CO₂ por litro de gasoil, son unas 14.600 toneladas de CO₂
     por año.
   - **Corrección del 12/11:** el dato anterior de 2 millones de litros (La Voz de San Justo,
