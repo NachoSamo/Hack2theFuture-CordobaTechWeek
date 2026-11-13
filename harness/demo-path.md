@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Demostración de entrada de Ikhnos
 
-La landing intercala tres fragmentos de detección con el mapa interactivo. Después de cada fragmento abre su ticket y muestra una acción simulada. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. La secuencia vuelve al primer caso al terminar. Para probar la interfaz completa, abrí `/#mapa`.
+La landing reproduce en bucle un solo video que intercala tres detecciones simuladas con grabaciones del prototipo. Después de cada detección se abre su marcador y se ejecuta la acción correspondiente. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. Para interactuar con el sistema, abrí `/#mapa`.

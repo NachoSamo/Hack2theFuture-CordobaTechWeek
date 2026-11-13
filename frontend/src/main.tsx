@@ -97,55 +97,8 @@ function Filter({ label, options, value, onChange }: { label: string; options: s
   </select>
 }
 
-const demoCases = [
-  { id: 'CBA-105', start: 0, end: 1.48, action: 'notice' },
-  { id: 'CBA-106', start: 2.96, end: 4.44, action: 'sweep' },
-  { id: replay.ticketId, start: 7.4, end: 10, action: 'route' },
-] as const
-
 function Landing() {
   const [autoPlay] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
-  const [caseIndex, setCaseIndex] = useState(0)
-  const [phase, setPhase] = useState<'clip' | 'map' | 'ticket' | 'action'>('clip')
-  const [previewId, setPreviewId] = useState<string>()
-  const [previewActivity, setPreviewActivity] = useState<ManualActivity[]>([])
-  const demoCase = demoCases[caseIndex]
-  const activePreview = tickets.find(ticket => ticket.id === previewId)
-  const suggestion = activePreview?.type === 'Contenedor rebalsado' ? scenario.routes.suggestions[activePreview.id] : undefined
-  const routeOpen = previewActivity.some(entry => entry.action === 'route') && Boolean(suggestion)
-
-  const openPreview = useCallback((ticketId: string) => {
-    setPreviewId(ticketId)
-    setPreviewActivity([])
-    setPhase('ticket')
-  }, [])
-
-  const runAction = useCallback((action: TicketAction) => {
-    setPreviewActivity(entries => entries.some(entry => entry.action === action) ? entries :
-      [...entries, { kind: 'manual', action, time: '14:45' }])
-    setPhase('action')
-  }, [])
-
-  useEffect(() => {
-    if (phase === 'clip') return
-    const timer = window.setTimeout(() => {
-      if (phase === 'map') openPreview(demoCase.id)
-      if (phase === 'ticket') {
-        if (previewId === demoCase.id) runAction(demoCase.action)
-        else setPhase('action')
-      }
-      if (phase === 'action') {
-        setPreviewId(undefined)
-        setPreviewActivity([])
-        setCaseIndex(index => (index + 1) % demoCases.length)
-        setPhase('clip')
-      }
-    }, { map: 1800, ticket: 2400, action: 3700 }[phase])
-    return () => window.clearTimeout(timer)
-  }, [phase, demoCase, previewId, openPreview, runAction])
-
-  const detail = activePreview && automaticNotice(activePreview)
-  const showPanel = phase === 'ticket' || phase === 'action'
 
   return <main className="landing">
     <header className="top landing-top">
@@ -158,32 +111,12 @@ function Landing() {
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
       </div>
       <div className="landing-stage">
-        <div className="landing-scene">
-          <div className={showPanel ? 'landing-map has-detail' : 'landing-map'} inert={phase === 'clip'}>
-            <CityMap tickets={tickets} selected={activePreview} layer={routeOpen ? 'routes' : 'tickets'}
-              suggestion={routeOpen ? suggestion : undefined} onSelect={openPreview} />
-            {routeOpen && <div className="map-key"><span><i className="swatch suggested-route" />Ruta sugerida</span></div>}
-            <div className="panel-track" inert={!showPanel}>
-              {detail && <aside className="panel" aria-label="Ticket de la demostración">
-                <TicketDetail key={detail.id} ticket={{ ...detail, activity: [...detail.activity, ...previewActivity] }}
-                  suggestion={suggestion} routeOpen={routeOpen}
-                  onToggleRoute={() => routeOpen
-                    ? setPreviewActivity(entries => entries.filter(entry => entry.action !== 'route'))
-                    : runAction('route')}
-                  onAction={runAction}
-                  onClose={() => { setPreviewId(undefined); setPreviewActivity([]); setPhase('map') }} />
-              </aside>}
-            </div>
-          </div>
-          {phase === 'clip' && <video key={caseIndex} className="landing-clip"
-            autoPlay={autoPlay} muted controls playsInline preload="metadata"
-            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de visión por computadora"
-            onLoadedMetadata={event => { event.currentTarget.currentTime = demoCase.start }}
-            onTimeUpdate={event => { if (event.currentTarget.currentTime >= demoCase.end) setPhase('map') }}
-            onEnded={() => setPhase('map')}>
-            <source src="/demo-vision.mp4?v=ikhnos" type="video/mp4" />
-          </video>}
-        </div>
+        <figure className="landing-scene">
+          <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
+            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de Ikhnos: detección, mapa y acciones">
+            <source src="/demo-flujo.mp4?v=grabacion" type="video/mp4" />
+          </video>
+        </figure>
       </div>
     </section>
   </main>

@@ -240,24 +240,13 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   border-radius: 14px;
   background: #10191d;
 }
-.landing-scene video, .landing-map {
+.landing-scene video {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 10;
   background: #10191d;
   border-radius: 8px;
-}
-.landing-map { position: relative; overflow: clip; }
-.landing-map .panel-track {
-  width: min(76%, 300px);
-  transition: transform 260ms ease-out;
-}
-.landing-map .panel { padding: 12px; }
-.landing-map .ticket-photo { margin-block: 8px; }
-.landing-map .ticket-photo img { max-height: 94px; }
-@media (prefers-reduced-motion: reduce) {
-  .landing-map .panel-track { transition: none; }
 }
 @media (max-width: 840px) {
   .landing-top, .landing-hero { width: calc(100% - 40px); }
@@ -291,11 +280,4 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 @keyframes preview-turn {
   from { transform: rotateX(11deg) rotateY(-15deg) translateY(10px); opacity: .65; }
   to { transform: none; opacity: 1; }
-}
-
-.landing-scene .landing-clip {
-  position: absolute;
-  inset: 6px;
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
 }

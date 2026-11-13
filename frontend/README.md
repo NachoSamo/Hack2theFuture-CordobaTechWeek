@@ -18,4 +18,4 @@ La landing reproduce un clip ilustrativo de detección simulada. El acceso direc
 
 Cada detección genera un aviso automático simulado al responsable. El detalle permite registrar avisos manuales, sugerir rutas para contenedores rebalsados y diagramar una barrida para residuos acumulados o ramas caídas. El historial distingue acciones automáticas y manuales. Las acciones se guardan en memoria durante la sesión.
 
-La landing intercala fragmentos de detección con el mapa interactivo, el ticket correspondiente y una acción simulada por caso.
+El video de la landing intercala fragmentos de detección con grabaciones del mapa, del ticket correspondiente y de una acción simulada por caso.
