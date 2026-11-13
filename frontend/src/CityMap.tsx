@@ -13,9 +13,10 @@ type Props = {
   layer: Layer
   suggestion?: StreetRoute
   onSelect: (id: string) => void
+  embedded?: boolean
 }
 
-export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Props) {
+export function CityMap({ tickets, selected, layer, suggestion, onSelect, embedded = false }: Props) {
   const showRoutes = layer === 'routes'
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
@@ -33,6 +34,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
         zoom: 13.25,
         pitch: 43,
         bearing: -22,
+        cooperativeGestures: embedded,
       })
     } catch {
       setFallback(true)
@@ -107,7 +109,7 @@ export function CityMap({ tickets, selected, layer, suggestion, onSelect }: Prop
       map.remove()
       instance.current = null
     }
-  }, [])
+  }, [embedded])
 
   useEffect(() => {
     const map = instance.current

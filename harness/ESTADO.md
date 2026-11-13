@@ -18,7 +18,7 @@
 | Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias); sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing con video de portada y acceso directo al mapa interactivo. Vista previa de tickets. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
+| Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing con clips de detección en la portada y una sección con el mapa interactivo. Vista previa de tickets. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -39,7 +39,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 
 ## Avisos
 
-- 12/11 · Juani · Se actualiza el acceso desde la landing al mapa y al ticket del contenedor; está reflejado en `demo-path.md` · a Samo
+- 12/11 · Juani · Se separan los clips de detección y el mapa interactivo en la landing; está reflejado en `demo-path.md` · a Samo
 
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.

@@ -57,4 +57,4 @@ Se completa al congelar la demo: qué pasos no se tocan nunca y cuál se corta p
 
 ## Demostración de entrada de Urbis
 
-La landing reproduce en bucle un solo video que intercala tres detecciones simuladas con grabaciones del prototipo. Después de cada detección se abre su marcador y se ejecuta la acción correspondiente. El bache muestra un aviso a Vía pública, la rama caída un plan de barrida y el contenedor rebalsado una ruta sugerida. Para interactuar con el sistema, usá «Explorar el mapa» (`/#mapa`) o «Abrir ticket en el mapa» (`/#mapa/deteccion`), que abre el contenedor rebalsado.
+La portada reproduce clips de detecciones simuladas en bucle. «Ver el sistema» baja a una sección con el mapa interactivo. Ahí se pueden abrir marcadores y probar acciones como sugerir una ruta para un contenedor rebalsado. «Abrir mapa completo» lleva a `/#mapa`. El enlace directo `/#mapa/deteccion` abre el ticket del contenedor.

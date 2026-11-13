@@ -123,12 +123,12 @@ function Landing() {
     <section className="landing-hero" aria-labelledby="landing-title">
       <video ref={film} id="landing-film" autoPlay={autoPlay} muted loop playsInline preload={autoPlay ? 'metadata' : 'none'}
         poster="/demo-vision.webp" aria-hidden="true" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>
-        <source src="/demo-flujo.mp4" type="video/mp4" />
+        <source src="/demo-vision.mp4" type="video/mp4" />
       </video>
       <div className="landing-copy">
         <h1 id="landing-title">Detección urbana<br />desde el patrullaje</h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
-        <a className="landing-cta" href="#mapa">Explorar el mapa</a>
+        <a className="landing-cta" href="#prototipo">Ver el sistema</a>
       </div>
       <button type="button" className="landing-play" aria-controls="landing-film" onClick={() => {
         const video = film.current
@@ -137,6 +137,7 @@ function Landing() {
         else video.pause()
       }}>{playing ? 'Pausar video' : 'Reproducir video'}</button>
     </section>
+    <LandingSystem />
     <section className="landing-explainer" id="como-funciona" aria-labelledby="landing-process">
       <p className="landing-eyebrow">Del patrullaje a la acción</p>
       <h2 id="landing-process">Cada recorrido deja evidencia</h2>
@@ -147,17 +148,40 @@ function Landing() {
         <li><span>03</span><h3>Derivar</h3><p>Desde el ticket se puede simular un aviso, diagramar una barrida o sugerir una ruta, según el caso.</p></li>
       </ol>
     </section>
-    <section className="landing-prototype" id="prototipo" aria-labelledby="landing-prototype-title">
-      <p className="landing-eyebrow">Prototipo interactivo · Córdoba</p>
-      <h2 id="landing-prototype-title">De la detección al ticket</h2>
-      <p>Abrí el incidente del contenedor rebalsado y probá la sugerencia de ruta en el mapa.</p>
-      <a className="landing-cta" href="#mapa/deteccion">Abrir ticket en el mapa</a>
-    </section>
   </main>
 }
 
-function App({ demo = false }: { demo?: boolean }) {
-  const [id, setId] = useState<string | undefined>(demo ? replay.ticketId : undefined)
+function LandingSystem() {
+  const screen = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    if (!screen.current) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      setVisible(true)
+      observer.disconnect()
+    }, { rootMargin: '150px' })
+    observer.observe(screen.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return <section className="landing-prototype" id="prototipo" aria-labelledby="landing-prototype-title">
+    <div className="landing-system-copy">
+      <h2 id="landing-prototype-title">El sistema de Urbis</h2>
+      <p>Explorá las detecciones en el mapa y abrí un ticket para ver qué se detectó, a quién le corresponde y qué acciones podés tomar.</p>
+      <a className="landing-cta" href="#mapa">Abrir mapa completo</a>
+    </div>
+    <div className="landing-monitor">
+      <div className="landing-monitor-screen" ref={screen}>
+        {visible ? <App demo embedded /> : <p role="status">Cargando mapa…</p>}
+      </div>
+    </div>
+  </section>
+}
+
+function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: boolean }) {
+  const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
   const [layer, setLayer] = useState<Layer>('tickets')
   const [routeTicketId, setRouteTicketId] = useState<string>()
   const [manual, setManual] = useState<Record<string, ManualActivity[]>>({})
@@ -210,15 +234,23 @@ function App({ demo = false }: { demo?: boolean }) {
     })
   }
 
-  return <main>
+  const Container = embedded ? 'div' : 'main'
+  const MapHeading = embedded ? 'h3' : 'h1'
+
+  return <Container className={embedded ? 'embedded-system' : undefined}>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a><span className="city">{city}</span></div>
+      <div className="brand">
+        {embedded
+          ? <span className="brand"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></span>
+          : <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>}
+        <span className="city">{city}</span>
+      </div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">
       <div className="map-stage">
         <div className="map-toolbar">
-          <h1>Mapa urbano</h1>
+          <MapHeading>Mapa urbano</MapHeading>
           <div className="layer-switch" aria-label="Vista del mapa">
             {modes.map(mode => <button key={mode.id} aria-pressed={mapLayer === mode.id}
               onClick={() => setLayer(mode.id)}>{mode.label}</button>)}
@@ -231,7 +263,7 @@ function App({ demo = false }: { demo?: boolean }) {
         </div>
         <div className="map-canvas">
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
-          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} />
+          <CityMap tickets={visible} selected={selected} layer={mapLayer} suggestion={displayedRoute} onSelect={selectTicket} embedded={embedded} />
           {mapLayer !== 'tickets' && <div className="map-key">
             {mapLayer === 'zones' ? <>
               <span><i className="swatch observed" />Observada, sin tickets activos</span>
@@ -262,7 +294,7 @@ function App({ demo = false }: { demo?: boolean }) {
         </div>
       </div>
     </section>
-  </main>
+  </Container>
 }
 
 const readPage = () => location.hash === '#mapa' || location.hash === '#mapa/deteccion' ? location.hash : ''
