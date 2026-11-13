@@ -47,7 +47,7 @@ Piezas para explorar visualmente. Su orden, composición y acciones quedan por r
 | Valor | Reutilización de cámaras y recorridos; detección y seguimiento | Beneficio propuesto, sin cifras de ahorro inventadas |
 | Propuesta de MVP | Recorrido visual de la sección siguiente | Qué se puede demostrar y qué sigue pendiente |
 
-**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. La portada alterna el clip con una vista interactiva del mapa. El ticket CBA-104 conserva la foto del contenedor que aparece en el clip. La composición oscura y la entrada en perspectiva toman como referencia [(re)in](https://rein-os.rainmakerscompany.com/).
+**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. La portada alterna el clip con una vista interactiva del mapa. El ticket CBA-104 conserva la foto del contenedor que aparece en el clip. La entrada en perspectiva toman como referencia [(re)in](https://rein-os.rainmakerscompany.com/).
 
 ## 4. Vistas propuestas para mostrar el MVP
 
@@ -83,7 +83,7 @@ El prototipo actual usa tres niveles: baja, media y alta. **Extremo todavía no 
 Fuente: [documento de marca](harness/marca.md), de Juani, **propuesta para revisión**. Esta guía no cambia la identidad.
 
 - **Nombre:** Urbis.
-- **Logo:** [símbolo existente](harness/marca/logo.svg), una esquina urbana atravesada por una ruta lima. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
+- **Logo:** [símbolo existente](harness/marca/logo.svg), una esquina urbana en perspectiva con cámara y ruta lima. Copia usada por el prototipo: [logo del frontend](frontend/public/logo.svg).
 - **Tipografías:** Barlow para títulos e interfaz; IBM Plex Mono para horas y datos compactos.
 - **Tono:** directo y operativo. Mostrar el problema, su lugar y su estado con términos comprensibles.
 - **Accesibilidad visual ya indicada en marca:** acompañar colores con etiquetas y leyenda; escribir el nivel y el estado, sin depender únicamente del color.

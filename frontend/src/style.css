@@ -200,18 +200,20 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
 .brand { color: inherit; text-decoration: none; }
 .landing {
   min-height: 100svh;
-  color: #f0f3ed;
-  background: radial-gradient(ellipse at 80% 80%, #202d27 0%, #111815 53%, #0e1311 83%);
+  color: #27203d;
+  color-scheme: light;
+  background: radial-gradient(ellipse at 80% 76%, #ddd2f6 0%, #eee6fa 52%, #f7f2fc 85%);
 }
 .landing-top {
   width: min(1280px, calc(100% - 64px));
   margin: auto;
   padding: 16px 0;
-  border-color: #36443c;
+  border-color: #cfc1e2;
 }
 .landing-top .brand { gap: 11px; }
 .landing-top .brand strong { font-size: 24px; letter-spacing: -.025em; }
-.landing-nav { color: #dff691; font-weight: 600; text-decoration: none; }
+.landing-nav { color: #503479; font-weight: 600; text-decoration: none; }
+.landing a:focus-visible { outline-color: #503479; }
 .landing-nav:hover { text-decoration: underline; }
 .landing-hero {
   width: min(1280px, calc(100% - 64px));
@@ -229,14 +231,14 @@ button.pin[aria-pressed=true] { outline: 3px solid var(--lime); outline-offset: 
   line-height: .94;
   letter-spacing: -.04em;
 }
-.landing h1 span { color: #dff691; }
-.landing-copy p { max-width: 33ch; color: #b9c7bd; font-size: 1.17rem; line-height: 1.5; margin: 22px 0 27px; }
+.landing h1 span { color: #734caf; }
+.landing-copy p { max-width: 33ch; color: #544865; font-size: 1.17rem; line-height: 1.5; margin: 22px 0 27px; }
 .landing-stage { perspective: 1150px; min-width: 0; }
 .landing-scene {
   position: relative;
   margin: 0;
   padding: 6px;
-  border: 1px solid #46584c;
+  border: 1px solid #514564;
   border-radius: 14px;
   background: #10191d;
 }

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
-  <title id="title">Urbis: una ruta dobla alrededor de una esquina en perspectiva</title>
+  <title id="title">Urbis: esquina urbana en perspectiva con una cámara de patrullaje</title>
   <rect width="96" height="96" rx="20" fill="#11191C"/>
   <g stroke="#11191C" stroke-width="2" stroke-linejoin="round">
     <path d="M10 41 46 24v36L10 51Z" fill="#53666B"/>
@@ -13,6 +13,15 @@
   <g fill="none" stroke="#DFF691" stroke-linecap="round">
     <path fill="none" stroke="#DFF691" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5" stroke-width="4"/>
     <path fill="none" stroke="#DFF691" d="M17 77c8 5 15 7 23 8m-28-3 8 4" stroke-width="2"/>
+  </g>
+  <g stroke="#11191C" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M60 26v9l9 5" fill="none" stroke="#11191C" stroke-width="6" stroke-linecap="round"/>
+    <path d="M60 26v9l9 5" fill="none" stroke="#DFF691" stroke-linecap="round"/>
+    <path d="m58 19 17-8 14 8-17 9Z" fill="#EAF0F0"/>
+    <path d="m58 19 14 9v12l-14-9Z" fill="#839493"/>
+    <path d="m72 28 17-9v12l-17 9Z" fill="#DFF691"/>
+    <ellipse cx="81" cy="29" rx="4.4" ry="4.8" fill="#11191C"/>
+    <circle cx="82" cy="28" r="1.45" fill="#EAF0F0" stroke="none"/>
   </g>
   <circle cx="85" cy="54" r="3" fill="#DFF691"/>
 </svg>

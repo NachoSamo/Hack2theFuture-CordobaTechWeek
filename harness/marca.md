@@ -12,7 +12,7 @@
 
 ![Símbolo de Urbis](marca/logo.svg)
 
-El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
+El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. Una cámara con lente visible se monta sobre la fachada y comparte su perspectiva. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 
 ## MLP
 
@@ -45,6 +45,8 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 | Gris cartográfico | `#A5B3A9` | Zona sin dato |
 
 El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
+
+La landing usa un fondo lavanda claro entre `#F7F2FC` y `#DDD2F6`, con texto oscuro `#27203D`.
 
 ## Tipografía y tono
 
