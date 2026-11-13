@@ -91,6 +91,7 @@ existe y las cámaras que ya tiene.
 
 ### 9 · Impacto sostenible (2:20–2:40)
 
+Hoy, **0 %** de los kilómetros de patrullaje sirve para cuidar la ciudad. Con Urbis, **hasta el 100 %**.
 Y es sustentable en dos sentidos.
 En lo **ambiental**: no suma ni un litro ni un kilómetro. Le saca más ciudad al combustible que ya se
 quema.
@@ -132,6 +133,9 @@ Gracias.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
 - **Fotos de las slides 3a a 3c:** las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
+- **Aprovechamiento de la flota (slide 9):** km recorridos con Urbis activo ÷ km totales de patrullaje.
+  Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
+  decir "hasta el 100 %". No está medido: lo mide el piloto.
 - **Viabilidad económica y financiamiento (slide 9b):**
   - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
   - Los 600.000 € son asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD, dentro
