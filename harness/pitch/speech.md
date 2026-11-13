@@ -2,12 +2,12 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v6, alineado al deck de 13 slides)
+estado: borrador para ensayar (v6, alineado al deck de 12 slides)
 ---
 
 # Speech: Urbis (3 minutos)
 
-> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 13).
+> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 12).
 > Son unas 380 palabras (medidas), más unos 20 segundos de prototipo en vivo.
 >
 > **Cómo está armado:** sigue el orden oficial del lienzo 07 (gancho, problema, a quién le pasa,
@@ -90,11 +90,7 @@ seguimiento de cada incidente.
 Y para implementarlo, la Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad
 Sostenible de Córdoba. Ese plan crea un Observatorio de Movilidad, y Urbis le da los datos de la calle.
 
-### 12 · Primer paso (2:42–2:50)
-
-Nuestro primer paso: una reunión con el **municipio**.
-
-### 13 · Cierre (2:50–3:00)
+### 12 · Cierre (2:42–2:52)
 
 Urbis.
 `[pausa]`
@@ -107,6 +103,8 @@ Gracias.
 
 - **Cronómetro:** el prototipo (slide 8) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
   se recorta en este orden: la frase de los ODS (10) y la segunda frase de la 9.
+- **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
+  para un piloto en un barrio.
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
   pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
@@ -114,7 +112,7 @@ Gracias.
   - *¿Por qué es movilidad?* Slide 9: la flota es el recurso, y ningún área saca otro vehículo a la calle.
   - *¿Por qué es sustentable?* Slides 10 y 11: lo ambiental (ni un litro más) y lo económico (se sostiene solo).
   - *¿A quién le resolvemos?* Slide 6: al municipio, que paga y recibe reclamos, y al vecino, que espera.
-- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 13, y no llenar los silencios.
+- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 12, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
   hace Urbis. Si no puede, se reescriben las slides 7 y 8.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
