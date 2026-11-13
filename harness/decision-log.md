@@ -85,3 +85,4 @@ Si al final piden un decision log para el jurado, sale filtrando las filas `core
 | 12/11 | core | Se adopta la grafía Ikhnos | Ichnos · Ikhnos | Evita que se lea «ch» al pronunciar la marca | Juani |
 | 12/11 21:10 | producto | Pregunta del pitch resumida: "¿Y si cada recorrido de monitoreo hiciera una ciudad más sostenible?". Nueva slide de solución sobre fondo claro, con el móvil con cámara como foco (entra animado, la cámara emite ondas) y dos fotos de cámaras sobre móviles. La slide de categorías y prototipo pasa a 6b | — (pedido de Oli) | Que la solución se vea y sea dinámica | Oli |
 | 12/11 21:20 | detalle | Se elimina la slide de plan B (demo simulada con tres avisos). Si falla el prototipo en vivo, no hay slide de respaldo | Mantenerla · Eliminarla | Pedido de Oli | Oli |
+| 12/11 | core | Se adopta Urbis y el slogan «Detección urbana desde el patrullaje» | Ikhnos · Urbis | Describe el ámbito y el origen de las detecciones | Juani |

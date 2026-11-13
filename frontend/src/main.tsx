@@ -102,19 +102,19 @@ function Landing() {
 
   return <main className="landing">
     <header className="top landing-top">
-      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ikhnos</strong></a>
+      <a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a>
       <a className="landing-nav" href="#mapa">Abrir mapa <span aria-hidden="true">↗</span></a>
     </header>
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-copy">
-        <h1 id="landing-title">De la huella<br />a la acción<span>.</span></h1>
+        <h1 id="landing-title">Detección urbana<br />desde el patrullaje<span>.</span></h1>
         <p>Visión por computadora para detectar incidencias en la calle y avisar a quien puede atenderlas.</p>
       </div>
       <div className="landing-stage">
         <figure className="landing-scene">
           <video autoPlay={autoPlay} muted loop controls playsInline preload="metadata"
-            poster="/demo-vision.webp?v=ikhnos" aria-label="Demo de Ikhnos: detección, mapa y acciones">
-            <source src="/demo-flujo.mp4?v=grabacion" type="video/mp4" />
+            poster="/demo-vision.webp?v=urbis" aria-label="Demo de Urbis: detección, mapa y acciones">
+            <source src="/demo-flujo.mp4?v=urbis" type="video/mp4" />
           </video>
         </figure>
       </div>
@@ -178,7 +178,7 @@ function App({ demo = false }: { demo?: boolean }) {
 
   return <main>
     <header className="top">
-      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Ikhnos</strong></a><span className="city">{city}</span></div>
+      <div className="brand"><a className="brand" href="#"><img className="mark" src="/logo.svg" alt="" /><strong>Urbis</strong></a><span className="city">{city}</span></div>
       <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
     </header>
     <section className={selected ? "workspace has-detail" : "workspace"} aria-label="Monitoreo urbano">

@@ -1,16 +1,16 @@
-# Ikhnos
+# Urbis
 
 **Documento de marca · Juani · Propuesta para revisión**
 
 ## Nombre
 
-**Ikhnos** viene del griego *íkhnos* (ἴχνος), huella o rastro. Cada avistamiento aporta evidencia para ubicar una incidencia y seguir su evolución. [Diccionario griego](https://logeion.uchicago.edu/ἴχνος)
+**Urbis** toma su nombre del latín y remite a la ciudad. Cada avistamiento aporta evidencia para ubicar una incidencia y seguir su evolución.
 
 **Descriptor:** Visión por computadora para el mantenimiento urbano.
 
 ## Logo
 
-![Símbolo de Ikhnos](marca/logo.svg)
+![Símbolo de Urbis](marca/logo.svg)
 
 El símbolo parte de una esquina dibujada desde la calle. Dos fachadas se abren hacia puntos de fuga laterales y los edificios del fondo pierden altura y detalle. Una ruta lima entra desde el borde, rodea la esquina y vuelve a perderse en la ciudad. Los volúmenes simplificados y los trazos cortos le dan el carácter de una caricatura urbana. El símbolo funciona como icono estático y la ruta permite explorar una animación en el futuro.
 
@@ -28,7 +28,7 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 
 ## Slogan
 
-**De la huella a la acción.** La huella es la evidencia captada durante el recorrido. La acción empieza cuando el responsable recibe un ticket con ubicación y contexto.
+**Detección urbana desde el patrullaje.** El slogan describe cómo se detectan incidencias a partir de los recorridos de patrullaje.
 
 ## Paleta
 
