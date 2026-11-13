@@ -285,7 +285,7 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
             <button type="button" className="fleet-play" disabled={fleetDone} onClick={() => setFleetPlaying(!fleetPlaying)}>
               {fleetDone ? 'Completa' : fleetPlaying ? 'Pausa' : fleetProgress ? 'Seguir' : 'Iniciar'}
             </button>
-            <div className="layer-switch" aria-label="Velocidad">
+            <div className="fleet-speeds" role="group" aria-label="Velocidad de simulación">
               {SPEEDS.map(speed => <button key={speed} type="button" aria-pressed={fleetSpeed === speed} onClick={() => setFleetSpeed(speed)}>×{speed}</button>)}
             </div>
             <button type="button" disabled={!fleetProgress} onClick={resetFleet}>Reiniciar</button>

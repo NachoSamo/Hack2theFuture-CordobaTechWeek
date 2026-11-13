@@ -52,14 +52,23 @@ function segmentAt(vehicle: Vehicle, meters: number) {
   return { position, bearing }
 }
 
-export function fleetFeatures(meters: number): FeatureCollection<Point> {
+export const carHeadings = 16
+export const carPitches = [0, 30, 60]
+export const carIconId = (name: string, pitch: number, heading: number) => `car-${name}-${pitch}-${heading}`
+
+export function fleetFeatures(meters: number, mapBearing: number, mapPitch: number): FeatureCollection<Point> {
+  const pitch = carPitches.reduce((closest, candidate) =>
+    Math.abs(candidate - mapPitch) < Math.abs(closest - mapPitch) ? candidate : closest)
+
   return {
     type: 'FeatureCollection',
     features: vehicles.map(vehicle => {
       const { position, bearing } = segmentAt(vehicle, meters)
+      const direction = Math.round((bearing - mapBearing) / 360 * carHeadings)
+      const heading = ((direction % carHeadings) + carHeadings) % carHeadings
       return {
         type: 'Feature',
-        properties: { id: vehicle.id, color: fleetColors[vehicle.fleet], icon: 'car-' + vehicle.fleet, bearing },
+        properties: { id: vehicle.id, color: fleetColors[vehicle.fleet], icon: carIconId(vehicle.fleet, pitch, heading) },
         geometry: { type: 'Point', coordinates: position },
       }
     }),
@@ -75,28 +84,50 @@ export function clock(meters: number) {
 const PX_PER_M_Z0 = 512 / (40075016.686 * Math.cos(center[1] * Math.PI / 180))
 export const rangeRadius = ['interpolate', ['exponential', 2], ['zoom'], 0, rangeMeters * PX_PER_M_Z0, 22, rangeMeters * PX_PER_M_Z0 * 2 ** 22]
 
-// Auto visto desde arriba (frente hacia arriba), pintado con el color de su flota; se dibuja a 2x.
-export function carIcon(color: string) {
-  const width = 32, height = 52
+// Proyecta una carrocería baja en tres cuartos. El sprite ya incluye la inclinación del mapa.
+export function carIcon(color: string, pitch: number, heading: number) {
+  const size = 56
   const canvas = document.createElement('canvas')
-  canvas.width = width
-  canvas.height = height
+  canvas.width = size
+  canvas.height = size
   const context = canvas.getContext('2d')!
-  context.lineWidth = 3
-  context.strokeStyle = '#11191C'
-  context.fillStyle = color
-  context.fillRect(2, 15, 28, 6) // espejos
-  context.strokeRect(2, 15, 28, 6)
-  context.beginPath()
-  context.roundRect(6, 3, 20, 46, [10, 10, 6, 6])
-  context.fill()
-  context.stroke()
-  context.fillStyle = '#11191C' // parabrisas y luneta
-  context.beginPath()
-  context.roundRect(9, 14, 14, 8, 2)
-  context.roundRect(9, 37, 14, 6, 2)
-  context.fill()
-  return context.getImageData(0, 0, width, height)
+  const angle = heading * 2 * Math.PI / carHeadings
+  const tilt = pitch * Math.PI / 180
+  const cos = Math.cos(angle), sin = Math.sin(angle)
+  const project = ([x, y, z]: number[]) => [
+    28 + x * cos - y * sin,
+    30 + (x * sin + y * cos) * Math.cos(tilt) - z * Math.sin(tilt),
+  ]
+  function face(points: number[][], fill: string, outline = false) {
+    const [first, ...rest] = points.map(project)
+    context.beginPath()
+    context.moveTo(first[0], first[1])
+    rest.forEach(([x, y]) => context.lineTo(x, y))
+    context.closePath()
+    context.fillStyle = fill
+    context.fill()
+    if (outline) context.stroke()
+  }
+
+  context.strokeStyle = '#10191c'
+  context.lineWidth = 2.2
+  context.lineJoin = 'round'
+  face([[-13,-20,0],[13,-20,0],[13,20,0],[-13,20,0]], '#080e12aa')
+  const near = sin < 0 ? -1 : 1
+  const end = cos < 0 ? -1 : 1
+  face([[near*11,-18,5],[near*11,18,5],[near*11,18,0],[near*11,-18,0]], color, true)
+  face([[-10,end*20,5],[10,end*20,5],[10,end*20,0],[-10,end*20,0]], '#25363b', true)
+  face([[-11,-18,5],[-8,-21,5],[8,-21,5],[11,-18,5],[11,17,5],[8,20,5],[-8,20,5],[-11,17,5]], color, true)
+  face([[-9,-11,5],[9,-11,5],[7,-5,11],[-7,-5,11]], '#24373d')
+  face([[near*9,-11,5],[near*7,-5,11],[near*7,8,11],[near*9,13,5]], '#344b52')
+  face([[-7,8,11],[7,8,11],[9,13,5],[-9,13,5]], '#344b52')
+  face([[-7,-5,11],[7,-5,11],[7,8,11],[-7,8,11]], color, true)
+  face([[-3,0,12],[3,0,12],[3,4,12],[-3,4,12]], '#eff8f5')
+  for (const side of [-1, 1]) {
+    const x = side * 6
+    face([[x-2,end*18,5],[x+2,end*18,5],[x+2,end*20,5],[x-2,end*20,5]], end < 0 ? '#fff9d5' : '#ed866f')
+  }
+  return context.getImageData(0, 0, size, size)
 }
 
 if (import.meta.env.DEV) {
