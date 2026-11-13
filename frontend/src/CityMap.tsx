@@ -16,6 +16,7 @@ export type FleetControl = {
 
 type Props = {
   tickets: Ticket[]
+  heatTickets: Ticket[]
   selected: Ticket | undefined
   onSelect: (id?: string) => void
   embedded?: boolean
@@ -24,10 +25,10 @@ type Props = {
 
 const fleetLayers = ['fleet-range', 'fleet-dot', 'fleet-tickets']
 
-export function CityMap({ tickets, selected, onSelect, embedded = false, fleet }: Props) {
+export function CityMap({ tickets, heatTickets, selected, onSelect, embedded = false, fleet }: Props) {
   const fleetMode = Boolean(fleet)
   const overviewZoom = embedded ? 13.25 : 11.85
-  const overviewPitch = fleetMode ? 43 : 60
+  const overviewPitch = 60
   const host = useRef<HTMLDivElement>(null)
   const instance = useRef<MapInstance | null>(null)
   const [ready, setReady] = useState(false)
@@ -198,8 +199,12 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, fleet }
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
-    map.getSource<GeoJSONSource>('attention')?.setData(attentionZones(tickets))
-    map.setLayoutProperty('attention', 'visibility', fleetMode ? 'none' : 'visible')
+    map.getSource<GeoJSONSource>('attention')?.setData(attentionZones(heatTickets))
+  }, [ready, heatTickets])
+
+  useEffect(() => {
+    const map = instance.current
+    if (!ready || !map) return
     const markers = tickets.map(ticket => {
       const marker = document.createElement('button')
       marker.type = 'button'
@@ -239,12 +244,13 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, fleet }
       return new maplibre.Marker({ element: marker }).setLngLat(ticket.position).addTo(map)
     })
     return () => markers.forEach(marker => marker.remove())
-  }, [ready, tickets, onSelect, fleetMode])
+  }, [ready, tickets, onSelect])
 
   useEffect(() => {
     const map = instance.current
     if (!ready || !map) return
     const focusZone = (event: maplibre.MapLayerMouseEvent) => {
+      if (fleetMode && map.queryRenderedFeatures(event.point, { layers: ['fleet-tickets'] }).length) return
       const geometry = event.features?.[0]?.geometry
       if (geometry?.type !== 'Polygon') return
       const bounds = geometry.coordinates[0].reduce(
@@ -267,7 +273,7 @@ export function CityMap({ tickets, selected, onSelect, embedded = false, fleet }
       map.off('mouseenter', 'attention', enterZone)
       map.off('mouseleave', 'attention', leaveZone)
     }
-  }, [ready, onSelect])
+  }, [ready, onSelect, fleetMode])
 
   useEffect(() => {
     for (const marker of host.current?.querySelectorAll<HTMLButtonElement>('.pin') ?? []) {

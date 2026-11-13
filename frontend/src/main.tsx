@@ -2,7 +2,7 @@ import { flushSync } from 'react-dom'
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap, type FleetControl } from './CityMap'
-import { clock, detectedUntil, endMeters, fleetColors, rangeMeters, SPEEDS, totalDetections, vehicles } from './fleet'
+import { clock, detectedUntil, detections, endMeters, fleetColors, rangeMeters, SPEEDS, totalDetections, vehicles } from './fleet'
 import { auditTrail, automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Ticket } from './tickets'
 import { Impact } from './Impact'
 import './style.css'
@@ -238,6 +238,11 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
   const fleet: FleetControl = { meters: fleetMeters, playing: fleetPlaying, speed: fleetSpeed, version: fleetVersion, tickets: fleetTickets, onProgress: onFleetProgress }
   const fleetCount = detectedUntil(fleetProgress)
   const fleetDone = fleetCount === totalDetections
+  const fleetHeatTickets = useMemo(() => {
+    if (!simulation) return emptyTickets
+    const detectedIds = new Set(detections.slice(0, fleetCount).map(detection => detection.ticketId))
+    return fleetTickets.filter(ticket => detectedIds.has(ticket.id))
+  }, [simulation, fleetCount])
 
   const mapCanvas = useRef<HTMLDivElement>(null)
   const selectTicket = useCallback((ticketId?: string) => setId(ticketId), [])
@@ -296,19 +301,21 @@ function App({ demo = false, embedded = false, simulation = false }: { demo?: bo
             </button>}
           </div>
           <CityMap tickets={simulation ? emptyTickets : visible} selected={selected} onSelect={selectTicket}
-            embedded={embedded} fleet={simulation ? fleet : undefined} />
+            embedded={embedded} fleet={simulation ? fleet : undefined}
+            heatTickets={simulation ? fleetHeatTickets : visible} />
           {simulation && !fleetProgress && !fleetPlaying && <div className="fleet-start">
             <p>{vehicles.length} vehículos que ya circulan por {city}, cada uno con una cámara de {rangeMeters} m de rango.</p>
             <button type="button" className="fleet-play" onClick={() => setFleetPlaying(true)}>Iniciar recorrido</button>
           </div>}
-          {simulation ? <div className="map-key fleet-key" aria-label="Leyenda de flota">
+          {simulation && <div className="map-key fleet-key" aria-label="Leyenda de flota">
             {fleets.map(name => <span key={name}><i className="dot" style={{ background: fleetColors[name] }} />{name}</span>)}
             <span><i className="dot fleet-range-swatch" />Rango de cámara {rangeMeters} m</span>
-          </div> : <div className="map-key" aria-label="Leyenda de zonas de calor">
+          </div>}
+          <div className="map-key" aria-label="Leyenda de zonas de calor">
             <span><i className="swatch observed" />Observada, sin tickets activos</span>
             <span><i className="swatch warm" />Menor concentración</span>
             <span><i className="swatch hot" />Mayor concentración de incidencias</span>
-          </div>}
+          </div>
           {selected && <TicketDetail key={selected.id} ticket={selected}
             onClose={() => {
               const marker = mapCanvas.current?.querySelector<HTMLButtonElement>(`[data-ticket-id="${CSS.escape(selected.id)}"]`)
