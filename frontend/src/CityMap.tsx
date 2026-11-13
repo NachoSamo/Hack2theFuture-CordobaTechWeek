@@ -41,31 +41,24 @@ export function CityMap({ tickets, selected, onSelect, embedded = false }: Props
     const timeout = window.setTimeout(() => {
       if (readyStyle) return
       setFallback(true)
-      map.setStyle({ version: 8, sources: {}, layers: [{ id: 'base', type: 'background', paint: { 'background-color': '#202b2d' } }] })
+      map.setStyle({ version: 8, sources: {}, layers: [{ id: 'base', type: 'background', paint: { 'background-color': '#000' } }] })
     }, 5000)
 
     map.on('style.load', () => {
       readyStyle = true
       window.clearTimeout(timeout)
-      const firstLabel = map.getStyle().layers.find(item => item.type === 'symbol')?.id
-      map.addSource('coverage-background', {
-        type: 'geojson',
-        data: {
-          type: 'Polygon',
-          coordinates: [[[-180, -85], [0, -85], [180, -85], [180, 85], [0, 85], [-180, 85], [-180, -85]]],
-        },
-      })
-      map.addLayer({
-        id: 'coverage-background', type: 'fill', source: 'coverage-background',
-        paint: { 'fill-color': '#939b9f', 'fill-opacity': 0.10 },
-      }, firstLabel)
+      const layers = map.getStyle().layers
+      for (const layer of layers) {
+        if (layer.type === 'background') map.setPaintProperty(layer.id, 'background-color', '#000')
+      }
+      const firstLabel = layers.find(layer => layer.type === 'symbol')?.id
       map.addSource('attention', { type: 'geojson', data: attentionZones([]) })
       map.addLayer({
         id: 'attention', type: 'fill', source: 'attention',
+        filter: ['==', ['get', 'observed'], true],
         paint: {
-          'fill-color': ['case', ['==', ['get', 'observed'], true],
-            ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'], '#939b9f'],
-          'fill-opacity': ['case', ['==', ['get', 'observed'], true], 0.32, 0.10],
+          'fill-color': ['step', ['number', ['get', 'weight'], 0], '#519985', 1, '#b38046', 5, '#c65c56', 12, '#df6358'],
+          'fill-opacity': 0.32,
         },
       }, firstLabel)
       const vector = Object.entries(map.getStyle().sources).find(([, source]) => source.type === 'vector')?.[0]
@@ -74,17 +67,13 @@ export function CityMap({ tickets, selected, onSelect, embedded = false }: Props
           id: 'city-buildings', type: 'fill-extrusion', source: vector, 'source-layer': 'building',
           minzoom: 13,
           paint: {
-            'fill-extrusion-color': '#5f706c',
+            'fill-extrusion-color': '#292929',
             'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 7],
             'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
             'fill-extrusion-opacity': 0.72,
           },
         }, firstLabel)
       }
-      map.addLayer({
-        id: 'zone-outlines', type: 'line', source: 'attention',
-        paint: { 'line-color': '#a5b3a9', 'line-width': 1, 'line-opacity': 0.18 },
-      }, firstLabel)
       setReady(true)
     })
 

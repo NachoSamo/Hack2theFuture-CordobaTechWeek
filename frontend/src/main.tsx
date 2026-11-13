@@ -249,7 +249,6 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
             <span><i className="swatch observed" />Observada, sin tickets activos</span>
             <span><i className="swatch warm" />Menor concentración</span>
             <span><i className="swatch hot" />Mayor concentración de incidencias</span>
-            <span><i className="swatch unobserved" />Sin observación</span>
           </div>
           {selected && <TicketDetail key={selected.id} ticket={selected}
             onClose={() => {

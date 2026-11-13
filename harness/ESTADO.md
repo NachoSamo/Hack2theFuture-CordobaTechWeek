@@ -18,7 +18,7 @@
 | Samo | README reescrito sobre Urbis y auditoría de inconsistencias (12/11 22:45): docs de producto, proceso.md (H9–H11, aprendimos y falta validar), AGENTS.md y los 16 lienzos del [mural](proceso/mural-mesa24.html) al día. Sigue: decidir con Diego el pixelado; `architecture/init` integrada en `codex/mapa-ux` el 13/11 | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
-| Juani | Avance de logo con auto/cámara/detección, landing sin franja y ticket sin acciones con auditoría simulada. Implementado; compilación PASS. Revisión visual y smoke pendientes, ver sección En proceso | Revisión de Juani | Falta verificar en navegador; sin bloqueo de implementación |
+| Juani | Logo del edificio con cámara recuperado, landing sin franja y ticket con auditoría simulada. Implementado; compilación PASS. Revisión visual y smoke pendientes, ver sección En proceso | Revisión de Juani | Falta verificar en navegador; sin bloqueo de implementación |
 | Gina | | | |
 | Oli | Deck v3 en formato oficial híbrido (`pitch/deck.html`) y speech (`pitch/speech.md`); sigue ensayar con el prototipo en vivo | Pitch 13/11 | Validar H1/H5/H7 (acceso a cámaras) |
 
@@ -38,6 +38,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 - [x] Qué significa "3+3": 3 presentan en la mesa y 3 visitan otra mesa (lienzo 08); el registro va en el formulario oficial (QR)
 
 ## Avisos
+
+- 13/11 · Juani · Se recupera el logo del edificio con cámara en frontend, marca y deck. El mapa usa base negra y calor en las zonas observadas · a Oli, Gina y Diego
 
 - 13/11 01:01 · Juani · Avance solicitado para push: logo actualizado en frontend, marca y deck (archivo de Oli/Gina); franja superior retirada; detalle sin acciones y con auditoría simulada. Fixture local agrega `auditExamples` y contratos documenta esta extensión sin cambiar el payload del hub. Actualizados READMEs, guía compartida de Lauti/Diego, marca, demo path, recorrido, decisiones y proceso (documentos de Samo/producto). Integra también `main` hasta `050c905` (cofirma «by Hackaranda»). Compilación PASS, revisión visual y smoke pendientes · a Samo, Lauti, Diego, Oli y Gina
 
@@ -90,7 +92,7 @@ El prototipo de Urbis muestra avisos automáticos simulados y permite registrar 
 
 **Avance subido del 13/11 en `codex/mapa-ux`:**
 
-- [x] Logo conserva la esquina en perspectiva y suma auto, cámara y recuadro de detección; aplicado al frontend, marca y deck.
+- [x] Logo del edificio con cámara recuperado en frontend, marca y deck.
 - [x] Franja superior de la landing retirada.
 - [x] Acciones del ticket retiradas; queda Cerrar para navegación.
 - [x] «Auditoría del ticket» reemplaza el historial: actor, hora, intervención y resultado simulado.

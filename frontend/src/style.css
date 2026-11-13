@@ -52,7 +52,7 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
   height: calc(100svh - 62px);
   min-height: 500px;
 }
-.map-stage { display: flex; flex-direction: column; min-height: 0; background: #202b2d; }
+.map-stage { display: flex; flex-direction: column; min-height: 0; background: #000; }
 .map-canvas { position: relative; flex: 1; min-height: 0; }
 .map-host { position: absolute; inset: 0; }
 .map-toolbar {
@@ -86,7 +86,6 @@ time, .ticket-id { font: 12px var(--mono); white-space: nowrap; }
 .swatch { border-radius: 2px; }
 .hot { background: #c65c56; }
 .observed { background: #519985; }
-.unobserved { background: #939b9f; }
 .map-warning { position: absolute; left: 16px; bottom: 25px; background: var(--surface); padding: 8px 10px; max-width: 75%; }
 .ticket-card {
   position: absolute;
