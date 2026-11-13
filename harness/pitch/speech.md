@@ -2,12 +2,12 @@
 tipo: pitch
 fecha: 2026-11-12
 dueñas: Oli y Gina
-estado: borrador para ensayar (v6, alineado al deck de 11 slides)
+estado: borrador para ensayar (v6, alineado al deck de 10 slides)
 ---
 
 # Speech: Urbis (3 minutos)
 
-> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 11).
+> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 10).
 > Son unas 380 palabras (medidas), más unos 20 segundos de prototipo en vivo.
 >
 > **Cómo está armado:** sigue el orden oficial del lienzo 07 (gancho, problema, a quién le pasa,
@@ -53,11 +53,9 @@ Le pasa al **municipio**, que gasta millones de pesos en combustible y después 
 que sus propios móviles vieron.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 
-### 7 · La solución: el móvil con cámara (0:55–1:02)
+### 7 · La solución y prototipo en vivo (0:55–1:35)
 
 Por eso creamos **Urbis**. Mismo recorrido, más sustentabilidad.
-
-### 8 · Qué detecta y prototipo en vivo (1:02–1:35)
 
 Urbis funciona sobre lo que el municipio ya tiene. Con machine learning sobre esas cámaras, detecta
 puntos de residuos, postes de luz caídos y riesgo de electrocución, y avisa **en tiempo real** al área
@@ -71,12 +69,12 @@ verificado.
 
 *(Vuelta al deck.)*
 
-### 9 · ODS (1:35–1:45)
+### 8 · ODS (1:35–1:45)
 
 Cubrimos cinco Objetivos de Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción
 por el clima, innovación en infraestructura y alianzas.
 
-### 10 · Viabilidad económica (1:45–2:20)
+### 9 · Viabilidad económica (1:45–2:20)
 
 ¿Quién lo paga? Para el municipio, **se sostiene solo**: el costo marginal es mínimo, porque usa la
 flota, la infraestructura y las cámaras que ya tiene. Con **edge computing**, la imagen se procesa en el
@@ -85,7 +83,7 @@ cada incidente.
 Y para implementarlo, la Unión Europea ya invirtió **600.000 euros** en el Plan de Movilidad
 Sostenible de Córdoba. Ese plan crea un Observatorio de Movilidad, y Urbis le da los datos de la calle.
 
-### 11 · Cierre (2:20–2:30)
+### 10 · Cierre (2:20–2:30)
 
 Urbis.
 `[pausa]`
@@ -96,8 +94,8 @@ Gracias.
 
 ## Para los ensayos
 
-- **Cronómetro:** el prototipo (slide 8) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
-  se recorta en este orden: la slide de ODS (9) y la frase de financiamiento UE de la 10.
+- **Cronómetro:** el prototipo (slide 7) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
+  se recorta en este orden: la slide de ODS (8) y la frase de financiamiento UE de la 10.
 - **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
   para un piloto en un barrio.
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
@@ -107,16 +105,16 @@ Gracias.
   - *¿Por qué es movilidad?* Slides 7 y 10: la flota es el recurso, y nadie saca otro vehículo a la calle.
   - *¿Por qué es sustentable?* Slide 10: lo económico; lo ambiental se dice en la slide 2 y en la solución (ni un litro más) y lo económico (se sostiene solo).
   - *¿A quién le resolvemos?* Slide 6: al municipio, que paga y recibe reclamos, y al vecino, que espera.
-- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 11, y no llenar los silencios.
+- **Voz** (Julian Treasure): bajar el ritmo en las slides 2, 5 y 10, y no llenar los silencios.
 - **Prueba de la frase** (Seibel): después de un ensayo, pedirle a alguien de otro equipo que repita qué
-  hace Urbis. Si no puede, se reescriben las slides 7 y 8.
+  hace Urbis. Si no puede, se reescribe la slide 7.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
 - **Fotos de las slides 3 a 5:** las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
 - **Aprovechamiento de la flota (sin slide desde 12/11 23:20; respuesta al jurado):** km recorridos con Urbis activo ÷ km totales de patrullaje.
   Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
   decir "hasta el 100 %". No está medido: lo mide el piloto.
-- **Viabilidad económica y financiamiento (slide 10):**
+- **Viabilidad económica y financiamiento (slide 9):**
   - El ahorro del municipio (inspección y seguimiento de incidentes) es un argumento, no una cifra medida: si preguntan cuánto, es lo que mide el piloto.
   - Los 600.000 € son asistencia técnica de la UE (programa EUROCLIMA), implementada por la AFD, dentro
     de MobiliseYourCity ([nota del 14/10/2025](https://www.mobiliseyourcity.net/cordobas-sustainable-urban-mobility-plan-paves-way-integrated-metropolitan-transport-system)).
