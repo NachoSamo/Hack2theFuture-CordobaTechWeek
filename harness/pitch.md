@@ -13,7 +13,7 @@
 
 ## Estructura
 
-> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 9 slides al 13/11, con financiamiento) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
+> **Estructura oficial (12/11 16:45, ver [`guia-oficial.md`](guia-oficial.md#pitch-presentado-en-el-evento-el-1211)):** gancho, problema, a quién le pasa, solución y prototipo, qué la hace distinta, impacto sostenible y primer paso, más identidad del equipo y evidencia. El deck actual ([`pitch/deck.html`](pitch/deck.html), 9 slides al 13/11, con financiamiento; el primer paso va como paso 1 de la hoja de ruta de la slide 7) la sigue en formato híbrido con el estilo TED; la tabla de abajo es la estructura previa.
 
 Cubre los **seis componentes indispensables** de la guía oficial y el relato que pide: problema,
 evidencia, solución, prueba realizada, impacto y viabilidad, **qué aprendimos y qué falta validar**.
@@ -41,8 +41,8 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 
 ## Lo que se puede preparar antes del evento
 
-- [x] Plantilla de slides con la marca de [`marca.md`](marca.md): deck en HTML, [`pitch/deck.html`](pitch/deck.html), estilo charla TED: una idea por slide y el mínimo texto (Oli, 12/11). 11 slides: nombre con logo y equipo, dato de combustible, lo que es, lo que podría ser, la idea, demo, impacto, pedido, costo marginal cero, ODS y cierre (con los nombres de los seis integrantes, 12/11). Flechas para navegar, `f` para pantalla completa. Speech de 3 minutos en [`pitch/speech.md`](pitch/speech.md)
-- [ ] Slide de equipo
+- [x] [Deck HTML de Urbis](pitch/deck.html) con nueve diapositivas, logo actualizado en portada y cierre y cofirma de Hackaranda en portada. Flechas para navegar y `f` para pantalla completa. [Speech de tres minutos](pitch/speech.md).
+- [x] Integrantes del equipo en la diapositiva de cierre
 - [ ] Panorama de financiamiento: fondos verdes de la UE, Global Gateway, CFI y BID (con fuentes verificadas)
 - [ ] Mapa de actores por vertical: municipio, cooperativas, recuperadores, productores, exportadores
 - [ ] Lista de los 17 ODS a mano para mapear la solución
