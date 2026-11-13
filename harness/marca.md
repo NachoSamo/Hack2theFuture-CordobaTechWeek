@@ -46,7 +46,7 @@ Que las ciudades puedan observar su territorio de forma continua y responder ant
 
 El mapa acompaña el color con etiquetas y una leyenda. El detalle del ticket muestra por escrito el nivel y el estado de revisión.
 
-La landing usa un fondo lavanda claro entre `#F7F2FC` y `#DDD2F6`, con texto oscuro `#27203D`.
+La landing usa un fondo oscuro entre `#0E1311` y `#202D27`, con texto claro y acentos lima.
 
 ## Tipografía y tono
 

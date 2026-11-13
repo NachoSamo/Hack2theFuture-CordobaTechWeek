@@ -47,7 +47,7 @@ Piezas para explorar visualmente. Su orden, composición y acciones quedan por r
 | Valor | Reutilización de cámaras y recorridos; detección y seguimiento | Beneficio propuesto, sin cifras de ahorro inventadas |
 | Propuesta de MVP | Recorrido visual de la sección siguiente | Qué se puede demostrar y qué sigue pendiente |
 
-**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. La portada alterna el clip con una vista interactiva del mapa. El ticket CBA-104 conserva la foto del contenedor que aparece en el clip. La entrada en perspectiva toman como referencia [(re)in](https://rein-os.rainmakerscompany.com/).
+**Acción principal de la landing:** «Explorar el mapa» lleva al prototipo de Córdoba. La portada reúne el slogan, una descripción breve y el video de detección. La portada alterna el clip con una vista interactiva del mapa. El ticket CBA-104 conserva la foto del contenedor que aparece en el clip. La paleta oscura y la entrada en perspectiva toman como referencia [(re)in](https://rein-os.rainmakerscompany.com/).
 
 ## 4. Vistas propuestas para mostrar el MVP
 
