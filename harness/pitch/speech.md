@@ -13,7 +13,7 @@ estado: borrador para ensayar (v12: innovación y dato de alumbrado, recortada a
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
 > dando vueltas ahora mismo. Sin tecnicismos: "inteligencia artificial" en lugar de "machine learning".
 >
-> **Duración:** unas 375 palabras (v12, 13/11: se recortaron solución, ODS y viabilidad). A 140 palabras por minuto, más las pausas, da unos **2:50**. Es una estimación: cronometrarlo en voz alta, con el video.
+> **Duración:** unas 365 palabras (v12, 13/11: se recortaron solución, ODS y viabilidad, y la frase del vecino volvió a la anterior). A 140 palabras por minuto, más las pausas, da unos **2:45**. Es una estimación: cronometrarlo en voz alta, con el video.
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
 > **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
@@ -55,8 +55,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 
 ¿A quién le pasa esto?
 Al **municipio**, que gasta casi setecientos mil dólares por año en combustible.
-Y al **vecino**, que hace **noventa reclamos por día** solo por luces apagadas. En dos años falló más
-de la mitad del alumbrado de Córdoba.
+Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
 
@@ -118,7 +117,7 @@ Gracias.
   hace Urbis. Si no puede, se reescribe la slide 6.
 - **Persona real (tip oficial):** no está cubierto. Se probó un caso de Alta Gracia y Oli lo descartó
   porque no conecta con el público (12/11 17:50).
-- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado pasaron a la slide 5 como 90 reclamos por día, 13/11): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
+- **Fotos de las slides 3 y 4** (la del poste de luminaria se sacó el 12/11 23:40; los 66.000 reclamos de alumbrado quedan como respuesta al jurado: unos 90 por día, cálculo propio): las aportó Oli el 12/11; falta anotar de dónde son y si se pueden usar. La del árbol caído ilustra la tormenta; el dato de 198 llamados es por postes y columnas.
 - **Aprovechamiento de la flota (sin slide desde 12/11 23:20; respuesta al jurado):** km recorridos con Urbis activo ÷ km totales de patrullaje.
   Hoy es 0 % porque cada km solo sirve para seguridad. El 100 % es el techo, con toda la flota equipada;
   decir "hasta el 100 %". No está medido: lo mide el piloto.
