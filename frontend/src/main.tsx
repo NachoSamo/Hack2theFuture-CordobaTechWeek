@@ -1,5 +1,5 @@
 import { flushSync } from 'react-dom'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CityMap } from './CityMap'
 import { auditTrail, automaticNotice, city, locationLabel, replay, status, statuses, tickets, type Ticket } from './tickets'
@@ -9,6 +9,7 @@ import './style.css'
 const types = [...new Set(tickets.map(ticket => ticket.type))]
 const areas = [...new Set(tickets.map(ticket => ticket.area))]
 const replayDelays = [4000, 12000, 55000]
+const simulationDelays = [2500, 6500, 12000]
 function replayToast(step: number, ticket?: Ticket) {
   if (!ticket) return
   const entry = replay.activity[step - 2]
@@ -181,16 +182,23 @@ function LandingSystem({ sectionRef }: { sectionRef: React.Ref<HTMLElement> }) {
   </section>
 }
 
-function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: boolean }) {
+function App({ demo = false, embedded = false, simulation = false }: { demo?: boolean; embedded?: boolean; simulation?: boolean }) {
   const [id, setId] = useState<string | undefined>(demo && (!embedded || matchMedia('(min-width: 681px)').matches) ? replay.ticketId : undefined)
   const [step, setStep] = useState(demo ? 1 : 0)
+  const [run, setRun] = useState(0)
+  const [patrolReady, setPatrolReady] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const filtersId = useId()
   const [type, setType] = useState('')
   const [area, setArea] = useState('')
   const [state, setState] = useState('')
+  const filterCount = [type, area, state].filter(Boolean).length
   useEffect(() => {
-    const timers = replayDelays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
+    if (simulation && run === 0) return
+    const delays = simulation ? simulationDelays : replayDelays
+    const timers = delays.map((delay, index) => window.setTimeout(() => setStep(index + 1), delay))
     return () => timers.forEach(timer => window.clearTimeout(timer))
-  }, [])
+  }, [run, simulation])
 
   const activeTickets = useMemo(() => tickets
     .filter(ticket => step > 0 || ticket.id !== replay.ticketId)
@@ -226,23 +234,35 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
         <span className="city">{city}</span>
       </div>
       <div className="top-meta">
-        <span className="session-label">Vista COYS · {step < replayDelays.length ? 'Simulación en curso' : 'Datos simulados'}</span>
         {!embedded && <nav className="view-switch" aria-label="Vistas">
-          <a href="#mapa" aria-current="page">Mapa</a>
+          <a href="#mapa" aria-current={simulation ? undefined : 'page'}>Mapa</a>
+          <a href="#simulacion" aria-current={simulation ? 'page' : undefined}>Simulación</a>
           <a href="#impacto">Impacto</a>
         </nav>}
+        <button type="button" className="filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId}
+          onClick={() => setFiltersOpen(open => !open)}>
+          {filtersOpen ? 'Ocultar filtros' : 'Filtros'}{filterCount > 0 ? ` (${filterCount})` : ''}
+        </button>
       </div>
     </header>
     <section className="workspace" aria-label="Monitoreo urbano">
       <div className="map-stage">
-        <div className="map-toolbar">
-          <MapHeading>Mapa urbano</MapHeading>
-        <div className="filters">
-          <Filter label="Tipo" options={types} value={type} onChange={setType} />
-          <Filter label="Estado" options={statuses} value={state} onChange={setState} />
-          <Filter label="Área" options={areas} value={area} onChange={setArea} />
+        <MapHeading><span className="sr-only">{simulation ? 'Simulación de patrullaje' : 'Mapa urbano'}</span></MapHeading>
+        <div className="map-toolbar" id={filtersId} hidden={!filtersOpen}>
+          <div className="filters">
+            <Filter label="Tipo" options={types} value={type} onChange={setType} />
+            <Filter label="Estado" options={statuses} value={state} onChange={setState} />
+            <Filter label="Área" options={areas} value={area} onChange={setArea} />
+          </div>
         </div>
-        </div>
+        {simulation && <div className="simulation-toolbar">
+          <button type="button" disabled={!patrolReady} onClick={() => {
+            setId(undefined)
+            setStep(0)
+            setRun(current => current + 1)
+          }}>{run ? 'Reiniciar recorrido' : 'Iniciar recorrido'}</button>
+          <span role="status">{run === 0 ? (patrolReady ? 'Patrullaje simulado · 2 móviles' : 'Preparando recorrido…') : step === simulationDelays.length ? 'Recorrido completado' : 'Recorrido en curso'}</span>
+        </div>}
         <div className="map-canvas" ref={mapCanvas} tabIndex={-1}>
           {!visible.length && <p className="map-empty" role="status">No hay incidencias con estos filtros.</p>}
           <div className="live-region" role="status" aria-live="polite">
@@ -251,7 +271,9 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
               <span><strong>{toast.title}</strong><small>{toast.detail}</small></span>
             </button>}
           </div>
-          <CityMap tickets={visible} selected={selected} onSelect={selectTicket} embedded={embedded} />
+          <CityMap tickets={visible} selected={selected} onSelect={selectTicket} embedded={embedded}
+            onPatrolReady={simulation ? setPatrolReady : undefined}
+            patrolRun={simulation ? run : undefined} patrolDuration={simulationDelays[simulationDelays.length - 1]} />
           <div className="map-key" aria-label="Leyenda de zonas de calor">
             <span><i className="swatch observed" />Observada, sin tickets activos</span>
             <span><i className="swatch warm" />Menor concentración</span>
@@ -270,7 +292,7 @@ function App({ demo = false, embedded = false }: { demo?: boolean; embedded?: bo
   </Container>
 }
 
-const readPage = () => ['#mapa', '#mapa/deteccion', '#impacto'].includes(location.hash) ? location.hash : ''
+const readPage = () => ['#mapa', '#mapa/deteccion', '#impacto', '#simulacion'].includes(location.hash) ? location.hash : ''
 
 function Site() {
   const [page, setPage] = useState(readPage)
@@ -294,6 +316,7 @@ function Site() {
     return () => window.removeEventListener('hashchange', navigate)
   }, [page])
   if (page === '#impacto') return <Impact />
+  if (page === '#simulacion') return <App key="simulacion" simulation />
   if (page === '#mapa/deteccion') return <App key="deteccion" demo />
   return page === '#mapa' ? <App key="mapa" /> : <Landing />
 }

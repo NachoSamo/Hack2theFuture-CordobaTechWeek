@@ -39,6 +39,8 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 
 ## Avisos
 
+- 13/11 · Juani · Se incorpora una pestaña de simulación con dos móviles y se pliega la barra de filtros del mapa. Se documenta el recorrido en `demo-path.md` · a Samo
+
 - 13/11 · Juani · Logo aplicado a la pestaña y el README, además de la cabecera, la ficha de marca y el deck. Se sincronizan la guía de interfaz (Lauti y Diego), el recorrido de demo y el estado (Samo) y las referencias del pitch (Oli y Gina).
 
 - 13/11 · Juani · Se actualiza el logo de Urbis en frontend, marca y deck con un muro, un contenedor y un auto con cámara · a Oli y Gina
