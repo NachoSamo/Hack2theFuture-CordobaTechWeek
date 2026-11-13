@@ -27,7 +27,6 @@
   --pi-naranja: #ffc98f;
   --pi-lila: #ddd1ff;
   --pi-blanco: #ffffff;
-  --heat0: #e7eaf0; --heat1: #ffd88a; --heat2: #ff9f5a; --heat3: #e3245c;
   --tag-res: #1f7a4d; --tag-mov: #2357c6; --tag-dat: #7a3fb5; --tag-otro: #5b5f6b;
   --shadow: 0 1px 1px rgba(0,0,0,.08), 0 4px 10px -4px rgba(0,0,0,.25);
   --f-title: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
@@ -39,7 +38,6 @@
     --canvas: #14161b; --dot: #262a33; --frame: #1d2027; --frame-line: #e6e8ee; --ink: #eceef3; --ink-soft: #a5aab8;
     --line: #313641; --accent: #ff5c86; --accent-soft: #3a1d29; --bar: #1d2027; --focus: #8fb0ff; --red: #ff5a6e;
     --pi-amarillo: #efe07a; --pi-verde: #a9dc98; --pi-rosa: #ecb3cb; --pi-celeste: #a9cdec; --pi-naranja: #eab37c; --pi-lila: #c5b8ee; --pi-blanco: #e7e9ee;
-    --heat0: #262a33; --heat1: #8d6d2b; --heat2: #c06a33; --heat3: #ff5c86;
     --tag-res: #2a9a63; --tag-mov: #4a7ae0; --tag-dat: #9a62d4; --tag-otro: #6d7280;
     --shadow: 0 1px 1px rgba(0,0,0,.4), 0 6px 14px -6px rgba(0,0,0,.8);
     color-scheme: dark;
@@ -49,7 +47,6 @@
   --canvas: #14161b; --dot: #262a33; --frame: #1d2027; --frame-line: #e6e8ee; --ink: #eceef3; --ink-soft: #a5aab8;
   --line: #313641; --accent: #ff5c86; --accent-soft: #3a1d29; --bar: #1d2027; --focus: #8fb0ff; --red: #ff5a6e;
   --pi-amarillo: #efe07a; --pi-verde: #a9dc98; --pi-rosa: #ecb3cb; --pi-celeste: #a9cdec; --pi-naranja: #eab37c; --pi-lila: #c5b8ee; --pi-blanco: #e7e9ee;
-  --heat0: #262a33; --heat1: #8d6d2b; --heat2: #c06a33; --heat3: #ff5c86;
   --tag-res: #2a9a63; --tag-mov: #4a7ae0; --tag-dat: #9a62d4; --tag-otro: #6d7280;
   --shadow: 0 1px 1px rgba(0,0,0,.4), 0 6px 14px -6px rgba(0,0,0,.8);
   color-scheme: dark;
@@ -201,18 +198,6 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
 .circ .ed { white-space: pre-wrap; }
 .circ .inline-ctrls .ctrl { background: rgba(255,255,255,.85); color: #1d1e22; }
 
-/* Comparar */
-.comp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.comp-p { border: 2px solid var(--line); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; background: var(--frame); }
-.comp-p.sol { border-color: var(--accent); }
-.comp-p .k { font-family: var(--f-title); font-weight: 800; font-size: 17px; }
-.comp-p.sol .k { color: var(--accent); }
-.comp-p svg { width: 100%; height: auto; display: block; }
-.comp-p .ed { white-space: pre-wrap; }
-.esq { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .05em; }
-.m-cell { fill: var(--heat0); } .m-h1 { fill: var(--heat1); } .m-h2 { fill: var(--heat2); } .m-h3 { fill: var(--heat3); }
-.m-pt { fill: var(--ink-soft); } .m-route { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.m-truck { fill: var(--accent); }
 
 /* Controles de edición */
 .ctrls, .inline-ctrls { display: none; gap: 4px; }
@@ -270,7 +255,8 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
 
 /* Anillos (Mapa de actores) */
 .ring { border: 2.5px solid var(--frame-line); border-radius: 50%; padding: clamp(40px, 6vw, 84px) 6%; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; min-width: 0; }
-.ring > .notes { justify-content: center; max-width: 74%; }
+.ring > .notes { justify-content: center; max-width: 66%; }
+.ring.r-problema .postit { width: 280px; }
 .ring .postit, .ring .notes .add { width: 150px; min-height: 80px; text-align: left; }
 .ring-k { font-family: var(--f-title); font-weight: 800; font-size: 13px; letter-spacing: .05em; text-transform: uppercase; }
 .r-afectados { width: 82%; border-color: var(--tag-mov); }
@@ -320,7 +306,6 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   .lay-vpc .sec { border: 2px solid var(--frame-line) !important; border-radius: 10px !important; padding: 12px !important; }
   .lay-vpc [data-s="cadena"] { border: 0 !important; padding: 0 !important; margin-top: 8px; }
   .vpc-labels { display: none; }
-  .comp { grid-template-columns: minmax(0, 1fr); }
   .postit, .notes .add { width: calc(50% - 5px); }
   .par-head { display: none; }
   .par { grid-template-columns: minmax(0, 1fr); gap: 4px; }
@@ -338,7 +323,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   <div class="wrap">
     <div class="bar">
       <span class="logo" aria-hidden="true"><i></i><i></i><i></i></span>
-      <div class="board"><b>Ichnos · Lienzos Mesa 24</b><span>Hack to the Future · Córdoba Tech Week 2026</span></div>
+      <div class="board"><b>Urbis · Lienzos Mesa 24</b><span>Hack to the Future · Córdoba Tech Week 2026</span></div>
       <div class="bar-right">
         <span class="estado" id="estado" role="status">Conectando…</span>
         <button class="btn-modo" id="btnModo" aria-pressed="false" hidden>Editar</button>
@@ -357,7 +342,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   </div>
   <div id="panel"></div>
   <div id="lamina"><div class="aviso"><h2>Cargando el lienzo…</h2><p>Estamos trayendo los marcos guardados del equipo.</p></div></div>
-  <p class="creditos">Lienzos oficiales: transcripción de los papeles de la mesa del 12/11, con la propuesta del coach lean al final de cada uno. Lienzos agregados: contenido tomado del artifact “Recolección a ciegas”; los campos vacíos son datos que el artifact no tiene.</p>
+  <p class="creditos">Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:01): decision log, arquitectura, pitch y prototipo. Los oficiales reemplazan lo escrito en papel; la foto de cada uno queda enlazada.</p>
 </main>
 <div id="toastHost"></div>
 
@@ -365,7 +350,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
 (function () {
   "use strict";
   const GRUPOS = [
-    { titulo: "Lienzos oficiales", marcos: ["o2", "o3", "o4", "o5", "o7", "o8"] },
+    { titulo: "Lienzos oficiales", marcos: ["o2", "o3", "o3b", "o4", "o5", "o7", "o8"] },
     { titulo: "Lienzos agregados", marcos: ["m1", "m2", "m3", "m4", "m5a", "m5b", "m6", "m7", "m8"] }
   ];
   const ORDEN = GRUPOS.flatMap((g) => g.marcos);
@@ -406,7 +391,6 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
       const s = d.secciones[k]; if (!s) continue;
       if (!Array.isArray(s.items)) s.items = [];
       if ((s.tipo === "texto" || s.tipo === "destacado") && !s.items.length) s.items.push({ id: uid(), t: "" });
-      if (s.tipo === "comparar") while (s.items.length < 2) s.items.push({ id: uid(), tag: s.items.length ? "Con la solución" : "Hoy", t: "" });
       if (s.tipo === "tabla") { const n = (s.cols || []).length || 3; s.items.forEach((it) => { if (!Array.isArray(it.c)) it.c = []; while (it.c.length < n) it.c.push(""); }); }
     }
     return d;
@@ -617,32 +601,8 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
       sec.items.forEach((it) => box.append(h("div", { class: "circ" }, ed("div", { l, s, i: it.id, f: "t" }, it.t, "Pregunta", "q"),
         ed("div", { l, s, i: it.id, f: "m" }, it.m, "Respuesta"), ctrls(l, s, it, { inline: true }))));
       return h("div", null, box, addBtn(l, s, "+ Agregar pregunta", () => ({ m: "" })));
-    },
-    comparar(l, s, sec) {
-      const box = h("div", { class: "comp" });
-      sec.items.slice(0, 2).forEach((it, n) => box.append(h("div", { class: "comp-p" + (n ? " sol" : "") },
-        ed("div", { l, s, i: it.id, f: "tag" }, it.tag, n ? "Con la solución" : "Hoy", "k"), mapa(n === 1),
-        h("span", { class: "esq" }, "Esquema ilustrativo, no son datos reales"), warnBadge(it),
-        ed("div", { l, s, i: it.id, f: "t" }, it.t, "Describí cómo es"), ctrls(l, s, it, { inline: true, del: false }))));
-      return box;
     }
   };
-  const HEAT = [0,1,0,0,2,0, 0,0,3,0,0,1, 1,0,0,0,3,0, 0,2,0,1,0,0];
-  function mapa(sol) {
-    const svg = document.createElementNS(NS, "svg");
-    svg.setAttribute("viewBox", "0 0 240 160"); svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", sol ? "Esquema: la ruta visita solo los puntos con más basura" : "Esquema: la ruta pasa por todos los puntos");
-    const mk = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); svg.append(e); return e; };
-    const cx = (c) => 20 + c * 40, cy = (r) => 20 + r * 40;
-    for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) { const v = HEAT[r * 6 + c]; mk("rect", { x: c * 40 + 2, y: r * 40 + 2, width: 36, height: 36, rx: 5, class: sol && v ? "m-h" + v : "m-cell" }); }
-    let pts = [];
-    if (!sol) { for (let r = 0; r < 4; r++) { const cols = [0,1,2,3,4,5]; if (r % 2) cols.reverse(); cols.forEach((c) => pts.push([cx(c), cy(r)])); } }
-    else pts = [[cx(0), cy(2)], [cx(1), cy(3)], [cx(2), cy(1)], [cx(4), cy(2)], [cx(4), cy(0)], [cx(5), cy(1)]];
-    mk("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: "m-route" });
-    if (!sol) for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) mk("circle", { cx: cx(c), cy: cy(r), r: 3, class: "m-pt" });
-    mk("rect", { x: pts[0][0] - 8, y: pts[0][1] - 6, width: 16, height: 12, rx: 2, class: "m-truck" });
-    return svg;
-  }
 
   function renderTabs() {
     const g = grupoDe(S.cur), cats = $("cats"); cats.textContent = "";
@@ -675,7 +635,7 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
       h("header", { class: "f-head" },
         h("h1", { class: "f-title", id: "ft" }, h("span", { class: "num" }, (doc.num || "") + " -"), ed("span", Object.assign({ f: "titulo" }, a), doc.titulo, "Título del marco")),
         (S.edit || doc.tiempo) ? h("span", { class: "timer" }, icon("timer"), ed("span", Object.assign({ f: "tiempo" }, a), doc.tiempo, "Tiempo en equipo…")) : null,
-        doc.foto ? h("a", { class: "foto", href: doc.foto, target: "_blank", rel: "noopener" }, "Ver foto del papel ↗") : null),
+        doc.foto ? h("a", { class: "foto", href: doc.foto, target: "_blank", rel: "noopener" }, "Ver foto del papel del 12/11 ↗") : null),
       (S.edit || doc.indicaciones) ? h("div", { class: "f-sub" }, h("details", { class: "indic", open: S.edit ? true : null },
         h("summary", null, icon("lupa"), "Ver indicaciones"),
         h("div", { class: "txt" }, ed("div", Object.assign({ f: "indicaciones" }, a), doc.indicaciones, "Indicaciones del marco")))) : null);
@@ -763,160 +723,323 @@ td.c-ctrl { background: transparent; width: 1%; white-space: nowrap; }
   renderTabs();
 
 
-  // Lienzos oficiales: transcripción fiel del papel (12/11) + "Propuesta del coach lean" al final de cada uno.
-  const PROP = (items) => ({ titulo: "Propuesta del coach lean", consigna: "Supuestos a validar con el equipo. Entre paréntesis, la fuente en el decision log.", tipo: "pares",
-    cols: ["En el papel", "Propuesta (fuente)"], colorA: "blanco", colorB: "lila", ancho: "full", items: items.map(([t, m], n) => ({ id: "pp" + n, t, m })) });
+  // Lienzos sincronizados con el contexto vigente de Urbis (12/11 22:01). Los oficiales reemplazan el papel; la foto del 12/11 queda enlazada.
+  const VIG = "Versión vigente al 12/11 22:01. Lo que escribimos en papel el 12/11 está en la foto.";
   const PI = (pre, arr) => arr.map((x, n) => Object.assign({ id: pre + n }, typeof x === "string" ? { t: x } : x));
-  const OFICIALES = {
-    o2: { num: "02", titulo: "Mapa de actores", corto: "Mapa de actores", foto: "fotos/02-mapa-de-actores.jpg", tiempo: "Bloque rojo · 12/11",
-      indicaciones: "Ubicar a cada actor en su anillo: en el centro el problema, alrededor los afectados directos y afuera quienes influyen o deciden. A la derecha del papel: experiencias concretas, oportunidades y preguntas para expertos.",
-      orden: ["actores", "experiencias", "oportunidades", "preguntas", "propuesta"],
+  const NOTA = (pre, arr) => ({ titulo: "Notas", tipo: "nota", ancho: "full", items: PI(pre, arr) });
+  const VIGENCIA = (pre, extra) => NOTA(pre, [VIG].concat(extra || []));
+  const DATOS = {
+    o2: { num: "02", titulo: "Mapa de actores", corto: "Mapa de actores", foto: "fotos/02-mapa-de-actores.jpg", tiempo: "Bloque rojo · versión vigente",
+      indicaciones: "En el centro el problema, alrededor los afectados directos y afuera quienes influyen o deciden. Después, experiencias concretas con fuente, oportunidades y lo que todavía tenemos que validar.",
+      orden: ["actores", "experiencias", "oportunidades", "preguntas", "notas"],
       secciones: {
         actores: { titulo: "Actores", tipo: "anillos", ancho: "full", ayuda: "Un post-it por actor", items: PI("ac", [
-          { anillo: "problema", t: "Desaprovechamiento de recorrido de recolección" },
-          { anillo: "afectados", t: "Empresas que operan colectivos" }, { anillo: "afectados", t: "Transportistas de carga" },
-          { anillo: "afectados", t: "Empresas con gran volumen de residuos" }, { anillo: "afectados", t: "Camión desaprovechado" },
-          { anillo: "influyen", t: "Provincia" }, { anillo: "influyen", t: "ERSeP" }, { anillo: "influyen", t: "Gremios (UTA)" },
-          { anillo: "influyen", t: "EPEC" }, { anillo: "influyen", t: "Municipalidad" }, { anillo: "influyen", t: "Concejo Deliberante" },
-          { anillo: "influyen", t: "YPF" }, { anillo: "influyen", t: "Empresas privadas" },
-          { anillo: "influyen", t: "Ciclo: el usuario sube y baja", nota: "Post-it con un dibujo de flechas" }]) },
-        experiencias: { titulo: "Experiencias que conocemos", consigna: "Casos, datos o situaciones concretas que muestran el problema.", tipo: "postits", color: "blanco", ancho: "mitad", items: PI("ex", [
-          "Marzo 2026: la Municipalidad relicitó con FAM.",
-          { t: "El 80 % de los colectivos pasa por Colón y General Paz.", nota: "Sin fuente registrada" },
-          { t: "Córdoba produce el 45 % del etanol del país, pero los colectivos usan GNC.", nota: "Sin fuente registrada" }]) },
-        oportunidades: { titulo: "Oportunidades", consigna: "¿Dónde vemos espacio para mejorar? ¿Qué ya existe y no se aprovecha?", tipo: "postits", color: "verde", ancho: "mitad", items: PI("op", [
-          "Los datos existen, pero son privados.", "La red de colectivos es de 1987.", "Biocombustible: producción local.", "Punto de encuentro bien utilizado."]) },
-        preguntas: { titulo: "Preguntas para expertos y mentores", consigna: "Lo que todavía no sabemos y queremos validar.", tipo: "postits", color: "amarillo", ancho: "full", ayuda: "En el papel quedó vacía.", items: [] },
-        propuesta: PROP([
-          ["Problema: desaprovechamiento del recorrido de recolección", "Los km del patrullaje solo sirven a seguridad y la ciudad se entera tarde de lo que se rompe o se acumula. (Pivot, 14:53)"],
-          ["Afectados: colectivos, transportistas, empresas con residuos", "Vecinos que conviven con el problema, áreas que lo resuelven (alumbrado, higiene urbana, vía pública) y el municipio que paga el combustible. (19:40)"],
-          ["Deciden: Provincia, ERSeP, gremios, EPEC, Municipalidad, Concejo, YPF", "Secretaría de Movilidad y COYS (municipio), Ministerio de Seguridad (móviles policiales), Cordobeses en Alerta, EPEC (postes y cables), Concejo Deliberante (convenio) y UE/AFD, que financiaron el plan de movilidad de Córdoba (PMUS). (15:08 y test 3+3)"],
-          ["Colectivos, UTA, YPF, ERSeP", "Salen del mapa: eran del track de transporte público, de antes de elegir el problema. (14:00)"],
-          ["Experiencias sin fuente (80 % y 45 %)", "Reemplazarlas por datos con fuente: 66.000 reclamos de alumbrado en dos años (La Voz) y 198 llamados a Defensa Civil por postes caídos en una tormenta (Perfil, 7/8/2026). (17:10)"],
-          ["Oportunidad: los datos existen, pero son privados", "Sigue vigente: es la hipótesis H7, el acceso al video de cada fuente."],
-          ["Preguntas para expertos: vacía", "¿Quién opera los móviles con cámara y se puede acceder al video o a un dato procesado? (H1) · ¿El patrullaje hoy se usa solo para seguridad? (H5) · ¿Cordobeses en Alerta y la Policía compartirían su video? (H7) · ¿Las áreas actúan sobre un aviso automático? (H8)"]]) } },
-    o3: { num: "03", titulo: "Mapa de empatía", corto: "Mapa de empatía", layout: "empatia", foto: "fotos/03-mapa-de-empatia.jpg", tiempo: "Bloque rojo · 12/11",
-      indicaciones: "¿Quién es? Una persona o grupo específico: edad, dónde vive, qué hace, qué necesita. Nada de “la gente”. Pónganle un nombre (inventado).",
-      orden: ["quien", "dice", "persona", "piensa", "hace", "dolores", "necesidades", "siente", "cambio", "municipio", "vecino"],
+          { anillo: "problema", t: "La flota de patrullaje recorre Córdoba todo el día y solo sirve a seguridad; lo que se rompe o se acumula en la calle se conoce tarde, por reclamo." },
+          { anillo: "afectados", t: "Vecinos que conviven con incidentes evitables" },
+          { anillo: "afectados", t: "Municipio que paga el combustible y recibe los reclamos" },
+          { anillo: "afectados", t: "Áreas que resuelven: higiene urbana, alumbrado, vía pública" },
+          { anillo: "afectados", t: "Empresa recolectora", nota: "Recibe los contenedores rebalsados" },
+          { anillo: "influyen", t: "Secretaría de Movilidad", nota: "Ejecuta y monitorea el PMUS" },
+          { anillo: "influyen", t: "COYS", nota: "Vista general del monitoreo" },
+          { anillo: "influyen", t: "Ministerio de Seguridad", nota: "Móviles policiales (H7)" },
+          { anillo: "influyen", t: "Cordobeses en Alerta" },
+          { anillo: "influyen", t: "EPEC", nota: "Postes y cables" },
+          { anillo: "influyen", t: "Defensa Civil", nota: "Recibe los llamados por postes caídos" },
+          { anillo: "influyen", t: "Concejo Deliberante", nota: "Convenio con el municipio" },
+          { anillo: "influyen", t: "UE · EUROCLIMA · AFD", nota: "Financiaron el PMUS" }]) },
+        experiencias: { titulo: "Experiencias que conocemos", consigna: "Datos concretos que muestran el problema, con su fuente.", tipo: "postits", color: "blanco", ancho: "mitad", items: PI("ex", [
+          { t: "2 millones de litros de combustible por año en la flota de seguridad de Córdoba.", nota: "Ministerio de Seguridad provincial, 2023. No separa el patrullaje de otros usos." },
+          { t: "66.000 reclamos de alumbrado en dos años, sobre unas 130.000 luminarias.", nota: "La Voz" },
+          { t: "198 llamados a Defensa Civil por postes o columnas caídos en una tormenta.", nota: "Perfil, 7/8/2026" },
+          { t: "La basura se acumula en las esquinas hasta que un vecino reclama.", nota: "Ficha 03 del research" }]) },
+        oportunidades: { titulo: "Oportunidades", consigna: "¿Qué ya existe y no se aprovecha?", tipo: "postits", color: "verde", ancho: "mitad", items: PI("op", [
+          "Patrulleros y móviles que ya recorren la ciudad con cámaras.",
+          { t: "El PMUS de Córdoba, financiado por la UE con 600.000 €, prevé un Observatorio de Movilidad que necesita datos de la calle.", nota: "MobiliseYourCity, 14/10/2025" },
+          { t: "La UE exige planes de movilidad (SUMP) a 431 ciudades para el 31/12/2027.", nota: "Encaje con la movilidad urbana de la UE" },
+          { t: "Los datos de las cámaras existen, pero son de cada operador.", nota: "Hipótesis H7" }]) },
+        preguntas: { titulo: "Preguntas para expertos y mentores", consigna: "Lo que todavía no sabemos y queremos validar.", tipo: "postits", color: "amarillo", ancho: "full", items: PI("pq", [
+          "¿Quién opera los móviles con cámara y se puede acceder al video o a un dato procesado? (H1)",
+          "¿El recorrido de los móviles hoy se usa solo para seguridad? (H5)",
+          "¿Cordobeses en Alerta y la Policía compartirían su video o un dato procesado? (H7)",
+          "¿Las áreas actúan sobre un aviso automático, aunque haya falsos positivos? (H8)",
+          "¿El PMUS menciona el monitoreo de la vía pública?"]) },
+        notas: VIGENCIA("nt") } },
+    o3: { num: "03", titulo: "Mapa de empatía · Municipio", corto: "Empatía · Municipio", layout: "empatia", foto: "fotos/03-mapa-de-empatia.jpg", tiempo: "Bloque rojo · versión vigente",
+      indicaciones: "Una persona o grupo específico: qué dice, qué piensa, qué hace y qué siente frente al problema. Supuestos a validar con una entrevista real.",
+      orden: ["quien", "dice", "persona", "piensa", "hace", "dolores", "necesidades", "siente", "notas"],
       secciones: {
-        quien: { titulo: "¿Quién es?", tipo: "texto", ancho: "full", items: [{ id: "q0", t: "Una empresa recolectora de residuos con logística tradicional que desaprovecha recorridos y flota de recolección." }] },
-        dice: { titulo: "Dice", consigna: "Frases que le escuchamos o que diría.", tipo: "postits", color: "celeste", items: PI("di", ["“Recolectamos a las 22 h todos los días en el punto X.”", "“Pensamos que podemos recolectar más residuos a futuro.”"]) },
-        persona: { titulo: "Nuestra persona", tipo: "postits", color: "blanco", items: PI("pe", ["Empresa de Recolección de Basura de Córdoba"]) },
-        piensa: { titulo: "Piensa", consigna: "Lo que le preocupa y quizás no dice.", tipo: "postits", color: "lila", items: PI("pi", ["No se están recolectando todos los puntos.", "Los camiones dan vueltas y no recolectan."]) },
-        hace: { titulo: "Hace", consigna: "Cómo resuelve hoy el problema. Rutinas, atajos.", tipo: "postits", color: "amarillo", items: PI("ha", ["Ruta fija que espera que los usuarios aprovechen."]) },
-        dolores: { titulo: "Dolores", consigna: "Lo que le molesta, le cuesta o le impide avanzar.", tipo: "postits", color: "rosa", items: PI("do", ["No maximiza la recolección.", "Gasta combustible en recorridos innecesarios."]) },
-        necesidades: { titulo: "Necesidades", consigna: "Lo que le cambiaría el día si estuviera resuelto.", tipo: "postits", color: "verde", items: PI("ne", ["Usaría menos camiones.", "Menor emisión de dióxido de carbono.", "Menor costo en combustible."]) },
-        siente: { titulo: "Siente", consigna: "Frustraciones, miedos, motivaciones.", tipo: "postits", color: "naranja", items: PI("si", ["Pierde tiempo y dinero en rutas desaprovechadas.", "Gasto."]) },
-        cambio: { titulo: "Propuesta del coach lean", tipo: "nota", ancho: "full", items: [{ id: "cb0", t: "La persona cambió con el pivot: desde el 12/11 15:10 la recolectora ya no es usuaria. Abajo, dos mapas propuestos, el municipio y el vecino (fila 19:40). Son supuestos: se validan con una entrevista real." }] },
-        municipio: { titulo: "Propuesta: quien coordina los móviles de monitoreo del municipio", tipo: "pares", cols: ["Cuadrante", "Supuesto a validar"], colorA: "blanco", colorB: "lila", ancho: "full", items: PI("mu", [
-          { t: "Quién es", m: "Coordina la flota de monitoreo del municipio (COYS en Córdoba). Responde por el combustible y por los reclamos." },
-          { t: "Dice", m: "“Los móviles patrullan todo el día, pero solo reportan seguridad.”" },
-          { t: "Piensa", m: "Ese combustible rinde un solo servicio; las otras áreas salen a recorrer por su cuenta." },
-          { t: "Hace", m: "Recibe los reclamos y los deriva a cada área, que sale a buscar el problema." },
-          { t: "Siente", m: "Presión por los reclamos: 66.000 de alumbrado en dos años (La Voz)." },
-          { t: "Dolores", m: "Se entera tarde y por el vecino. No tiene un dato continuo del estado de la calle." },
-          { t: "Necesidades", m: "Saber antes que el vecino y mostrar cómo avanza el plan de movilidad (PMUS), que prevé un Observatorio de Movilidad para monitorearlo." }]) },
-        vecino: { titulo: "Propuesta: vecino", tipo: "pares", cols: ["Cuadrante", "Supuesto a validar"], colorA: "blanco", colorB: "lila", ancho: "full", items: PI("ve", [
-          { t: "Quién es", m: "Vive en un barrio de Córdoba y convive con el problema: un microbasural, un poste caído, una cuadra sin luz." },
-          { t: "Dice", m: "“Ya reclamé y sigue ahí.”" },
-          { t: "Piensa", m: "Si no insisto, nadie lo arregla." },
-          { t: "Hace", m: "Reclama por teléfono o en redes, esquiva el bache, cruza por otra cuadra." },
-          { t: "Siente", m: "Abandono y riesgo, sobre todo de noche o con lluvia." },
-          { t: "Dolores", m: "Es el único sensor de la ciudad y no sabe si su reclamo avanzó." },
-          { t: "Necesidades", m: "Que se arregle sin tener que reclamar." }]) } } },
-    o4: { num: "04", titulo: "Definir el problema", corto: "Definir el problema", foto: "fotos/04-definir-el-problema.jpg", tiempo: "Bloque rojo · 12/11",
-      indicaciones: "Tres insights que nos sorprendieron, un punto de vista ([Quién] necesita [qué] porque [insight]) y preguntas “¿Cómo podríamos…?”. Cada integrante vota con un punto y la más votada pasa a la ideación.",
-      orden: ["insights", "pov", "hmw", "elegida", "propuesta"],
+        quien: { titulo: "¿Quién es?", tipo: "texto", ancho: "full", items: [{ id: "q0", t: "Quien coordina la flota de monitoreo del municipio (COYS en Córdoba). Responde por el combustible de los móviles y por los reclamos que llegan." }] },
+        dice: { titulo: "Dice", consigna: "Frases que le escuchamos o que diría.", tipo: "postits", color: "celeste", items: PI("di", ["“Los móviles patrullan todo el día, pero solo reportan seguridad.”", "“Nos enteramos por el vecino.”"]) },
+        persona: { titulo: "Nuestra persona", tipo: "postits", color: "blanco", items: PI("pe", ["Coordinación de monitoreo municipal"]) },
+        piensa: { titulo: "Piensa", consigna: "Lo que le preocupa y quizás no dice.", tipo: "postits", color: "lila", items: PI("pi", ["Ese combustible rinde un solo servicio.", "Las otras áreas salen a recorrer por su cuenta para encontrar problemas."]) },
+        hace: { titulo: "Hace", consigna: "Cómo resuelve hoy el problema.", tipo: "postits", color: "amarillo", items: PI("ha", ["Recibe los reclamos y los deriva a cada área.", "Cada área sale con su vehículo a buscar el problema."]) },
+        dolores: { titulo: "Dolores", consigna: "Lo que le molesta o le cuesta.", tipo: "postits", color: "rosa", items: PI("do", ["Se entera tarde y por reclamo.", "No tiene un dato continuo del estado de la calle.", "Gasta millones de pesos en combustible para un solo fin."]) },
+        necesidades: { titulo: "Necesidades", consigna: "Lo que le cambiaría el día.", tipo: "postits", color: "verde", items: PI("ne", ["Saber antes que el vecino.", "Datos de la calle para el Observatorio de Movilidad del PMUS.", "Mostrar más servicio por cada km de la flota."]) },
+        siente: { titulo: "Siente", consigna: "Frustraciones, miedos, motivaciones.", tipo: "postits", color: "naranja", items: PI("si", ["Presión por los reclamos: 66.000 de alumbrado en dos años.", "Que gasta mucho para lo que obtiene."]) },
+        notas: VIGENCIA("nt", ["Persona elegida por Samo el 12/11 (decision log 21:21). Todo el mapa es un supuesto hasta entrevistar al municipio."]) } },
+    o3b: { num: "03b", titulo: "Mapa de empatía · Vecino", corto: "Empatía · Vecino", layout: "empatia", foto: "fotos/03-mapa-de-empatia.jpg", tiempo: "Bloque rojo · versión vigente",
+      indicaciones: "La segunda persona a la que le resolvemos (decision log 19:40). Supuestos a validar con una entrevista real.",
+      orden: ["quien", "dice", "persona", "piensa", "hace", "dolores", "necesidades", "siente", "notas"],
+      secciones: {
+        quien: { titulo: "¿Quién es?", tipo: "texto", ancho: "full", items: [{ id: "q0", t: "Vive en un barrio de Córdoba y convive con incidentes evitables: un contenedor rebalsado, un poste caído, una cuadra sin luz." }] },
+        dice: { titulo: "Dice", consigna: "Frases que le escuchamos o que diría.", tipo: "postits", color: "celeste", items: PI("di", ["“Ya reclamé y sigue ahí.”"]) },
+        persona: { titulo: "Nuestra persona", tipo: "postits", color: "blanco", items: PI("pe", ["Vecino de barrio"]) },
+        piensa: { titulo: "Piensa", consigna: "Lo que le preocupa y quizás no dice.", tipo: "postits", color: "lila", items: PI("pi", ["Si no insisto, nadie lo arregla."]) },
+        hace: { titulo: "Hace", consigna: "Cómo resuelve hoy el problema.", tipo: "postits", color: "amarillo", items: PI("ha", ["Reclama por teléfono o en redes.", "Esquiva el bache o cruza por otra cuadra."]) },
+        dolores: { titulo: "Dolores", consigna: "Lo que le molesta o le cuesta.", tipo: "postits", color: "rosa", items: PI("do", ["Es el único sensor de la ciudad.", "No sabe si su reclamo avanzó."]) },
+        necesidades: { titulo: "Necesidades", consigna: "Lo que le cambiaría el día.", tipo: "postits", color: "verde", items: PI("ne", ["Que se arregle sin tener que reclamar.", "Calles seguras para caminar de noche."]) },
+        siente: { titulo: "Siente", consigna: "Frustraciones, miedos, motivaciones.", tipo: "postits", color: "naranja", items: PI("si", ["Abandono.", "Riesgo, sobre todo de noche o con lluvia."]) },
+        notas: VIGENCIA("nt", ["El vecino no usa Urbis: es quien siente el problema y ve el resultado."]) } },
+    o4: { num: "04", titulo: "Definir el problema", corto: "Definir el problema", foto: "fotos/04-definir-el-problema.jpg", tiempo: "Bloque rojo · versión vigente",
+      indicaciones: "Tres insights que nos sorprendieron, un punto de vista ([Quién] necesita [qué] porque [insight]) y preguntas “¿Cómo podríamos…?”. La elegida guía la solución.",
+      orden: ["insights", "pov", "hmw", "elegida", "notas"],
       secciones: {
         insights: { titulo: "Insights", consigna: "Algo que descubrimos y nos sorprendió.", tipo: "postits", color: "amarillo", numerar: true, ancho: "full", items: PI("in", [
-          "Los camiones de basura pasan a altas horas de la noche.", "No se maximiza el uso de las cámaras de movilidad urbanas.", "No se toman acciones concretas frente a congestiones de basura en la ciudad."]) },
-        pov: { titulo: "Punto de vista", consigna: "([Quién] necesita [qué] porque [insight])", tipo: "texto", ancho: "mitad", items: [{ id: "pv0", t: "Empresas privadas necesita optimizar rutas y maximizar carga porque prefiere reducir costos y tiempos de operación muertos." }] },
-        hmw: { titulo: "¿Cómo podríamos…?", consigna: "Cada integrante vota con un punto. En el papel no quedaron marcados los votos.", tipo: "votos", max: 5, ancho: "mitad", items: PI("hm", [
-          { t: "¿Cómo podríamos conectar la información de la disponibilidad de capacidad a uso de los camiones recolectores en tránsito?", votos: 0 },
-          { t: "¿Cómo podríamos conocer los puntos óptimos de recolección de la ruta en base a la capacidad del camión?", votos: 0 },
-          { t: "¿Cómo podríamos minimizar tiempos muertos, optimizando el uso de combustible, mientras maximizamos la productividad de la recolección?", votos: 0 }]) },
-        elegida: { titulo: "Nuestra pregunta elegida", consigna: "En el papel hay un primer borrador (“…reducir la brecha entre el aprovechamiento [combustible / capacidad]…”) y abajo la versión final.", tipo: "destacado", ancho: "full", items: [{ id: "el0", t: "¿Cómo podríamos reducir la brecha entre el aprovechamiento del combustible y la maximización de la capacidad del mismo vehículo contra el circuito de recolección prevalente?" }] },
-        propuesta: PROP([
-          ["POV: empresas privadas necesitan optimizar rutas y maximizar carga", "El municipio que monitorea la ciudad necesita enterarse antes que el vecino de lo que se rompe o se acumula, porque sus móviles ya recorren toda la ciudad pero solo miran seguridad. (14:53 y 17:10)"],
-          ["El POV ya trae la solución (“optimizar rutas”)", "Un POV nombra una necesidad, no una solución. Además, las rutas quedaron fuera del dominio con el pivot. (14:53)"],
-          ["Pregunta elegida: la brecha entre combustible y capacidad del vehículo", "¿Cómo podríamos lograr que cada km que la flota ya recorre también detecte lo que la ciudad necesita arreglar? (19:40: la flota es el recurso)"],
-          ["Insight 2: no se maximizan las cámaras de movilidad urbanas", "Sigue vigente y es la base de Ichnos."],
-          ["Insight 3: no hay acciones frente a la basura acumulada", "Se amplía: tampoco frente a postes caídos, baches o alumbrado, y la ciudad se entera por reclamo. (Mentores, 15:08)"],
-          ["Insight 1: los camiones pasan de noche", "Queda como dato de la recolección, que ya no es el foco."],
-          ["Votos sin marcar", "Registrar en proceso.md cómo se eligió la pregunta: la guía oficial pide el proceso, no solo el resultado."]]) } },
-    o5: { num: "05", titulo: "Lluvia de ideas", corto: "Lluvia de ideas", foto: "fotos/05-lluvia-de-ideas.jpg", tiempo: "Bloque rojo · 12/11",
-      indicaciones: "Una idea por post-it. Combinen, mejoren, sumen. Cantidad antes que calidad. Meta: 8 a 10 ideas por mesa.",
-      orden: ["ideas", "reglas", "conteo", "propuesta"],
+          "La flota de patrullaje recorre toda la ciudad con cámaras, y esos km solo sirven a seguridad.",
+          "La ciudad se entera de lo que se rompe o se acumula por reclamo del vecino.",
+          { t: "Cada área sale con su propio vehículo a buscar el problema.", nota: "Supuesto a medir en el piloto" }]) },
+        pov: { titulo: "Punto de vista", consigna: "([Quién] necesita [qué] porque [insight])", tipo: "texto", ancho: "full", items: [{ id: "pv0", t: "El municipio que monitorea la ciudad necesita enterarse antes que el vecino de lo que se rompe o se acumula, porque sus móviles ya recorren toda la ciudad pero solo miran seguridad." }] },
+        hmw: { titulo: "¿Cómo podríamos…?", tipo: "postits", color: "rosa", ancho: "full", items: PI("hm", [
+          { t: "¿Cómo podríamos lograr que cada km que la flota ya recorre también detecte lo que la ciudad necesita arreglar?", nota: "La flota es el recurso (19:40)" },
+          { t: "¿Cómo podríamos avisarle a cada área sin que nadie tenga que reenviar el reclamo?", nota: "Aviso directo (15:08)" },
+          { t: "¿Cómo podríamos saber que un problema se resolvió sin pedirle el dato al área?", nota: "Cierre por la próxima pasada (15:08)" }]) },
+        elegida: { titulo: "Nuestra pregunta elegida", tipo: "destacado", ancho: "full", items: [{ id: "el0", t: "¿Cómo podríamos lograr que cada km que la flota ya recorre también detecte lo que la ciudad necesita arreglar?" }] },
+        notas: VIGENCIA("nt") } },
+    o5: { num: "05", titulo: "Lluvia de ideas", corto: "Lluvia de ideas", foto: "fotos/05-lluvia-de-ideas.jpg", tiempo: "Bloque rojo · versión vigente",
+      indicaciones: "Una idea por post-it. Cada idea lleva su estado: semilla de Urbis, descartada por el pivot o para el futuro. Abajo, las ideas que llegaron después del bloque rojo.",
+      orden: ["ideas", "nuevas", "conteo", "reglas", "notas"],
       secciones: {
-        ideas: { titulo: "Ideas del equipo", tipo: "postits", color: "amarillo", numerar: true, ancho: "full", items: PI("id", [
-          "Rediseño de rutas de recolección “on-demand”.", "Medición (peso) de volumen de basura por puntos de recolección.", "Reducción de tiempos muertos en la logística.",
-          "Usuarios conectados con la mejor ruta de recolección.", "Usuarios con grandes volúmenes de residuos conectados con rutas óptimas.",
-          "Aprovechar vehículos recurrentes para detectar puntos o picos de congestión u ocio.", "Aprovechar ruta mediante IA frente a picos de tráfico y cortes.",
-          "Algoritmo en tiempo real con visión computacional que trackea focos de residuos fuera del contenedor, instalado en los autos de alerta ciudadana.",
-          { t: "Disminuir brechas de conexión entre las diferentes partes.", c: "lila" }, "Sensores dentro de los contenedores que trackeen su capacidad actual.",
-          "Data y machine learning para entrenar modelos que aprenden del contexto de la ciudad, dándoles interacción por sensores y cámaras."]) },
+        ideas: { titulo: "Ideas del bloque rojo", tipo: "postits", color: "amarillo", numerar: true, ancho: "full", items: PI("id", [
+          { tag: "Descartada", t: "Rediseño de rutas de recolección “on-demand”.", nota: "Pivot 14:53: los residuos ya tienen sus rutas" },
+          { tag: "Descartada", t: "Medición (peso) de volumen de basura por puntos de recolección.", nota: "Suma sensores" },
+          { tag: "Descartada", t: "Reducción de tiempos muertos en la logística.", nota: "Pivot 14:53" },
+          { tag: "Descartada", t: "Usuarios conectados con la mejor ruta de recolección.", nota: "Pivot 14:53" },
+          { tag: "Descartada", t: "Usuarios con grandes volúmenes de residuos conectados con rutas óptimas.", nota: "Pivot 14:53" },
+          { tag: "Semilla", t: "Aprovechar vehículos recurrentes para detectar puntos o picos de congestión u ocio.", nota: "La flota como sensor (19:40)" },
+          { tag: "Descartada", t: "Aprovechar ruta mediante IA frente a picos de tráfico y cortes.", nota: "Tránsito quedó fuera del alcance (14:53)" },
+          { tag: "Semilla", t: "Algoritmo en tiempo real con visión computacional que trackea focos de residuos fuera del contenedor, instalado en los autos de alerta ciudadana.", nota: "Base de Urbis; Cordobeses en Alerta es fuente (15:08)" },
+          { tag: "Semilla", t: "Disminuir brechas de conexión entre las diferentes partes.", nota: "Aviso directo a cada área (15:08)" },
+          { tag: "Descartada", t: "Sensores dentro de los contenedores que trackeen su capacidad actual.", nota: "Un sensor por contenedor; Urbis usa la cámara del móvil" },
+          { tag: "Futuro", t: "Data y machine learning para entrenar modelos que aprenden del contexto de la ciudad, dándoles interacción por sensores y cámaras.", nota: "Aprender del historial de incidencias" }]) },
+        nuevas: { titulo: "Ideas que llegaron después", consigna: "De mentores, del test 3+3 y del trabajo de la noche del 12/11.", tipo: "postits", color: "verde", ancho: "full", items: PI("nv", [
+          { tag: "Vigente", t: "Todo vehículo con cámara como fuente: móviles municipales, Cordobeses en Alerta y policía.", nota: "Mentores, 15:08" },
+          { tag: "Vigente", t: "Aviso directo a cada área, sin persona en el medio.", nota: "Mentores, 15:08" },
+          { tag: "Vigente", t: "Cierre del ciclo: la próxima pasada verifica si el problema sigue.", nota: "15:08" },
+          { tag: "Vigente", t: "Detección a bordo con un modelo liviano que envía solo telemetría, sin imágenes.", nota: "Arquitectura del sistema" },
+          { tag: "Vigente", t: "Gravedad en cuatro niveles: bajo, medio, alto y extremo.", nota: "Arquitectura del sistema" },
+          { tag: "Vigente", t: "Acciones desde el ticket: aviso manual, ruta sugerida para contenedores y plan de barrida.", nota: "Prototipo" },
+          { tag: "Propuesta", t: "Sumar los domos de seguridad como fuente.", nota: "Diego y Lauti; sin decidir" }]) },
+        conteo: { titulo: "Conteo", tipo: "chips", ancho: "mitad", items: PI("co", [
+          { tag: "Ideas del bloque rojo", t: "11" }, { tag: "Semillas de Urbis", t: "3" }, { tag: "Descartadas por el pivot", t: "7" },
+          { tag: "Para el futuro", t: "1" }, { tag: "Ideas posteriores", t: "7" }]) },
         reglas: { titulo: "Reglas", tipo: "reglas", ancho: "mitad", items: PI("rg", ["No juzgamos todavía.", "Construimos sobre la idea del otro: “sí, y además…”.", "Una idea, un post-it.", "Todo vale: lo raro también suma.", "Cada idea responde a nuestra pregunta “¿Cómo podríamos…?”."]) },
-        conteo: { titulo: "Conteo de ideas de la mesa", consigna: "Lo verifica el facilitador antes de seleccionar.", tipo: "chips", ancho: "mitad", items: PI("co", [
-          { tag: "Ideas individuales (4 ideas locas)", t: "12" }, { tag: "Ideas de la lluvia colectiva", t: "11" },
-          { tag: "Total de la mesa", t: "20", nota: "Así quedó en el papel; 12 + 11 = 23" }, { tag: "Firma del facilitador", t: "Sí" }]) },
-        propuesta: PROP([
-          ["Idea 8: visión computacional en los autos de alerta ciudadana", "Es la semilla de Ichnos: detección con las cámaras de vehículos que ya circulan, incluido Cordobeses en Alerta. (15:08)"],
-          ["Idea 6: aprovechar vehículos recurrentes para detectar", "Segunda semilla: la flota como sensor. (19:40)"],
-          ["Idea 11: datos y machine learning del contexto de la ciudad", "Queda para después de la demo: aprender del historial de incidencias."],
-          ["Ideas 1, 2, 3, 4, 5 y 7 (rutas y logística de recolección)", "Descartadas por el pivot: los residuos ya tienen sus rutas. (14:53)"],
-          ["Idea 10: sensores en los contenedores", "Descartada: Ichnos no suma hardware. (Dominio del problema)"],
-          ["Idea 9: disminuir brechas de conexión entre las partes", "Se cumple en parte con el aviso directo a cada área. (15:08)"],
-          ["Ninguna idea está en proceso.md", "Pasar las 11 a la tabla de ideas de proceso.md con su resultado: la guía oficial pide registrar también las descartadas."]]) } },
-    o7: { num: "07", titulo: "Ficha de solución", corto: "Ficha de solución", foto: "fotos/07-ficha-de-solucion.jpg", tiempo: "Bloque azul · 12/11",
-      indicaciones: "Evitá: empezar por la solución, querer resolver todo, hablar de “la gente” o usar palabras grandes sin contenido. Al terminar: carguen la ficha y el prototipo en el formulario (QR).",
-      orden: ["frase", "titulo", "problema", "aquien", "solucion", "distinta", "impacto", "paso", "prototipo", "propuesta"],
+        notas: VIGENCIA("nt") } },
+    o7: { num: "07", titulo: "Ficha de solución", corto: "Ficha de solución", foto: "fotos/07-ficha-de-solucion.jpg", tiempo: "Bloque azul · versión vigente",
+      indicaciones: "Evitá: empezar por la solución, querer resolver todo, hablar de “la gente” o usar palabras grandes sin contenido.",
+      orden: ["frase", "titulo", "problema", "aquien", "solucion", "distinta", "impacto", "paso", "prototipo", "notas"],
       secciones: {
-        frase: { titulo: "Nuestra idea en una frase", tipo: "pares", cols: ["Plantilla", "Lo que escribimos"], colorA: "blanco", colorB: "amarillo", ancho: "full", items: PI("fr", [
-          { t: "Ayudamos a", m: "COYS" }, { t: "a", m: "usar de forma eficiente los servicios de monitoreo" },
-          { t: "mediante", m: "cámaras de patrullas que ya circulan" }, { t: "para que", m: "cada km que se gasta solo en seguridad también sirva para mantener la ciudad" }]) },
-        titulo: { titulo: "1. Título", consigna: "Que se entienda sin explicación (1 línea).", tipo: "destacado", ancho: "mitad", items: [{ id: "ti0", t: "Detectar más, recorrer menos." }] },
-        problema: { titulo: "2. Problema", consigna: "¿Qué pasa hoy que no debería pasar? Un dato, caso o situación concreta.", tipo: "texto", ancho: "mitad", items: [{ id: "pr0", t: "Los móviles recorren y gasta combustible solo para seguridad. Los microbasurales, los postes caídos o contenedores rotos, por ejemplo." }] },
-        aquien: { titulo: "3. A quién le pasa", consigna: "Persona o grupo específico: dónde está, qué hace, qué necesita.", tipo: "texto", ancho: "mitad", items: [{ id: "aq0", t: "A COYS, que no aprovecha lo que ven sus cámaras. A las áreas que arreglan la ciudad, que se enteran tarde. Y a los vecinos que conviven con el problema." }] },
-        solucion: { titulo: "4. Solución", consigna: "¿Qué proponemos y cómo funciona? Paso a paso, sin tecnicismos.", tipo: "pasos", ancho: "mitad", items: PI("so", [
-          "Móvil patrulla como siempre.", "Cámara detecta basura, postes caídos, baches y contenedores rotos.", "Todo va en un mapa ordenado por urgencia.",
-          "COYS se lo asigna al área que corresponde.", "El área resuelve."]) },
-        distinta: { titulo: "5. Qué la hace distinta", consigna: "¿Qué existe hoy y por qué no alcanza?", tipo: "texto", ancho: "mitad", items: [{ id: "di0", t: "No suma vehículos, sensores ni recorridos. Usa los que ya existen. Hoy los problemas aparecen solo si alguien alerta." }] },
-        impacto: { titulo: "6. Impacto y beneficio de sostenibilidad", consigna: "¿Qué cambia si funciona? ¿Cómo nos daríamos cuenta?", tipo: "texto", ancho: "mitad", items: [{ id: "im0", t: "El mismo combustible rinde el doble sin sumar emisiones y la ciudad queda limpia y segura. Lo medimos en km." }] },
-        paso: { titulo: "7. Primer paso", consigna: "¿Qué necesitamos (personas, aliados, recursos) y qué haríamos primero?", tipo: "texto", ancho: "mitad", items: [{ id: "pa0", t: "Piloto de 4 semanas en un barrio." }] },
-        prototipo: { titulo: "Prototipo", tipo: "chips", ancho: "mitad", items: PI("pt", [{ tag: "Formato", t: "Mockup digital" }, { tag: "Nivel de madurez", t: "Prototipo" }, { tag: "Foto o link cargado en el formulario", t: "Sí" }]) },
-        propuesta: PROP([
-          ["Ayudamos a COYS", "Ayudamos a los municipios que monitorean la ciudad, y a sus vecinos. (17:10 y 19:40)"],
-          ["Título: “Detectar más, recorrer menos.”", "La decisión vigente es “Un móvil para autosanar la ciudad.” (15:10). Elegir uno para que la ficha y el pitch digan lo mismo."],
-          ["Paso 2: la cámara de la patrulla", "Todo vehículo con cámara: móviles municipales, Cordobeses en Alerta y móviles policiales. Se mantienen todas las fuentes. (15:08)"],
-          ["Paso 4: COYS se lo asigna al área", "Aviso directo a cada área, sin persona en el medio; COYS queda con la vista general. (15:08)"],
-          ["Paso 5: el área resuelve", "Sumar el cierre: una pasada posterior ya no ve la incidencia y queda “posiblemente resuelta”. Así se mide el tiempo de resolución. (15:08)"],
-          ["Impacto: el mismo combustible rinde el doble", "“El doble” no está medido. Cada km sirve a más de un fin, sin un litro ni un km más; se mide en km de patrullaje reutilizados, con litros y CO₂. (15:10 y 19:40)"],
-          ["Primer paso: piloto de 4 semanas en un barrio", "Reunión con el municipio (17:10) para un convenio de piloto: Ichnos como herramienta para monitorear el plan de movilidad de Córdoba (PMUS), que la UE financió con 600.000 € (EUROCLIMA, gestionado por la AFD en MobiliseYourCity) y que prevé un Observatorio de Movilidad."],
-          ["Sin nombre de producto", "Ichnos · «De la huella a la acción». (Marca, 12/11)"]]) } },
-    o8: { num: "08", titulo: "Testear e iterar", corto: "Testear e iterar", foto: "fotos/08-testear-e-iterar.jpg", tiempo: "Bloque azul · 12/11",
-      indicaciones: "Al terminar: carguen el feedback recibido y los cambios en el formulario (QR). Después: preparación del pitch flash.",
-      orden: ["funciona", "mejorarian", "dinamica", "feedback", "cambios", "preguntas", "propuesta"],
+        frase: { titulo: "Nuestra idea en una frase", tipo: "pares", cols: ["Plantilla", "Urbis"], colorA: "blanco", colorB: "amarillo", ancho: "full", items: PI("fr", [
+          { t: "Ayudamos a", m: "los municipios que monitorean la ciudad, y a sus vecinos," },
+          { t: "a", m: "detectar, ubicar y derivar incidencias urbanas" },
+          { t: "mediante", m: "visión por computadora sobre las cámaras de los vehículos que ya circulan" },
+          { t: "para que", m: "cada km que hoy solo sirve a seguridad también cuide la ciudad." }]) },
+        titulo: { titulo: "1. Título", consigna: "Que se entienda sin explicación (1 línea).", tipo: "destacado", ancho: "mitad", items: [{ id: "ti0", t: "Mismo recorrido, más sustentabilidad." }] },
+        problema: { titulo: "2. Problema", consigna: "¿Qué pasa hoy que no debería pasar?", tipo: "texto", ancho: "mitad", items: [{ id: "pr0", t: "Dos millones de litros de combustible por año recorren Córdoba monitoreando solo seguridad. Mientras tanto, la basura se acumula hasta que un vecino reclama, Defensa Civil recibe 198 llamados por postes caídos en una sola tormenta y hubo 66.000 reclamos de alumbrado en dos años." }] },
+        aquien: { titulo: "3. A quién le pasa", consigna: "Persona o grupo específico.", tipo: "texto", ancho: "mitad", items: [{ id: "aq0", t: "Al municipio, que gasta millones de pesos en combustible y recibe los reclamos de lo que sus móviles vieron y nadie avisó. Y al vecino, que convive con incidentes evitables todos los días." }] },
+        solucion: { titulo: "4. Solución", consigna: "Paso a paso, sin tecnicismos.", tipo: "pasos", ancho: "mitad", items: PI("so", [
+          "El móvil patrulla como siempre; un módulo de cómputo chico analiza la cámara a bordo.",
+          "Detecta contenedores rebalsados, basura acumulada, baches, luminarias apagadas, ramas y cables caídos, sin enviar imágenes.",
+          "Las observaciones de varias pasadas y fuentes se reúnen en una incidencia, con su gravedad.",
+          "El aviso llega directo al área responsable, sin que nadie lo reenvíe; el municipio ve todo en el mapa.",
+          "Cuando una pasada posterior ya no ve el problema, queda “posiblemente resuelto” y se mide el tiempo de resolución."]) },
+        distinta: { titulo: "5. Qué la hace distinta", consigna: "¿Qué existe hoy y por qué no alcanza?", tipo: "texto", ancho: "mitad", items: [{ id: "di0", t: "No suma vehículos, cámaras ni recorridos: solo un módulo de cómputo chico por móvil. Reúne varias fuentes y tipos de incidencia en un ticket por problema y avisa directo al área. Hoy los problemas aparecen solo si alguien reclama." }] },
+        impacto: { titulo: "6. Impacto y beneficio de sostenibilidad", consigna: "¿Qué cambia si funciona? ¿Cómo nos daríamos cuenta?", tipo: "texto", ancho: "mitad", items: [{ id: "im0", t: "Hoy el 0 % de los km de patrullaje sirve para cuidar la ciudad; con Urbis, hasta el 100 %. Ambiental: ni un litro ni un km más. Económico: no hay que comprar flota ni cámaras, y se sostiene después del piloto. Lo medimos con el aprovechamiento de la flota y los km reutilizados, con litros y CO₂.", nota: "Aprovechamiento = km con Urbis activo ÷ km totales (22:05). No está medido: lo mide el piloto." }] },
+        paso: { titulo: "7. Primer paso", consigna: "¿Qué necesitamos y qué haríamos primero?", tipo: "texto", ancho: "mitad", items: [{ id: "pa0", t: "Una reunión con el municipio para acordar un convenio de piloto: Urbis le da los datos de la calle al Observatorio de Movilidad del PMUS, que la UE financió con 600.000 €.", nota: "17:10 y 21:21" }] },
+        prototipo: { titulo: "Prototipo", tipo: "chips", ancho: "mitad", items: PI("pt", [
+          { tag: "Formato", t: "Prototipo funcional en React con mapa 3D" }, { tag: "Datos", t: "Simulados" },
+          { tag: "Probado con", t: "Test 3+3 del 12/11" }, { tag: "Marca", t: "Urbis · Detección urbana desde el patrullaje" }]) },
+        notas: VIGENCIA("nt") } },
+    o8: { num: "08", titulo: "Testear e iterar", corto: "Testear e iterar", foto: "fotos/08-testear-e-iterar.jpg", tiempo: "Bloque azul · versión vigente",
+      indicaciones: "Qué funcionó, qué mejorarían, qué cambiamos por el feedback y cómo respondemos hoy cada duda.",
+      orden: ["funciona", "mejorarian", "feedback", "dinamica", "cambios", "respuestas", "preguntas", "notas"],
       secciones: {
-        funciona: { titulo: "+ Lo que funciona", consigna: "¿Qué les gustó? ¿Qué entendieron enseguida?", tipo: "postits", color: "verde", ancho: "mitad", items: PI("fu", ["Les gustó computer vision.", "Nos refirieron que entendieron todo completamente."]) },
-        mejorarian: { titulo: "Δ Lo que mejorarían", consigna: "Críticas, dudas, puntos débiles.", tipo: "postits", color: "rosa", ancho: "mitad", items: PI("me", [
-          "Duda: ¿cómo se financiaría?", "Duda: ¿cuáles serían los primeros pasos?", "Abarcar todas las problemáticas, no solo residuos, con una solución.",
+        funciona: { titulo: "+ Lo que funciona", tipo: "postits", color: "verde", ancho: "mitad", items: PI("fu", ["Les gustó la visión por computadora.", "Entendieron la propuesta completa."]) },
+        mejorarian: { titulo: "Δ Lo que mejorarían", tipo: "postits", color: "rosa", ancho: "mitad", items: PI("me", [
+          "¿Cómo se financiaría?", "¿Cuáles serían los primeros pasos?", "Abarcar todas las problemáticas, no solo residuos, con una solución.",
           "La factibilidad operativa depende de la aceptación del Ministerio de Seguridad."]) },
+        feedback: { titulo: "Feedback recibido de", tipo: "chips", ancho: "mitad", items: PI("fb", [{ tag: "Mesa", t: "25" }, { tag: "Experto/a", t: "Sí" }]) },
         dinamica: { titulo: "Dinámica 3 + 3", tipo: "reglas", ancho: "mitad", items: PI("dn", [
           "3 se quedan en la mesa: presentan la solución y reciben visitas.", "3 visitan una mesa vecina: prueban y dan feedback.", "El resto valida con mentores disponibles."]) },
-        feedback: { titulo: "Feedback recibido de", tipo: "chips", ancho: "mitad", items: PI("fb", [{ tag: "Mesa", t: "25" }, { tag: "Experto/a", t: "Sí" }]) },
-        cambios: { titulo: "Cambios que hicimos en la solución o el prototipo a partir del feedback", tipo: "texto", ancho: "mitad", items: [{ id: "ca0", t: "No aplica. N/A. Ya fue validado anteriormente." }] },
-        preguntas: { titulo: "? Preguntas · ! Ideas nuevas", consigna: "Lo que no quedó claro o hay que validar, y sugerencias que aparecieron en la charla.", tipo: "texto", ancho: "mitad", items: [{ id: "pq0", t: "N/A. Ya fue validado anteriormente." }] },
-        propuesta: PROP([
-          ["Cambios: no aplica", "Sí hubo cambio, y es el pivot: “abarcar todas las problemáticas, no solo residuos” llegó en el test 3+3 (14:35–15:10) y coincide con el pivot de las 14:53 y con la recomendación de mentores de las 15:08 (concepto amplio y aviso directo a cada área). Es el ciclo construir-medir-aprender."],
-          ["Duda: ¿cómo se financiaría?", "Convenio de piloto con el municipio para monitorear su plan de movilidad (PMUS), que la UE ya financió con 600.000 € (EUROCLIMA, AFD, MobiliseYourCity). La etapa siguiente la pide el municipio por el mismo canal europeo: la UE no financia directo a una startup. (Encaje UE, 20:30)"],
-          ["Duda: ¿cuáles serían los primeros pasos?", "Reunión con el municipio (17:10) → convenio de piloto → acceso a las cámaras de una flota."],
-          ["Factibilidad: Ministerio de Seguridad", "Se mantienen todas las fuentes (15:08). El riesgo queda explícito en la hipótesis H7, a validar con mentores y staff."],
-          ["Lo que funciona: computer vision", "Sirve como evidencia de que se entiende la propuesta, no de que la detección funcione: H3 y H6 siguen sin probar."],
-          ["Preguntas e ideas nuevas: N/A", "¿El PMUS menciona el monitoreo de la vía pública? · ¿Quién autoriza el acceso al video de cada fuente? (H7) · ¿Las áreas actúan sobre un aviso automático con falsos positivos? (H8)"]]) } }
+        cambios: { titulo: "Cambios que hicimos por el feedback", tipo: "destacado", ancho: "full", items: [{ id: "ca0", t: "Pasamos de optimizar las rutas de recolección a detectar todo lo que la ciudad necesita arreglar y avisar directo a cada área (pivot 14:53 y mentores 15:08)." }] },
+        respuestas: { titulo: "Cómo respondemos hoy", tipo: "pares", cols: ["Lo que preguntaron", "Respuesta vigente"], colorA: "rosa", colorB: "verde", ancho: "full", items: PI("rs", [
+          { t: "¿Cómo se financiaría?", m: "Para el municipio se sostiene solo: ahorra recorridos de inspección y el seguimiento de cada incidente. Para implementarlo, la UE ya invirtió 600.000 € en el PMUS de Córdoba, que prevé un Observatorio de Movilidad. (21:55)" },
+          { t: "¿Cuáles serían los primeros pasos?", m: "Una reunión con el municipio y un convenio de piloto. (17:10)" },
+          { t: "Abarcar todas las problemáticas", m: "Hecho: seis tipos de incidencia en residuos y vía pública, cada uno con su ticket. (15:08)" },
+          { t: "Ministerio de Seguridad", m: "Se mantienen todas las fuentes; el acceso al video queda como hipótesis H7. (21:21)" }]) },
+        preguntas: { titulo: "? Preguntas abiertas", tipo: "postits", color: "amarillo", ancho: "full", items: PI("pq", [
+          "¿Quién autoriza el acceso al video de cada fuente? (H7)", "¿Las áreas actúan sobre un aviso automático, con falsos positivos? (H8)",
+          "¿Qué precisión alcanza la detección desde un vehículo en movimiento? (H3 y H6)", "¿El PMUS menciona el monitoreo de la vía pública?"]) },
+        notas: VIGENCIA("nt") } },
+
+    m1: { num: "1", titulo: "Propósito Transformador Masivo (PTM)", corto: "PTM", tiempo: "Tiempo en equipo 15 a 20 minutos.",
+      indicaciones: "Cada integrante escribe uno o varios PTM en post-its, sin poner su nombre. Leemos todos y unificamos los que digan lo mismo. Votamos: 3 votos por persona. El más votado es el definitivo; si hay empate, elegimos en equipo.",
+      orden: ["previo", "chequear", "candidatos", "ganador", "porque"],
+      secciones: {
+        previo: { titulo: "Previo a la actividad", consigna: "Cada integrante del equipo contesta estas preguntas.", tipo: "pares", cols: ["Pregunta", "Respuesta"], colorA: "amarillo", colorB: "verde", ancho: "full", items: PI("p", [
+          { t: "¿Qué es lo que realmente nos importa?", m: "Que la ciudad se entere de lo que pasa en la calle antes de que alguien tenga que reclamar." },
+          { t: "¿Por qué?", m: "Porque la flota ya recorre todo y solo mira seguridad, mientras la basura, los postes y las luminarias esperan un reclamo." },
+          { t: "¿Cuál es el propósito de nuestra empresa en este mundo?", m: "Que las ciudades se autosanen con los recursos que ya tienen." },
+          { t: "¿Qué haríamos si nunca pudiéramos fallar?", m: "Que cada patrullero de cada ciudad también cuide su calle." },
+          { t: "¿Por qué?", m: "Porque cada ciudad ya tiene la flota y las cámaras: solo falta que vean más que seguridad." },
+          { t: "¿Qué haríamos si recibiésemos diez millones de dólares?", m: "El piloto en Córdoba y el despliegue en las ciudades europeas que deben tener su plan de movilidad (SUMP) para 2027: son 431." }]) },
+        chequear: { titulo: "Cosas a chequear para escribir los post-its", tipo: "reglas", ancho: "mitad", items: PI("k", [
+          "Describe un estado deseable del mundo, la industria o la comunidad.", "¿Es altamente aspiracional?", "¿Es único?", "¿Es masivo?", "¿Es transformador?", "¿Está claro el propósito?", "¿Es apasionante?"]) },
+        candidatos: { titulo: "PTM candidatos", consigna: "Sin votación del equipo: eligió Samo el 12/11.", tipo: "votos", max: 10, ancho: "mitad", items: PI("c", [
+          { t: "Ciudades que se autosanen.", votos: 0, star: true },
+          { t: "Que cada kilómetro que ya recorre una ciudad también la cuide.", votos: 0 },
+          { t: "Ciudades que se observan solas y responden antes del reclamo.", votos: 0 },
+          { t: "Que nada de lo que pasa en la calle quede sin registrar.", votos: 0 }]) },
+        ganador: { titulo: "PTM ganador", tipo: "destacado", ancho: "mitad", items: [{ id: "g0", t: "Ciudades que se autosanen." }] },
+        porque: { titulo: "Por qué lo elegimos", tipo: "texto", ancho: "mitad", items: [{ id: "w0", t: "Retoma la idea que nos guió desde el pivot (“un móvil para autosanar la ciudad”): la ciudad detecta y responde sola, con lo que ya tiene. Elección de Samo, 12/11." }] } } },
+    m2: { num: "2", titulo: "Team Canvas", corto: "Team Canvas", layout: "team", tiempo: "Tiempo aprox. 60 minutos.",
+      indicaciones: "1. Objetivos: qué queremos lograr como grupo (factible, medible y con fecha). 2. Funciones y habilidades: nombre y rol de cada uno. 3. Valores: los principios que compartimos. 4. Propósito: si ya tenemos PTM, va acá. 5. Reglas y actividades: cómo nos comunicamos, decidimos y evaluamos.",
+      orden: ["equipo", "objetivos", "funciones", "proposito", "valores", "reglas"],
+      secciones: {
+        equipo: { titulo: "Datos del equipo", tipo: "chips", ancho: "full", items: PI("e", [{ tag: "Nombre del equipo", t: "Hackaranda" }, { tag: "Producto", t: "Urbis" }, { tag: "Mesa", t: "24" }, { tag: "Fecha", t: "12 y 13 de noviembre de 2026" }]) },
+        objetivos: { titulo: "Objetivos", consigna: "¿Qué queremos lograr como grupo?", tipo: "postits", color: "naranja", ancho: "mitad", items: PI("o", [
+          "Ganar el Demo Day del 13/11.", "Conseguir una reunión con el municipio después del evento.", "Dejar el proceso registrado completo para el formulario oficial (UE e ITC) antes del pitch del 13/11."]) },
+        funciones: { titulo: "Funciones y habilidades", consigna: "¿Qué rol tiene cada uno?", tipo: "postits", color: "celeste", ancho: "mitad", items: PI("f", [
+          "Samo: nexo producto ↔ técnica, arquitectura y harness", "Lauti: técnica, datos, LLM y flujos agénticos", "Diego: técnica y pensamiento sistémico, hardware",
+          "Juani: marca, frontend y el “wow” visual", "Gina: producto y estrategia, mentores y jurado", "Oli: producto y negocio, mercado, financiamiento y pitch"]) },
+        proposito: { titulo: "Propósito", consigna: "Nuestro PTM.", tipo: "postits", color: "rosa", ancho: "mitad", items: PI("pr", ["Ciudades que se autosanen."]) },
+        valores: { titulo: "Valores", consigna: "¿Cuáles son nuestros principios?", tipo: "postits", color: "amarillo", ancho: "mitad", items: PI("v", [
+          { t: "Escuchar y pivotar.", nota: "El feedback de mentores y del test 3+3 cambió el producto" }, { t: "Aprovechar lo que existe.", nota: "Como el producto: sacarle más a lo que ya está" }]) },
+        reglas: { titulo: "Reglas y actividades", consigna: "Salen de AGENTS.md.", tipo: "postits", color: "verde", ancho: "mitad", items: PI("r", [
+          "El repo es la única fuente de verdad.", "Decide el participante; el agente entrevista con opciones.", "Toda decisión va al decision log con sus opciones.",
+          "ESTADO.md es el tablero: cada uno actualiza su fila.", "Cada cambio actualiza la documentación en el mismo commit.", "Medir, no estimar: toda cifra con fuente."]) } } },
+    m3: { num: "3", titulo: "Definir tipo de mercado", corto: "Mercado", tiempo: "Tiempo en equipo 15 a 20 minutos.",
+      indicaciones: "Definir el tipo de mercado del emprendimiento según esta segmentación: existente, resegmentado, nuevo o clonado. Después, justificar la elección.",
+      orden: ["referencia", "pistas", "tipo", "justificacion"],
+      secciones: {
+        referencia: { titulo: "Segmentación de mercados", tipo: "tabla", cols: ["Mercado", "Existente", "Resegmentado", "Nuevo", "Clonado"], ancho: "full", items: PI("r", [
+          { c: ["Clientes", "Conocidos", "Posiblemente conocidos (hipótesis)", "Desconocidos", "Posiblemente conocidos (hipótesis)"] },
+          { c: ["Necesidades", "Rendimiento, mejora", "Mejor posicionamiento", "Mejoramiento transformacional", "Versión local"] },
+          { c: ["Competidores", "Muchos", "Muchos o pocos", "Ninguno", "Ninguno"] },
+          { c: ["Riesgos", "Cuota de mercado, venta y distribución", "Lograr la definición de producto y mercado", "Desconocimiento del mercado", "Juzgar mal las necesidades locales"] }]) },
+        pistas: { titulo: "Nuestro caso", tipo: "pares", cols: ["Característica", "Urbis"], colorA: "blanco", colorB: "verde", ancho: "full", items: PI("s", [
+          { t: "Clientes", m: "Municipios que monitorean la ciudad con flota propia; en Córdoba, la Secretaría de Movilidad y COYS. Beneficiario: el vecino." },
+          { t: "Necesidades", m: "Enterarse antes del reclamo, sin sacar otro vehículo a la calle, y alimentar con datos el Observatorio de Movilidad del PMUS." },
+          { t: "Competidores", m: "Hoy, el reclamo del vecino y las recorridas de cada área. Afuera, relevamiento vial con cámaras en vehículos municipales (por ejemplo, vialytics en Alemania, a verificar)." },
+          { t: "Riesgos", m: "Acceso al video de cada fuente (H7), precisión de la detección en movimiento (H3 y H6) y que las áreas actúen sobre un aviso automático (H8). Privacidad: no se envían imágenes ni se guardan caras o patentes." }]) },
+        tipo: { titulo: "Tipo de mercado", tipo: "destacado", ancho: "mitad", items: [{ id: "t0", t: "Resegmentado" }] },
+        justificacion: { titulo: "Justificación", tipo: "texto", ancho: "mitad", items: [{ id: "j0", t: "El relevamiento de incidencias urbanas ya existe: hoy depende del reclamo del vecino y de las recorridas de cada área. Urbis lo reposiciona sobre el patrullaje que ya circula: cada km recorrido pasa a detectar, consolidar y derivar incidencias, y la gestión de cada una mejora con un ticket por área y la verificación en la próxima pasada. Decisión de Samo, 12/11." }] } } },
+    m4: { num: "4", titulo: "Identificar abundancia para apalancarse", corto: "Abundancia", tiempo: "Tiempo en equipo 40 a 60 minutos.",
+      indicaciones: "Dónde hay abundancia y cómo nos apalancamos en ella. A la izquierda, lo que sobra o ya existe; a la derecha, la oportunidad que nos abre.",
+      orden: ["abundancias"],
+      secciones: {
+        abundancias: { titulo: "Abundancias y oportunidades", tipo: "pares", cols: ["Abundancia", "Oportunidad que genera"], colorA: "lila", colorB: "lila", ancho: "full", items: PI("a", [
+          { t: "Patrulleros y móviles que recorren la ciudad todo el día.", m: "Detectar incidencias sin sumar un solo km: el aprovechamiento de la flota pasa de 0 % a hasta 100 %." },
+          { t: "Cámaras en tres fuentes: móviles municipales, Cordobeses en Alerta y policía.", m: "Una ciudad viva: todo vehículo con cámara suma observaciones." },
+          { t: "GPS en los recorridos.", m: "Ubicar cada incidencia y medir qué parte de la ciudad está cubierta." },
+          { t: "Modelos de visión livianos que corren a bordo (YOLOv11n).", m: "Detectar en el móvil y enviar menos de 1 KB por evento, sin imágenes." },
+          { t: "Planes y fondos de la UE: el PMUS de Córdoba (600.000 €) y su Observatorio de Movilidad.", m: "Un canal para implementar el piloto y un destino para los datos." },
+          { t: "431 ciudades de la UE que deben tener su plan de movilidad (SUMP) para 2027.", m: "Mercado para escalar con el mismo modelo.", nota: "Supuesto: que paguen por esto" }]) } } },
+    m5a: { num: "5A", titulo: "Diseñar Business Model Canvas", corto: "Business Model", layout: "bmc", tiempo: "",
+      indicaciones: "A quién le servimos, qué le ofrecemos, cómo llegamos, qué necesitamos y cómo se sostiene.",
+      orden: ["socios", "actividades", "recursos", "propuesta", "relacion", "canales", "segmentos", "costos", "ingresos"],
+      secciones: {
+        socios: { titulo: "Socios clave", tipo: "postits", color: "amarillo", items: PI("so", [
+          "Secretaría de Movilidad de Córdoba (PMUS)", "COYS, área de monitoreo municipal", "Cordobeses en Alerta y Policía de Córdoba (fuentes)",
+          "UE · EUROCLIMA · AFD · MobiliseYourCity", { t: "Universidades (UTN, UNC)", nota: "Para Horizon Europe, en consorcio" }]) },
+        actividades: { titulo: "Actividades clave", tipo: "postits", color: "amarillo", items: PI("ac", [
+          "Detectar incidencias a bordo con visión por computadora.", "Consolidar observaciones en incidencias, sin duplicados.", "Derivar el ticket al área responsable.", "Mostrar el mapa de incidencias, las zonas de calor y el impacto."]) },
+        recursos: { titulo: "Recursos clave", tipo: "postits", color: "amarillo", items: PI("re", [
+          "Modelo de detección entrenado para Córdoba.", "Módulo de cómputo chico en cada móvil.", "Backend con base geoespacial (PostGIS).", "Acceso a las cámaras y recorridos de las fuentes."]) },
+        propuesta: { titulo: "Propuesta de valor", tipo: "postits", color: "naranja", items: PI("pv", [
+          "Enterarse antes del reclamo, con la flota que ya circula.", "Un aviso directo por incidencia al área que resuelve.", "Más servicio por cada km: aprovechamiento de 0 % a hasta 100 %."]) },
+        relacion: { titulo: "Relación con clientes", tipo: "postits", color: "amarillo", items: PI("rc", ["Convenio de piloto con el municipio.", "Panel con vista general para COYS y tickets para cada área."]) },
+        canales: { titulo: "Canales", tipo: "postits", color: "amarillo", items: PI("ca", [
+          "Reunión y convenio con la Secretaría de Movilidad.", { t: "Red MobiliseYourCity para llegar a otros municipios.", nota: "Supuesto" }]) },
+        segmentos: { titulo: "Segmentos de clientes", tipo: "postits", color: "verde", items: PI("sc", [
+          "Municipios que monitorean con flota propia.", "Áreas que resuelven: higiene urbana, alumbrado, vía pública.", "Vecinos (beneficiarios, no usuarios)."]) },
+        costos: { titulo: "Estructura de costos", consigna: "De la arquitectura del sistema. Sin montos: no están estimados.", tipo: "postits", color: "rosa", items: PI("co", [
+          "Módulo de cómputo a bordo por móvil (~5–10 W, YOLOv11n cuantizado).", "Conectividad 4G/LTE (MQTT, menos de 1 KB por evento) y servidor con API REST.",
+          "Base geoespacial PostgreSQL/PostGIS y mapa de calor.", "Entrenamiento y etiquetado del dataset de incidencias de Córdoba.", "Integración con los canales de cada área, capacitación y soporte."]) },
+        ingresos: { titulo: "Fuentes de ingreso", tipo: "postits", color: "celeste", items: PI("in", [
+          "Piloto: lo paga el municipio, o es sin costo al principio.", "Para el municipio se sostiene solo: ahorra inspección y seguimiento de incidentes.",
+          "Siguiente etapa: el municipio pide fondos UE (EUROCLIMA, AFD, MobiliseYourCity) para implementar el PMUS."]) } } },
+    m5b: { num: "5B", titulo: "Diseñar Value Proposition Canvas", corto: "Propuesta de valor", layout: "vpc", tiempo: "Tiempo en equipo 40 minutos.",
+      indicaciones: "A la derecha, el cliente (municipio y vecino): qué trabajos tiene que hacer, qué le frustra y qué le alegraría. A la izquierda, Urbis: qué ofrece, qué frustraciones alivia y qué alegrías crea.",
+      orden: ["productos", "creadores", "aliviadores", "trabajos", "alegrias", "frustraciones", "cadena"],
+      secciones: {
+        productos: { titulo: "Productos y servicios", tipo: "postits", color: "amarillo", items: PI("pr", [
+          "Detección a bordo con visión por computadora.", "Mapa de incidencias y zonas de calor (atención y cobertura).", "Tickets con aviso automático al área responsable.", "Acciones desde el ticket: aviso manual, ruta sugerida, plan de barrida."]) },
+        creadores: { titulo: "Creadores de alegrías", tipo: "postits", color: "verde", items: PI("cr", [
+          "Aprovechamiento de la flota: de 0 % a hasta 100 %.", "Datos de la calle para el Observatorio de Movilidad.", "Verificación automática en la próxima pasada."]) },
+        aliviadores: { titulo: "Aliviadores de frustraciones", tipo: "postits", color: "rosa", items: PI("al", [
+          "Aviso antes del reclamo.", "Ningún área saca otro vehículo para buscar el problema.", "Un ticket por incidencia, sin duplicados.", "No se envían imágenes ni se guardan caras o patentes."]) },
+        trabajos: { titulo: "Trabajos del cliente", tipo: "postits", color: "amarillo", items: PI("tr", [
+          "Mantener la ciudad en condiciones (municipio).", "Responder los reclamos de los vecinos (municipio).", "Usar bien el combustible de la flota (municipio).", "Moverse seguro por su barrio (vecino)."]) },
+        alegrias: { titulo: "Alegrías", tipo: "postits", color: "verde", items: PI("ag", ["Saber antes que el vecino.", "Mostrar resultados del plan de movilidad.", "Ver la calle arreglada sin tener que reclamar (vecino)."]) },
+        frustraciones: { titulo: "Frustraciones", tipo: "postits", color: "rosa", items: PI("fr", [
+          { tag: "Movilidad", t: "La flota recorre toda la ciudad y solo sirve a seguridad." },
+          { tag: "Movilidad", t: "Cada área sale con su vehículo a buscar el problema." },
+          { tag: "Residuos", t: "La basura se acumula hasta que un vecino reclama." },
+          { tag: "Vía pública", t: "Postes caídos y 66.000 reclamos de alumbrado en dos años." },
+          { tag: "Datos", t: "Nadie sabe si un problema se resolvió." }]) },
+        cadena: { titulo: "Cómo se encadena el problema", tipo: "pasos", ancho: "full", items: PI("ch", [
+          "La flota recorre la ciudad con cámaras, pero solo mira seguridad.", "Lo que se rompe o se acumula nadie lo registra.",
+          "El municipio se entera por reclamo y cada área sale a buscar el problema.", "Resultado: más km, más combustible, respuestas tarde y vecinos expuestos al riesgo."]) } } },
+    m6: { num: "6", titulo: "Definir el cronograma para aplicar el proceso ágil Exo Launchpad", corto: "Cronograma", tiempo: "Tiempo en equipo 30 minutos.",
+      indicaciones: "Cuándo hacemos cada ceremonia del proceso ágil. El hackathon funcionó como un sprint.",
+      orden: ["crono", "que"],
+      secciones: {
+        crono: { titulo: "Cronograma: el hackathon como sprint", tipo: "pares", cols: ["Actividad", "Cronograma"], colorA: "amarillo", colorB: "verde", ancho: "full", items: PI("cg", [
+          { t: "Sprint Planning", m: "Kickoff del 12/11 a la mañana: elegimos problema e idea (bloque rojo, 10:05–12:05)." },
+          { t: "Daily meetings", m: "Checkpoints del 12/11: 12:30 (problema congelado), 14:35 (prototipo), 15:10 (test 3+3), 15:30 (pitch flash), ~18:00 (diagramas) y la construcción de la noche; el 13/11 a la mañana, ensayo." },
+          { t: "Sprint Review", m: "Pitch del Demo Day, 13/11 desde las 10:45 (ronda final desde las 13:15)." },
+          { t: "Retrospective", m: "Después del Demo Day, el 13/11." }]) },
+        que: { titulo: "Qué es cada una", tipo: "qa", ancho: "full", items: PI("q", [
+          { t: "Sprint Planning", m: "Se arma el sprint backlog con tres estados: TO DO (pendientes), WIP (en curso) y DONE (terminadas). Lo mantiene el equipo." },
+          { t: "Daily meetings", m: "15 minutos como máximo. Cada uno responde: qué hice desde la última reunión, qué voy a hacer y qué impedimentos tengo." },
+          { t: "Sprint Review", m: "El último día del sprint se muestran las tareas terminadas al coach, que propone ajustes al product backlog." },
+          { t: "Retrospective", m: "El equipo analiza cómo trabajó y qué obstáculos le impiden avanzar, para irlos eliminando." }]) } } },
+    m7: { num: "7", titulo: "Realizar un bosquejo o demo del producto", corto: "Demo", tiempo: "Tiempo en equipo máximo 8 horas.",
+      indicaciones: "La demo es el prototipo actual de Urbis (frontend/). Se levanta con npm run dev; recargar la página reinicia la secuencia automática.",
+      orden: ["pasos", "pantallas", "pautas", "preguntas", "aclaracion"],
+      secciones: {
+        pasos: { titulo: "Qué muestra la demo, paso a paso", tipo: "pasos", ancho: "full", items: PI("ps", [
+          "Landing de Urbis: el video intercala tres detecciones simuladas (bache, rama caída y contenedor rebalsado) con el mapa, el ticket y la acción de cada una.",
+          "“Explorar el mapa” abre /#mapa: el mapa 3D de Córdoba en la vista Incidencias (vista COYS).",
+          "La secuencia corre sola: se publica un ticket, otra pasada suma un avistamiento, sale el aviso automático al área y una pasada de verificación lo deja “posiblemente resuelto”.",
+          "La barra superior filtra por tipo, estado y área; al pasar sobre un marcador se ven la foto, la dirección y el estado.",
+          "El detalle del ticket muestra avistamientos, gravedad, área responsable, historial (automático o manual) y próximo paso.",
+          "Acciones desde el ticket: aviso manual, ruta sugerida para el contenedor rebalsado (recorrido fijo y desvío) y plan de barrida para residuos o ramas.",
+          "Zonas de calor: rojo con tickets activos, verde para lo observado sin tickets y gris sin observación."]) },
+        pantallas: { titulo: "Pantallas de la demo", tipo: "postits", color: "blanco", numerar: true, ancho: "mitad", items: PI("pa", [
+          "Landing con el video de detección", "Mapa 3D · Incidencias", "Detalle del ticket", "Ruta sugerida o plan de barrida", "Zonas de calor"]) },
+        pautas: { titulo: "Pautas de la demo", tipo: "reglas", ancho: "mitad", items: PI("pt", ["Tiene que ser realizable.", "Tiene que parecer real.", "Tiene que minimizar el desperdicio.", "Tiene que usar datos de aspecto real."]) },
+        preguntas: { titulo: "Preguntas que nos van a hacer", tipo: "circulos", ancho: "full", items: PI("fq", [
+          { t: "¿Y la privacidad?", m: "El móvil detecta a bordo y envía menos de 1 KB, sin imágenes, caras ni patentes." },
+          { t: "¿Suma hardware?", m: "Solo un módulo de cómputo chico por móvil; ni vehículos ni cámaras nuevas." },
+          { t: "¿Quién lo paga?", m: "Se sostiene con el ahorro del municipio; la UE ya financió el PMUS." },
+          { t: "¿Funciona de verdad?", m: "Los tickets son simulados; la precisión la mide el piloto (H3 y H6)." }]) },
+        aclaracion: { titulo: "Aclaración", tipo: "nota", ancho: "full", items: PI("ac", [
+          "Los tickets, la cobertura y las coordenadas del prototipo son simulados.", "/#mapa/deteccion abre el ticket CBA-104 del contenedor que aparece en el video."]) } } },
+    m8: { num: "8", titulo: "Métricas de problema", corto: "Métricas", tiempo: "Tiempo en equipo 20 minutos.",
+      indicaciones: "Qué métricas usamos y qué valores tienen que alcanzar para dar por validado el piloto.",
+      orden: ["ejemplo", "metricas"],
+      secciones: {
+        ejemplo: { titulo: "Ejemplo", tipo: "nota", ancho: "full", items: PI("ej", ["Cantidad de entrevistas de problema a realizar (mínimo 10) y resultado esperado de éxito (el 80 % comparte el problema)."]) },
+        metricas: { titulo: "Métricas del piloto", consigna: "Principal: aprovechamiento de la flota (22:05). Secundaria: km reutilizados (15:10). Metas: propuesta conservadora elegida por Samo el 12/11.", tipo: "tabla", cols: ["Problema", "Mejora", "Métrica", "Meta"], ancho: "full", items: PI("mt", [
+          { c: ["La flota solo sirve a seguridad", "Cada km también cuida la ciudad", "Aprovechamiento de la flota = km con Urbis activo ÷ km totales", "≥ 30 % de la flota piloto"] },
+          { c: ["Combustible para un solo fin", "Ni un litro ni un km más", "Km reutilizados, con litros y CO₂ equivalentes", "Se reporta, sin umbral"] },
+          { c: ["Detección incierta", "Detecciones confiables", "% de detecciones correctas (revisión humana)", "≥ 70 %"] },
+          { c: ["La ciudad se entera tarde", "Aviso antes del reclamo y verificación automática", "Tiempo de resolución (de la detección a la pasada que ya no lo ve)", "Medido en las 4 semanas del piloto"] },
+          { c: ["Cada área sale a buscar el problema", "Menos vehículos en la calle", "Recorridos de inspección evitados", "≥ 1 por semana por área"] }]) } } }
   };
-  const DATOS = Object.assign({}, OFICIALES, {"m1":{"num":"1","titulo":"Propósito Transformador Masivo (PTM)","corto":"PTM","tiempo":"Tiempo en equipo 15 a 20 minutos.","indicaciones":"Cada integrante escribe uno o varios PTM en post-its, sin poner su nombre. Leemos todos y unificamos los que digan lo mismo. Votamos en 5 minutos: 3 votos por persona, y se pueden poner los 3 en el mismo post-it. El más votado es el definitivo; si hay empate, elegimos en equipo.","orden":["previo","chequear","candidatos","ganador","porque"],"secciones":{"previo":{"titulo":"Previo a la actividad","consigna":"Cada integrante del equipo contesta estas preguntas.","tipo":"pares","cols":["Pregunta","Respuesta (del artifact)"],"colorA":"amarillo","colorB":"verde","ancho":"full","ayuda":"El artifact no lo dice. Completalo con el equipo.","items":[{"id":"p1","t":"¿Qué es lo que realmente nos importa?","m":"Que la ciudad deje de decidir la recolección a ciegas: saber dónde está la basura y llegar a tiempo."},{"id":"p2","t":"¿Por qué?","m":"Porque hoy las rutas fijas recorren de más, los camiones salen a media carga y los puntos críticos se desbordan. Resultado: más costo, peor servicio y una ciudad más sucia."},{"id":"p3","t":"¿Cuál es el propósito de nuestra empresa en este mundo?","m":"Que los kilómetros que ya recorre la ciudad también sirvan para mantenerla limpia."},{"id":"p4","t":"¿Qué haríamos si nunca pudiéramos fallar?","m":""},{"id":"p5","t":"¿Por qué?","m":""},{"id":"p6","t":"¿Qué haríamos si recibiésemos diez millones de dólares?","m":""}]},"chequear":{"titulo":"Cosas a chequear para escribir los post-its","tipo":"reglas","ancho":"mitad","ayuda":"Criterios del PTM","items":[{"id":"k1","t":"Describe un estado deseable del mundo, la industria o la comunidad."},{"id":"k2","t":"¿Es altamente aspiracional?"},{"id":"k3","t":"¿Es único?"},{"id":"k4","t":"¿Es masivo?"},{"id":"k5","t":"¿Es transformador?"},{"id":"k6","t":"¿Está claro el propósito?"},{"id":"k7","t":"¿Es apasionante?"}]},"candidatos":{"titulo":"PTM candidatos","consigna":"3 votos por persona.","tipo":"votos","max":10,"ancho":"mitad","ayuda":"Un post-it por candidato","items":[{"id":"c1","t":"Que los kilómetros que ya recorre la ciudad también la mantengan limpia.","votos":0,"w":true,"nota":"Sale de la frase resumen del artifact. Faltan los candidatos del resto del equipo y la votación."}]},"ganador":{"titulo":"PTM ganador","tipo":"destacado","ancho":"mitad","ayuda":"Todavía no se votó. Acá va el PTM más votado.","items":[{"id":"g1","t":""}]},"porque":{"titulo":"Por qué lo elegimos","tipo":"texto","ancho":"mitad","ayuda":"Explicá en dos líneas por qué ganó.","items":[{"id":"w1","t":""}]}}},"m2":{"num":"2","titulo":"Team Canvas","corto":"Team Canvas","layout":"team","tiempo":"Tiempo aprox. 60 minutos.","indicaciones":"1. Objetivos: qué queremos lograr como grupo (factible, medible y con fecha) y nuestras metas personales. 2. Funciones y habilidades: nombre y rol de cada uno; si alguien tiene varios roles, un post-it por rol. 3. Valores: los principios que compartimos. 4. Propósito: por qué hacemos lo que hacemos; si ya tenemos PTM, va acá. 5. Reglas y actividades: cómo nos comunicamos, cómo decidimos y cómo evaluamos lo que hacemos.","orden":["equipo","objetivos","funciones","proposito","valores","reglas"],"secciones":{"equipo":{"titulo":"Datos del equipo","tipo":"chips","ancho":"full","ayuda":"Nombre, mesa y fecha","items":[{"id":"e1","tag":"Nombre del equipo","t":"Hackaronda","w":true,"nota":"Así figura en las láminas en papel; la letra es dudosa"},{"id":"e2","tag":"Mesa","t":"24"},{"id":"e3","tag":"Fecha","t":"12 y 13 de noviembre de 2026"}]},"objetivos":{"titulo":"Objetivos","consigna":"¿Qué queremos lograr como grupo? ¿Cuáles son nuestras metas personales?","tipo":"postits","color":"naranja","ancho":"mitad","ayuda":"El artifact no define objetivos del equipo. Sumalos acá.","items":[]},"funciones":{"titulo":"Funciones y habilidades","consigna":"¿Cómo nos llamamos? ¿Qué rol tiene cada uno?","tipo":"postits","color":"celeste","ancho":"mitad","ayuda":"Un post-it por persona y rol","items":[{"id":"f1","t":"Gina: producto y problema"}]},"proposito":{"titulo":"Propósito","consigna":"¿Por qué hacemos lo que hacemos? Si ya hay PTM, va acá.","tipo":"postits","color":"rosa","ancho":"mitad","ayuda":"Pegá acá el PTM ganador cuando lo voten.","items":[]},"valores":{"titulo":"Valores","consigna":"¿Qué representamos? ¿Cuáles son nuestros principios?","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Por ejemplo: confianza, creatividad, transparencia.","items":[]},"reglas":{"titulo":"Reglas y actividades","consigna":"¿Cómo nos comunicamos? ¿Cómo decidimos? ¿Cómo evaluamos?","tipo":"postits","color":"verde","ancho":"mitad","ayuda":"Las reglas que vamos a seguir como equipo.","items":[]}}},"m3":{"num":"3","titulo":"Definir tipo de mercado","corto":"Mercado","tiempo":"Tiempo en equipo 15 a 20 minutos.","indicaciones":"Definir el tipo de mercado del emprendimiento según esta segmentación: existente, resegmentado, nuevo o clonado. Después, justificar la elección.","orden":["referencia","pistas","tipo","justificacion"],"secciones":{"referencia":{"titulo":"Segmentación de mercados","tipo":"tabla","cols":["Mercado","Existente","Resegmentado","Nuevo","Clonado"],"ancho":"full","ayuda":"Tabla de referencia","items":[{"id":"r1","c":["Clientes","Conocidos","Posiblemente conocidos (hipótesis)","Desconocidos","Posiblemente conocidos (hipótesis)"]},{"id":"r2","c":["Necesidades","Rendimiento, mejora","Mejor posicionamiento","Mejoramiento transformacional","Versión local"]},{"id":"r3","c":["Competidores","Muchos","Muchos o pocos","Ninguno","Ninguno"]},{"id":"r4","c":["Riesgos","Cuota de mercado, venta y distribución","Lograr la definición de producto y mercado","Desconocimiento del mercado","Juzgar mal las necesidades locales"]}]},"pistas":{"titulo":"Nuestro caso, según el artifact","tipo":"pares","cols":["Característica","Lo que dice el artifact"],"colorA":"blanco","colorB":"verde","ancho":"full","ayuda":"El artifact no lo dice. Completalo con el equipo.","items":[{"id":"s1","t":"Clientes","m":"El área de recolección de la Municipalidad o la empresa concesionaria."},{"id":"s2","t":"Necesidades","m":"Saber dónde se acumula la basura para dejar las rutas fijas: menos kilómetros, camiones más llenos y puntos críticos atendidos antes."},{"id":"s3","t":"Competidores","m":""},{"id":"s4","t":"Riesgos","m":"Privacidad: las imágenes son de seguridad, así que solo se procesa la detección de residuos, sin guardar caras ni patentes. Zonas por donde no pasan patrulleros."}]},"tipo":{"titulo":"Tipo de mercado","tipo":"destacado","ancho":"mitad","ayuda":"El artifact no define el tipo de mercado. Elegilo con el equipo.","items":[{"id":"t1","t":""}]},"justificacion":{"titulo":"Justificación","tipo":"texto","ancho":"mitad","ayuda":"Por qué elegimos ese tipo de mercado.","items":[{"id":"j1","t":""}]}}},"m4":{"num":"4","titulo":"Identificar abundancia para apalancarse","corto":"Abundancia","tiempo":"Tiempo en equipo 40 a 60 minutos.","indicaciones":"Dónde hay abundancia y cómo nos vamos a apalancar de esa abundancia. A la izquierda, lo que sobra o ya existe; a la derecha, la oportunidad que nos abre.","orden":["abundancias"],"secciones":{"abundancias":{"titulo":"Abundancias y oportunidades","tipo":"pares","cols":["Abundancias (ej.: tecnologías exponenciales)","Oportunidad que genera"],"colorA":"lila","colorB":"lila","ancho":"full","ayuda":"Escribí la oportunidad que genera.","items":[{"id":"a1","t":"Patrulleros que ya recorren toda la ciudad, todos los días.","m":"Relevar la basura acumulada sin sumar un solo kilómetro."},{"id":"a2","t":"Cámaras de los patrulleros, que hoy solo se usan para seguridad.","m":"Darle un segundo uso al video: detectar basura acumulada."},{"id":"a3","t":"GPS en los recorridos.","m":"Ubicar cada acumulación de basura en el mapa."},{"id":"a4","t":"Modelos de visión que reconocen objetos en imágenes.","m":"Detectar la basura acumulada de forma automática y armar un mapa de calor por zona y horario."},{"id":"a5","t":"Optimizadores de rutas.","m":"Rutas que priorizan los puntos críticos y llenan cada camión."}]}}},"m5a":{"num":"5A","titulo":"Diseñar Business Model Canvas","corto":"Business Model","layout":"bmc","tiempo":"","indicaciones":"Completar el lienzo de modelo de negocios: a quién le servimos, qué le ofrecemos, cómo llegamos, qué necesitamos y cómo se sostiene.","orden":["socios","actividades","recursos","propuesta","relacion","canales","segmentos","costos","ingresos"],"secciones":{"socios":{"titulo":"Socios clave","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Quiénes nos ayudan","items":[{"id":"so1","t":"La fuerza de seguridad que opera los patrulleros (recorridos y cámaras)."}]},"actividades":{"titulo":"Actividades clave","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Qué tenemos que hacer bien","items":[{"id":"ac1","t":"Detectar basura acumulada con un modelo de visión."},{"id":"ac2","t":"Armar el mapa de calor por zona y horario."},{"id":"ac3","t":"Generar rutas optimizadas para cada turno."}]},"recursos":{"titulo":"Recursos clave","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Qué necesitamos tener","items":[{"id":"re1","t":"Cámaras y GPS de los patrulleros."},{"id":"re2","t":"Modelo de visión."},{"id":"re3","t":"Optimizador de rutas."}]},"propuesta":{"titulo":"Propuesta de valor","tipo":"postits","color":"naranja","ancho":"mitad","ayuda":"Qué problema resolvemos","items":[{"id":"pv1","t":"Rutas de recolección según dónde está la basura de verdad."},{"id":"pv2","t":"Menos kilómetros y camiones más llenos."},{"id":"pv3","t":"Puntos críticos atendidos antes de que desborden."}]},"relacion":{"titulo":"Relación con clientes","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Cómo nos vinculamos","items":[{"id":"rc1","t":"El área de recolección usa el mapa para planificar cada turno."}]},"canales":{"titulo":"Canales","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"El artifact no lo dice. ¿Cómo llegamos al cliente?","items":[]},"segmentos":{"titulo":"Segmentos de clientes","tipo":"postits","color":"verde","ancho":"mitad","ayuda":"Para quién creamos valor","items":[{"id":"sc1","t":"Área de recolección de la Municipalidad."},{"id":"sc2","t":"Empresa concesionaria de recolección."}]},"costos":{"titulo":"Estructura de costos","tipo":"postits","color":"rosa","ancho":"mitad","ayuda":"El artifact no tiene costos. Sumalos con el equipo.","items":[]},"ingresos":{"titulo":"Fuentes de ingreso","tipo":"postits","color":"celeste","ancho":"mitad","ayuda":"El artifact no define cómo se cobra.","items":[]}}},"m5b":{"num":"5B","titulo":"Diseñar Value Proposition Canvas","corto":"Propuesta de valor","layout":"vpc","tiempo":"Tiempo en equipo 40 minutos.","indicaciones":"A la derecha, el cliente: qué trabajos tiene que hacer, qué le frustra y qué le alegraría. A la izquierda, nuestra propuesta: qué ofrecemos, qué frustraciones alivia y qué alegrías crea.","orden":["productos","creadores","aliviadores","trabajos","alegrias","frustraciones","cadena"],"secciones":{"productos":{"titulo":"Productos y servicios","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Qué ofrecemos","items":[{"id":"pr1","t":"Mapa de calor de la demanda por zona y horario."},{"id":"pr2","t":"Rutas optimizadas para cada turno."},{"id":"pr3","t":"Detección de basura con las cámaras de los patrulleros."}]},"creadores":{"titulo":"Creadores de alegrías","tipo":"postits","color":"verde","ancho":"mitad","ayuda":"Qué alegrías creamos","items":[{"id":"cr1","t":"Litros de combustible y CO₂ evitados."},{"id":"cr2","t":"Segundo uso del patrullaje, sin kilómetros extra."}]},"aliviadores":{"titulo":"Aliviadores de frustraciones","tipo":"postits","color":"rosa","ancho":"mitad","ayuda":"Qué frustraciones aliviamos","items":[{"id":"al1","t":"Rutas dinámicas según la demanda, en lugar de rutas fijas."},{"id":"al2","t":"Más carga por viaje."},{"id":"al3","t":"Menos vueltas innecesarias."},{"id":"al4","t":"Atención más temprana de los puntos críticos."}]},"trabajos":{"titulo":"Trabajos del cliente","tipo":"postits","color":"amarillo","ancho":"mitad","ayuda":"Qué tiene que hacer el cliente","items":[{"id":"tr1","t":"Recolectar la basura de toda la ciudad."},{"id":"tr2","t":"Planificar las rutas y los turnos."}]},"alegrias":{"titulo":"Alegrías","tipo":"postits","color":"verde","ancho":"mitad","ayuda":"Qué le alegraría","items":[{"id":"ag1","t":"Usar menos camiones.","nota":"Del mapa de empatía"},{"id":"ag2","t":"Emitir menos dióxido de carbono.","nota":"Del mapa de empatía"},{"id":"ag3","t":"Gastar menos en combustible.","nota":"Del mapa de empatía"}]},"frustraciones":{"titulo":"Frustraciones","tipo":"postits","color":"rosa","ancho":"mitad","ayuda":"Qué le frustra","items":[{"id":"fr1","tag":"Residuos","t":"Rutas fijas por calendario, no por la cantidad real de basura."},{"id":"fr2","tag":"Residuos","t":"Camiones que vuelven a media carga."},{"id":"fr3","tag":"Residuos","t":"Desbordes y basurales en los puntos críticos."},{"id":"fr4","tag":"Movilidad","t":"Kilómetros, combustible, horas de chofer y emisiones de más."},{"id":"fr5","tag":"Movilidad","t":"Patrulleros que recorren la ciudad con cámaras que solo miran el delito."},{"id":"fr6","tag":"Datos","t":"Nadie sabe dónde está la basura: se decide a ciegas."}]},"cadena":{"titulo":"Cómo se encadena el problema","tipo":"pasos","ancho":"full","ayuda":"Cada eslabón lleva al siguiente","items":[{"id":"ch1","t":"No hay datos sobre dónde se acumula la basura."},{"id":"ch2","t":"Las rutas se fijan por costumbre o calendario."},{"id":"ch3","t":"Los camiones recorren de más y salen con poca carga."},{"id":"ch4","t":"Mientras tanto, los puntos críticos se desbordan. Resultado: más combustible, más costos, peor servicio y una ciudad más sucia."}]}}},"m6":{"num":"6","titulo":"Definir el cronograma para aplicar el proceso ágil Exo Launchpad","corto":"Cronograma","tiempo":"Tiempo en equipo 30 minutos.","indicaciones":"Definir cuándo hacemos cada ceremonia del proceso ágil durante el desarrollo de la startup.","orden":["crono","que"],"secciones":{"crono":{"titulo":"Cronograma","tipo":"pares","cols":["Actividad","Cronograma"],"colorA":"amarillo","colorB":"verde","ancho":"full","ayuda":"El artifact no tiene cronograma. Definí días y horarios.","items":[{"id":"cg1","t":"Sprint Planning","m":""},{"id":"cg2","t":"Daily meetings (días y horarios)","m":""},{"id":"cg3","t":"Sprint Review","m":""},{"id":"cg4","t":"Retrospective","m":""}]},"que":{"titulo":"Qué es cada una","tipo":"qa","ancho":"full","ayuda":"Definiciones","items":[{"id":"q1","t":"Sprint Planning","m":"Se arma el sprint backlog en Trello con tres estados: TO DO (pendientes), WIP (en curso) y DONE (terminadas). Lo mantiene el equipo."},{"id":"q2","t":"Daily meetings","m":"Todos los días, 15 minutos como máximo. Cada uno responde: qué hice desde la última reunión, qué voy a hacer y qué impedimentos tengo."},{"id":"q3","t":"Sprint Review","m":"El último día del sprint se muestran las tareas terminadas al coach, que propone ajustes al product backlog."},{"id":"q4","t":"Retrospective","m":"El equipo analiza cómo trabajó y qué obstáculos le impiden avanzar, para irlos eliminando."}]}}},"m7":{"num":"7","titulo":"Realizar un bosquejo o demo del producto","corto":"Demo","tiempo":"Tiempo en equipo máximo 8 horas.","indicaciones":"Usar una demo para que el cliente visualice la solución y validar que resuelve su problema. En software sirven las maquetas, los videos, un mockup en Figma o una landing page.","orden":["comparar","pasos","pantallas","pautas","preguntas","aclaracion"],"secciones":{"comparar":{"titulo":"Hoy vs. con la solución","tipo":"comparar","ancho":"full","ayuda":"Cómo funciona hoy y cómo funcionaría","items":[{"id":"cp1","tag":"Hoy","t":"La ruta pasa por todos los puntos, llenos o vacíos, y los puntos críticos esperan igual que los demás."},{"id":"cp2","tag":"Con la solución","t":"Un mapa de calor marca la demanda y la ruta va directo a los puntos que importan: menos recorrido y camiones más llenos."}]},"pasos":{"titulo":"Qué muestra la demo, paso a paso","tipo":"pasos","ancho":"mitad","ayuda":"Los pasos de la solución","items":[{"id":"ps1","t":"Los patrulleros hacen su recorrido de siempre, con sus cámaras."},{"id":"ps2","t":"Un modelo de visión detecta basura acumulada y la ubica por GPS."},{"id":"ps3","t":"Se arma un mapa de calor de la demanda por zona y horario."},{"id":"ps4","t":"Un optimizador genera rutas que priorizan esos puntos y llenan cada camión."}]},"pantallas":{"titulo":"Pantallas de la demo","tipo":"postits","color":"blanco","ancho":"mitad","numerar":true,"ayuda":"Una pantalla por post-it","items":[{"id":"pa1","tag":"Propuesta","t":"Mapa de calor de la demanda por zona y horario.","nota":"Armada a partir de los pasos del artifact"},{"id":"pa2","tag":"Propuesta","t":"Ruta sugerida para el turno, priorizando los puntos críticos.","nota":"Armada a partir de los pasos del artifact"},{"id":"pa3","tag":"Propuesta","t":"Resultado del turno: km por ruta, % de capacidad usada, litros y CO₂ evitados.","nota":"Armada con las métricas del artifact"}]},"pautas":{"titulo":"Pautas de la demo","tipo":"reglas","ancho":"mitad","ayuda":"Pautas","items":[{"id":"pt1","t":"Tiene que ser realizable."},{"id":"pt2","t":"Tiene que parecer real."},{"id":"pt3","t":"Tiene que minimizar el desperdicio."},{"id":"pt4","t":"Tiene que usar datos de aspecto real."}]},"preguntas":{"titulo":"Preguntas que nos van a hacer","tipo":"circulos","ancho":"mitad","ayuda":"Pregunta y respuesta corta","items":[{"id":"fq1","t":"¿Y la privacidad?","m":"Solo se procesa la detección de residuos, sin guardar caras ni patentes."},{"id":"fq2","t":"¿Zonas sin patrullero?","m":"Los camiones recolectores pueden llevar cámaras y relevar su ruta."},{"id":"fq3","t":"¿Quién lo usa?","m":"El área de recolección municipal o la concesionaria, para planificar cada turno."}]},"aclaracion":{"titulo":"Aclaración","tipo":"nota","ancho":"full","ayuda":"Notas al pie","items":[{"id":"ac1","t":"Los mapas son esquemáticos, no datos reales."}]}}},"m8":{"num":"8","titulo":"Métricas de problema","corto":"Métricas","tiempo":"Tiempo en equipo 20 minutos.","indicaciones":"Definir qué métricas de problema vamos a usar y qué valores tienen que alcanzar para dar por validada la etapa problema/solución.","orden":["ejemplo","metricas"],"secciones":{"ejemplo":{"titulo":"Ejemplo","tipo":"nota","ancho":"full","ayuda":"Ejemplo","items":[{"id":"ej1","t":"Cantidad de entrevistas de problema a realizar (mínimo 10) y resultado esperado de éxito (el 80 % comparte el problema)."}]},"metricas":{"titulo":"Métricas","consigna":"El artifact define qué medir, pero no las metas. Completá la columna Meta con el equipo.","tipo":"tabla","cols":["Problema","Mejora","Métrica","Meta"],"ancho":"full","ayuda":"Una fila por métrica","items":[{"id":"mt1","c":["Rutas fijas","Rutas dinámicas según demanda","Km por ruta",""]},{"id":"mt2","c":["Camiones a media carga","Más carga por viaje","% de capacidad usada",""]},{"id":"mt3","c":["Combustible de más","Menos vueltas innecesarias","Litros y CO₂ evitados",""]},{"id":"mt4","c":["Desbordes y basurales","Atención más temprana","Puntos críticos detectados y resueltos",""]},{"id":"mt5","c":["Patrullaje desaprovechado","Segundo uso sin km extra","Km de patrullaje que generan datos",""]}]}}}});
   function localDb() {
-    const KEY = "lienzo-mesa24-v1"; let store = null;
+    const KEY = "lienzo-mesa24-v2"; let store = null;
     try { store = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
     if (!store || typeof store !== "object") store = clone(DATOS);
     for (const k in DATOS) if (!store[k]) store[k] = clone(DATOS[k]);

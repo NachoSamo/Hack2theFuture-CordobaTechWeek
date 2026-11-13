@@ -3,7 +3,7 @@
 > Tablero vivo. Un agente que entra al repo lee esto primero para saber **qué pasa ahora**, sin
 > recorrer el decision log entero. Cada persona actualiza su fila al cerrar una sesión.
 
-**Actualizado:** 12/11 21:21 · Samo
+**Actualizado:** 12/11 22:01 · Samo
 **Fase:** 0 · Explorar
 **Vertical / problema:** movilidad (equilibrio de emisiones): un móvil para autosanar la ciudad, el patrullaje urbano detecta con visión por computadora todo lo que requiere atención → [`docs/producto/dominio-del-problema.md`](docs/producto/dominio-del-problema.md)
 **Próximo checkpoint:** problema e idea congelados, 12/11 12:30 (ver [`evento.md`](evento.md#checkpoints))
@@ -15,7 +15,7 @@
 
 | Persona | En qué está | Hasta cuándo | Bloqueado por |
 |---|---|---|---|
-| Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias). Lienzos oficiales del día 1 digitalizados en el [mural](proceso/mural-mesa24.html) con la propuesta del coach lean; sigue repartir dueños y pasar el POV, las ideas y el test 3+3 a `proceso.md` | Checkpoint de la tarde | Dueños de nodo (en persona) |
+| Samo | Arquitectura rehecha sobre el pivot (todas las fuentes, aviso directo, consolidación de incidencias). Los 16 lienzos del [mural](proceso/mural-mesa24.html) sincronizados con Urbis (12/11 22:01) y `proceso.md` con POV, ideas y test 3+3; sigue repartir dueños | Checkpoint de la tarde | Dueños de nodo (en persona) |
 | Lauti | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Diego; flujo y pendientes diferenciados | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Diego | [Guía de interfaz e identidad](../guia-interfaz-identidad.md) para iterar landing y MVP, junto con Lauti; estado del prototipo documentado | Revisión de landing/MVP con Juani y Samo | Criterios de gravedad, domos y contratos por alinear |
 | Juani | Marca Urbis y slogan «Detección urbana desde el patrullaje». Landing, vista previa de tickets y propuesta de video. Prototipo COYS con mapa 3D, filtros en la barra del mapa, detalle bajo demanda con foto ilustrativa, zonas de calor y rutas para contenedores rebalsados, y llegada automática de tickets simulados | Revisión de UX con el equipo | Contratos de tickets, avisos y cobertura por acordar |
@@ -42,6 +42,7 @@ Se cierran en el kickoff o en el checkpoint indicado. Al cerrarlas, pasan al dec
 Cambios que afectan a otra persona: un contrato, un archivo ajeno, un paso de la demo.
 Formato: `hora · quién · qué cambió · a quién afecta`.
 
+- 22:01 · Samo · Mural sincronizado con el contexto vigente de Urbis: los lienzos oficiales reemplazan el papel (la foto queda enlazada); la empatía se divide en municipio y vecino; los agregados (PTM, Team Canvas, Mercado, Abundancia, BMC, VPC, Cronograma, Demo con la UI actual y Métricas) pasan al pivot. Decision log 22:01: PTM «Ciudades que se autosanen», mercado resegmentado, metas del piloto, costos, título «Mismo recorrido, más sustentabilidad» y **hardware: suma un módulo de cómputo chico por móvil**. Ojo: el speech y el deck dicen «costo marginal cero»; los lienzos ahora dicen que suma solo cómputo chico. `proceso.md` con POV, 11 ideas y la prueba del test 3+3 · a Oli y Gina (revisar «costo marginal cero» en el pitch) y a Juani (marca y demo en los lienzos)
 - 21:21 · Samo · `proceso/mural-mesa24.html` ahora tiene dos categorías: "Lienzos oficiales" (02 Actores, 03 Empatía, 04 Problema, 05 Ideas, 07 Ficha, 08 Testear; transcripción fiel del papel + propuesta del coach lean) y "Lienzos agregados" (las 9 Exo de antes, sin cambios). Fotos de los papeles en `proceso/fotos/`. Decision log 21:21: modelo de financiamiento (convenio de piloto para monitorear el PMUS, financiado por la UE con 600.000 €), el pivot también sale del test 3+3, se mantienen las fuentes, personas vecino + municipio, título vigente. Nueva conversación en `mentores.md` (Mesa 25 + experto) · a Oli y Gina (financiamiento y evidencia del test para el pitch)
 - 20:30 · Samo · Nuevo `docs/producto/encaje-movilidad-urbana-ue.md`: por qué el producto es movilidad sostenible según la UE (4 de los 8 pilares del Urban Mobility Framework, con límites), apalancamiento (credibilidad, mercado en Europa, fondos, diferenciación), una frase propuesta para el speech y respuestas para el jurado. No cambia contratos ni la demo · a Oli y Gina (pitch)
 - 19:40 · Oli · Speech v5 y deck: primera frase con el problema, "por qué es movilidad" (bloque 8), sustentabilidad ambiental + económica (bloque 9) y usuario municipio + vecino (slide 4). Suma unas 60 palabras: cronometrar · a Gina y a quien presente
