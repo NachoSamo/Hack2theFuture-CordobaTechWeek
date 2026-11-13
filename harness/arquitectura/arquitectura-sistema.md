@@ -49,7 +49,7 @@ La recepción y las actualizaciones que informe la entidad se vinculan a la inci
 
 ### Catálogo de referencia y niveles de gravedad
 
-La gravedad se asigna mediante **reglas determinísticas por `type_problem` en el hub** (sin LLM por evento). La fuente envía `severity: null`.
+La gravedad se asigna mediante **reglas determinísticas por `type_problem` en el hub** (sin LLM por evento). El payload de la fuente **no incluye el campo `severity`**.
 
 1. **Gestión de Residuos (`residuos`):**
    - `contenedor_vacio` → `bajo` (Normal / Sin despacho)
@@ -69,18 +69,16 @@ La gravedad se asigna mediante **reglas determinísticas por `type_problem` en e
 
 ## 2. Componentes del Sistema
 
-### Componente 1: Captura y detección
-- **Entrada inicial:** frames preparados y metadatos de ubicación, fecha/hora y fuente simulados/mockeados. La integración con cámaras de móviles, domos y GPS reales será posterior.
-- **Modelo y modo del MVP:** enfoque híbrido sobre frames preparados: **YOLO11n real** en categorías con pesos disponibles (residuos/contenedores y baches) + **YOLO-World (open-vocabulary)** o clasificador auxiliar para categorías nuevas (`poste_caido`, `luminaria_apagada_rota`, `semaforo_danado`), manteniendo **resultados precargados como respaldo identificado**.
-- **Salida:** evento de detección con la estructura definida en la sección 3.1 y su frame JPEG anotado con el recuadro de detección.
-- **Responsabilidad del emisor:** producir y entregar eventos vía HTTPS `multipart/form-data` (JSON + JPEG juntos); retener en cola local lo pendiente y reintentar conservando el mismo `event_id` hasta que el hub confirme la recepción de ambos.
-- **Disparo y umbrales de referencia:** `conf > 0.65` (referencia) y consumo Edge 5–10 W (estimación de referencia para hardware real futuro).
-- **Preparación de la evidencia:** JPEG con el recuadro de la detección dibujado sobre el frame, sin pixelado (límite orientativo ≤ 1–2 MB). No se transmite video continuo.
+### Componente 1: Captura y detección (Mockeado en MVP)
+- **Modo en el MVP:** **toda la parte de captura y detección está mockeada** (emisor simulado que toma frames JPEG preparados y metadatos precargados para disparar eventos reales hacia el hub). Sirve para definir y validar la arquitectura de ingesta, consolidación, consulta y derivación sin depender de cámaras reales ni inferencia en vivo; la integración con YOLO11n/YOLO-World y cámaras reales será posterior.
+- **Salida del emisor mockeado:** evento de detección (sección 3.1, sin `severity`) y su frame JPEG anotado con el recuadro de detección.
+- **Responsabilidad del emisor:** enviar eventos vía HTTPS `multipart/form-data` (JSON + JPEG juntos); retener en cola local lo pendiente y reintentar conservando el mismo `event_id` hasta que el hub confirme la recepción de ambos.
+- **Referencia para fase posterior:** `conf > 0.65`, consumo Edge 5–10 W, JPEG anotado sin pixelado (≤ 1–2 MB). No se transmite video continuo.
 
 ### Componente 2: Ingesta y consolidación en el hub
 - **Entrada:** solicitud HTTPS `multipart/form-data` en `POST /api/v1/telemetry/events` con evento JSON (sección 3.1) y frame JPEG anotado.
 - **Control de reenvíos (idempotencia):** reconocer `event_id` ya recibidos para no registrar otra observación, no duplicar adjuntos ni aumentar contadores. El hub confirma aceptación únicamente después de guardar ambos.
-- **Asignación de gravedad:** reglas determinísticas por `type_problem` en el hub (sin LLM); `severity` entra como `null` desde el emisor.
+- **Asignación de gravedad:** reglas determinísticas por `type_problem` en el hub (sin LLM); el evento de entrada no incluye `severity`.
 - **Consolidación:** asociar por `type_problem`, proximidad (`15–20 m` iniciales) e incidencia `activa`. La ventana de `6 h` se usa para buscar observaciones recientes, sin crear automáticamente una nueva incidencia si vence el plazo mientras la incidencia siga activa.
 - **Persistencia:** PostgreSQL/PostGIS para observaciones, incidencias y referencias a evidencia; carpeta persistente en el servidor para los archivos JPEG durante el MVP, detrás de una interfaz de almacenamiento desacoplada.
 - **Conteos y pasadas:** `observation_count` cuenta observaciones distintas. `pass_id` no es obligatorio en el emisor; `pass_count` se calcula en el hub como **estimado** agrupando observaciones por `device_id` e intervalo temporal configurable (ej. 30 min).
@@ -89,14 +87,14 @@ La gravedad se asigna mediante **reglas determinísticas por `type_problem` en e
 - **Entrada:** incidencias consolidadas del hub.
 - **Endpoints de consulta:**
   - `GET /api/v1/analytics/heatmap` → GeoJSON para mapa de calor; **1 contribución por incidencia activa** ponderada por gravedad (sin multiplicar por cantidad de frames).
-  - `GET /api/v1/incidents` → listado paginado filtrable por tipo (`category`/`type_problem`), gravedad (`severity`), estado (`status`), entidad (`recipient_id`) y fecha (`desde`/`hasta`).
-  - `GET /api/v1/incidents/{incident_id}` → detalle completo de la incidencia y lista de referencias (`evidence_ids`).
-  - `GET /api/v1/evidence/{evidence_id}` → recuperación controlada del JPEG anotado.
+  - `GET /api/v1/incidents` → **listado de incidencias consolidadas** (una entrada por problema único, no por frame), paginado y filtrable por tipo (`category`, `type_problem`), gravedad (`severity`), estado (`status`), entidad (`recipient_id`) y rango de fechas (`desde`, `hasta`). Sirve para poblar tablas/bandejas del panel sin traer las imágenes binarias.
+  - `GET /api/v1/incidents/{incident_id}` → **detalle de una incidencia puntual**: devuelve el objeto completo de la sección 3.2, incluyendo el arreglo `evidence_ids` con todas las capturas asociadas a ese problema.
+  - `GET /api/v1/evidence/{evidence_id}` → **recuperación de la evidencia visual**: devuelve el archivo binario `image/jpeg` (frame con recuadro de detección, sin pixelado) almacenado en la carpeta persistente del servidor. El frontend o el receptor de tickets lo consumen usando el `evidence_id` obtenido en `/incidents/{incident_id}` o `evidence_ref`, sin exponer rutas internas de disco.
 - **Consumidores:** interfaz del mapa y entidades que consulten la API. La consulta y la derivación de tickets son salidas independientes del hub.
 
 ### Componente 4: Derivación de Tickets
 - **Entrada:** incidencia consolidada y registrada en el hub.
-- **Proceso:** resolver destinatario mediante tabla configurable `(type_problem, jurisdiccion) → recipient_id`. Para el MVP: **1 entidad destinataria por incidencia** y un **receptor HTTP simulado**.
+- **Proceso:** calcular `jurisdiccion` en el hub a partir de `(lat, lon)` mediante polígono o *bounding-box* simple (ej. `cordoba_centro`, `cordoba_norte`, `cordoba_sur`, o `cordoba_capital` por defecto) y resolver destinatario en la tabla configurable `(type_problem, jurisdiccion) → recipient_id`. Para el MVP: **1 entidad destinataria por incidencia** y un **receptor HTTP simulado**.
 - **Salida:** ticket con la estructura de la sección 3.3; `ticket_id` estable ante reintentos e `incident_id` vinculado. Si el receptor necesita la foto, recibe una referencia controlada (`evidence_ref`) sin adjuntar el binario.
 - **Seguimiento y estados:**
   - **Estados de ticket:** `pendiente_envio | fallido | recibido | en_atencion | resuelto`.
@@ -127,7 +125,6 @@ Representa una observación enviada por la fuente junto al frame JPEG anotado v�
   "detection": {
     "category": "residuos",
     "type_problem": "contenedor_desbordado",
-    "severity": null,
     "confidence": 0.89
   }
 }

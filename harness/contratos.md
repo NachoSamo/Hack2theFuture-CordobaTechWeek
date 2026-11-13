@@ -53,19 +53,19 @@ Contratos acordados para la estructura inicial mockeada del hub (alineados con [
   "detection": {
     "category": "residuos",
     "type_problem": "contenedor_desbordado",
-    "severity": null,
     "confidence": 0.89
   }
 }
 ```
+*(Nota: `severity` no se envía desde la fuente; lo asigna el hub por regla determinística según `type_problem`.)*
 - **Response (`201` / `200` tras guardar JSON e imagen):** `{ "status": "accepted", "event_id": "evt-demo-001", "incident_id": "inc-demo-001", "evidence_id": "evd-demo-001", "deduplicated": false }`
 - **Si falla:** `{ "status": "error", "code": "...", "message": "..." }` (sin 500 no controlado).
 
 ### 2. Consultas de incidencias, mapa de calor y evidencia
-- `GET /api/v1/analytics/heatmap?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → GeoJSON con **1 contribución por incidencia activa** ponderada por gravedad.
-- `GET /api/v1/incidents?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → listado de incidencias consolidadas (`pass_count` marcado como estimado).
-- `GET /api/v1/incidents/{incident_id}` → detalle de incidencia + arreglo `evidence_ids`.
-- `GET /api/v1/evidence/{evidence_id}` → binario `image/jpeg` con acceso controlado.
+- `GET /api/v1/analytics/heatmap?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → GeoJSON con **1 contribución por incidencia activa** ponderada por gravedad (no multiplica por frames).
+- `GET /api/v1/incidents?category=&type_problem=&severity=&status=&recipient_id=&desde=&hasta=` → listado paginado de incidencias consolidadas (`{ "items": [...], "total": N }`, `pass_count` marcado como estimado; sin binarios).
+- `GET /api/v1/incidents/{incident_id}` → detalle de una incidencia puntual + `evidence_ids` (ej. `["evd-demo-001"]`) para pedir sus fotos.
+- `GET /api/v1/evidence/{evidence_id}` → devuelve el binario `image/jpeg` (frame anotado guardado en carpeta persistente, sin exponer rutas internas del servidor).
 
 ### 3. Derivación y actualización de ticket (receptor simulado en MVP)
 - **Salida hacia receptor (`POST <webhook_simulado>`):** payload de ticket (`ticket_id`, `incident_id`, `recipient_id`, `evidence_ref`, `incident`) con `ticket_id` estable en reintentos.
