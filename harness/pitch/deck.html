@@ -74,6 +74,7 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 @keyframes fillt{to{transform:scaleY(1)}}
 .fuelbox{position:relative;z-index:2;text-align:center;padding:56px 90px 44px;border-radius:28px;background:rgba(17,25,28,.9);border:1px solid var(--line);box-shadow:0 0 0 40px rgba(17,25,28,.35)}
 .fuelbox .mega{font-size:290px}
+.fuelnote{font:400 22px var(--mono);color:var(--muted);margin:30px 0 0;max-width:1100px}
 .legend{font:400 22px var(--mono);color:var(--muted);margin:40px 0 0}
 @media (prefers-reduced-motion:reduce){.tk .fl{transform:none}.slide.on .tk .fl{animation:none}}
 @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
@@ -126,9 +127,10 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 <section class="slide fuel">
   <div class="tanks" data-tanks aria-hidden="true"></div>
   <div class="fuelbox">
-    <div class="mega">2.000.000</div>
-    <p class="sub">litros de combustible por año recorren Córdoba</p>
+    <div class="mega">5.600.000</div>
+    <p class="sub">litros de combustible por año, unos <span class="lima">$12.000 millones</span>,</p>
     <p class="sub lima" style="margin-top:14px">monitoreando solo seguridad.</p>
+    <p class="fuelnote">Estimación: 770 móviles de patrullaje (700 camionetas de la Policía + 70 de la Guardia Urbana) × 20 L por día × $2.100 por litro</p>
   </div>
 </section>
 
@@ -147,7 +149,7 @@ h2{font-size:120px;line-height:1;letter-spacing:-.04em;margin:0;font-weight:700}
 <!-- 4 · A quién le pasa -->
 <section class="slide">
   <p class="sub muted" style="margin:0 0 50px">¿A quién le pasa?</p>
-  <h2 style="font-size:96px">Al <span class="lima">municipio</span>, que gasta millones de pesos en combustible.</h2>
+  <h2 style="font-size:96px">Al <span class="lima">municipio</span>, que gasta más de $1.000 millones por año en combustible.</h2>
   <h2 style="font-size:96px;margin-top:60px">Al <span class="lima">vecino</span>, que convive con incidentes evitables todos los días.</h2>
 </section>
 
@@ -208,7 +210,7 @@ const IMGS={movil:'data:image/webp;base64,UklGRqCvAwBXRUJQVlA4WAoAAAAwAAAA/wUA/w
 document.querySelectorAll('[data-img]').forEach(i=>i.src=IMGS[i.dataset.img]);
 const logo=`<rect width="96" height="96" rx="20" fill="#11191C"/><g stroke="#11191C" stroke-width="2" stroke-linejoin="round"><path d="M10 41 46 24v36L10 51Z" fill="#53666B"/><path d="M54 27 86 42v11L54 61Z" fill="#34464A"/><path d="M23 33 49 14v49L23 56Z" fill="#EAF0F0"/><path d="M49 14 72 29v26L49 63Z" fill="#839493"/></g><g fill="none" stroke="#11191C" stroke-width="2" stroke-linecap="round"><path fill="none" stroke="#11191C" stroke-width="2" d="m30 36 12-8m-12 16 12-5m-12 13 12-2m13-21 10 6m-10 5 10 3m-10 8 10-1"/></g><g fill="none" stroke="#DFF691" stroke-linecap="round"><path fill="none" stroke="#DFF691" d="M9 62c12 6 23 17 42 17 17 0 31-9 25-15-3-3-8-3-11-5 6-2 13-4 20-5" stroke-width="4"/><path fill="none" stroke="#DFF691" d="M17 77c8 5 15 7 23 8m-28-3 8 4" stroke-width="2"/></g><g stroke="#11191C" stroke-width="2.4" stroke-linejoin="round"><path d="M60 26v9l9 5" fill="none" stroke="#11191C" stroke-width="6" stroke-linecap="round"/><path d="M60 26v9l9 5" fill="none" stroke="#DFF691" stroke-linecap="round"/><path d="m58 19 17-8 14 8-17 9Z" fill="#EAF0F0"/><path d="m58 19 14 9v12l-14-9Z" fill="#839493"/><path d="m72 28 17-9v12l-17 9Z" fill="#DFF691"/><ellipse cx="81" cy="29" rx="4.4" ry="4.8" fill="#11191C"/><circle cx="82" cy="28" r="1.45" fill="#EAF0F0" stroke="none"/></g><circle cx="85" cy="54" r="3" fill="#DFF691"/>`;
 document.querySelectorAll('[data-logo]').forEach(s=>s.innerHTML=logo);
-// Gancho: 40 bidones de 50.000 litros = 2.000.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
+// Gancho: 40 bidones de 140.000 litros = 5.600.000; se llenan en diagonal desde abajo a la izquierda (~1,5 s)
 const CAN='M8 20H38L52 30V74Q52 78 48 78H12Q8 78 8 74ZM12 20V10Q12 6 16 6H28Q32 6 32 10V20H27V12H17V20ZM44 23L51 12L57 16L51 27Z';
 document.querySelectorAll('[data-tanks]').forEach(t=>{
   let h=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="canclip"><path d="${CAN}"/></clipPath></defs></svg>`;

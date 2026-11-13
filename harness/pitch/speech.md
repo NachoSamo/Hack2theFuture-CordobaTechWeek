@@ -33,11 +33,12 @@ Ahora mismo, mientras estamos acá, hay un patrullero dando vueltas por Córdoba
 `[pausa]`
 Y está viendo cosas que **nadie va a registrar**.
 
-### 2 · Gancho: 2.000.000 de litros (0:10–0:27)
+### 2 · Gancho: 5.600.000 litros (0:10–0:27)
 
-Piensen en este número: **dos millones**.
-Dos millones de litros de combustible por año recorren nuestra ciudad. Patrulleros y móviles circulan
-todo el día con las cámaras encendidas, detectando **solo una cosa**: la seguridad.
+Piensen en este número: **cinco millones y medio**.
+Estimamos que cinco millones y medio de litros de combustible por año, unos **doce mil millones de
+pesos**, se van en patrullar Córdoba. Patrulleros y móviles circulan todo el día con las cámaras
+encendidas, detectando **solo una cosa**: la seguridad.
 `[pausa]`
 
 ### 3 · Problemas: la basura (0:27–0:40)
@@ -53,7 +54,7 @@ caídos. Y casi siempre, el primero en enterarse es el vecino.
 ### 5 · ¿A quién le pasa? (0:50–1:05)
 
 ¿A quién le pasa esto?
-Al **municipio**, que gasta millones de pesos en combustible.
+Al **municipio**, que gasta más de mil millones de pesos por año en combustible.
 Y al **vecino**, que convive con incidentes evitables todos los días.
 `[pausa]`
 Los ojos ya están en la calle. Lo que falta es que esa mirada sirva para algo más.
@@ -78,7 +79,8 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 ### 7 · ODS involucrados (1:55–2:05)
 
-Así, cada litro rinde más, y aportamos a cinco Objetivos de
+Así, cada litro rinde más, ayudamos a **equilibrar la huella de carbono** que emiten las ciudades,
+y aportamos a cinco Objetivos de
 Desarrollo Sostenible: ciudades sostenibles, consumo responsable, acción por el clima, innovación y
 alianzas.
 
@@ -148,10 +150,21 @@ Gracias.
   - Postes: Perfil, 7/8/2026. Defensa Civil recibió 1.400 llamados por una tormenta de viento: 198 por
     columnas o postes caídos o en riesgo, y 23 por cables colgando. Verificado leyendo la nota. La nota
     no habla de electrocución: "riesgo eléctrico" es inferencia nuestra (EPEC pide no tocar cables caídos).
-- **Si preguntan por el dato:**
-  - Los 2 millones de litros son del Ministerio de Seguridad provincial (2023) y no separan el
-    patrullaje de otros usos.
-  - Son mezclas E17 (83 % nafta) y B20 (80 % gasoil).
+- **Si preguntan por el dato (slide 2 y slide 5): es una estimación nuestra, decirlo así.**
+  - **Flota (con fuente):** 700 camionetas de la Policía de Córdoba entregadas en 2024 y 2025, para
+    capital e interior ([Cadena 3, 9/10/2025](https://www.cadena3.com/noticia/sociedad/cordoba-refuerza-seguridad-con-400-camionetas-y-nueva-unidad-especial-policial_472813)),
+    más 70 móviles de la Guardia Urbana municipal al lanzarse en 2024 (La Voz). Total: 770.
+  - **Consumo (supuesto):** 20 litros por día por móvil, unos 200 km de patrullaje a 10 L cada 100 km.
+    No hay dato oficial: es el número más débil.
+  - **Precio (con fuente):** $2.100 por litro, nafta súper (Infobae, 10/11/2026). Las camionetas son
+    diésel, que es más caro, así que el monto es conservador.
+  - **Cuentas:** 770 × 20 × 365 = 5,6 millones de litros; × $2.100 = unos $11.800 millones por año.
+    El municipio (solo la Guardia Urbana): 70 × 20 × 365 = 511.000 litros, unos $1.070 millones.
+  - **Huella de carbono:** a unos 2,6 kg de CO₂ por litro de gasoil, son unas 14.600 toneladas de CO₂
+    por año.
+  - **Corrección del 12/11:** el dato anterior de 2 millones de litros (La Voz de San Justo,
+    3/12/2024) era biocombustible usado en 2023 por más de 1.800 vehículos oficiales provinciales y
+    municipales, no solo patrullaje. Ya no se usa.
   - Los tickets del prototipo son simulados.
 - **Prototipo:** se levanta con `npm run dev` en `frontend/`. Al abrir la página, la secuencia corre
   sola (ticket, avistamiento, aviso y pasada de verificación), y recargar la reinicia. Por eso conviene

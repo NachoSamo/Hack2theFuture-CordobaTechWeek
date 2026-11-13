@@ -49,15 +49,18 @@ Detalle en [`../research/cualitativo/oli/mentoria-residuos.md`](../research/cual
 
 ## Gancho
 
-> "¿Sabían que Córdoba gasta 2 millones de litros por año solo en patrullar?"
+> "Piensen en este número: cinco millones y medio." Estimamos 5,6 millones de litros de combustible por
+> año, unos $12.000 millones, para patrullar Córdoba mirando solo la seguridad.
 
-Fuente: el Ministerio de Seguridad provincial usó más de 2 millones de litros de biocombustible en
-2023 ([La Voz de San Justo](https://www.lavozdesanjusto.com.ar/transicion-energetica-en-marcha-los-vehiculos-del-ministerio-de-seguridad-usaran-biocombustibles)).
-No distingue patrullaje de otros usos. Los ~5.500 litros por día y las ~4.600 t de CO₂ por año
-(2,3 kg por litro) son **cálculo nuestro**. Contexto: la Guardia Urbana arrancó con 70 móviles
-([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/ciudad-de-cordoba-con-70-moviles-y-400-efectivos-larga-este-lunes-la-guardia-urbana-municipal))
-y ya hay móviles municipales con cámaras en el Parque Sarmiento
-([La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/cordoba-una-decena-de-moviles-municipales-con-camaras-controlaran-el-parque-sarmiento)).
+**Es una estimación nuestra (13/11):** 770 móviles con fuente (700 camionetas de la Policía, [Cadena 3,
+9/10/2025](https://www.cadena3.com/noticia/sociedad/cordoba-refuerza-seguridad-con-400-camionetas-y-nueva-unidad-especial-policial_472813),
+y 70 de la Guardia Urbana, [La Voz](https://grupoclarin-la-voz-prod.cdn.arcpublishing.com/ciudadanos/ciudad-de-cordoba-con-70-moviles-y-400-efectivos-larga-este-lunes-la-guardia-urbana-municipal))
+× 20 litros por día (supuesto) × $2.100 por litro (nafta súper, Infobae 10/11/2026). Cuentas y
+huella de carbono en [`pitch/speech.md`](pitch/speech.md).
+
+**Corrección:** antes se usaban 2 millones de litros de La Voz de San Justo (3/12/2024). Ese número era
+biocombustible usado en 2023 por más de 1.800 vehículos oficiales provinciales y municipales, no solo
+patrullaje, así que se dejó de usar.
 
 **Cierre:** "Detección urbana desde el patrullaje."
 

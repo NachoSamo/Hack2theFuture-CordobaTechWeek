@@ -20,7 +20,7 @@ Equipo Hackaranda · Mesa 24
 
 ---
 
-Unos **dos millones de litros de combustible por año** mueven la flota de seguridad de Córdoba: patrulleros y móviles que recorren la ciudad todo el día con cámaras, pero que solo reportan seguridad (Ministerio de Seguridad provincial, 2023; el dato no separa el patrullaje de otros usos). Mientras tanto, la basura se acumula en las esquinas hasta que un vecino reclama, y en una sola tormenta Defensa Civil recibió **198 llamados** por postes o columnas caídos o en riesgo (Perfil, 7/8/2026). Hoy la ciudad se entera tarde de lo que se rompe o se acumula, y casi siempre por el vecino.
+Estimamos que unos **5,6 millones de litros de combustible por año** (unos $12.000 millones) mueven el patrullaje de Córdoba: 770 móviles (700 camionetas policiales y 70 de la Guardia Urbana) que recorren la ciudad todo el día con cámaras, pero que solo reportan seguridad. La flota tiene fuente; el consumo de 20 litros por día por móvil es un supuesto (detalle en [`harness/pitch/speech.md`](harness/pitch/speech.md)). Mientras tanto, la basura se acumula en las esquinas hasta que un vecino reclama, y en una sola tormenta Defensa Civil recibió **198 llamados** por postes o columnas caídos o en riesgo (Perfil, 7/8/2026). Hoy la ciudad se entera tarde de lo que se rompe o se acumula, y casi siempre por el vecino.
 
 **Urbis convierte los recorridos que la ciudad ya hace en detección de incidencias urbanas:** reúne las observaciones de cada cámara en un ticket por problema, avisa directo al área que lo resuelve y lo muestra en un mapa.
 
