@@ -7,7 +7,7 @@ estado: borrador para ensayar (v13: abre con "Creamos Urbis" y va directo al pro
 
 # Speech: Urbis (3 minutos)
 
-> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 9).
+> Acompaña a [`deck.html`](deck.html). Los números son la **posición de la slide** en el deck (1 a 10).
 >
 > **Tono:** charla TED, en castellano rioplatense y formal. Se le habla al público de "ustedes", con
 > preguntas, imágenes concretas y pausas. Abre y cierra con la misma escena: un patrullero que está
@@ -17,7 +17,7 @@ estado: borrador para ensayar (v13: abre con "Creamos Urbis" y va directo al pro
 > Es una estimación: cronometrarlo en voz alta, con el video.
 >
 > **Quién presenta:** dos personas. **Persona A** habla desde la apertura hasta la solución
-> (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 9). Quiénes son se
+> (slides 1 a 6). **Persona B** narra el video y sigue hasta el cierre (slides 7 a 10). Quiénes son se
 > decide en el ensayo, con cronómetro.
 >
 > **Marcas:** `[pausa]` = dos segundos de silencio, mirando al público. `**negrita**` = la palabra que
@@ -79,7 +79,7 @@ detectado, en un mapa de calor que muestra dónde hay mayor incidencia y nos da 
 
 *(Vuelta al deck.)*
 
-### 7 · ODS involucrados (1:55–2:05)
+### 7 · Impacto sustentable: ODS que cumplimos (1:55–2:05)
 
 Así, cada litro rinde más y ayudamos a **equilibrar la huella de carbono** de la ciudad.
 
@@ -89,7 +89,12 @@ Así, cada litro rinde más y ayudamos a **equilibrar la huella de carbono** de 
 y se ahorra salir a inspeccionar. Y para implementarlo, **ya existen iniciativas de financiamiento de la
 Unión Europea en Córdoba**, para un Plan de Movilidad Sostenible que necesita datos de la calle. Urbis se los da.
 
-### 9 · Cierre (2:40–3:00)
+### 9 · Primer paso (2:40–2:55)
+
+**¿Cómo empezamos?** Con una reunión con el municipio. Y con un **barrio piloto** de cuatro semanas, con los
+móviles que ya lo recorren, para medir cuántas incidencias detectamos y cuánto tarda en resolverse cada una.
+
+### 10 · Cierre (2:55–3:15)
 
 Volvamos a ese patrullero que está dando vueltas ahora mismo.
 `[pausa]`
@@ -105,8 +110,7 @@ Gracias.
 
 - **Cronómetro:** el video (después de la slide 6) es lo que más tiempo se come. Si un ensayo pasa los 3 minutos,
   se recorta en este orden: la línea de ODS (7, ya reducida a una frase el 13/11) y la frase de financiamiento UE de la 8.
-- **Primer paso:** la slide se sacó (Oli, 12/11). Si preguntan cómo sigue: una reunión con el municipio
-  para un piloto en un barrio.
+- **Primer paso (slide 9, vuelve el 13/11):** punto de partida = una reunión con el municipio (acceso al monitoreo y un área que reciba los avisos). Prueba = barrio piloto de 4 semanas, Güemes o Mercado Norte (idea-y-epicas §7 y mural, lienzo 07). Metas de los lienzos: ≥ 30 % de la flota piloto con Urbis activo, ≥ 70 % de detecciones correctas; el tiempo de resolución se mide, sin meta. **Con esta slide el speech pasa los 3 minutos: cronometrar y recortar.**
 - **Qué aprendimos:** la slide se sacó (Oli, 12/11). Si el jurado pregunta por la evidencia, contar el
   pivot: empezamos optimizando rutas de basura y los mentores nos llevaron a alertar a cada área.
 - **Tres preguntas que el speech tiene que responder solo** (Oli, 12/11):
